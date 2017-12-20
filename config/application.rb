@@ -1,12 +1,6 @@
 require File.expand_path('../boot', __FILE__)
 
-# Pick the frameworks you want:
-require "active_record/railtie"
-require "action_controller/railtie"
-require "action_mailer/railtie"
-require "active_resource/railtie"
-require "sprockets/railtie"
-# require "rails/test_unit/railtie"
+require 'rails/all'
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
@@ -17,8 +11,8 @@ end
 
 module Wp
   class Application < Rails::Application
-
-    config.paths['config/routes'] +=  Dir["#{Rails.root}/config/routes/*.rb"]
+    #https://ruby-china.org/topics/34110
+    config.paths['config/routes.rb'].concat  Dir["#{Rails.root}/config/routes/*.rb"]
     config.i18n.enforce_available_locales = false
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

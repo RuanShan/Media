@@ -1,7 +1,9 @@
 source 'http://gems.ruby-china.org/'
 
-gem 'rails', '3.2.14'
-gem 'mysql2', '0.3.18'
+gem 'rails', '4.0'
+#gem 'rails', '3.2.14'
+gem 'activerecord-mysql2-adapter'
+gem 'mysql2', '0.4.10'
 gem 'jquery-rails', '2.2.1'
 gem 'jquery-ui-rails', '4.0.2'
 gem 'rails-i18n'
@@ -9,14 +11,14 @@ gem 'client_side_validations', :git => 'git://github.com/bcardarella/client_side
 # gem 'cancan'
 gem 'kaminari'
 gem 'spreadsheet'
-gem 'ekuseru'
+#gem 'ekuseru'
 gem 'to_xls-rails'
 gem 'to_csv-rails'
 gem 'acts_as_enum', '~> 1.2.1'
 gem 'lazy_high_charts'
 
-gem 'rmagick', '2.13.2', require: 'RMagick'
-gem 'mini_magick'
+#gem 'rmagick', '2.13.2', require: 'RMagick'
+#gem 'mini_magick'
 
 gem 'rucaptcha'
 # gem 'alidayu_sms'
@@ -39,7 +41,7 @@ gem 'squeel'
 gem "exception_logger", :require => "exception_logger", :git => "git://github.com/liangwenke/exception_logger.git"
 gem 'exception_notification'
 
-gem "audited-activerecord", "~> 3.0"
+gem "audited-activerecord"
 
 # gem 'chronic', :git => 'git@github.com:mojombo/chronic.git'
 gem 'whenever', :require => false
@@ -67,23 +69,23 @@ gem "jasl_tenpay", :git => "git://github.com/teddy-ma/tenpay.git"
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
+  gem 'sass-rails'
+  gem 'coffee-rails'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'libv8', '~> 3.16.14.0'
   gem 'therubyracer', '0.12.0',:platforms => :ruby
 
-  gem 'uglifier', '>= 1.0.3'
+  gem 'uglifier'
 
   gem 'turbo-sprockets-rails3'
 end
 
-gem 'sidekiq'
-gem 'sidekiq-status'
+#gem 'sidekiq'
+#gem 'sidekiq-status'
 gem 'sinatra', '>= 1.3.0', :require => nil
 
-gem 'thin'
+#gem 'thin'
 gem 'faye'
 
 group :development do
@@ -92,18 +94,20 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'pry-rails'
-  gem 'pry-remote'
-  gem 'pry-nav'
+  gem 'annotate', ">=2.5.0"
+
+#  gem 'pry-remote'
+#  gem 'pry-nav'
   gem 'guard-rails'
-  gem 'capistrano', '2.15.4'
+  # gem 'capistrano', '2.15.4'
   # gem 'capistrano-sidekiq'
   gem 'rvm-capistrano', require: false
 end
 
 group :test do
-  gem "rspec-rails", "~> 2.14.0"
-  gem "factory_girl_rails", "~> 4.2.1"
-  gem "faker", "~> 1.1.2"
+  gem "rspec-rails"
+  #gem "factory_girl_rails", "~> 4.2.1"
+  #gem "faker", "~> 1.1.2"
   gem "capybara", "~> 2.1.0"
   gem "database_cleaner", "~> 1.0.1"
   gem "launchy", "~> 2.3.0"
@@ -118,9 +122,8 @@ gem 'omniauth'
 gem 'omniauth-oauth2'
 gem 'httparty'
 gem 'faraday'
-gem 'annotate', ">=2.5.0"
 gem 'uuidtools'
-gem 'qiniu'
+gem 'qiniu', '>= 6.4.0'
 gem 'geocoder'
 gem 'browser'
 gem "select2-rails"
@@ -136,8 +139,8 @@ gem "acts_as_follower", '~> 0.1.1'
 #gem 'breadcrumbs_on_rails'
 
 # Use unicorn as the app server
-gem 'unicorn'
-gem 'unicorn-worker-killer'
+#gem 'unicorn'
+#gem 'unicorn-worker-killer'
 
 #gem 'roo'
 
