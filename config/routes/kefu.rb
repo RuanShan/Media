@@ -1,7 +1,7 @@
 Wp::Application.routes.draw do
 
   scope module: 'kefu' do
-    match 'kefu_api', to: "api#index"
+    get 'kefu_api', to: "api#index"
 
     resources :staffs do
       collection do

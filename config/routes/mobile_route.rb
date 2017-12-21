@@ -2,7 +2,7 @@
 Wp::Application.routes.draw do
 
   scope module: :mobile, as: :mobile do
-    match '/notice' => 'base#notice'
+    get '/notice' => 'base#notice'
   end
 
   constraints subdomain: /m+/  do
@@ -15,12 +15,12 @@ Wp::Application.routes.draw do
         # 菜单页面（列表或详情页面）：
         # http://m.winwemedia.com/:site_id/channel/:website_menu_id
         root to: 'websites#index'
-        match '/channel/:website_menu_id' => 'websites#channel', as: :channel
-        match '/detail/:website_menu_id' => 'websites#detail', as: :detail
-        match '/map' => 'websites#map', as: :map
-        match '/sitemap' => 'websites#sitemap', as: :sitemap
-        match '/unknown_identity' => 'websites#unknown_identity'
-        match '/audio/:id' => 'websites#audio', as: :audio
+        get '/channel/:website_menu_id' => 'websites#channel', as: :channel
+        get '/detail/:website_menu_id' => 'websites#detail', as: :detail
+        get '/map' => 'websites#map', as: :map
+        get '/sitemap' => 'websites#sitemap', as: :sitemap
+        get '/unknown_identity' => 'websites#unknown_identity'
+        get '/audio/:id' => 'websites#audio', as: :audio
 
         #微门店 http://m.winwemedia.com/site_id/shop_branches(/:id)
         resources :micro_stores, only: [:index, :show] do
@@ -62,7 +62,7 @@ Wp::Application.routes.draw do
 
         resources :donation_orders, only: [:show, :create, :update] do
           post :pay, on: :member
-          match :callback, :print, :notify, :success, on: :collection
+          match :callback, :print, :notify, :success, on: :collection, via: [:get, :post]
         end
 
         #微投票 http://m.winwemedia.com/site_id/votes(/:id)
@@ -73,7 +73,7 @@ Wp::Application.routes.draw do
 
         #微调研 http://m.winwemedia.com/site_id/surveys(/:id)
         resources :surveys, only: [:new, :show] do
-          match :questions, on: :member
+          match :questions, on: :member, via: [:get, :post]
           member do
             get  :feedback, :success, :list
             post :create_feedback, :create_answer
@@ -223,7 +223,7 @@ Wp::Application.routes.draw do
     end
 
     resources :shop_orders, only: [:index, :new, :show, :update, :destroy] do
-      match :success, :send_captcha, :clone, on: :member
+      match :success, :send_captcha, :clone, on: :member, via: [:get, :post]
       member do
         get :menu, :confirm, :search
         post :add_item, :remove_item, :change_item, :cancel

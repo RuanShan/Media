@@ -1,7 +1,13 @@
 source 'http://gems.ruby-china.org/'
 
-gem 'rails', '4.0'
+gem 'rails', '4.2'
 #gem 'rails', '3.2.14'
+
+gem 'sass-rails', '~> 5.0'
+gem 'uglifier', '>= 1.3.0'
+gem 'coffee-rails', '~> 4.2.0'
+
+
 gem 'activerecord-mysql2-adapter'
 gem 'mysql2', '0.4.10'
 gem 'jquery-rails', '2.2.1'
@@ -14,7 +20,7 @@ gem 'spreadsheet'
 #gem 'ekuseru'
 gem 'to_xls-rails'
 gem 'to_csv-rails'
-gem 'acts_as_enum', '~> 1.2.1'
+gem 'acts_as_enum'
 gem 'lazy_high_charts'
 
 #gem 'rmagick', '2.13.2', require: 'RMagick'
@@ -66,29 +72,15 @@ gem 'streamio-ffmpeg'
 
 gem "jasl_tenpay", :git => "git://github.com/teddy-ma/tenpay.git"
 
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails'
-  gem 'coffee-rails'
-
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  gem 'libv8', '~> 3.16.14.0'
-  gem 'therubyracer', '0.12.0',:platforms => :ruby
-
-  gem 'uglifier'
-
-  gem 'turbo-sprockets-rails3'
-end
-
-#gem 'sidekiq'
-#gem 'sidekiq-status'
+gem 'sidekiq'
+gem 'sidekiq-status'
 gem 'sinatra', '>= 1.3.0', :require => nil
 
 #gem 'thin'
 gem 'faye'
 
 group :development do
+  gem 'sqlite3'
   # gem 'rails_best_practices'
   gem 'quiet_assets'
   gem 'better_errors'
@@ -115,7 +107,7 @@ group :test do
 end
 
 # To use ActiveModel has_secure_password
-gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt', '~> 3.1.7'
 gem 'settingslogic'
 
 gem 'omniauth'
@@ -123,6 +115,7 @@ gem 'omniauth-oauth2'
 gem 'httparty'
 gem 'faraday'
 gem 'uuidtools'
+gem 'celluloid'
 gem 'qiniu', '>= 6.4.0'
 gem 'geocoder'
 gem 'browser'
@@ -155,3 +148,5 @@ gem 'rubyntlm', '~> 0.3.2'
 # gem "mq_publisher"#, git: "ssh://git@winwemedia.com:/opt/repos/ec/mq_publisher.git", branch: 'master'
 
 gem 'test-unit'
+
+gem 'redis'

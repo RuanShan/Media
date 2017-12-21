@@ -5,38 +5,38 @@ Wp::Application.routes.draw do
 
   # resources :logged_exceptions
 
-  mount RuCaptcha::Engine => "/rucaptcha"
+  # mount RuCaptcha::Engine => "/rucaptcha"
 
   require 'sidekiq/web'
   # authenticate :account do
   mount Sidekiq::Web => '/sidekiq'
   # end
 
-  match "auth_agent/wx_oauth", to: "auth_agent#wx_oauth"
-  match "auth_agent/wx_oauth_callback", to: "auth_agent#wx_oauth_callback"
+  match "auth_agent/wx_oauth", to: "auth_agent#wx_oauth", via: [:get, :post]
+  match "auth_agent/wx_oauth_callback", to: "auth_agent#wx_oauth_callback", via: [:get, :post]
 
   resources :sessions, only: :create
-  match 'sign_in'  => 'sessions#new',     as: :sign_in
-  match 'sign_out' => 'sessions#destroy', as: :sign_out
-  match 'secret'   => 'sessions#secret'
-  match 'register' => 'accounts#new', as: :register
-  match 'profile' => 'accounts#index', as: :profile
+  match 'sign_in'  => 'sessions#new',     as: :sign_in, via: [:get]
+  match 'sign_out' => 'sessions#destroy', as: :sign_out,via: [:get, :post]
+  match 'secret'   => 'sessions#secret',via: [:get, :post]
+  match 'register' => 'accounts#new', as: :register,via: [:get]
+  match 'profile' => 'accounts#index', as: :profile,via: [:get]
 
   resources :passwords, only: [:new, :create]
   resources :password_resets do
     post :resend_email, on: :member
   end
+  get :verify_code, :to => 'ru_captcha/captcha#index'  
+  match :validate_image_code, :helpers, :games, :help_menus, :console, controller: :home, via: [:get, :post]
+  match :about, :joins, :micro_channel, :h5_marketing, :large_customer, :optimal_code, :store, :electricity, :retail, :agents_inquiry, controller: 'site/pages', via: [:get, :post]
 
-  match :verify_code, :validate_image_code, :helpers, :games, :help_menus, :console, controller: :home
-  match :about, :joins, :micro_channel, :h5_marketing, :large_customer, :optimal_code, :store, :electricity, :retail, :agents_inquiry, controller: 'site/pages'
 
+  match '/recepit/print',  :to => "pro/shop_branch_print_templates#recepit", via: [:get, :post]
+  match '/printlog',       :to => "pro/shop_branch_print_templates#printlog", via: [:get, :post]
+  match '/recepit/export', :to => "pro/shop_branch_print_templates#export_print_data", via: [:get, :post]
 
-  match '/recepit/print',  :to => "pro::shop_branch_print_templates#recepit"
-  match '/printlog',       :to => "pro::shop_branch_print_templates#printlog"
-  match '/recepit/export', :to => "pro::shop_branch_print_templates#export_print_data"
-
-  match "/404", :to => "home#not_found", as: :four_o_four, constraints: {format: :html}
-  match "/500", :to => "home#error", as: :five_o_o, constraints: {format: :html}
+  match "/404", :to => "home#not_found", as: :four_o_four, constraints: {format: :html}, via: [:get]
+  match "/500", :to => "home#error", as: :five_o_o, constraints: {format: :html}, via: [:get]
 
   resources :home, only: :index do
     get :help_post, on: :member
@@ -85,11 +85,11 @@ Wp::Application.routes.draw do
     match 'wxpay/notify', to: "wxpay#notify", via: [:post, :put, :get]
   end
 
-  match "/tenpay/callback", :to => "tenpay#callback", as: :tenpay_callback
-  match "/tenpay/notify",   :to => "tenpay#notify",   as: :tenpay_notify
-  match "/tenpay/pay",      :to => "tenpay#pay",      as: :tempay_pay
+  match "/tenpay/callback", :to => "tenpay#callback", as: :tenpay_callback, via: [:get, :post]
+  match "/tenpay/notify",   :to => "tenpay#notify",   as: :tenpay_notify, via: [:get, :post]
+  match "/tenpay/pay",      :to => "tenpay#pay",      as: :tempay_pay, via: [:get, :post]
 
-  match "/app/donation_orders/callback", :to => "tenpay#callback", as: :tenpay_callback
+  match "/app/donation_orders/callback", :to => "tenpay#callback", via: [:get, :post]
 
   resources :news, only: [:index, :show] do
     get :qa, :info, :company, on: :collection
@@ -126,15 +126,15 @@ Wp::Application.routes.draw do
   resources :sites do
     get :switch, on: :collection
   end
-  match 'copyright' => 'sites#copyright', as: :copyright
+  match 'copyright' => 'sites#copyright', as: :copyright, via: [:get]
   post  'update_copyright' => 'sites#update_copyright', as: :update_copyright
 
   resources :prints do
     get :activities, on: :collection
   end
 
-  match "/member/bind", :to => "wifi_clients#bind" #给潮wifi调用的接口
-  match "/member/modify_bind", :to => "wifi_clients#modify_bind" #给潮wifi调用的接口
+  match "/member/bind", :to => "wifi_clients#bind", via: [:get, :post] #给潮wifi调用的接口
+  match "/member/modify_bind", :to => "wifi_clients#modify_bind", via: [:get, :post] #给潮wifi调用的接口
 
   resources :materials, :multiple_materials
   resources :materials_audios, only: [:index, :create, :destroy]
@@ -256,8 +256,8 @@ Wp::Application.routes.draw do
 
   namespace :merchant do
     resources :sessions, only: :create
-    match 'login'  => 'sessions#new',     as: :login
-    match 'secret' => 'sessions#secret'
+    match 'login'  => 'sessions#new',     as: :login, via: [:get]
+    match 'secret' => 'sessions#secret', via: [:get, :post]
   end
 
   namespace :sms do

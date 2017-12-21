@@ -2,7 +2,7 @@ module Concerns::Brokerages
   extend ActiveSupport::Concern
 
   included do
-    has_one :brokerage_activity, class_name: 'Activity', conditions: { activity_type_id: ActivityType::BROKERAGE }
+    has_one :brokerage_activity, -> { where(activity_type_id: ActivityType::BROKERAGE) }, class_name: 'Activity'
 
     has_many :brokerage_brokers, class_name: '::Brokerage::Broker'
     has_many :brokerage_clients, class_name: '::Brokerage::Client', through: :brokerage_brokers, source: :clients

@@ -2,7 +2,8 @@
 
 class InitDb < ActiveRecord::Migration
 
-  create_table "accounts", options: 'AUTO_INCREMENT = 10001' do |t|
+  #create_table "accounts", options: 'AUTO_INCREMENT = 10001' do |t|
+  create_table "accounts" do |t|
     t.integer  "account_type",                 :default => 0,   :null => false
     t.integer  "account_category_id"
     t.string   "nickname"
@@ -87,7 +88,8 @@ class InitDb < ActiveRecord::Migration
 
   add_index "account_logs", ["user_id", "user_type"], :name => "index_account_logs_on_user_id_and_user_type"
 
-  create_table "sites", options: 'AUTO_INCREMENT = 10001' do |t|
+  #create_table "sites", options: 'AUTO_INCREMENT = 10001' do |t|
+  create_table "sites" do |t|
     t.integer  "account_id"
     t.string   "name"
     t.string   "token"
@@ -101,7 +103,8 @@ class InitDb < ActiveRecord::Migration
     t.datetime "updated_at",                                      :null => false
   end
 
-  create_table "activities", options: 'AUTO_INCREMENT = 10001' do |t|
+  #create_table "activities", options: 'AUTO_INCREMENT = 10001' do |t|
+  create_table "activities" do |t|
     t.integer  "site_id",                                              :null => false
     t.integer  "activity_type_id",                                     :null => false
     t.string   "page_title"
@@ -441,7 +444,8 @@ class InitDb < ActiveRecord::Migration
 
   add_index "activity_vote_items", ["activity_id"], :name => "index_activity_vote_items_on_activity_id"
 
-  create_table "admin_users", options: 'AUTO_INCREMENT = 10001' do |t|
+  #create_table "admin_users", options: 'AUTO_INCREMENT = 10001' do |t|
+  create_table "admin_users" do |t|
     t.string   "code",                                                 :null => false
     t.string   "name",                                                 :null => false
     t.string   "token"
@@ -916,8 +920,8 @@ class InitDb < ActiveRecord::Migration
     t.datetime "created_at",            :null => false
   end
 
-  add_index "car_bespeak_option_relationships", ["car_bespeak_id"], :name => "index_car_bespeak_option_relationships_on_car_bespeak_id"
-  add_index "car_bespeak_option_relationships", ["car_bespeak_option_id"], :name => "index_car_bespeak_option_relationships_on_car_bespeak_option_id"
+  add_index "car_bespeak_option_relationships", ["car_bespeak_id"], :name => "index_car_bespeak_option_relationships_on_car_bespeak"
+  add_index "car_bespeak_option_relationships", ["car_bespeak_option_id"], :name => "index_car_bespeak_option_relationships_on_car_bespeak_option"
 
   create_table "car_bespeak_options" do |t|
     t.string   "name",                                     :null => false

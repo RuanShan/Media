@@ -15,7 +15,7 @@ Wp::Application.routes.draw do
     end
 
     resources :group_categories do
-      match :move_lower, :move_higher, on: :member
+      match :move_lower, :move_higher, on: :member, via: [:get, :post]
     end
     resources :group_items
     resources :groups do
@@ -72,7 +72,7 @@ Wp::Application.routes.draw do
 
       get   :activity, :list_activities, :orders, on: :collection
       post  :start, :stop, on: :member
-      match :update_activity, :edit_activity, on: :collection
+      match :update_activity, :edit_activity, on: :collection, via: [:get, :post]
     end
 
     resources :wbbs_communities
@@ -295,7 +295,7 @@ Wp::Application.routes.draw do
         get :highchart, :pictures, :del_picture
       end
     end
-    match 'location_img/:id/img.png' => 'micro_shop_branches#location_img'
+    get 'location_img/:id/img.png' => 'micro_shop_branches#location_img'
 
     namespace :shops do
       scope path: ':site_id' do

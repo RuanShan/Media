@@ -7,9 +7,9 @@ class Merchant::SessionsController < ApplicationController
 
   def create
     clear_sign_in_session
-
-    return redirect_to :back, alert: '验证码不正确' unless valid_verify_code? params[:verify_code]
-
+Rails.logger.debug "before 验证码不正确"
+#    return redirect_to :back, alert: '验证码不正确' unless verify_rucaptcha? #params[:verify_code]
+Rails.logger.debug "after 验证码不正确"
     if site = Site.active.authenticated(params[:login], params[:password])
       # site.update_sign_in_attrs_with(request.remote_ip)
 

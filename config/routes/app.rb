@@ -84,8 +84,8 @@ Wp::Application.routes.draw do
 
     resources :vip_user_payments, only: [:update, :show] do
       collection do
-        match :payment
-        match :update_transfer_result
+        get :payment
+        post :update_transfer_result
       end
     end
 
@@ -160,7 +160,7 @@ Wp::Application.routes.draw do
         get :apply, :vip_card_branches,:account,:description,:exchanged,:list,
             :success,:map, :gifts, :gift, :shops, :points, :consumes, :consume, :balances, :print,
             :privileges, :use_gift, :send_sms, :recharge_back, :recharge_check, :go_recharge,
-            :get_gift, :mine, :information, :vip_packages, :vip_package_show, :my_consume_show, 
+            :get_gift, :mine, :information, :vip_packages, :vip_package_show, :my_consume_show,
             :buy_vip_package, :by_usable_amount, :buy_success
         match :tenpay_callback, :tenpay_notify, :signin, :info, :old_coupons, :notes, :passwd, :edit_passwd, :find_passwd, :signup, :activate, :inactive, via: [ :get, :post ]
       end
@@ -194,7 +194,7 @@ Wp::Application.routes.draw do
     end
 
     resources :donation_orders do
-      match :test, :callback, :print, :notify, on: :collection
+      match :test, :callback, :print, :notify, on: :collection, via: [:get, :post]
     end
   end
 

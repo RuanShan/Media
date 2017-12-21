@@ -49,19 +49,14 @@ class Site < ActiveRecord::Base
 
   has_many :users, inverse_of: :site
 
-  has_one  :website, conditions: { website_type: Website::MICRO_SITE }
-  has_one  :life, class_name: 'Website', conditions: { website_type: Website::MICRO_LIFE }
-  has_one  :circle, class_name: 'Website', conditions: { website_type: Website::MICRO_CIRCLE }
+  has_one  :website, -> { where( website_type: Website::MICRO_SITE)  }
+  has_one  :life, -> { where( website_type: Website::MICRO_LIFE) }, class_name: 'Website'
+  has_one  :circle, -> { where( website_type: Website::MICRO_CIRCLE) }, class_name: 'Website'
 
   has_many :wx_menus
   has_many :wx_walls, dependent: :destroy
   has_one  :wx_plot
-  # has_one :activity_wx_plot_bulletin, class_name: 'Activity', conditions: { activity_type_id: ActivityType::PLOT_BULLETIN }
-  # has_one :activity_wx_plot_repair, class_name: 'Activity', conditions: { activity_type_id: ActivityType::PLOT_REPAIR }
-  # has_one :activity_wx_plot_complain, class_name: 'Activity', conditions: { activity_type_id: ActivityType::PLOT_COMPLAIN }
-  # has_one :activity_wx_plot_owner, class_name: 'Activity', conditions: { activity_type_id: ActivityType::PLOT_OWNER }
-  # has_one :activity_wx_plot_life, class_name: 'Activity', conditions: { activity_type_id: ActivityType::PLOT_LIFE }
-  # has_one :activity_wx_plot_telephone, class_name: 'Activity', conditions: { activity_type_id: ActivityType::PLOT_TELEPHONE }
+
   has_many :wbbs_communities
   has_many :reservation_orders
   has_many :wbbs_topics
@@ -76,7 +71,7 @@ class Site < ActiveRecord::Base
 
   has_one  :shop, inverse_of: :site
   has_many :shop_branches
-  has_many :shop_branch_sub_accounts, through: :shop_branches, source: :sub_account, conditions: "shop_branches.status = #{ShopBranch::USED}"
+  has_many :shop_branch_sub_accounts, ->{ where  "shop_branches.status = #{ShopBranch::USED}" }, through: :shop_branches, source: :sub_account
   has_many :shop_orders
   has_many :shop_table_orders
   has_many :shop_categories
@@ -171,7 +166,7 @@ class Site < ActiveRecord::Base
   has_many :shake_rounds
   has_many :shake_prizes
   has_many :shake_users
-  has_many :system_messages, order: 'created_at DESC'
+  has_many :system_messages, ->{ order( 'created_at DESC') }
   has_many :system_message_settings
   has_one  :broche
   has_many :likes, as: :likeable

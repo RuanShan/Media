@@ -9,7 +9,7 @@ class Biz::ShopsController < ApplicationController
 
   def sign_in
     return render layout: false if request.get?
-    return redirect_to :back, alert: '验证码不正确' unless valid_verify_code? params[:verify_code]
+    return redirect_to :back, alert: '验证码不正确' unless verify_rucaptcha? params[:verify_code]
     sub_account = current_shop_account.shop_branch_sub_accounts.where(username: params[:name]).first
     return redirect_to :back, alert: '门店名称不正确' unless sub_account
     return redirect_to :back, alert: '密码不正确' if !sub_account.authenticate( params[:password] )

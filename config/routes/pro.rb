@@ -309,7 +309,7 @@ Wp::Application.routes.draw do
 
     resources :book_rules do
       get :assign, on: :member
-      match :copy, on: :member
+      match :copy, on: :member, via: [:get, :post]
     end
 
     resources :shop_orders do
@@ -327,7 +327,7 @@ Wp::Application.routes.draw do
     resources :trips do
       collection do
         get  :ads, :ticket, :order, :del_ad, :new_ticket, :ticket_status, :order_status
-        match :up_ad_title
+        match :up_ad_title, via: [:get, :post]
       end
       post :ad_add, :save_ticket, :destroy_ticket, on: :collection
       get :show_ticket, :show_order, on: :member

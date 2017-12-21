@@ -2,7 +2,7 @@ Wp::Application.routes.draw do
 
   scope module: :api do
     post  'ticket', to: 'wx_plugin#ticket'
-    match 'wx_plugin/auth', to: 'wx_plugin#auth'
+    match 'wx_plugin/auth', to: 'wx_plugin#auth', via: [:get, :post]
 
     match '/service/:code' => 'weixin#service', via: [:post, :get]
     match '/message/:app_id/notify' => 'weixin#service', via: [:post, :get]

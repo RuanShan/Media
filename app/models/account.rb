@@ -7,7 +7,7 @@ class Account < ActiveRecord::Base
 
   validates :nickname, presence: true, uniqueness: { case_sensitive: false }, length: { within: 2..20, too_short: '太短了，最少3位', too_long: "太长了，最多20位" }
   validates :email, email: true, presence: true#, uniqueness: { case_sensitive: false }
-  validates :mobile, presence: true, format: { with: /^\d{11}$/, message: '手机格式不正确' }
+  validates :mobile, presence: true, format: { with: /\A\d{11}\z/, message: '手机格式不正确' }
   validates :password, presence: { message: '不能为空', on: :create }, length: { within: 6..20, too_short: '太短了，最少6位', too_long: "太长了，最多20位" }, allow_blank: true
   validates_confirmation_of :password, message: '确认不一致'
 

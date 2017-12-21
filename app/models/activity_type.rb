@@ -43,7 +43,7 @@ class ActivityType < ActiveRecord::Base
     ['my_photos',           36, '我的晒图'],
 
     ['groups',              14, '微团购'],
-    ['group',               30, '微团购支付版'],
+    ['group_payable',               30, '微团购支付版'],
     ['ktv_order',           22, 'KTV预定(不再使用)'],
 
     ['wx_print',            46, '微信打印'],

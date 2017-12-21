@@ -51,9 +51,9 @@ class Website < ActiveRecord::Base
   has_many :website_menus, dependent: :destroy#, order: :sort
   has_many :website_pictures, dependent: :destroy
   has_many :website_popup_menus, class_name: 'WebsitePopupMenu', dependent: :destroy
-  has_many :shortcut_menus, class_name: 'WebsitePopupMenu', conditions: { nav_type: WebsitePopupMenu::POPUP_MENU }, dependent: :destroy
-  has_many :home_nav_menus, class_name: 'WebsitePopupMenu', conditions: { nav_type: WebsitePopupMenu::HOME_NAV_MENU }, dependent: :destroy
-  has_many :inside_nav_menus, class_name: 'WebsitePopupMenu', conditions: { nav_type: WebsitePopupMenu::INSIDE_NAV_MENU }, dependent: :destroy
+  has_many :shortcut_menus, -> { where( nav_type: WebsitePopupMenu::POPUP_MENU ) }, class_name: 'WebsitePopupMenu', dependent: :destroy
+  has_many :home_nav_menus, -> { where( nav_type: WebsitePopupMenu::HOME_NAV_MENU ) }, class_name: 'WebsitePopupMenu', dependent: :destroy
+  has_many :inside_nav_menus, -> { where( nav_type: WebsitePopupMenu::INSIDE_NAV_MENU ) }, class_name: 'WebsitePopupMenu', dependent: :destroy
   has_many :website_articles, dependent: :destroy
   has_many :website_article_categories, dependent: :destroy
   has_many :business_shops, dependent: :destroy

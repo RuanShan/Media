@@ -71,9 +71,9 @@ class Activity < ActiveRecord::Base
   has_many :wx_prizes, dependent: :destroy
   has_many :custom_fields, as: :customized
   has_one :activity_property, dependent: :destroy
-  has_one :ready_activity_notice, class_name: 'ActivityNotice', conditions: { activity_status: ActivityNotice::READY }
-  has_one :active_activity_notice, class_name: 'ActivityNotice', conditions: { activity_status: ActivityNotice::ACTIVE }
-  has_one :stopped_activity_notice, class_name: 'ActivityNotice', conditions: { activity_status: ActivityNotice::STOPPED }
+  has_one :ready_activity_notice, -> { where( activity_status: ActivityNotice::READY) }, class_name: 'ActivityNotice'
+  has_one :active_activity_notice, -> { where( activity_status: ActivityNotice::ACTIVE) }, class_name: 'ActivityNotice'
+  has_one :stopped_activity_notice, -> { where( activity_status: ActivityNotice::STOPPED) }, class_name: 'ActivityNotice'
   has_many :activity_notices, dependent: :destroy
   has_many :activity_properties, dependent: :destroy
   has_many :activity_consumes,dependent: :destroy
@@ -97,7 +97,7 @@ class Activity < ActiveRecord::Base
   has_many :activity_groups, dependent: :destroy
   has_many :survey_questions, dependent: :destroy
   has_many :activity_feedbacks, dependent: :destroy
-  has_many :albums, order: "albums.sort, albums.updated_at DESC"
+  has_many :albums, -> { where( order: "albums.sort, albums.updated_at DESC" ) }
   has_many :greets, dependent: :destroy
   has_many :coupons, dependent: :destroy
   has_many :coupon_consumes, through: :coupons, source: :consumes
