@@ -4,7 +4,7 @@ class Huodong::RedPacket::PacketsController < ApplicationController
   def index
     @total_packet_activities = current_site.activities.red_packet.show.order("id DESC")
     @search = @total_packet_activities.search(params[:search])
-    @packet_activities = @search.page(params[:page])
+    @packet_activities = @search.result.page(params[:page])
   end
 
   def new

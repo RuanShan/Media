@@ -2,7 +2,7 @@ class QrcodeChannelsController < ApplicationController
 
   def index
     @search = current_site.qrcode_channels.normal.latest.search(params[:search])
-    @qrcode_channels = @search.page(params[:page])
+    @qrcode_channels = @search.result.page(params[:page])
     if params[:search]
       @type_id = params[:search][:qrcode_channel_type_id_eq]
       @channel_way = params[:search][:channel_way_eq]

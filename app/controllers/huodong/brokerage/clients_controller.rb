@@ -6,7 +6,7 @@ class Huodong::Brokerage::ClientsController < Huodong::Brokerage::BaseController
 	def index
 		@total_brokerage_clients = current_site.brokerage_clients
 		@search = @total_brokerage_clients.search(params[:search])
-		@brokerage_clients = @search.order('id DESC').page(params[:page])
+		@brokerage_clients = @search.result.order('id DESC').page(params[:page])
 	end
 
 	def edit

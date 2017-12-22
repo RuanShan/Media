@@ -59,7 +59,7 @@ class FightPapersController < ApplicationController
   def user_data
     @total_fight_report_cards = current_site.fight_report_cards.registered.where("fight_report_cards.activity_id = ? AND fight_report_cards.activity_user_id is not null", params[:aid]).includes(:activity_consume).includes(:activity_user).order("fight_report_cards.score DESC, fight_report_cards.speed ASC")
     @search = @total_fight_report_cards.search(params[:search])
-    @fight_report_cards = @search.page(params[:page])
+    @fight_report_cards = @search.result.page(params[:page])
 
     respond_to do |format|
       format.html {render layout: "application_pop"}

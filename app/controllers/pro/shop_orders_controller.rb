@@ -23,7 +23,7 @@ class Pro::ShopOrdersController < Pro::ShopBaseController
       return redirect_to :back, notice: "请先选择餐饮解决方案"
     end
 
-    @shop_orders = @search.page(params[:page]).order('created_at desc')
+    @shop_orders = @search.result.page(params[:page]).order('created_at desc')
 
     respond_to do |format|
       format.html
@@ -39,7 +39,7 @@ class Pro::ShopOrdersController < Pro::ShopBaseController
             only: [:shop_branch_name, :order_no, :mobile, :address, :status_name, :created_at, :expired_at]
           }
         end
-        send_data(@search.relation.to_xls(options))
+        send_data(@search.result.relation.to_xls(options))
       }
     end
   end
@@ -126,15 +126,15 @@ class Pro::ShopOrdersController < Pro::ShopBaseController
   def report
     @search = current_site.shop_order_reports
     if params[:industry_id].to_i == 10001
-      @search = @search.where(order_type: 1)
-      @search = @search.where(shop_branch_id: current_shop_branch.id, order_type: 1) if current_shop_branch
+      @search = @search.result.where(order_type: 1)
+      @search = @search.result.where(shop_branch_id: current_shop_branch.id, order_type: 1) if current_shop_branch
     end
     if params[:industry_id].to_i == 10002
-      @search = @search.where(order_type: 2)
-      @search = @search.where(shop_branch_id: current_shop_branch.id, order_type: 2) if current_shop_branch
+      @search = @search.result.where(order_type: 2)
+      @search = @search.result.where(shop_branch_id: current_shop_branch.id, order_type: 2) if current_shop_branch
     end
-    @search = @search.search(params[:search])
-    @shop_order_reports = @search.order('date desc').page(params[:page]).per(20)
+    @search = @search.result.search(params[:search])
+    @shop_order_reports = @search.result.order('date desc').page(params[:page]).per(20)
     respond_to do |format|
       format.html
       format.xls {
@@ -142,7 +142,7 @@ class Pro::ShopOrdersController < Pro::ShopBaseController
           header_columns: ['分店', '日期', '订单数量', '总金额', '客单价'],
           only: [:shop_branch_name, :date, :orders_count, :total_amount, :pay_amount]
         }
-        send_data(@search.all.to_xls(options))
+        send_data(@search.result.all.to_xls(options))
       }
     end
   end
@@ -160,7 +160,7 @@ class Pro::ShopOrdersController < Pro::ShopBaseController
     if session[:current_industry_id].to_i == 10002
       @search = current_site.shop_orders.take_out.search(params[:search])
     end 
-    @shop_orders = @search.select('HOUR(created_at) hour, count(*) total_count').group('HOUR(created_at)')
+    @shop_orders = @search.result.select('HOUR(created_at) hour, count(*) total_count').group('HOUR(created_at)')
     if session[:current_industry_id].to_i == 10001
       @shop_orders = @shop_orders.where(order_type: 1)
     end
@@ -170,7 +170,7 @@ class Pro::ShopOrdersController < Pro::ShopBaseController
     if params[:search][:created_at_lte] && !params[:search][:created_at_lte].empty?
       end_date = DateTime.parse(params[:search][:created_at_lte]) - 1.day
       params[:search][:created_at_lte] = end_date.to_s
-      @search.search_attributes["created_at_less_than_or_equal_to"] = end_date
+      @search.result.search_attributes["created_at_less_than_or_equal_to"] = end_date
     end
     @chart_test = ShopOrder.test_line(@shop_orders)
   end

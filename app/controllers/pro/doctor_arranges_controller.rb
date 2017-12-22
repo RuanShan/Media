@@ -3,7 +3,7 @@ class Pro::DoctorArrangesController < Pro::HospitalBaseController
 
   def index
     @search = current_site.hospital.doctor_arranges.search(params[:search])
-    @doctor_arranges = @search.page(params[:page]).order("created_at desc")
+    @doctor_arranges = @search.result.page(params[:page]).order("created_at desc")
   end
 
   def new

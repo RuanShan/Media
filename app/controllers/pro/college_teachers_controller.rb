@@ -3,7 +3,7 @@ class Pro::CollegeTeachersController < Pro::CollegesBaseController
 
   def index
     @search = @college.teachers.search(params[:search])
-    @teachers = @search.order('id DESC').page(params[:page])
+    @teachers = @search.result.order('id DESC').page(params[:page])
   end
 
   def new

@@ -2,7 +2,7 @@ class Pro::CollegeMajorsController < Pro::CollegesBaseController
   before_filter :find_college_major, only: [ :edit, :update, :destroy ]
   def index
     @search = @college.majors.search(params[:search])
-    @majors = @search.order('id DESC').page(params[:page])
+    @majors = @search.result.order('id DESC').page(params[:page])
   end
 
   def new

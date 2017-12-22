@@ -13,18 +13,18 @@
       <div class="tabbable">
       <%= render "pro/hospitals/top_hospital" %>
       <div class="tab-content no-border padding-24">
-      <%= form_for @search, url: hospital_orders_url, method: :get,  :html => { :method => :get} do |f| %>
+      <%= search_form_for @search, url: hospital_orders_url, method: :get,  :html => { :method => :get} do |f| %>
           <div class="col-sm-12 no-padding">
             <div class="col-sm-3 no-padding">
               <div class="input-group input-group-text">
                 <span class="input-group-addon">预约单号：</span>
-                <%= f.text_field :order_no_like, class:"col-sm-12" %>
+                <%= f.text_field :order_no_cont, class:"col-sm-12" %>
               </div>
             </div>
             <div class="col-sm-3">
               <div class="input-group input-group-text">
                 <span class="input-group-addon">预约人：</span>
-                <%= f.text_field :name_like, class:"col-sm-12" %>
+                <%= f.text_field :name_cont, class:"col-sm-12" %>
               </div>
             </div>
             <div class="col-sm-3">

@@ -10,7 +10,7 @@ class Pro::HotelOrdersController < Pro::HotelsBaseController
     end
 
     @search = @hotel.hotel_orders.order("created_at desc").search(params[:search])
-    @hotel_orders = @search.page(params[:page])
+    @hotel_orders = @search.result.page(params[:page])
   end
 
   def show

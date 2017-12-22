@@ -12,14 +12,14 @@
     <div class="mod-bg"></div>
     <div class="mod-body">
       <ul>
-        <li class="<%= params[:activity_id].present? ? '' : 'active'%>"><a href="/merchant_app/orders/gov_orders?role=account&role_id=<%= @login_user.id %>&token=<%= @login_user.auth_token %>&value_like=<%= params[:value_like]%>">所有</a</li>
+        <li class="<%= params[:activity_id].present? ? '' : 'active'%>"><a href="/merchant_app/orders/gov_orders?role=account&role_id=<%= @login_user.id %>&token=<%= @login_user.auth_token %>&value_cont=<%= params[:value_cont]%>">所有</a</li>
         <li ng-repeat="activity in demo.activities" class="{{(
 
         (activity.govmailbox_id == <%= params[:govmailbox_id].present? ? params[:govmailbox_id].to_i : -999 %>)
         ||
         (activity.chat_type == <%= params[:chat_type].present? ? params[:chat_type].to_i : -999 %>)
 
-        ) ? 'active' : ''}}"><a href="/merchant_app/orders/gov_orders?role=account&role_id=<%= @login_user.id %>&token=<%= @login_user.auth_token %>&value_like=<%= params[:value_like]%>&activity_id={{activity.activity_id}}&chat_type={{activity.chat_type}}&govmailbox_id={{activity.govmailbox_id}}">{{activity.name}}</a></li>
+        ) ? 'active' : ''}}"><a href="/merchant_app/orders/gov_orders?role=account&role_id=<%= @login_user.id %>&token=<%= @login_user.auth_token %>&value_cont=<%= params[:value_cont]%>&activity_id={{activity.activity_id}}&chat_type={{activity.chat_type}}&govmailbox_id={{activity.govmailbox_id}}">{{activity.name}}</a></li>
       </ul>
     </div>
   </div>
@@ -32,7 +32,7 @@
   <div class="search-box">
     <div class="search">
       <div class="s-icon"></div>
-      <%= text_field_tag 'value_like', params[:value_like], placeholder: '搜索' %>
+      <%= text_field_tag 'value_cont', params[:value_cont], placeholder: '搜索' %>
     </div>
   </div>
 <% end %>
@@ -75,7 +75,7 @@
    Demo.prototype.nextPage = function () {
      if (this.busy) return;
      this.busy = true;
-     var url = '<%= raw "#{MERCHANT_APP_HOST}/v1/orders/gov_orders?role=account&role_id=#{@login_user.id}&token=#{@login_user.auth_token}&value_like=#{params[:value_like]}&chat_type=#{params[:chat_type]}&govmailbox_id=#{params[:govmailbox_id]}&activity_id=#{params[:activity_id]}&page=" %>'+ this.page;
+     var url = '<%= raw "#{MERCHANT_APP_HOST}/v1/orders/gov_orders?role=account&role_id=#{@login_user.id}&token=#{@login_user.auth_token}&value_cont=#{params[:value_cont]}&chat_type=#{params[:chat_type]}&govmailbox_id=#{params[:govmailbox_id]}&activity_id=#{params[:activity_id]}&page=" %>'+ this.page;
      $http.get(url).success(function (response) {
        if(response.result == 'success'){
          this.activities = response.data['activities'];

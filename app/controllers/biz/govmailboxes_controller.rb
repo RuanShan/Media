@@ -42,7 +42,7 @@ class Biz::GovmailboxesController < ApplicationController
 
    def mails
       @search = @box.govmails.roots.where("status != 0").search(params[:search])
-      @mails = @search.page(params[:page]).per(20)
+      @mails = @search.result.page(params[:page]).per(20)
   end
 
   private

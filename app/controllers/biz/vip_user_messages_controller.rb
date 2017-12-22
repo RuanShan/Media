@@ -2,7 +2,7 @@ class Biz::VipUserMessagesController < Biz::VipController
 
   def index
     @search = current_site.vip_user_messages.latest.includes(:vip_user).search(params[:search])
-    @messages = @search.page(params[:page])
+    @messages = @search.result.page(params[:page])
   end
 
   def new

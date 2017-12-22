@@ -5,7 +5,7 @@ class SystemMessagesController < ApplicationController
   def index
     current_site.update_all_system_messages
     @search = current_site.system_messages.search(params[:search])
-    @messages = @search.page(params[:page])
+    @messages = @search.result.page(params[:page])
   end
 
   def ajax_update

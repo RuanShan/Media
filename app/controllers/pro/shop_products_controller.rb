@@ -44,7 +44,7 @@ class Pro::ShopProductsController < Pro::ShopBaseController
 
     conditions = params[:search_shelve_status].present? ? ['shelve_status = ?', params[:search_shelve_status]] : []
     @search = current_site.shop.shop_products.where(conditions).order('sort asc').search(params[:search])
-    @shop_products = @search.page(params[:page]).per(50)
+    @shop_products = @search.result.page(params[:page]).per(50)
   end
 
   def import

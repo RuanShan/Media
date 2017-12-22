@@ -13,7 +13,7 @@
       <div class="tab-content no-border padding-24">
         <div id="tab-4" class="tab-pane fade active in">
           <div class="row">
-            <%= form_for @search, url: consumes_coupons_path, html: { method: :get } do |f| %>
+            <%= search_form_for @search, url: consumes_coupons_path, html: { method: :get } do |f| %>
               <div class="col-sm-12">
                 <div class="col-md-3 row">
                   <div class="input-group input-group-text">
@@ -31,7 +31,7 @@
                   <div class="input-group input-group-text">
                     <span class="input-group-addon">SN码：</span>
                     <div class="input-group">
-                      <%= f.text_field :code_like, class: 'form-control' %>
+                      <%= f.text_field :code_cont, class: 'form-control' %>
                     </div>
                   </div>
                 </div>

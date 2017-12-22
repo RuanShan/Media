@@ -9,7 +9,7 @@
     <%= form_for @group_items_search, url: items_groups_path, method: :get, class: 'box-form form-row' do |f| %>
       <div class="col-md-3 row">
         <div class="input-group input-group-sm input-group-text">
-          <%= f.text_field :group_category_name_or_name_like, class: 'col-xs-12', placeholder: "请输入分类或商品名称查询" %>
+          <%= f.text_field :group_category_name_or_name_cont, class: 'col-xs-12', placeholder: "请输入分类或商品名称查询" %>
           <span class="input-group-addon">
             <input type="submit" value="查询" class="btn btn-sm btn-filter btn-primary">
           </span>

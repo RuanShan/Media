@@ -20,13 +20,13 @@ class Biz::ReservationsController < ApplicationController
 
   def orders
     @search = @activity.reservation_orders.search(params[:search])
-    @orders = @search.order("created_at DESC").page(params[:page]).per(20)
+    @orders = @search.result.order("created_at DESC").page(params[:page]).per(20)
     @fields = @activity.custom_fields.normal.visible.order(:position).limit(5)
   end
 
   def fields
     @search = @activity.custom_fields.normal.search(params[:search])
-    @fields = @search.order(:position).page(params[:page]).per(20)
+    @fields = @search.result.order(:position).page(params[:page]).per(20)
   end
 
   def edit

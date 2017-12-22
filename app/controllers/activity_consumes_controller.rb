@@ -3,7 +3,7 @@ class ActivityConsumesController < ApplicationController
   def index
     @total_activity_consumes = current_site.activity_consumes.joins(:vip_privilege).order("activity_consumes.id desc")
     @search = @total_activity_consumes.search(params[:search])
-    @activity_consumes = @search.page(params[:page])
+    @activity_consumes = @search.result.page(params[:page])
   end
 
   def show

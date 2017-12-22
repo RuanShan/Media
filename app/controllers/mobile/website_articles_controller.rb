@@ -10,11 +10,11 @@ class Mobile::WebsiteArticlesController < Mobile::BaseController
   def index
     #@website.website_articles.send('as_article').order('sort DESC').includes(:taggings).where('taggings.tag_id = 46 and website_articles.website_article_category_id = 5')
     #@website.website_articles.send('as_article').order('sort DESC').search({website_article_category_id_eq: 5, taggings_tag_id_eq: 46}).page(1)
-    @articles = @search.page(params[:page]).per(100)
+    @articles = @search.result.page(params[:page]).per(100)
   end
 
   def show
-    @articles = @search.relation
+    @articles = @search.result.relation
     @article = @articles.where(id: params[:id]).first
     return redirect_to mobile_website_articles_url(site_id: @site.id, article_type: params[:article_type]) unless @article
     index = @articles.to_a.index(@article)

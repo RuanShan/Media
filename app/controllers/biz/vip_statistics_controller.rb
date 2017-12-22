@@ -4,7 +4,7 @@ class Biz::VipStatisticsController < Biz::VipController
   def index
     @total_vip_users = current_site.vip_users.visible.normal_and_freeze.select('date(created_at) as created_date, count(*) as count, 1 as total_count').group('date(created_at)').order("created_at desc")
     @search = @total_vip_users.search(params[:search])
-    @vip_users = @search.page(params[:page]).per(20)
+    @vip_users = @search.result.page(params[:page]).per(20)
 
     last_count = current_site.vip_users.visible.normal_and_freeze.where('date(created_at) <= ?', @vip_users.last.try(:created_date)).count
 

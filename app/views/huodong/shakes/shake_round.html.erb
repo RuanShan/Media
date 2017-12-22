@@ -29,7 +29,7 @@
               <div class="col-md-12">
               </div>
               <div class="col-sm-12">
-                <%= form_for @search, url: shake_round_shakes_path, class: 'box-form form-row', html: { method: :get } do |f| %>
+                <%= search_form_for @search, url: shake_round_shakes_path, class: 'box-form form-row', html: { method: :get } do |f| %>
                   <div class="col-md-3 row">
                     <div class="input-group input-group-text">
                       <span class="input-group-addon">活动名称：</span>

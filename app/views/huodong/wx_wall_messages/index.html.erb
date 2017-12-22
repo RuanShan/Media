@@ -19,7 +19,7 @@
           <div id="tab-2" class="tab-pane fade active in">
             <div class="row">
               <div class="col-sm-12">
-                <%= form_for @search, url: wx_wall_messages_path, :html => { :method => :get } do |f| %>
+                <%= search_form_for @search, url: wx_wall_messages_path, :html => { :method => :get } do |f| %>
                   <div class="col-md-3 row">
                     <div class="input-group input-group-text">
                       <span class="input-group-addon">选择活动：</span>
@@ -30,7 +30,7 @@
                   <div class="col-md-3">
                     <div class="input-group input-group-text">
                       <span class="input-group-addon">用户昵称：</span>
-                      <%= f.text_field :wx_wall_user_nickname_like, class: 'col-xs-12' %>
+                      <%= f.text_field :wx_wall_user_nickname_cont, class: 'col-xs-12' %>
                       </div>
                     </div>
                     <div class="col-md-3">

@@ -1,9 +1,9 @@
-<%= form_for @search, html: {method: :get} do |f| %>
+<%= search_form_for @search, html: {method: :get} do |f| %>
     <div class="col-sm-12 margin-top-10">
         <div class="col-md-3 row">
             <div class="input-group input-group-text">
                 <span class="input-group-addon">会员卡号：</span>
-                <%= f.text_field :user_no_like, class: "col-xs-12" %>
+                <%= f.text_field :user_no_cont, class: "col-xs-12" %>
             </div>
         </div>
 
@@ -11,7 +11,7 @@
         <div class="col-md-3">
             <div class="input-group input-group-text">
                 <span class="input-group-addon">线下会员卡号：</span>
-                <%= f.text_field :custom_user_no_like, class: "col-xs-12" %>
+                <%= f.text_field :custom_user_no_cont, class: "col-xs-12" %>
             </div>
         </div>
         <% end %>
@@ -19,13 +19,13 @@
         <div class="col-md-3">
             <div class="input-group input-group-text">
                 <span class="input-group-addon">姓名：</span>
-                <%= f.text_field :name_like, class: "col-xs-12" %>
+                <%= f.text_field :name_cont, class: "col-xs-12" %>
             </div>
         </div>
         <div class="col-md-3">
             <div class="input-group input-group-text">
                 <span class="input-group-addon">手机号码：</span>
-                <%= f.text_field :mobile_like, class: "col-xs-12" %>
+                <%= f.text_field :mobile_cont, class: "col-xs-12" %>
             </div>
         </div>
     </div>

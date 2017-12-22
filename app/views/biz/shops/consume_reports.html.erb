@@ -25,7 +25,7 @@
             </div>
 
             <div class="col-sm-12">
-              <%= form_for @search, url: shops_consume_reports_path(site_id: current_shop_account.id), html: { method: :get } do |f| %>
+              <%= search_form_for @search, url: shops_consume_reports_path(site_id: current_shop_account.id), html: { method: :get } do |f| %>
                   <div class="col-md-3 row">
                     <div class="input-group input-group-text">
                       <span class="input-group-addon">活动名称：</span>

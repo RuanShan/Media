@@ -4,8 +4,8 @@ class Biz::VipGroupsController < Biz::VipController
 
   def index
     @search = current_site.vip_users.visible.name_like(params[:name]).by_group(params[:group])
-    @search = @search.includes(:vip_grade, :vip_group, :custom_values).by_grade(params[:grade])
-    @vip_users = @search.page(params[:page]).per(PAGE_SIZE)
+    @search = @search.result.includes(:vip_grade, :vip_group, :custom_values).by_grade(params[:grade])
+    @vip_users = @search.result.page(params[:page]).per(PAGE_SIZE)
     @vip_grades = current_site.vip_card.vip_grades.visible.sorted
   end
 
@@ -38,7 +38,7 @@ class Biz::VipGroupsController < Biz::VipController
     vip_users_count = current_site.vip_users.visible.where(vip_group_id: vip_group_id).count
     current_site.vip_card.vip_groups.where(id: vip_group_id).update_all(vip_users_count: vip_users_count)
     @search = current_site.vip_users.visible.by_group(params[:origin_group])
-    @vip_users = @search.page(params[:page]).per(PAGE_SIZE)
+    @vip_users = @search.result.page(params[:page]).per(PAGE_SIZE)
   end
 
   def create
@@ -59,7 +59,7 @@ class Biz::VipGroupsController < Biz::VipController
     @vip_group_id = @vip_user.vip_group_id
     @vip_user.update_attributes(vip_group_id: nil)
     @search = current_site.vip_users.visible.where(vip_group_id: @vip_group_id)
-    @vip_users = @search.page(params[:page]).per(PAGE_SIZE)
+    @vip_users = @search.result.page(params[:page]).per(PAGE_SIZE)
   end
 
   private

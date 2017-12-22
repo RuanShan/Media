@@ -22,7 +22,7 @@
                 <li>已核销：<%= @total_item_consumes.count %>个</li>
               </ul>
             </div>
-            <%= form_for @search, url: item_consumes_vip_packages_path, :html => { :method => :get } do |f| %>
+            <%= search_form_for @search, url: item_consumes_vip_packages_path, :html => { :method => :get } do |f| %>
               <div class="col-sm-12 row">
                 <div class="col-md-3 row">
                   <div class="input-group input-group-text">
@@ -35,7 +35,7 @@
                 <div class="col-md-3">
                   <div class="input-group input-group-text">
                     <span class="input-group-addon">会员姓名：</span>
-                    <%= f.text_field :vip_user_name_like, class: 'col-xs-12' %>
+                    <%= f.text_field :vip_user_name_cont, class: 'col-xs-12' %>
                   </div>
                 </div>
                 <div class="col-md-3">

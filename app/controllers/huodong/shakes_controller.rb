@@ -4,13 +4,13 @@ class Huodong::ShakesController < ApplicationController
 	def index
 		@total_shakes = current_site.shakes.show.order('created_at DESC')
 		@search = @total_shakes.search(params[:search])
-    @shakes = @search.page(params[:page])
+    @shakes = @search.result.page(params[:page])
 	end
 
 	def shake_round
 		@total_shake_rounds = current_site.shake_rounds.order('id DESC')
 		@search = @total_shake_rounds.search(params[:search])
-    @shake_rounds = @search.page(params[:page])
+    @shake_rounds = @search.result.page(params[:page])
 
     respond_to do |format|
       format.html
@@ -28,9 +28,9 @@ class Huodong::ShakesController < ApplicationController
     @total_shake_users = current_site.shake_users.shake_at.joins("left join shake_prizes on shake_users.user_id = shake_prizes.user_id and shake_users.shake_id = shake_prizes.shake_id and shake_prizes.shake_round_id= #{@shake_round.id}").where(shake_id: @shake_round.shake_id).order('IFNULL(shake_prizes.user_rank, 1000000) asc')
 
 		@search = @total_shake_users.search(params[:search])
-    @shake_users = @search.page(params[:page])
+    @shake_users = @search.result.page(params[:page])
     # max_rank = @shake_round.shake_prizes.maximum(:user_rank).to_i
-    # arr = @search.relation.sort_by do |x|
+    # arr = @search.result.relation.sort_by do |x|
     #   rank = x.get_user_rank(@shake_round.id)
     #   rank.to_i == 0 ? (rank.to_i+max_rank+1) : rank.to_i
     # end
@@ -39,7 +39,7 @@ class Huodong::ShakesController < ApplicationController
     respond_to do |format|
       format.html {render layout: "application_pop"}
       format.xls {
-                send_data(ShakePrize.export_excel(@search.page(params[:page_exl]).per(2000), @shake_round.id),
+                send_data(ShakePrize.export_excel(@search.result.page(params[:page_exl]).per(2000), @shake_round.id),
                 :type => "text/excel;charset=utf-8; header=present", 
                 :filename => Time.now.to_s(:db).to_s.gsub(/[\s|\t|\:]/,'_') + rand(99999).to_s + ".xls")
               }

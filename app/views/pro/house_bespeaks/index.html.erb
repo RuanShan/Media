@@ -51,17 +51,17 @@
             <div id="tab-2" class="tab-pane fade">
               <div class="row">
                 <div class="col-sm-12">
-									<%= form_for @search, :html => { :method => :get } do |f| %>
+									<%= search_form_for @search, :html => { :method => :get } do |f| %>
 										<div class="col-md-4 row">
 											<div class="input-group input-group-text">
 												<span class="input-group-addon">姓名：</span>
-												<%= f.text_field :name_like, class: "col-xs-12" %>
+												<%= f.text_field :name_cont, class: "col-xs-12" %>
 											</div>
 										</div>
 										<div class="col-md-4">
 											<div class="input-group input-group-text">
 												<span class="input-group-addon">手机号码：</span>
-												<%= f.text_field :mobile_like, class: "col-xs-12" %>
+												<%= f.text_field :mobile_cont, class: "col-xs-12" %>
 											</div>
 										</div>
 										<div class="col-md-3 row">

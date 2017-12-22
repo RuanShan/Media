@@ -11,13 +11,13 @@
       <div class="page-content">
         <div class="row">
 
-          <%= form_for @search, url: wx_plot_repair_complains_path(type: params[:type]), html: {method: :get } do |f| %>
+          <%= search_form_for @search, url: wx_plot_repair_complains_path(type: params[:type]), html: {method: :get } do |f| %>
               <%= hidden_field_tag :type, params[:type]%>
               <div class="col-sm-12">
                 <div class="col-md-3 row">
                   <div class="input-group input-group-text">
                     <span class="input-group-addon">搜索：</span>
-                    <%= f.text_field :content_like, placeholder: '请输入具体内容进行搜索', class: 'col-xs-12' %>
+                    <%= f.text_field :content_cont, placeholder: '请输入具体内容进行搜索', class: 'col-xs-12' %>
                   </div>
                 </div>
                 <div class="col-md-3">

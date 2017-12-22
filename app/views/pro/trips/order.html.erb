@@ -1,17 +1,17 @@
 <div class="tabbable">
   <%= render "pro/trips/top_trip" %>
 
-<%= form_for @search, url: order_trips_path, html: { method: :get, class: "col-sm-12", style:"padding-top: 20px;"} do |f| %>
+<%= search_form_for @search, url: order_trips_path, html: { method: :get, class: "col-sm-12", style:"padding-top: 20px;"} do |f| %>
   <div class="col-md-3 row">
     <div class="input-group input-group-text">
       <span class="input-group-addon">订单号：</span>
-      <%= f.text_field :order_no_like, class: "col-xs-12" %>
+      <%= f.text_field :order_no_cont, class: "col-xs-12" %>
     </div>
   </div>
   <div class="col-md-3">
     <div class="input-group input-group-text">
       <span class="input-group-addon">门票名称：</span>
-      <%= f.text_field :ticket_name_like, class: "col-xs-12" %>
+      <%= f.text_field :ticket_name_cont, class: "col-xs-12" %>
     </div>
   </div>
   <div class="col-md-3">

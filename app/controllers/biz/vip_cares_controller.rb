@@ -11,7 +11,7 @@ class Biz::VipCaresController < Biz::VipController
     end
     @search = @vip_card.vip_cares.normal.search(params[:search])
     @given_group_id_eq = params[:search][:given_group_id_eq].to_i rescue ''
-    @vip_cares = @search.page(params[:page])
+    @vip_cares = @search.result.page(params[:page])
   end
 
   def new

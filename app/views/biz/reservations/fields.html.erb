@@ -11,13 +11,13 @@
     </div>
     <div class="page-content">
       <div class="row">
-        <%= form_for @search, url: fields_reservations_path, html: {method: :get} do |f| %>
+        <%= search_form_for @search, url: fields_reservations_path, html: {method: :get} do |f| %>
           <div class="col-sm-12">
             <div class="col-md-3 row">
               <%= select_tag :id, options_for_select(current_site.activities.reservations.show.map{ |x| [x.extend.service, x.id]}, params[:id]), class: 'col-xs-12' %>
             </div>
             <div class="col-md-2">
-            <%= f.text_field :name_like, class: 'col-xs-12', placeholder: '请输入字段名称' %>
+            <%= f.text_field :name_cont, class: 'col-xs-12', placeholder: '请输入字段名称' %>
             </div>
             <div class="col-md-3 row">
               <input type="submit" class="btn btn-primary btn-sm btn-filter" value="查询" >

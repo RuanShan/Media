@@ -26,7 +26,7 @@ class Biz::ShopsController < ApplicationController
 
     @search = current_shop_branch.consumes.joins("join coupons on coupons.id = consumes.consumable_id AND consumes.consumable_type = 'Coupon'").coupon.used.search(coupon_filter_search)
 
-    @used_consumes = @search.select('count(*) used_count, DATE(used_at) used_date, sum(coupons.value) coupons_value').group('used_date').to_a
+    @used_consumes = @search.result.select('count(*) used_count, DATE(used_at) used_date, sum(coupons.value) coupons_value').group('used_date').to_a
 
     @used_sns    = @used_consumes.sum(&:used_count)
     dates = [@used_consumes.first.try(:used_date), @used_consumes.last.try(:used_date)].compact
@@ -300,7 +300,7 @@ class Biz::ShopsController < ApplicationController
   def package_users
     @total_package_users = current_shop_branch.vip_packages_vip_users.latest
     @search = @total_package_users.search(params[:search])
-    @package_users = @search.page(params[:page])
+    @package_users = @search.result.page(params[:page])
     @vip_package_id = params[:search][:vip_package_id] if params[:search]
 
     respond_to do |format|
@@ -313,7 +313,7 @@ class Biz::ShopsController < ApplicationController
   def item_consumes
     @total_item_consumes = current_shop_branch.vip_package_item_consumes.used.latest
     @search = @total_item_consumes.search(params[:search])
-    @item_consumes = @search.page(params[:page])
+    @item_consumes = @search.result.page(params[:page])
 
     respond_to do |format|
       format.html

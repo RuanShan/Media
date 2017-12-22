@@ -10,10 +10,10 @@
   <div class="page-content">
     <div class="row">
       <div class="col-sm-12">
-        <%= form_for @search, url: car_catenas_path, html: { method: :get } do |f| %>
+        <%= search_form_for @search, url: car_catenas_path, html: { method: :get } do |f| %>
         <div class="col-md-3 row">
           <div class="input-group input-group-sm input-group-text">
-            <%= f.text_field :name_like, class: 'form-control', placeholder:"请输入车系名称查询" %>
+            <%= f.text_field :name_cont, class: 'form-control', placeholder:"请输入车系名称查询" %>
             <span class="input-group-addon">
               <button class="btn btn-sm btn-filter btn-primary">查询</button>
             </span>

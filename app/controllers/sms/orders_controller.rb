@@ -12,7 +12,7 @@ class Sms::OrdersController < ApplicationController
     else
       @search = current_site.sms_orders.where(["status not in (?)", [SmsOrder::F_DELETE, SmsOrder::T_DELETE]]).order("sms_orders.id DESC").search(params[:search])
     end
-    @sms_orders = @search.page(params[:page])
+    @sms_orders = @search.result.page(params[:page])
   end
 
   def new

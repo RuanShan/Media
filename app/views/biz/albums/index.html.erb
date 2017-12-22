@@ -8,10 +8,10 @@
         <div id="tab-2" class="tab-pane fade active in">
           <div class="row">
             <div class="col-md-12 col-lg-12">
-              <%= form_for @search, url: albums_path, class: 'box-form form-row', html: { method: :get } do |f| %>
+              <%= search_form_for @search, url: albums_path, class: 'box-form form-row', html: { method: :get } do |f| %>
               <div class="col-md-3 row">
                 <div class="input-group input-group-sm input-group-text">
-                  <%= f.text_field :name_like, class: 'form-control', placeholder:"请输入查询信息" %>
+                  <%= f.text_field :name_cont, class: 'form-control', placeholder:"请输入查询信息" %>
                   <span class="input-group-addon">
                   <input type="submit" class="btn btn-primary btn-sm" value="查询" />
                   </span>

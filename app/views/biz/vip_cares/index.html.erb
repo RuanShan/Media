@@ -5,12 +5,12 @@
 <% content_for :tab do %>
   <div id="festivalCare" class="tab-pane active">
       <div class="row">
-          <%= form_for @search, url: vip_cares_path, html: { method: :get } do |f| %>
+          <%= search_form_for @search, url: vip_cares_path, html: { method: :get } do |f| %>
             <div class="col-sm-12">
               <div class="col-md-3 row">
                 <div class="input-group input-group-text">
                   <span class="input-group-addon">节日名称：</span>
-                  <%= f.text_field :name_like, class: 'col-xs-12' %>
+                  <%= f.text_field :name_cont, class: 'col-xs-12' %>
                 </div>
               </div>
               <div class="col-md-3">

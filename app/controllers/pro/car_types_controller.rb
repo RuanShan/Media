@@ -4,7 +4,7 @@ class Pro::CarTypesController < ApplicationController
   def index
     # @total_car_types = @car_shop.car_types.normal.includes(:car_brand).includes(:car_catena).where('car_brands.status = ? and car_catenas.status = ?', CarBrand::NORMAL, CarCatena::NORMAL)
     @search = @car_shop.car_types.search(params[:search])
-    @car_types = @search.page(params[:page])
+    @car_types = @search.result.page(params[:page])
     @car_catena_id = params[:search][:car_catena_id_eq] if params[:search]
   end
 

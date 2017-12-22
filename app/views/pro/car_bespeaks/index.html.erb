@@ -31,7 +31,7 @@
         <div id="tab-1" class="tab-pane fade active in">
           <div class="row">
             <div class="col-sm-12">
-                <%= form_for @search, url: car_bespeaks_url(bespeak_type: params[:bespeak_type]), html: { method: :get } do |f| %>
+                <%= search_form_for @search, url: car_bespeaks_url(bespeak_type: params[:bespeak_type]), html: { method: :get } do |f| %>
                   <div class="col-md-2 row">
                       <div class="input-group input-group-text col-xs-12 row">
                           <%= select_tag :query_type_key, options_for_select(@query_type_options, @query_type_key), :class => "col-xs-12" %>

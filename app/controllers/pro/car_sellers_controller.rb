@@ -5,7 +5,7 @@ class Pro::CarSellersController < ApplicationController
   	# seller_type = (params[:seller_type].present? and params[:seller_type].to_i == CarSeller::SALES_CONSULTANT) ? CarSeller::SALES_CONSULTANT : CarSeller::SALES_REP
     @total_car_sellers = current_site.car_shop.car_sellers.normal#.where(seller_type: seller_type)
     @search = @total_car_sellers.search(params[:search])
-    @car_sellers = @search.page(params[:page])
+    @car_sellers = @search.result.page(params[:page])
 
     @car_seller = @total_car_sellers.where("id = ?", params[:id]).first || @total_car_sellers.new(car_shop_id: current_site.car_shop.try(:id))
 

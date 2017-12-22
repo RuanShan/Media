@@ -15,7 +15,7 @@ module App
       @hotel = Hotel.where(id: params[:aid]).first
       @hotel_branch = @hotel.hotel_branches.where(id: params[:id]).first
       @search = @hotel_branch.hotel_room_types.normal.order('discount_price').search(params[:search])
-      @hotel_room_types = @search.page(params[:page])
+      @hotel_room_types = @search.result.page(params[:page])
       respond_to do |format|
         format.html
         format.js{}
@@ -28,7 +28,7 @@ module App
       @hotel = Hotel.where(id: params[:aid]).first
       #@hotel_branches = @hotel.hotel_branches.normal.limit(4)
       @search = @hotel.hotel_branches.normal.includes(:hotel_room_types).includes(:hotel_room_settings).where('hotel_branches.city_id = ? and hotel_room_types.status = ? and hotel_room_settings.date = ?', session[:city_id], HotelRoomType::NORMAL, params[:check_in_date]).order('hotel_room_settings.available_qty desc').search(params[:search])
-      @hotel_branches = @search.page(params[:page])
+      @hotel_branches = @search.result.page(params[:page])
       respond_to do |format|
         format.html
         format.js{}

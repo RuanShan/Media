@@ -30,7 +30,7 @@ class Biz::GreetsController < ApplicationController
 
   def index
     @search = current_site.greets.order('id ASC').search(params[:search])
-    @greet = @search.page(params[:page])
+    @greet = @search.result.page(params[:page])
   end
 
   def new

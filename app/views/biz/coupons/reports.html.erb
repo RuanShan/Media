@@ -32,7 +32,7 @@
         </div>
 
         <div class="col-sm-12">
-          <%= form_for @search, url: reports_coupons_path, html: { method: :get } do |f| %>
+          <%= search_form_for @search, url: reports_coupons_path, html: { method: :get } do |f| %>
           <%= f.hidden_field :consumable_type_eq, value: 'Coupon' %>
           <%= f.hidden_field :applicable_type_eq, value: 'ShopBranch' %>
           <div class="col-md-3 row">

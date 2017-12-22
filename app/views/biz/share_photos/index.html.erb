@@ -41,12 +41,12 @@
             <div class="tab-pane active">
                 <div class="col-md-12">
                   <%#= render 'form' %>
-                  <%= form_for @search, html: { method: :get } do |f| %>
+                  <%= search_form_for @search, html: { method: :get } do |f| %>
                       <div class="col-sm-12 no-padding">
                         <div class="col-md-3 row">
                           <div class="input-group input-group-text">
                             <span class="input-group-addon">标签：</span>
-                            <%= f.text_field :title_like , class:"col-xs-12" %>
+                            <%= f.text_field :title_cont , class:"col-xs-12" %>
                           </div>
                         </div>
                         <div class="col-md-3">

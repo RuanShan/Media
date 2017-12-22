@@ -29,10 +29,10 @@
               <div class="row">
 
                 <div class="col-md-12">
-                  <%= form_for @search, url: red_packets_path do |f| %>
+                  <%= search_form_for @search, url: red_packets_path do |f| %>
                   <div class="col-md-3">
                     <div class="col-md-12">
-                      <%= f.text_field :act_name_like, placeholder: '请输入红包名称' %>
+                      <%= f.text_field :act_name_cont, placeholder: '请输入红包名称' %>
                     </div>
                   </div>
                   <div class="col-md-6">

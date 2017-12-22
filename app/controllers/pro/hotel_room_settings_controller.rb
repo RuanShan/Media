@@ -20,7 +20,7 @@ class Pro::HotelRoomSettingsController < Pro::HotelsBaseController
 
     @total_hotel_room_settings = @total_hotel_room_settings.where("hotel_room_settings.date > ? ", Date.yesterday).order('hotel_room_settings.date DESC')
     @search = @total_hotel_room_settings.search(params[:search])
-    @hotel_room_settings = @search.page(params[:page])
+    @hotel_room_settings = @search.result.page(params[:page])
   end
 
   def create

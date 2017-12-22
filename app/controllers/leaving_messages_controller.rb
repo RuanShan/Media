@@ -4,7 +4,7 @@ class LeavingMessagesController < ApplicationController
 
   def index
     @search = @messages.where(parent_id: nil).search(params[:search])
-    @messages = @search.page(params[:page])
+    @messages = @search.result.page(params[:page])
   end
 
   def create

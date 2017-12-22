@@ -5,7 +5,7 @@ class Pro::HotelBranchesController < Pro::HotelsBaseController
   def index
     @total_hotel_branches = @hotel.hotel_branches.normal.order("is_default desc,created_at desc")
     @search = @total_hotel_branches.search(params[:search])
-    @hotel_branches = @search.page(params[:page])
+    @hotel_branches = @search.result.page(params[:page])
   end
 
   def new

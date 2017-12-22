@@ -4,7 +4,7 @@ class Biz::SharePhotoCommentsController < ApplicationController
   def index
     #@share_photo_comments =
     @search = @share_photo.share_photo_comments.search(params[:search])
-    @share_photo_comments = @search.page(params[:page]).per(20)
+    @share_photo_comments = @search.result.page(params[:page]).per(20)
   end
 
   def destroy

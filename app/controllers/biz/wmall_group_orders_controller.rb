@@ -28,7 +28,7 @@ class Biz::WmallGroupOrdersController < Biz::WmallGroupBaseController
   def bill
     conn = "group_orders.created_at >= '#{params[:start_at]}' and group_orders.created_at <= '#{params[:end_at]}'" if params[:start_at].present? && params[:end_at].present?
     @search = current_site.try(:mall).try(:shops).search(params[:search])
-    @shops = @search.joins(:group_items => :group_orders).where(conn).select("wmall_shops.sn, wmall_shops.id, wmall_shops.name, SUM(group_orders.qty) as qty, SUM(group_orders.total_amount) as amount").where("group_orders.status in (2,5,6)").group("wmall_shops.id").page(params[:page])
+    @shops = @search.result.joins(:group_items => :group_orders).where(conn).select("wmall_shops.sn, wmall_shops.id, wmall_shops.name, SUM(group_orders.qty) as qty, SUM(group_orders.total_amount) as amount").where("group_orders.status in (2,5,6)").group("wmall_shops.id").page(params[:page])
   end
 
   def show

@@ -12,7 +12,7 @@ class Pro::HotelCommentsController < Pro::HotelsBaseController
 
     @total_hotel_comments = @hotel.hotel_comments.where("status > ?", -1).where(conds.join(' AND '), conds_h).order("created_at desc")
 	  @search = @total_hotel_comments.search(params[:search])
-		@hotel_comments = @search.page(params[:page])
+		@hotel_comments = @search.result.page(params[:page])
 
   end
 

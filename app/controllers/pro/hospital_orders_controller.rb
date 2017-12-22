@@ -5,9 +5,9 @@ class Pro::HospitalOrdersController < Pro::HospitalBaseController
 
   def index
     #@search = current_site.hospital_orders.search(params[:search])
-    #@hospital_orders = @search.page(params[:page]).order("created_at desc")
+    #@hospital_orders = @search.result.page(params[:page]).order("created_at desc")
     @search = @hospital.doctor_arrange_items.search(params[:search])
-    @doctor_arrange_items = @search.page(params[:page]).order("created_at desc")
+    @doctor_arrange_items = @search.result.page(params[:page]).order("created_at desc")
   end
 
   def show
@@ -26,7 +26,7 @@ class Pro::HospitalOrdersController < Pro::HospitalBaseController
 
   def history
     @search = @hospital.hospital_orders.search(params[:search])
-    @hospital_orders = @search.page(params[:page]).order("created_at desc")
+    @hospital_orders = @search.result.page(params[:page]).order("created_at desc")
   end
 
   private

@@ -3,7 +3,7 @@ class Biz::DonationsController < ApplicationController
 
   def index
     @search = current_site.donations.search(params[:search])
-    @donations = @search.page(params[:page])
+    @donations = @search.result.page(params[:page])
   end
 
   def activity
@@ -63,7 +63,7 @@ class Biz::DonationsController < ApplicationController
 
   def orders
     @search = current_site.donation_orders.active.order("donation_orders.created_at DESC").search(params[:search])
-    @donation_orders = @search.page(params[:page])
+    @donation_orders = @search.result.page(params[:page])
     respond_to do |format|
       format.html
       format.xls {
@@ -71,7 +71,7 @@ class Biz::DonationsController < ApplicationController
           header_columns: ['活动名称', '用户姓名', '手机号码', '捐赠金额', '捐赠时间', '支付订单号', '发票地址'],
           only:     [:donation_name, :name, :mobile, :fee, :created_at, :trade_no, :address]
         }
-        send_data(@search.all.to_xls(options)) }
+        send_data(@search.result.all.to_xls(options)) }
     end
   end
 

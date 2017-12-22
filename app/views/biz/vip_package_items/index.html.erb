@@ -17,10 +17,10 @@
         <div class="tab-content no-border padding-24">
           <div class="tab-pane active">
             <div class="col-sm-12 row">
-              <%= form_for @search, url: vip_package_items_path, class: 'box-form form-row', html: { method: :get } do |f| %>
+              <%= search_form_for @search, url: vip_package_items_path, class: 'box-form form-row', html: { method: :get } do |f| %>
               <div class="col-md-3 row">
                 <div class="input-group input-group-sm input-group-text">
-                  <%= f.text_field :name_like, class: 'col-xs-12', placeholder:"请输入服务项目" %>
+                  <%= f.text_field :name_cont, class: 'col-xs-12', placeholder:"请输入服务项目" %>
                   <span class="input-group-addon">
                   <button type="submit" class="btn btn-primary btn-sm btn-filter">查询</button>
                   </span>

@@ -5,7 +5,7 @@ class Biz::VipPackageItemsController < Biz::VipController
 
   def index
     @search = @vip_card.vip_package_items.normal.latest.search(params[:search])
-    @package_items = @search.page(params[:page])
+    @package_items = @search.result.page(params[:page])
   end
 
   def new

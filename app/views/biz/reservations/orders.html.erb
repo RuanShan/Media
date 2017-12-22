@@ -11,7 +11,7 @@
     </div>
     <div class="page-content">
       <div class="row">
-        <%= form_for @search, url: orders_reservations_path, html: {method: :get} do |f| %>
+        <%= search_form_for @search, url: orders_reservations_path, html: {method: :get} do |f| %>
           <div class="col-sm-12">
             <div class="col-md-3 row">
               <%= select_tag :id, options_for_select(current_site.activities.reservations.show.map{ |x| [x.extend.service, x.id]}, params[:id]), class: 'col-xs-12' %>

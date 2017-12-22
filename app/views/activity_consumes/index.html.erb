@@ -16,7 +16,7 @@
   已消费：<%= @total_activity_consumes.used.count %>张
 </p>
 
-<%= form_for @search, :html => { :method => :get } do |f| %>
+<%= search_form_for @search, :html => { :method => :get } do |f| %>
   <div class="box-form form-col form-search table fl">
     <div class="tr">
       <div class="p">
@@ -24,7 +24,7 @@
         <%= f.select :vip_privilege_id_eq, current_site.vip_privileges.not_deteled.map{|vip_privilege|[vip_privilege.title, vip_privilege.id]},{include_blank: "全部"} %>
         
         <span>SN码</span>
-        <%= f.text_field :code_like, class: "input-text", placeholder: '请输入SN码' %>
+        <%= f.text_field :code_cont, class: "input-text", placeholder: '请输入SN码' %>
         <input type="submit" class="btn btn-small" value="查询">
       </div>
     </div>

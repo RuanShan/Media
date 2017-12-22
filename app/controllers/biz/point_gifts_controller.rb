@@ -4,7 +4,7 @@ class Biz::PointGiftsController < Biz::VipController
 
   def index
     @search = current_site.point_gifts.online.latest.where('status > 0').search(params[:search])
-    @gifts = @search.page(params[:page])
+    @gifts = @search.result.page(params[:page])
   end
 
   def new
@@ -45,7 +45,7 @@ class Biz::PointGiftsController < Biz::VipController
   def gift_exchange
     @total_point_gift_exchanges = @gift.point_gift_exchanges.latest
     @search = @total_point_gift_exchanges.search(params[:search])
-    @point_gift_exchanges = @search.page(params[:page])
+    @point_gift_exchanges = @search.result.page(params[:page])
 
     @shop_branches = @gift.shop_branch_limited ? current_site.shop_branches.used.where(id: @gift.shop_branch_ids) : current_site.shop_branches.used
     @status = params[:search][:status_eq] if params[:search]
@@ -54,7 +54,7 @@ class Biz::PointGiftsController < Biz::VipController
     respond_to do |format|
       format.html { render action: 'gift_exchange' }
       format.xls {
-                send_data(PointGift.export_excel(@search.page(params[:page_exl]).per(1000)),
+                send_data(PointGift.export_excel(@search.result.page(params[:page_exl]).per(1000)),
                 :type => "text/excel;charset=utf-8; header=present",
                 :filename => Time.now.to_s(:db).to_s.gsub(/[\s|\t|\:]/,'_') + rand(99999).to_s + ".xls")
               }

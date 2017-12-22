@@ -6,7 +6,7 @@
         </ul>
     </div>
 
-    <%= form_for @search, url: vip_user_path(@vip_user), html: { method: :get } do |f| %>
+    <%= search_form_for @search, url: vip_user_path(@vip_user), html: { method: :get } do |f| %>
       <%= hidden_field_tag :type, params[:type] %>
       <div class="table-filter">
         <div class="filter-form pull-right">

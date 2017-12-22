@@ -5,7 +5,7 @@ class Biz::RedPacketsController < ApplicationController
 
   def index
     @search = current_site.red_packets.normal.where("type is not null").search(params[:search])
-    @red_packets = @search.order("receive_type asc").page(params[:page])
+    @red_packets = @search.result.order("receive_type asc").page(params[:page])
   end
 
   def off_or_on
@@ -155,7 +155,7 @@ class Biz::RedPacketsController < ApplicationController
           only: [:nickname, :openid]
       }
       respond_to do |format|
-        #send_data(@search.page(params[:page_exl]).per(EXPORTING_COUNT).to_xls(options))
+        #send_data(@search.result.page(params[:page_exl]).per(EXPORTING_COUNT).to_xls(options))
         format.xls { send_data(@users.to_a.to_xls(options), :filename => Time.now.to_s(:db).to_s.gsub(/[\s|\t|\:]/, '_') + rand(99999).to_s + ".xls") }
       end
     else

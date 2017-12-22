@@ -25,7 +25,7 @@
               <div class="row">
 
                 <div class="col-sm-12 row">
-                  <%= form_for @search, url: votes_user_data_activities_path, html: {method: :get } do |f| %>
+                  <%= search_form_for @search, url: votes_user_data_activities_path, html: {method: :get } do |f| %>
                     <div class="col-md-3">
                       <div class="input-group input-group-text col-xs-12 row">
                         <% options = current_site.activities.show.where(:activity_type_id => 12).pluck(:name, :id) %>

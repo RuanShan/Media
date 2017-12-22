@@ -5,7 +5,7 @@ class Pro::HouseLayoutsController < Pro::HousesBaseController
     @activity = @house.activity
     @total_house_layouts = @house.house_layouts
     @search = @total_house_layouts.search(params[:search])
-    @house_layouts = @search.page(params[:page])
+    @house_layouts = @search.result.page(params[:page])
     @house_picture  = HousePicture.new
     @house_layout = @total_house_layouts.where("id = ?", params[:id]).first || @total_house_layouts.new
     @house_pictures = @house.house_pictures.where(house_layout_id: nil)

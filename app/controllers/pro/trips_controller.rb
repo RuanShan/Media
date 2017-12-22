@@ -78,7 +78,7 @@ class Pro::TripsController < Pro::TripBaseController
     @category = current_site.trip_ticket_categories.where(id: params[:trip_ticket_category_id]).first
     @current_titles << '门票管理'
     @search = current_site.trip.trip_tickets.visible.categorized(@category).latest.search(params[:search])
-    @trip_tickets = @search.page(params[:page])
+    @trip_tickets = @search.result.page(params[:page])
   end
 
   def new_ticket
@@ -118,7 +118,7 @@ class Pro::TripsController < Pro::TripBaseController
     @current_titles << '预约管理'
     search_params = params[:search]
     @search = current_site.trip.trip_orders.order('created_at desc').search(search_params)
-    @trip_orders = @search.page(params[:page])
+    @trip_orders = @search.result.page(params[:page])
 
     if params[:search].present?
       @created_at_range = %Q(#{search_params[:created_at_gte].try(:to_date)} - #{search_params[:created_at_lte].try(:to_date)}) if search_params[:created_at_gte].present? and search_params[:created_at_lte].present?

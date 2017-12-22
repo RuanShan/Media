@@ -43,7 +43,7 @@ class Biz::CouponsController < ApplicationController
     @consumes = @activity.coupon_consumes.search(search).select("count(*) created_count, DATE(consumes.created_at) created_date").group('created_date').to_a
 
     @search = @activity.coupon_consumes.used.search(used_search)
-    @used_consumes = @search.select('count(*) used_count, DATE(used_at) used_date, sum(coupons.value) coupons_value').group('used_date').to_a
+    @used_consumes = @search.result.select('count(*) used_count, DATE(used_at) used_date, sum(coupons.value) coupons_value').group('used_date').to_a
 
     @sns         = @activity.coupons.sum(&:limit_count)
     @created_sns = @consumes.sum(&:created_count)
@@ -115,14 +115,14 @@ class Biz::CouponsController < ApplicationController
 
   def consumes
     @search = Consume.used.select("coupons.name AS consume_coupon_name, consumes.status, coupons.value_by AS consume_value_by, coupons.value AS consume_value, consumes.code, consumes.mobile, consumes.created_at AS consume_created_at, consumes.used_at, consumes.consumable_type, consumes.consumable_id, shop_branches.name AS shop_name").joins("INNER JOIN coupons ON consumes.consumable_id = coupons.id AND consumes.consumable_type = 'Coupon' LEFT JOIN shop_branches ON  consumes.applicable_id = shop_branches.id AND consumes.applicable_type = 'ShopBranch'").where("coupons.activity_id = ?", @activity.id).search(params[:search])
-    @consumes_all = @search.order('consumes.id DESC')
+    @consumes_all = @search.result.order('consumes.id DESC')
     @consumes     = @consumes_all.page(params[:page])
     respond_to :html, :xls
   end
 
   def offline_consumes
     @search = Consume.select("coupons.name AS consume_coupon_name, consumes.status, coupons.value_by AS consume_value_by, coupons.value AS consume_value, consumes.code, consumes.mobile, consumes.created_at AS consume_created_at, consumes.used_at, consumes.consumable_type, consumes.consumable_id, shop_branches.name AS shop_name").joins("INNER JOIN coupons ON consumes.consumable_id = coupons.id AND consumes.consumable_type = 'Coupon' LEFT JOIN shop_branches ON  consumes.applicable_id = shop_branches.id AND consumes.applicable_type = 'ShopBranch'").where("coupons.activity_id = ?", @activity.id).search(params[:search])
-    @consumes_all = @search.order('consumes.id DESC')
+    @consumes_all = @search.result.order('consumes.id DESC')
     @consumes     = @consumes_all.page(params[:page])
     respond_to :html, :xls
   end
@@ -131,7 +131,7 @@ class Biz::CouponsController < ApplicationController
     def set_coupons
       return render_404 unless @activity
       @search  = @activity.coupons.normal.search(params[:search])
-      @coupons = @search.order(:position).page(params[:page])
+      @coupons = @search.result.order(:position).page(params[:page])
     end
 
     def find_coupon

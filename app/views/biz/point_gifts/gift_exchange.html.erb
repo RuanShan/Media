@@ -26,18 +26,18 @@
           </ul>
         </div>
     </div>
-    <%= form_for @search, url: gift_exchange_point_gift_path(@gift), :html => { :method => :get } do |f| %>
+    <%= search_form_for @search, url: gift_exchange_point_gift_path(@gift), :html => { :method => :get } do |f| %>
     <div class="col-sm-12">
             <div class="col-md-3 row">
                 <div class="input-group input-group-text">
                     <span class="input-group-addon">姓名：</span>
-                    <%= f.text_field :vip_user_name_like %>
+                    <%= f.text_field :vip_user_name_cont %>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="input-group input-group-text">
                     <span class="input-group-addon">电话：</span>
-                    <%= f.text_field :vip_user_mobile_like %>
+                    <%= f.text_field :vip_user_mobile_cont %>
                 </div>
             </div>
             <div class="col-md-3">

@@ -39,9 +39,9 @@
       </div>
       <div class="col-sm-12">
         <div class="col-md-3 row">
-        <%= form_for @search, url: shop_branches_path, class: 'box-form form-row', html: { method: :get } do |f| %>
+        <%= search_form_for @search, url: shop_branches_path, class: 'box-form form-row', html: { method: :get } do |f| %>
           <div class="input-group input-group-sm input-group-text">
-            <%= f.text_field :name_like, class: 'col-xs-12', placeholder:"请输入分店名称关键字" %>
+            <%= f.text_field :name_cont, class: 'col-xs-12', placeholder:"请输入分店名称关键字" %>
             <span class="input-group-addon">
               <button type="submit" class="btn btn-sm btn-filter btn-primary">查询</button>
             </span>

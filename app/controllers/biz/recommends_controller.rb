@@ -11,8 +11,8 @@ class Biz::RecommendsController < ApplicationController
       @search = Consume.where(consumable_type: 'Activity', consumable_id: current_site.activities.show.recommend.pluck(:id))
    end
 
-    @search = @search.order('id DESC').search(params[:search])
-    @consumes = @search.page(params[:page]).per(20)
+    @search = @search.result.order('id DESC').search(params[:search])
+    @consumes = @search.result.page(params[:page]).per(20)
      respond_to do |format|
       format.html
       format.xls
@@ -43,8 +43,8 @@ class Biz::RecommendsController < ApplicationController
   def chart
     wx_participates = WxParticipate.where(activity_id: current_site.activities.recommend.show.map(&:id))
     @search = wx_participates.search(params[:search])
-    @participates = @search.page(params[:page])
-    @total_count = @search.count
+    @participates = @search.result.page(params[:page])
+    @total_count = @search.result.count
     respond_to :html, :xls
   end
 

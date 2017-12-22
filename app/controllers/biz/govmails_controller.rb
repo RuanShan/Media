@@ -33,7 +33,7 @@ class Biz::GovmailsController < ApplicationController
 
 	def conditions
         @search = @activity.custom_fields.normal.search(params[:search])
-        @fields = @search.order(:position).page(params[:page]).per(20)
+        @fields = @search.result.order(:position).page(params[:page]).per(20)
     end
 
 	private

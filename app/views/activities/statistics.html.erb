@@ -7,17 +7,17 @@
   <div id="tab-1" class="tab-pane fade active in">
     <div class="row">
       <div class="col-sm-12">
-        <%= form_for @search, url: {action: :statistics}, class: 'box-form form-row', html: { method: :get } do |f| %>
+        <%= search_form_for @search, url: {action: :statistics}, class: 'box-form form-row', html: { method: :get } do |f| %>
           <div class="col-md-2 row">
             <div class="input-group input-group-text">
               <span class="input-group-addon">昵称：</span>
-              <%= f.text_field 'wx_user_nickname_like', class: 'col-xs-12', placeholder:"请输入昵称" %>
+              <%= f.text_field 'wx_user_nickname_cont', class: 'col-xs-12', placeholder:"请输入昵称" %>
             </div>
           </div>
           <div class="col-md-2">
             <div class="input-group input-group-text">
               <span class="input-group-addon">手机号码：</span>
-              <%= f.text_field :mobile_like, class: 'col-xs-12', placeholder:"请输入手机号码" %>
+              <%= f.text_field :mobile_cont, class: 'col-xs-12', placeholder:"请输入手机号码" %>
             </div>
           </div>
           <div class="col-md-2">

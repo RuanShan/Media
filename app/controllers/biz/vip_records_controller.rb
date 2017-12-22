@@ -4,13 +4,13 @@ class Biz::VipRecordsController < Biz::VipController
   def index
     @total_vip_user_transactions = current_site.vip_user_transactions
     @search = @total_vip_user_transactions.search(params[:search])
-    @vip_user_transactions = @search.page(params[:page]).order('created_at DESC')
+    @vip_user_transactions = @search.result.page(params[:page]).order('created_at DESC')
     @direction = params[:search][:direction_type_eq] if params[:search]
 
     respond_to do |format|
       format.html
       format.xls {
-                send_data(VipUserTransaction.export_excel(@search.order('created_at DESC'),"money"),
+                send_data(VipUserTransaction.export_excel(@search.result.order('created_at DESC'),"money"),
                 :type => "text/excel;charset=utf-8; header=present", 
                 :filename => Time.now.to_s(:db).to_s.gsub(/[\s|\t|\:]/,'_') + rand(99999).to_s + ".xls")
               }
@@ -20,13 +20,13 @@ class Biz::VipRecordsController < Biz::VipController
   def point
     @total_point_transactions = current_site.point_transactions
     @search = @total_point_transactions.search(params[:search])
-    @point_transactions = @search.page(params[:page]).order('created_at DESC')
+    @point_transactions = @search.result.page(params[:page]).order('created_at DESC')
     @direction = params[:search][:direction_eq] if params[:search]
 
     respond_to do |format|
       format.html
       format.xls {
-                send_data(VipUserTransaction.export_excel(@search.page(params[:page_exl]).per(EXPORTING_COUNT).order('created_at DESC'),"point"),
+                send_data(VipUserTransaction.export_excel(@search.result.page(params[:page_exl]).per(EXPORTING_COUNT).order('created_at DESC'),"point"),
                 :type => "text/excel;charset=utf-8; header=present", 
                 :filename => Time.now.to_s(:db).to_s.gsub(/[\s|\t|\:]/,'_') + rand(99999).to_s + ".xls")
               }

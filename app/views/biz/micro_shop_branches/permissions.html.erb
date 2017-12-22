@@ -21,10 +21,10 @@
 
           <div class="col-sm-12">
             <!--
-            <%= form_for @search, url: '', class: 'box-form form-row', html: { method: :get } do |f| %>
+            <%= search_form_for @search, url: '', class: 'box-form form-row', html: { method: :get } do |f| %>
                 <div class="col-md-3 row">
                   <div class="input-group input-group-sm input-group-text">
-                    <%= f.text_field :username_like, class: 'col-xs-12', placeholder: "请输入分店名称" %>
+                    <%= f.text_field :username_cont, class: 'col-xs-12', placeholder: "请输入分店名称" %>
                     <span class="input-group-addon">
                         <input type="submit" value="查询" class="btn btn-sm btn-filter btn-primary"/>
                     </span>

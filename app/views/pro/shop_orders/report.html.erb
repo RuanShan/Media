@@ -22,7 +22,7 @@
       <div class="page-content">
         <div class="row">
           <!-- 搜索开始 -->
-          <%= form_for @search, url: report_shop_orders_url, :html => { :method => :get } do |f| %>
+          <%= search_form_for @search, url: report_shop_orders_url, :html => { :method => :get } do |f| %>
               <div class="col-sm-12">
                 <% if can_see? %>
                 <div class="col-md-3 row margin-right-20">

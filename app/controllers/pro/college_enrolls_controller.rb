@@ -2,7 +2,7 @@ class Pro::CollegeEnrollsController < Pro::CollegesBaseController
 	
 	def index
     @search = @college.enrolls.search(params[:search])
-		@enrolls = @search.page(params[:page]).order('id DESC')
+		@enrolls = @search.result.page(params[:page]).order('id DESC')
 	end
 
 	def destroy

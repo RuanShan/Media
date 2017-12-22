@@ -5,12 +5,12 @@
 <%= render 'topbar' %>
 
 <div class="box-form form-col form-search table">
-  <%= form_for @search, url: comments_business_shops_path, class: 'box-form form-row', html: { method: :get } do |f| %>
+  <%= search_form_for @search, url: comments_business_shops_path, class: 'box-form form-row', html: { method: :get } do |f| %>
     <div class="tr" style="display:inline-table;">
       <p class="first">
         <label class="search-layout">
           <span></span>
-          <%= f.text_field :comment_like, class: 'input-text', style:"width:200px", placeholder:"请输入评论内容" %>
+          <%= f.text_field :comment_cont, class: 'input-text', style:"width:200px", placeholder:"请输入评论内容" %>
         </label>
         <label class="search-layout">
           <span>选择店铺名</span>

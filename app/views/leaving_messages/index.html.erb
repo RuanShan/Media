@@ -18,10 +18,10 @@
           <div id="tab-3" class="tab-pane fade active in">
             <div class="row">
               <div class="col-sm-12">
-                <%= form_for @search, url: leaving_messages_path, class: 'box-form form-row', html: { method: :get } do |f| %>
+                <%= search_form_for @search, url: leaving_messages_path, class: 'box-form form-row', html: { method: :get } do |f| %>
                     <div class="col-md-3 row">
                       <div class="input-group input-group-text col-xs-12 row">
-                        <%= f.text_field :body_like, class: 'col-xs-12', placeholder:"请输入查询信息" %>
+                        <%= f.text_field :body_cont, class: 'col-xs-12', placeholder:"请输入查询信息" %>
                         </div>
                       </div>
                       <div class="col-md-3">

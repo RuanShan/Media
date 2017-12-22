@@ -13,7 +13,7 @@
         <div class="row">
 
           <div class="col-sm-12 no-padding input-filter">
-            <%= form_for @search, html: { method: :get } do |f| %>
+            <%= search_form_for @search, html: { method: :get } do |f| %>
                 <div class="col-md-3">
                   <select class="form-control" name="field">
                     <option value='name' <%= params[:field] == 'name' ? 'selected' : '' %>>姓名</option>

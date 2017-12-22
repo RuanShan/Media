@@ -14,7 +14,7 @@
                     </ul>
                 </div>
             </div>
-            <%= form_for @search, url: consumes_activities_url, html: { method: :get } do |f| %>
+            <%= search_form_for @search, url: consumes_activities_url, html: { method: :get } do |f| %>
                 <%= hidden_field_tag :activity_id, @activity.id if @activity && params[:activity_id].present? %>
                 <%= hidden_field_tag :activity_type_id, @activity_type_id %>
                 <%= hidden_field_tag 'search_type', value: 1 %>
@@ -28,7 +28,7 @@
                     <div class="col-md-3">
                         <div class="input-group input-group-text">
                             <span class="input-group-addon">SN码：</span>
-                            <%= f.text_field :code_like, class: "col-xs-12", placeholder: '请输入SN码' %>
+                            <%= f.text_field :code_cont, class: "col-xs-12", placeholder: '请输入SN码' %>
                         </div>
                     </div>
                     <div class="col-md-3 row">

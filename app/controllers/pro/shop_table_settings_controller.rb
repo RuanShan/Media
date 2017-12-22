@@ -9,12 +9,12 @@ class Pro::ShopTableSettingsController < Pro::ShopBaseController
     @search = current_site.shop_table_settings.search(params[:search])
 
     if params[:search].blank?
-      @search.shop_branch_id_eq = @shop_branch.id
+      @search.result.shop_branch_id_eq = @shop_branch.id
     else
-      @shop_branch = current_site.shop_branches.where(id: @search.shop_branch_id_eq).first
+      @shop_branch = current_site.shop_branches.where(id: @search.result.shop_branch_id_eq).first
     end
 
-    @shop_table_settings = @search.page(params[:page]).order("date desc")
+    @shop_table_settings = @search.result.page(params[:page]).order("date desc")
   end
 
   def edit

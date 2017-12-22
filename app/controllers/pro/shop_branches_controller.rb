@@ -3,7 +3,7 @@ class Pro::ShopBranchesController < Pro::ShopBaseController
 
   def index
     @search = current_site.shop_branches.used.search(params[:search])
-    @shop_branches = @search.page(params[:page])
+    @shop_branches = @search.result.page(params[:page])
     @shop = current_site.shop
     return redirect_to shops_url, alert: '请先添加门店' unless @shop
     @shop_branch = ShopBranch.where(:id => params[:id]).first || ShopBranch.new(shop_id: @shop.id)

@@ -9,8 +9,8 @@
         <div style="position:fixed;"></div>
         <div class="box-search">
           <div class="box-form fl">
-            <%= form_for @search, url: app_shops_url, method: :get, html: { class: '' } do |f| %>
-              <%= f.search_field :name_like, id: 'in', placeholder: '请输入您要查找的门店' %>
+            <%= search_form_for @search, url: app_shops_url, method: :get, html: { class: '' } do |f| %>
+              <%= f.search_field :name_cont, id: 'in', placeholder: '请输入您要查找的门店' %>
               <input type="submit" value="搜索" class="btn"/>
             <% end %>
           </div>

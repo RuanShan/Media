@@ -7,7 +7,7 @@ class Biz::MicroShopBranchesController < ApplicationController
   def index
     return redirect_to micro_shops_url, alert: '请先添加门店' unless @shop
     @search        = @shop.shop_branches.includes(:city, :district).used.search(params[:search])
-    @shop_branches = @search.page(params[:page])
+    @shop_branches = @search.result.page(params[:page])
   end
 
   def new
@@ -83,7 +83,7 @@ class Biz::MicroShopBranchesController < ApplicationController
 
   def permissions
     @search       = current_site.shop_branch_sub_accounts.set.search(params[:search])
-    @sub_accounts = @search.page(params[:page])
+    @sub_accounts = @search.result.page(params[:page])
   end
 
   def new_permission

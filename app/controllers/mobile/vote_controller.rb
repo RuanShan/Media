@@ -15,10 +15,10 @@ class Mobile::VoteController < Mobile::BaseController
     @activity_user = @user.activity_users.new(activity_id: params[:aid], site_id: @site.id) unless @activity_user
     if @activity.vote_status_attrs[0].eql?(Activity::HAS_ENDED_NAME) || @activity_user.persisted?
       order_sql = @activity.activity_setting.try(:sort_desc?) ? 'item_select_count desc' : ''
-      @results = @search.select("item_no, name, pic_key, link, activity_user_vote_items_count + adjust_votes as item_select_count, COALESCE(ROUND((activity_user_vote_items_count + adjust_votes) / #{@activity.vote_items_count} * 100, 2), 0.00) as item_per").order(order_sql).page(params[:page]).per(30)
+      @results = @search.result.select("item_no, name, pic_key, link, activity_user_vote_items_count + adjust_votes as item_select_count, COALESCE(ROUND((activity_user_vote_items_count + adjust_votes) / #{@activity.vote_items_count} * 100, 2), 0.00) as item_per").order(order_sql).page(params[:page]).per(30)
       #@results = Kaminari.paginate_array(ActivityVoteItem.sorted_by_vote_count(@activity)).page(params[:page]).per(30)
     else
-      @activity_vote_items = @search.page(params[:page]).per(30)
+      @activity_vote_items = @search.result.page(params[:page]).per(30)
       # @activity_vote_items = @activity.activity_vote_items.page(params[:page]).per(30)
     end
   end

@@ -35,7 +35,7 @@
                 <div class="row">
 
                   <div class="col-sm-12">
-                    <%= form_for @search, url: shop_products_path, html: { method: :get } do |f| %>
+                    <%= search_form_for @search, url: shop_products_path, html: { method: :get } do |f| %>
                       <%= hidden_field_tag :search_shelve_status %>
                       <% if can_see? %>
                       <div class="col-md-3 no-padding">

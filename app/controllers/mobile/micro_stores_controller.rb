@@ -10,7 +10,7 @@ class Mobile::MicroStoresController < Mobile::BaseController
     @shop_branches ||= if (@wx_user.present? && @wx_user.location_updated_at.present? && @wx_user.location_updated_at + 10.minutes > Time.now)
       Kaminari.paginate_array(ShopBranch.search_some_shop_branches(@search,@wx_user)).page(params[:page])
     else
-      @search.order(:id).page(params[:page])
+      @search.result.order(:id).page(params[:page])
     end
   end
 
@@ -39,7 +39,7 @@ class Mobile::MicroStoresController < Mobile::BaseController
   def list
     return render text: '参数不正确' unless session[:site_id]    
     @search = ShopBranch.used.where(site_id: session[:site_id]).search(params[:search])
-    @shop_branches = @search.order(:id)
+    @shop_branches = @search.result.order(:id)
     render 'index'
   end
 

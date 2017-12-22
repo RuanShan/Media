@@ -2,7 +2,7 @@ class FightQuestionsController < ApplicationController
 
   def index
     @search = scoped_questions.used.search(params[:search])
-    @fight_questions = @search.page(params[:page]).per(18).order('created_at desc')
+    @fight_questions = @search.result.page(params[:page]).per(18).order('created_at desc')
   end
 
   def show

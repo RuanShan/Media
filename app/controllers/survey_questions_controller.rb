@@ -7,7 +7,7 @@ class SurveyQuestionsController < ApplicationController
 
   def index
     @search = @activity.survey_questions.order(:position).search(params[:search])
-    @survey_questions = @search.page(params[:page])
+    @survey_questions = @search.result.page(params[:page])
   end
 
   def show
@@ -54,8 +54,8 @@ class SurveyQuestionsController < ApplicationController
 
   def user_data
     @search = current_site.activity_users.survey_finish.joins(:activity).includes(:activity_feedback).where("activities.activity_type_id = 15 AND activities.status > -2").order('activity_users.id DESC').search(params[:search])
-    @activity_users = @search.page(params[:page])
-    @total_count = @search.count
+    @activity_users = @search.result.page(params[:page])
+    @total_count = @search.result.count
 
     activity_id = params[:search][:activity_id_eq] rescue nil
     @activity = current_site.activities.surveys.find activity_id if activity_id.present?

@@ -6,7 +6,7 @@ class Pro::WxPlotRepairComplainsController < Pro::WxPlotBaseController
   def index
     @search = params[:type] == 'repair' ? @wx_plot.repairs.order('created_at DESC').search(params[:search]) :  @wx_plot.complain_advices.order('created_at DESC').search(params[:search])
     @categories = params[:type] == 'repair' ? @wx_plot.repair_categories : @wx_plot.complain_advice_categories
-    @repair_complains = @search.page(params[:page])
+    @repair_complains = @search.result.page(params[:page])
   end
 
   def show

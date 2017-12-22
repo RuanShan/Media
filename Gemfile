@@ -10,10 +10,10 @@ gem 'coffee-rails', '~> 4.2.0'
 
 gem 'activerecord-mysql2-adapter'
 gem 'mysql2', '0.4.10'
-gem 'jquery-rails', '2.2.1'
+gem 'jquery-rails'
 gem 'jquery-ui-rails', '4.0.2'
 gem 'rails-i18n'
-gem 'client_side_validations', :git => 'git://github.com/bcardarella/client_side_validations.git', :branch => '3-2-stable'
+gem 'client_side_validations', '~> 4.2.12'
 # gem 'cancan'
 gem 'kaminari'
 gem 'spreadsheet'
@@ -33,11 +33,12 @@ gem 'alidayu_api', require: "alidayu"
 gem 'carrierwave'
 gem 'jquery-fileupload-rails'
 
-gem "mongoid"
+#gem "mongoid"
 
 #gem 'number_to_cn', :git => "git://github.com/geekontheway/number_to_cn.git"
 
-gem 'meta_search'
+#gem 'meta_search'
+gem 'ransack'
 gem "ckeditor", "4.0.4"
 # gem 'ueditor-rails'
 
@@ -83,7 +84,7 @@ group :development do
   gem 'sqlite3'
   # gem 'rails_best_practices'
   gem 'quiet_assets'
-  gem 'better_errors'
+  #gem 'better_errors'
   gem 'binding_of_caller'
   gem 'pry-rails'
   gem 'annotate', ">=2.5.0"

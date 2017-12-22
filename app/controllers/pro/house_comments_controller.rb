@@ -7,7 +7,7 @@ class Pro::HouseCommentsController < ApplicationController
 
     @total_house_comments = @house.house_comments.where("status > ?", -1).order("created_at desc")
 	  @search = @total_house_comments.search(params[:search])
-		@house_comments = @search.page(params[:page])
+		@house_comments = @search.result.page(params[:page])
 
   end
 

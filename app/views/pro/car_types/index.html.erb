@@ -12,13 +12,13 @@
   <div class="page-content">
     <div class="row">
       <div class="col-sm-12">
-        <%= form_for @search, url: car_types_path, html: { method: :get } do |f| %>
+        <%= search_form_for @search, url: car_types_path, html: { method: :get } do |f| %>
           <% options = current_site.car_shop.car_catenas.order(:sort).pluck(:name, :id) %>
           <div class="col-md-3 row">
             <%= f.select :car_catena_id_eq, options_for_select(options.insert(0,["全部车系",""]), @car_catena_id), {}, :class => "col-xs-12" %>
           </div>
           <div class="col-md-3 margin-left-15">
-            <%= f.text_field :name_like, class: 'col-xs-12', placeholder:"请输入车型名称查询" %>
+            <%= f.text_field :name_cont, class: 'col-xs-12', placeholder:"请输入车型名称查询" %>
           </div>
           <div class="col-md-3">
             <input type="submit" class="btn btn-sm btn-primary" value="查询">

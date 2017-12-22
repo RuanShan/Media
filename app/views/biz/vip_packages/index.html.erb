@@ -22,10 +22,10 @@
               </ul>
             </div>
             <div class="col-sm-12 no-padding">
-              <%= form_for @search, url: vip_packages_path, class: 'box-form form-row', html: { method: :get } do |f| %>
+              <%= search_form_for @search, url: vip_packages_path, class: 'box-form form-row', html: { method: :get } do |f| %>
               <div class="col-md-3 no-padding">
                 <div class="input-group input-group-sm input-group-text">
-                  <%= f.text_field :name_like, class: 'col-xs-12', placeholder:"请输入套餐名称" %>
+                  <%= f.text_field :name_cont, class: 'col-xs-12', placeholder:"请输入套餐名称" %>
                   <span class="input-group-addon">
                     <button type="submit" class="btn btn-primary btn-sm btn-filter">查询</button>
                   </span>

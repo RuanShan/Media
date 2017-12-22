@@ -9,14 +9,14 @@ class Huodong::WxCardsController < ApplicationController
 	def card_admins
 		@total_wx_cards = @wx_mp_user.cards.show.latest
 		@search = @total_wx_cards.search(params[:search])
-		@wx_cards = @search.page(params[:page])
+		@wx_cards = @search.result.page(params[:page])
 	end
 
 	def card_consumes
 		@total_consumes = current_site.consumes.wx_card.used.recent
     @search = @total_consumes.search(params[:search])
-    @consumes = @search.page(params[:page])
-    @total_count = @search.count
+    @consumes = @search.result.page(params[:page])
+    @total_count = @search.result.count
 
     respond_to :html, :xls
 	end
@@ -26,8 +26,8 @@ class Huodong::WxCardsController < ApplicationController
 		@wx_card ||= @wx_mp_user.cards.latest.first
 		if @wx_card
 			@search = @wx_card.consumes.order("id desc").search(params[:search])
-			@total_consumes = @search.select('count(*) as kount, date(created_at) as created_date').group('created_date').map { |c| [c.created_date, c.kount] }.to_h
-			@used_consumes  = @search.select('count(*) as kount, date(used_at) as used_date').group('used_date').map { |c| [c.used_date, c.kount] }.to_h
+			@total_consumes = @search.result.select('count(*) as kount, date(created_at) as created_date').group('created_date').map { |c| [c.created_date, c.kount] }.to_h
+			@used_consumes  = @search.result.select('count(*) as kount, date(used_at) as used_date').group('used_date').map { |c| [c.used_date, c.kount] }.to_h
 		else
 			@search = Consume.none.search
 			@total_consumes = @used_consumes = {}

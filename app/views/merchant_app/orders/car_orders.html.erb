@@ -13,9 +13,9 @@
     <div class="mod-bg"></div>
     <div class="mod-body">
       <ul>
-        <li class="<%= 'active' if params[:bespeak_type].blank? %>"><a href="/merchant_app/orders/car_orders?role=account&role_id=<%= @login_user.id %>&token=<%= @login_user.auth_token %>&phone_or_nickname_like=<%= params[:phone_or_nickname_like]%>">全部</a></li>
-        <li class="<%= 'active' if params[:bespeak_type] == CarBespeak::TEST_DRIVE %>"><a href="/merchant_app/orders/car_orders?role=account&role_id=<%= @login_user.id %>&token=<%= @login_user.auth_token %>&phone_or_nickname_like=<%= params[:phone_or_nickname_like]%>&bespeak_type=<%= CarBespeak::TEST_DRIVE %>">试驾预约</a></li>
-        <li class="<%= 'active' if params[:bespeak_type] == CarBespeak::REPAIR %>"><a href="/merchant_app/orders/car_orders?role=account&role_id=<%= @login_user.id %>&token=<%= @login_user.auth_token %>&phone_or_nickname_like=<%= params[:phone_or_nickname_like]%>&bespeak_type=<%= CarBespeak::REPAIR %>">保养预约</a></li>
+        <li class="<%= 'active' if params[:bespeak_type].blank? %>"><a href="/merchant_app/orders/car_orders?role=account&role_id=<%= @login_user.id %>&token=<%= @login_user.auth_token %>&phone_or_nickname_cont=<%= params[:phone_or_nickname_cont]%>">全部</a></li>
+        <li class="<%= 'active' if params[:bespeak_type] == CarBespeak::TEST_DRIVE %>"><a href="/merchant_app/orders/car_orders?role=account&role_id=<%= @login_user.id %>&token=<%= @login_user.auth_token %>&phone_or_nickname_cont=<%= params[:phone_or_nickname_cont]%>&bespeak_type=<%= CarBespeak::TEST_DRIVE %>">试驾预约</a></li>
+        <li class="<%= 'active' if params[:bespeak_type] == CarBespeak::REPAIR %>"><a href="/merchant_app/orders/car_orders?role=account&role_id=<%= @login_user.id %>&token=<%= @login_user.auth_token %>&phone_or_nickname_cont=<%= params[:phone_or_nickname_cont]%>&bespeak_type=<%= CarBespeak::REPAIR %>">保养预约</a></li>
       </ul>
     </div>
   </div>
@@ -28,7 +28,7 @@
   <div class="search-box">
     <div class="search">
       <div class="s-icon"></div>
-      <%= text_field_tag 'mobile_or_name_like', params[:mobile_or_name_like], placeholder: '手机/姓名' %>
+      <%= text_field_tag 'mobile_or_name_cont', params[:mobile_or_name_cont], placeholder: '手机/姓名' %>
     </div>
   </div>
 <% end %>
@@ -71,7 +71,7 @@ var app = angular.module('app', ['infinite-scroll']);
      Demo.prototype.nextPage = function () {
          if (this.busy) return;
          this.busy = true;
-         var url = '<%= raw "#{MERCHANT_APP_HOST}/v1/orders/cars?role=account&role_id=#{@login_user.id}&token=#{@login_user.auth_token}&bespeak_type=#{params[:bespeak_type]}&search[mobile_or_name_cont]=#{params[:mobile_or_name_like]}&page=" %>'+ this.page;
+         var url = '<%= raw "#{MERCHANT_APP_HOST}/v1/orders/cars?role=account&role_id=#{@login_user.id}&token=#{@login_user.auth_token}&bespeak_type=#{params[:bespeak_type]}&search[mobile_or_name_cont]=#{params[:mobile_or_name_cont]}&page=" %>'+ this.page;
          $http.get(url).success(function (response) {
      if(response.result == 'success'){
              var items = response.data;

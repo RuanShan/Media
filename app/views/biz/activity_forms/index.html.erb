@@ -24,18 +24,18 @@
             <div class="tab-content no-border padding-24  ">
               <div id="tab-1" class="tab-pane active">
                 <div class="row">
-                  <%= form_for @search, url: {action: "index"}, :html => { :method => :get } do |f| %>
+                  <%= search_form_for @search, url: {action: "index"}, :html => { :method => :get } do |f| %>
                   <div class="col-sm-12">
                     <div class="col-md-3 row">
                       <div class="input-group input-group-text">
                         <span class="input-group-addon">活动名称：</span>
-                        <%= f.text_field :name_like, class: 'col-xs-12' %>
+                        <%= f.text_field :name_cont, class: 'col-xs-12' %>
                       </div>
                     </div>
                     <div class="col-md-3">
                       <div class="input-group input-group-text">
                         <span class="input-group-addon">关键词：</span>
-                        <%= f.text_field :keyword_like, class: 'col-xs-12' %>
+                        <%= f.text_field :keyword_cont, class: 'col-xs-12' %>
                       </div>
                     </div>
                     <div class="col-md-3">

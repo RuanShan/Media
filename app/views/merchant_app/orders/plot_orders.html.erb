@@ -13,7 +13,7 @@
     <div class="mod-bg"></div>
     <div class="mod-body">
       <ul>
-        <li ng-repeat="category in demo.categories" class="{{category.id == <%= params[:wx_plot_category_id_eq].to_i %> ? 'active' : ''}}"><a href="/merchant_app/orders/plot_orders?role=account&role_id=<%= @login_user.id %>&token=<%= @login_user.auth_token %>&phone_or_nickname_like=<%= params[:phone_or_nickname_like]%>&wx_plot_category_id_eq={{category.id}}">{{category.name}}</a></li>
+        <li ng-repeat="category in demo.categories" class="{{category.id == <%= params[:wx_plot_category_id_eq].to_i %> ? 'active' : ''}}"><a href="/merchant_app/orders/plot_orders?role=account&role_id=<%= @login_user.id %>&token=<%= @login_user.auth_token %>&phone_or_nickname_cont=<%= params[:phone_or_nickname_cont]%>&wx_plot_category_id_eq={{category.id}}">{{category.name}}</a></li>
       </ul>
     </div>
   </div>
@@ -26,7 +26,7 @@
   <div class="search-box">
     <div class="search">
       <div class="s-icon"></div>
-      <%= text_field_tag 'phone_or_nickname_like', params[:phone_or_nickname_like], placeholder: '手机/姓名' %>
+      <%= text_field_tag 'phone_or_nickname_cont', params[:phone_or_nickname_cont], placeholder: '手机/姓名' %>
     </div>
   </div>
 <% end %>
@@ -74,7 +74,7 @@
      Demo.prototype.nextPage = function () {
          if (this.busy) return;
          this.busy = true;
-         var url = '<%= raw "#{MERCHANT_APP_HOST}/v1/orders/plots?role=account&role_id=#{@login_user.id}&token=#{@login_user.auth_token}&search[phone_or_nickname_cont]=#{params[:phone_or_nickname_like]}&search[wx_plot_category_id_eq]=#{params[:wx_plot_category_id_eq]}&page=" %>'+ this.page;
+         var url = '<%= raw "#{MERCHANT_APP_HOST}/v1/orders/plots?role=account&role_id=#{@login_user.id}&token=#{@login_user.auth_token}&search[phone_or_nickname_cont]=#{params[:phone_or_nickname_cont]}&search[wx_plot_category_id_eq]=#{params[:wx_plot_category_id_eq]}&page=" %>'+ this.page;
          $http.get(url).success(function (response) {
 	   if(response.result == 'success'){
 	     this.categories = response.data['categories'];

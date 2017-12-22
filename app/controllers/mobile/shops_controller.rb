@@ -6,7 +6,7 @@ class Mobile::ShopsController < Mobile::BaseController
   def index
     if @site
       @search = @site.shop.shop_branches.used.joins(:shop_menu).search(params[:search])
-      @shop_branches = @search.order(:id).page(params[:page])
+      @shop_branches = @search.result.order(:id).page(params[:page])
       respond_to do |format|
         format.html{}
         format.js{}
@@ -19,7 +19,7 @@ class Mobile::ShopsController < Mobile::BaseController
   def book_table
     if @site
       @search = @site.shop.shop_branches.used.search(params[:search])
-      @shop_branches = @search.order(:id)
+      @shop_branches = @search.result.order(:id)
       respond_to do |format|
         format.html{}
         format.js{}
@@ -31,7 +31,7 @@ class Mobile::ShopsController < Mobile::BaseController
 
   def book_dinner
     @search = @site.shop.shop_branches.used.joins(:shop_menu).search(params[:search])
-    @shop_branches = @search.order(:id)
+    @shop_branches = @search.result.order(:id)
     respond_to do |format|
       format.html{}
       format.js{}
@@ -40,7 +40,7 @@ class Mobile::ShopsController < Mobile::BaseController
 
   def take_out
     @search = @site.shop.shop_branches.used.joins(:shop_menu).search(params[:search])
-    @shop_branches = @search.order(:id)
+    @shop_branches = @search.result.order(:id)
     respond_to do |format|
       format.html{}
       format.js{}

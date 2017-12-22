@@ -14,11 +14,11 @@
             </div>
         </div>
         <div class="col-sm-12">
-          <%= form_for @search, url: vip_message_plans_path, class: 'box-form form-row', html: { method: :get } do |f| %>
+          <%= search_form_for @search, url: vip_message_plans_path, class: 'box-form form-row', html: { method: :get } do |f| %>
             <div class="col-md-3 row">
               <div class="input-group input-group-text">
                 <span class="input-group-addon">消息标题：</span>
-                <%= f.text_field :title_like, class: 'col-xs-12' %>
+                <%= f.text_field :title_cont, class: 'col-xs-12' %>
               </div>
             </div>
             <div class="col-md-3">

@@ -11,12 +11,12 @@
       <div class="page-content">
         <div class="row">
 
-          <%= form_for @search, html: {method: :get } do |f| %>
+          <%= search_form_for @search, html: {method: :get } do |f| %>
           <div class="col-sm-12">
             <div class="col-md-3 row">
               <div class="input-group input-group-text">
                 <span class="input-group-addon">名称或电话：</span>
-                <%= f.text_field :name_or_phone_like, class: 'col-xs-12', placeholder: " 请输入组织（部门）名称 或 联系电话" %>
+                <%= f.text_field :name_or_phone_cont, class: 'col-xs-12', placeholder: " 请输入组织（部门）名称 或 联系电话" %>
               </div>
             </div>
             <div class="col-md-3">

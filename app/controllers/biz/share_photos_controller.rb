@@ -2,7 +2,7 @@ class Biz::SharePhotosController < ApplicationController
 
   def index
     @search = current_site.share_photos.search(params[:search])
-    @share_photos = @search.page(params[:page]).per(10)
+    @share_photos = @search.result.page(params[:page]).per(10)
   end
 
   def destroy

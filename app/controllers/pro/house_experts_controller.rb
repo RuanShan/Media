@@ -7,7 +7,7 @@ class Pro::HouseExpertsController < ApplicationController
 
     @total_house_experts = @house.house_experts.normal
     @search = @total_house_experts.search(params[:search])
-    @house_experts = @search.page(params[:page])
+    @house_experts = @search.result.page(params[:page])
 
     @house_expert = @total_house_experts.where("id = ?", params[:id]).first || @total_house_experts.new(site_id: current_site.id)
   end

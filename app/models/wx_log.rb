@@ -1,6 +1,6 @@
 class WxLog
 
-  include Mongoid::Document
+  #include Mongoid::Document
 
   class << self
 

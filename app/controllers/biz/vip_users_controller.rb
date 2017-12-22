@@ -6,8 +6,8 @@ class Biz::VipUsersController < Biz::VipController
     @total_vip_users  = current_site.vip_users.sorted.normal.includes(:vip_grade)
     @search           = @total_vip_users.search(params[:search])
     @vip_grade_select = params[:search][:vip_grade_id_eq] if params[:search]
-    @vip_users        = @search.page(params[:page]).per(20)
-    @total_count      = @search.count
+    @vip_users        = @search.result.page(params[:page]).per(20)
+    @total_count      = @search.result.count
     respond_to :html, :xls
   end
 
@@ -32,27 +32,27 @@ class Biz::VipUsersController < Biz::VipController
       @custom_fields = @vip_card.custom_fields.normal
     elsif @type == 'money'
       @search = @vip_user.vip_user_transactions.search(params[:search])
-      @transactions = @search.page(params[:page]).order('id DESC')
+      @transactions = @search.result.page(params[:page]).order('id DESC')
       respond_to do |format|
         format.html
-        format.xls { send_data(@search.all.to_xls(transaction_options)) }
+        format.xls { send_data(@search.result.all.to_xls(transaction_options)) }
       end
     elsif @type == 'transactions'
       @total_point_transactions = @vip_user.point_transactions
       @search = @total_point_transactions.search(params[:search])
-      @transactions = @search.page(params[:page]).order('id DESC')
+      @transactions = @search.result.page(params[:page]).order('id DESC')
       respond_to do |format|
         format.html
-        format.xls { send_data(@search.all.to_xls(transaction_options)) }
+        format.xls { send_data(@search.result.all.to_xls(transaction_options)) }
       end
     elsif @type == 'given'
       @total_vip_givens = @vip_user.vip_givens.point
       @search = @total_vip_givens.includes(:vip_care).search(params[:search])
-      @givens = @search.page(params[:page]).order('id DESC')
+      @givens = @search.result.page(params[:page]).order('id DESC')
     elsif @type == 'grade'
       @total_vip_grade_logs = @vip_user.vip_grade_logs
       @search = @total_vip_grade_logs.search(params[:search])
-      @vip_grade_logs = @search.page(params[:page]).order('id DESC')
+      @vip_grade_logs = @search.result.page(params[:page]).order('id DESC')
     end
 
   end
@@ -60,7 +60,7 @@ class Biz::VipUsersController < Biz::VipController
   def pending
     @total_vip_users ||= current_site.vip_users.pending.sorted
     @search          = @total_vip_users.search(params[:search])
-    @vip_users       = @search.page(params[:page])
+    @vip_users       = @search.result.page(params[:page])
 
     respond_to do |format|
       format.html { render :pending }
@@ -146,7 +146,7 @@ class Biz::VipUsersController < Biz::VipController
   def transactions
     @total_point_transactions = @vip_user.point_transactions
     @search = @total_point_transactions.search(params[:search])
-    @transactions = @search.page(params[:page]).order('id DESC')
+    @transactions = @search.result.page(params[:page]).order('id DESC')
     render layout: 'application_pop'
   end
 
@@ -191,7 +191,7 @@ class Biz::VipUsersController < Biz::VipController
   def money
     @total_vip_user_transactions = @vip_user.vip_user_transactions
     @search = @total_vip_user_transactions.search(params[:search])
-    @vip_user_transactions = @search.page(params[:page]).order('id DESC')
+    @vip_user_transactions = @search.result.page(params[:page]).order('id DESC')
     render layout: "application_pop"
   end
 

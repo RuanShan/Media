@@ -5,7 +5,7 @@ class Pro::BusinessShopsController < WebsiteShared::WebsiteBaseController
 
   def index
     @search = @website.business_shops.normal.sorted.search(params[:search])
-    @business_shops = @search.page(params[:page])
+    @business_shops = @search.result.page(params[:page])
     render layout: 'application_gm'
   end
 
@@ -60,7 +60,7 @@ class Pro::BusinessShopsController < WebsiteShared::WebsiteBaseController
 
   def comments
     @search   = Comment.where(commentable_type: 'BusinessShop', site_id: current_site.id).search(params[:search])
-    @comments = @search.page(params[:page])
+    @comments = @search.result.page(params[:page])
     render layout: 'application_gm'
   end
 

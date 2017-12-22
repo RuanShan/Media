@@ -2,7 +2,7 @@ class Pro::HouseBespeaksController < Pro::HousesBaseController
 
   def index
     @search   = current_site.house.bespeaks.order('id DESC').search(params[:search])
-    @bespeaks = @search.page(params[:page])
+    @bespeaks = @search.result.page(params[:page])
     @activity = current_site.create_activity_for_house_bespeak
   end
 

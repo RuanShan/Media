@@ -4,7 +4,7 @@ class Huodong::WxWallUserPrizesController < ApplicationController
 
   def index
     @search = @wx_wall.wx_wall_prizes_wx_wall_users.show.search(params[:search])
-    @wx_wall_prizes_wx_wall_users = @search.page(params[:page])
+    @wx_wall_prizes_wx_wall_users = @search.result.page(params[:page])
     @status = params[:search][:status_eq] if params[:search]
   end
 

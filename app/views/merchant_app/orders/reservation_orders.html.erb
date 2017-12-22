@@ -13,7 +13,7 @@
     <div class="mod-bg"></div>
     <div class="mod-body">
       <ul>
-        <li ng-repeat="activity in activities" class="{{activity.id == <%= params[:activity_id].to_i %> ? 'active' : ''}}"><a href="/merchant_app/orders/reservation_orders?role=account&role_id=<%= @login_user.id %>&token=<%= @login_user.auth_token %>&value_like=<%= params[:value_like]%>&activity_id={{activity.id}}">{{activity.name}}</a></li>
+        <li ng-repeat="activity in activities" class="{{activity.id == <%= params[:activity_id].to_i %> ? 'active' : ''}}"><a href="/merchant_app/orders/reservation_orders?role=account&role_id=<%= @login_user.id %>&token=<%= @login_user.auth_token %>&value_cont=<%= params[:value_cont]%>&activity_id={{activity.id}}">{{activity.name}}</a></li>
       </ul>
     </div>
   </div>
@@ -26,7 +26,7 @@
   <div class="search-box">
     <div class="search">
       <div class="s-icon"></div>
-      <%= text_field_tag 'value_like', params[:value_like], placeholder: '搜索' %>
+      <%= text_field_tag 'value_cont', params[:value_cont], placeholder: '搜索' %>
     </div>
   </div>
 <% end %>
@@ -68,7 +68,7 @@
    Demo.prototype.nextPage = function () {
      if (this.busy) return;
      this.busy = true;
-     var url = '<%= raw "#{MERCHANT_APP_HOST}/v1/orders/reservations?role=account&role_id=#{@login_user.id}&token=#{@login_user.auth_token}&value_like=#{params[:value_like]}&activity_id=#{params[:activity_id]}&page=" %>'+ this.page;
+     var url = '<%= raw "#{MERCHANT_APP_HOST}/v1/orders/reservations?role=account&role_id=#{@login_user.id}&token=#{@login_user.auth_token}&value_cont=#{params[:value_cont]}&activity_id=#{params[:activity_id]}&page=" %>'+ this.page;
      $http.get(url).success(function (response) {
        if(response.result == 'success'){
          this.activities = response.data['activities'];

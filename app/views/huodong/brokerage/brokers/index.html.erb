@@ -13,12 +13,12 @@
             </div>
         </div>
         <div class="col-md-12">
-          <%= form_for @search, url: {action: action_name}, class: 'box-form form-row', html: { method: :get } do |f| %>
+          <%= search_form_for @search, url: {action: action_name}, class: 'box-form form-row', html: { method: :get } do |f| %>
             <div class="col-md-3 row">
               <div class="input-group input-group-text">
                 <span class="input-group-addon">经纪人姓名或电话号码：</span>
                   <div class="clearfix">
-                    <%= f.text_field :name_or_mobile_like, class: 'col-xs-12', placeholder: "请输入经纪人姓名或电话号码" %>
+                    <%= f.text_field :name_or_mobile_cont, class: 'col-xs-12', placeholder: "请输入经纪人姓名或电话号码" %>
                   </div>
               </div>
             </div>

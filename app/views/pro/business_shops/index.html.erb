@@ -5,10 +5,10 @@
 <%= render 'topbar' %>
 
 <div class="box-form form-col form-search table">
-  <%= form_for @search, url: business_shops_path, class: 'box-form form-row', html: { method: :get } do |f| %>
+  <%= search_form_for @search, url: business_shops_path, class: 'box-form form-row', html: { method: :get } do |f| %>
     <div class="tr" style="display:inline-table;">
       <div class="first">
-        <%= f.text_field :name_like, class: 'input-text', style:"width:200px", placeholder:"请输入店铺名称" %>
+        <%= f.text_field :name_cont, class: 'input-text', style:"width:200px", placeholder:"请输入店铺名称" %>
         <input type="submit" value="查询" class="form-submit btn btn-big">
       </div>
       <div style="float:right;">

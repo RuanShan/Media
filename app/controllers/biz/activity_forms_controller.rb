@@ -17,7 +17,7 @@ class Biz::ActivityFormsController < ActivitiesController
         @activities = @total_activities
     end
     @search     = @activities.search(params[:search])
-    @activities = @search.page(params[:page])
+    @activities = @search.result.page(params[:page])
   end
 
   def new

@@ -6,7 +6,7 @@ class Pro::HotelRoomTypesController < Pro::HotelsBaseController
   def index
     @hotel_room_types = @hotel.hotel_room_types.normal.order("created_at desc")
     @search = @hotel_room_types.search(params[:search])
-    @hotel_room_types = @search.page(params[:page])
+    @hotel_room_types = @search.result.page(params[:page])
   end
 
   def create

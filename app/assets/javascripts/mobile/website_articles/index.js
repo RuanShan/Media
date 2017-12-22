@@ -1,6 +1,6 @@
 //= require jquery
 //= require jquery_ujs
-//= require jquery-ui
+//= require jquery.ui.all
 //= require mobile/website_articles/swipe
 $(function(){
     indexSwipe("banner",true,3000);
@@ -203,4 +203,3 @@ function selectTheme(){
         $(".main").attr("class","main "+$class);
     })
 }
-

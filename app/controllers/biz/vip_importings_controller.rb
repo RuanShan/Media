@@ -4,7 +4,7 @@ class Biz::VipImportingsController < ApplicationController
 
   def index
     @search = current_site.vip_importings.search(params[:search])
-    @vip_importings = @search.page(params[:page])
+    @vip_importings = @search.result.page(params[:page])
   end
 
   def create

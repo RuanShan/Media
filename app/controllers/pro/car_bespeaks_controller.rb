@@ -34,7 +34,7 @@ class Pro::CarBespeaksController < ApplicationController
       end
     end
     @search = @total_car_bespeaks.search(params[:search])
-    @car_bespeaks = @search.page(params[:page])
+    @car_bespeaks = @search.result.page(params[:page])
   end
 
 	def activity_notice

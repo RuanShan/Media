@@ -7,7 +7,7 @@ class Huodong::WxWallMessagesController < ApplicationController
     @type = params[:type].presence || "normal"
     status = WxWallMessage.const_get(@type.upcase) rescue WxWallMessage::NORMAL
     @search = @wx_wall.wx_wall_messages.where(status: status).recent.search(params[:search])
-    @wx_wall_messages = @search.page(params[:page])
+    @wx_wall_messages = @search.result.page(params[:page])
   end
 
   def destroy

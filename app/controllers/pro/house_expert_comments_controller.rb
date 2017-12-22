@@ -8,7 +8,7 @@ class Pro::HouseExpertCommentsController < ApplicationController
 
     @total_house_expert_comments = @house.house_expert_comments.normal
     @search = @total_house_expert_comments.search(params[:search]).order("created_at desc")
-    @house_expert_comments = @search.page(params[:page])
+    @house_expert_comments = @search.result.page(params[:page])
 
     @house_expert_comment = @total_house_expert_comments.where("id = ?", params[:id]).first || @total_house_expert_comments.new(house_id: @house.id)
   end

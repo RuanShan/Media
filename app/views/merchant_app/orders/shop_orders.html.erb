@@ -14,7 +14,7 @@
   <div class="search-box">
     <div class="search">
       <div class="s-icon"></div>
-      <%= text_field_tag 'value_like', params[:value_like], placeholder: '搜索' %>
+      <%= text_field_tag 'value_cont', params[:value_cont], placeholder: '搜索' %>
     </div>
   </div>
 <% end %>
@@ -59,7 +59,7 @@
      Demo.prototype.nextPage = function () {
          if (this.busy) return;
          this.busy = true;
-         var url = '<%= raw "#{MERCHANT_APP_HOST}/v1/orders/shop_orders?role=#{params[:role]}&role_id=#{@login_user.id}&token=#{@login_user.auth_token}&search[phone_or_nickname_cont]=#{params[:phone_or_nickname_like]}&search[wx_plot_category_id_eq]=#{params[:wx_plot_category_id_eq]}&page=" %>'+ this.page;
+         var url = '<%= raw "#{MERCHANT_APP_HOST}/v1/orders/shop_orders?role=#{params[:role]}&role_id=#{@login_user.id}&token=#{@login_user.auth_token}&search[phone_or_nickname_cont]=#{params[:phone_or_nickname_cont]}&search[wx_plot_category_id_eq]=#{params[:wx_plot_category_id_eq]}&page=" %>'+ this.page;
          $http.get(url).success(function (response) {
            if(response.result == 'success'){
              var items = response.data['orders'];

@@ -9,7 +9,7 @@ class Biz::WebsiteArticlesController < ApplicationController
                 @category = @categories.where(id: params[:category_id]).first if params[:category_id].present?
 		@per_page = (params[:per_page].presence || 10).to_i
 		@search = @website.website_articles.send(params[:article_type]).categorized(@category).latest.search(params[:search])
-		@website_articles = @search.page([params[:page].to_i,1].max).per(@per_page)
+		@website_articles = @search.result.page([params[:page].to_i,1].max).per(@per_page)
 	end
 
 	def new

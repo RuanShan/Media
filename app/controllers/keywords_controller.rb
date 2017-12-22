@@ -8,7 +8,7 @@ class KeywordsController < ApplicationController
 
   def index
     @search = current_site.keywords.order('created_at DESC').search(params[:search])
-    @keywords = @search.page(params[:page])
+    @keywords = @search.result.page(params[:page])
   end
 
   def new

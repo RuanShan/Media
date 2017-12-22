@@ -9,7 +9,7 @@ class Pro::ShopTableOrdersController < Pro::ShopBaseController
     end
     params[:search][:shop_branch_id_eq] = current_shop_branch.id if current_shop_branch
     @search = current_site.shop_table_orders.search(params[:search])
-    @shop_table_orders = @search.page(params[:page]).order('booking_at desc')
+    @shop_table_orders = @search.result.page(params[:page]).order('booking_at desc')
   end
 
   def show

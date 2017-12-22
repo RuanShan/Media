@@ -27,11 +27,11 @@
             </div>
 
             <div class="col-sm-12">
-              <%= form_for @search, url: coupons_path, html: { method: :get } do |f| %>
+              <%= search_form_for @search, url: coupons_path, html: { method: :get } do |f| %>
                 <div class="col-md-3 no-padding">
                   <div class="input-group input-group-text">
                     <span class="input-group-addon">请输入优惠券名称：</span>
-                    <%= f.text_field :name_like, class: 'col-xs-12' %>
+                    <%= f.text_field :name_cont, class: 'col-xs-12' %>
                   </div>
                 </div>
                 <div class="col-md-3">

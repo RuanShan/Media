@@ -17,7 +17,7 @@ class Huodong::WxWallsController < ApplicationController
     else
       @search = wx_walls.search(params[:search])
     end
-    @wx_walls = @search.page(params[:page])
+    @wx_walls = @search.result.page(params[:page])
     
   end
 

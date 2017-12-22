@@ -5,7 +5,7 @@ class Huodong::RedPacket::ReleasesController < ApplicationController
   def consumes
     @total_releases = current_site.red_packet_releases
     @search = @total_releases.search(params[:search])
-    @releases= @search.order("id DESC").page(params[:page])
+    @releases= @search.result.order("id DESC").page(params[:page])
 
     respond_to :html, :xls
   end

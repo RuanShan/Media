@@ -1,19 +1,19 @@
 <div style="background: #fff;">
   <div class="modal-body">
     <div class="row">
-      <%= form_for @search, url: user_data_fight_papers_path, html: { method: :get } do |f| %>
+      <%= search_form_for @search, url: user_data_fight_papers_path, html: { method: :get } do |f| %>
         <%= hidden_field_tag 'aid', params[:aid] %>
         <div class="col-xs-12">
           <div class="col-xs-3 no-padding-left">
             <div class="input-group input-group-text">
               <span class="input-group-addon">昵称：</span>
-              <%= f.text_field :activity_user_name_like, class: 'col-xs-12', placeholder: '请输入昵称' %>
+              <%= f.text_field :activity_user_name_cont, class: 'col-xs-12', placeholder: '请输入昵称' %>
             </div>
           </div>
           <div class="col-xs-3">
             <div class="input-group input-group-text">
               <span class="input-group-addon">手机号码：</span>
-              <%= f.text_field :activity_user_mobile_like, class: 'col-xs-12', placeholder: '请输入手机号码' %>
+              <%= f.text_field :activity_user_mobile_cont, class: 'col-xs-12', placeholder: '请输入手机号码' %>
             </div>
           </div>
           <div class="col-xs-3">

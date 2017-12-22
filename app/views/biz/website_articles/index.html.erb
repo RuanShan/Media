@@ -14,7 +14,7 @@
 
       <div class="page-content">
         <div class="content-form">
-          <%= form_for @search, url: website_articles_path, html: { method: :get, class: 'form-horizontal', role: 'form' } do |f| %>
+          <%= search_form_for @search, url: website_articles_path, html: { method: :get, class: 'form-horizontal', role: 'form' } do |f| %>
             <%= hidden_field_tag :article_type, params[:article_type] %>
             <%= hidden_field_tag :category_id, params[:category_id] %>
             <%= hidden_field_tag :per_page, @per_page %>
@@ -39,7 +39,7 @@
               </div-->
 
               <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 search-title hide">
-                <%= f.text_field :title_like, class: 'form-control', placeholder: "#{params[:article_type] == "as_article" ? "标题" : "展示内容名称"}"%>
+                <%= f.text_field :title_cont, class: 'form-control', placeholder: "#{params[:article_type] == "as_article" ? "标题" : "展示内容名称"}"%>
               </div>
               <div class="col-lg-1 col-md-1 col-sm-2 col-xs-4">
                 <input type="submit" value="查询" class="btn btn-info btn-sm">

@@ -4,7 +4,7 @@ class Pro::CarCatenasController < ApplicationController
 
 	def index
 		@search = @car_shop.car_catenas.order(:sort).search(params[:search])
-		@car_catenas = @search.page(params[:page])
+		@car_catenas = @search.result.page(params[:page])
 	end
 
 	def new

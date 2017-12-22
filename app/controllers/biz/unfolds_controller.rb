@@ -13,10 +13,10 @@ class Biz::UnfoldsController < ApplicationController
     @search = WxPrize.where(activity_id: activites_ids).reached
     if params[:code].present?
       consume = Consume.find_by_code(params[:code])
-      @search = @search.where(consume_id: consume.try(:id))
+      @search = @search.result.where(consume_id: consume.try(:id))
     end
-    @search = @search.order('id DESC').search(params[:search])
-    @prizes = @search.page(params[:page]).per(20)
+    @search = @search.result.order('id DESC').search(params[:search])
+    @prizes = @search.result.page(params[:page]).per(20)
      respond_to do |format|
       format.html
       format.xls

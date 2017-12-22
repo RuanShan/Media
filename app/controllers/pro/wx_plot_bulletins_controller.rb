@@ -5,7 +5,7 @@ class Pro::WxPlotBulletinsController < Pro::WxPlotBaseController
 
   def index
     @search = @wx_plot.wx_plot_bulletins.order('wx_plot_bulletins.created_at DESC').search(params[:search])
-    @bulletins = @search.page(params[:page])
+    @bulletins = @search.result.page(params[:page])
   end
 
   def new

@@ -6,7 +6,7 @@ class Pro::DoctorWatchesController < Pro::HospitalBaseController
       return redirect_to :back, alert: '请先添加门店'
     end 
     @search = current_site.hospital.doctor_watches.search(params[:search])
-    @doctor_watches = @search.page(params[:page]).order("created_at desc")
+    @doctor_watches = @search.result.page(params[:page]).order("created_at desc")
   end
 
 

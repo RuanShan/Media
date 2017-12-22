@@ -50,7 +50,7 @@ class App::WhouseController < App::BaseController
           @cover_house_pictures = @house.house_pictures.where(is_cover: true)
           @total_house_comments = @house.house_comments.where("status > ?", -1).order("created_at desc")
           @search = @total_house_comments.search(params[:search])
-          @house_comments = @search.page(params[:page])#.per(4)
+          @house_comments = @search.result.page(params[:page])#.per(4)
         end
       end
     end

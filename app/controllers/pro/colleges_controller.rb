@@ -35,7 +35,7 @@ class Pro::CollegesController < Pro::CollegesBaseController
 
   def intro
     @search = @college.branches.search(params[:search])
-    @branches = @search.order('id DESC').page(params[:page])
+    @branches = @search.result.order('id DESC').page(params[:page])
   end
 
   def message

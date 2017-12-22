@@ -14,11 +14,11 @@
       <%= render 'pro/colleges/top_college' %>
       <div class="tab-content no-border padding-24">
         <div class="row">
-          <%= form_for @search, :html => { :method => :get } do |f| %>
+          <%= search_form_for @search, :html => { :method => :get } do |f| %>
             <div class="col-sm-12">
               <div class="col-md-3 row">
                 <div class="input-group input-group-sm input-group-text">
-                  <%= f.text_field :name_like, class: 'col-xs-12', placeholder:"请输入专业名称" %>
+                  <%= f.text_field :name_cont, class: 'col-xs-12', placeholder:"请输入专业名称" %>
                   <span class="input-group-addon">
                     <button class="btn btn-sm btn-filter btn-primary">查询</button>
                   </span>

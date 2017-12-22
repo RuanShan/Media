@@ -21,13 +21,13 @@
 
       <div class="page-content">
         <div class="row">
-          <%= form_for @search, :html =>
+          <%= search_form_for @search, :html =>
                   { :method => :get } do |f| %>
               <div class="col-sm-12">
                 <div class="col-sm-3 row">
                   <div class="input-group input-group-text">
                     <span class="input-group-addon">订单号：</span>
-                    <%= f.text_field :order_no_like, class: "col-xs-12" %></div>
+                    <%= f.text_field :order_no_cont, class: "col-xs-12" %></div>
                 </div>
                 <div class="col-sm-3 margin-left-20">
                   <div class="input-group input-group-text">
@@ -51,7 +51,7 @@
                 <div class="col-sm-3 row">
                   <div class="input-group input-group-text">
                     <span class="input-group-addon">手机号：</span>
-                    <%= f.text_field :mobile_like, class: "col-xs-12" %></div>
+                    <%= f.text_field :mobile_cont, class: "col-xs-12" %></div>
                 </div>
 
                 <div class="col-sm-3 margin-left-20">

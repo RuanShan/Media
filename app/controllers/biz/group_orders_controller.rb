@@ -4,7 +4,7 @@ class Biz::GroupOrdersController < Biz::GroupBaseController
 
   def index
     @search    = current_site.group_orders.latest.search(params[:search])
-    @group_orders = @search.include(:payments).page(params[:page])
+    @group_orders = @search.result.include(:payments).page(params[:page])
   end
 
   def show

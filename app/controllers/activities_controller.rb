@@ -14,7 +14,7 @@ class ActivitiesController < ApplicationController
   def index
     @total_activities = current_site.activities.show.marketing_activities.includes([:activity_type]).order('id DESC')
     @search = @total_activities.search(params[:search])
-    @activities = @search.page(params[:page])
+    @activities = @search.result.page(params[:page])
   end
 
   def guas
@@ -117,7 +117,7 @@ class ActivitiesController < ApplicationController
         @activities = @total_activities
     end
     @search     = @activities.search(params[:search])
-    @activities = @search.page(params[:page])
+    @activities = @search.result.page(params[:page])
   end
 
   def votes
@@ -136,7 +136,7 @@ class ActivitiesController < ApplicationController
         @activities = @total_activities
     end
     @search     = @activities.search(params[:search])
-    @activities = @search.page(params[:page])
+    @activities = @search.result.page(params[:page])
   end
 
   def vote_form
@@ -161,7 +161,7 @@ class ActivitiesController < ApplicationController
   def user_data
     @search = current_site.activity_users.includes(:activity).where("activities.activity_type_id = 12 and (activities.status > -2 or activities.status = -3)").order('activity_users.created_at DESC').search(params[:search])
     activity_id = params[:search].to_h["activity_id_eq"].presence
-    @activity_users = @search.page(params[:page])
+    @activity_users = @search.result.page(params[:page])
 
     respond_to do |format|
       format.html{
@@ -173,7 +173,7 @@ class ActivitiesController < ApplicationController
       format.xls{
         if activity_id
           @activity_vote_item_ids = current_site.activities.where(id: activity_id).first.try(:activity_vote_item_ids).to_a
-          @activity_users_excel = @search.page(params[:page_exl]).per(EXPORTING_COUNT)
+          @activity_users_excel = @search.result.page(params[:page_exl]).per(EXPORTING_COUNT)
         end
       }
     end
@@ -234,7 +234,7 @@ class ActivitiesController < ApplicationController
     @search_params = params.slice(:shop_branch_id_eq, :activity_id_eq, :created_at_gteq, :created_at_lteq)
     @activity_type_id = params[:activity_type_id]
     @search = @total_activity_consumes.search(@search_params)
-    @ret = @search.all
+    @ret = @search.result.all
     #@search是所有的单一结果
     @total_count = @ret.count
     @total_used_count = 0
@@ -259,8 +259,8 @@ class ActivitiesController < ApplicationController
 
     @total_activity_consumes = ActivityConsume.where(activity_id: activity_ids).includes(:activity).order("activity_consumes.id desc")
     @search                  = @total_activity_consumes.search(params[:search])
-    @search.activity_id_eq ||= params[:activity_id]
-    @activity_consumes       = @search.page(params[:page])
+    @search.result.activity_id_eq ||= params[:activity_id]
+    @activity_consumes       = @search.result.page(params[:page])
 
     @total_count             = @total_activity_consumes.count
     @total_used_count        = @total_activity_consumes.used.count
@@ -290,7 +290,7 @@ class ActivitiesController < ApplicationController
           only: [:activity_name, :code, :status_name, :activity_prize_name, :mobile, :created_at, :use_at, :shop_branch_name]
         }
         end
-        send_data(@search.page(params[:page_exl]).per(EXPORTING_COUNT).to_xls(options))
+        send_data(@search.result.page(params[:page_exl]).per(EXPORTING_COUNT).to_xls(options))
       }
     end
   end
@@ -303,14 +303,14 @@ class ActivitiesController < ApplicationController
 
     params[:search] ||= {}
     @search = total_activity_users.search(params[:search])
-    @activity_users = @search.page(params[:page])
+    @activity_users = @search.result.page(params[:page])
 
     params[:accepte_status].present? && params[:accepte_status] != "全部" && @activity_users.select! do | user|
       activity_consume = user.activity.activity_consumes.where(wx_user_id: user.wx_user.id).first
       if activity_consume.present?
-        if params[:accepte_status] == "已兑奖" && activity_consume.status_text == "已使用" 
+        if params[:accepte_status] == "已兑奖" && activity_consume.status_text == "已使用"
           true
-        elsif params[:accepte_status] == "未兑奖" && activity_consume.status_text == "未使用" 
+        elsif params[:accepte_status] == "未兑奖" && activity_consume.status_text == "未使用"
           true
         end
       elsif params[:accepte_status] == "未达到"
@@ -325,7 +325,7 @@ class ActivitiesController < ApplicationController
       rankb = @activity.get_rank(b.id).present? ? @activity.get_rank(b.id) : Float::INFINITY
 
       ranka <=> rankb
-    end 
+    end
 
     @activity_type_id = @activity.activity_type_id
   end
@@ -374,7 +374,7 @@ class ActivitiesController < ApplicationController
         params[:accepte_status].present? && params[:accepte_status] != "全部" && ranking_users.select! do |user|
           activity_consume = user.activity.activity_consumes.where(wx_user_id: user.wx_user.id).first
           if activity_consume.present?
-            if params[:accepte_status] == "已兑奖" && (activity_consume.used? || activity_consume.auto_used?) 
+            if params[:accepte_status] == "已兑奖" && (activity_consume.used? || activity_consume.auto_used?)
               true
             elsif params[:accepte_status] == "未兑奖" && activity_consume.unused?
               true
@@ -411,7 +411,7 @@ class ActivitiesController < ApplicationController
       end
     end
 
-    search_count = @search.count
+    search_count = @search.result.count
     search_count = (search_count == 0) ? total_count : search_count
     @activity_users = Kaminari.paginate_array(@activity_users, total_count: search_count).page(page_num).per(page_per)
 
@@ -751,7 +751,7 @@ class ActivitiesController < ApplicationController
       params[:search] ||= {}
       params[:search][:activity_type_id_eq] = activity_type_id
       @search           = @total_activities.search(params[:search])
-      @activities       = @search.where(activity_type_id: activity_type_id).page(params[:page])
+      @activities       = @search.result.where(activity_type_id: activity_type_id).page(params[:page])
       @activity_type_id = activity_type_id
       @activity_id = params[:search][:id_eq]
       render 'index' if render_index

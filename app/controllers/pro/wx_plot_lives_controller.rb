@@ -4,7 +4,7 @@ class Pro::WxPlotLivesController < Pro::WxPlotBaseController
   before_filter :set_activity_wx_plot_life
   def index
     @search = @wx_plot.wx_plot_lives.order('created_at DESC').search(params[:search])
-    @lives = @search.page(params[:page])
+    @lives = @search.result.page(params[:page])
   end
 
   def new

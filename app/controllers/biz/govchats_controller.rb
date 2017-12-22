@@ -4,22 +4,22 @@ class Biz::GovchatsController < ApplicationController
 
   def conditions
     @search = @activity.custom_fields.normal.search(params[:search])
-    @fields = @search.order(:position).page(params[:page]).per(20)
+    @fields = @search.result.order(:position).page(params[:page]).per(20)
   end
 
   def reports
     @search = @activity.govchats.report.where("status != 0").roots.search(params[:search])
-    @chats = @search.order("created_at DESC").page(params[:page]).per(20)
+    @chats = @search.result.order("created_at DESC").page(params[:page]).per(20)
   end
 
   def complaints
     @search = @activity.govchats.complaint.where("status != 0").roots.search(params[:search])
-    @chats = @search.order("created_at DESC").page(params[:page]).per(20)
+    @chats = @search.result.order("created_at DESC").page(params[:page]).per(20)
   end
 
   def advises
     @search = @activity.govchats.advise.roots.where("status != 0").search(params[:search])
-    @chats = @search.order("created_at DESC").page(params[:page]).per(20)
+    @chats = @search.result.order("created_at DESC").page(params[:page]).per(20)
   end
 
   def author_modal

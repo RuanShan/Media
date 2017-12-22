@@ -14,18 +14,18 @@
     <%= render "pro/hospitals/top_hospital" %>
     <div class="tab-content no-border padding-24">
     <div class="row">
-      <%= form_for @search, :html => { :method => :get, class: "col-sm-12" } do |f| %>
+      <%= search_form_for @search, :html => { :method => :get, class: "col-sm-12" } do |f| %>
       <div class="row">
         <div class="col-sm-3">
           <div class="input-group input-group-text">
             <span class="input-group-addon">医生姓名：</span>
-            <%= f.text_field :name_like %>
+            <%= f.text_field :name_cont %>
           </div>
         </div>
         <div class="col-sm-3">
           <div class="input-group input-group-text">
             <span class="input-group-addon">所属科室：</span>
-            <%= f.text_field :hospital_departments_name_like %>
+            <%= f.text_field :hospital_departments_name_cont %>
           </div>
         </div>
         <div class="col-sm-1">

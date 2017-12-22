@@ -7,13 +7,13 @@ class Biz::VipPackagesController < Biz::VipController
 
   def index
     @search = @vip_card.vip_packages.show.latest.search(params[:search])
-    @packages = @search.page(params[:page])
+    @packages = @search.result.page(params[:page])
   end
 
   def package_users
     @total_package_users = current_site.vip_packages_vip_users.latest
     @search = @total_package_users.search(params[:search])
-    @package_users = @search.page(params[:page])
+    @package_users = @search.result.page(params[:page])
     @vip_package_id = params[:search][:vip_package_id] if params[:search]
 
     respond_to do |format|
@@ -29,7 +29,7 @@ class Biz::VipPackagesController < Biz::VipController
   def item_consumes
     @total_item_consumes = current_site.vip_package_item_consumes.used.latest
     @search = @total_item_consumes.search(params[:search])
-    @item_consumes = @search.page(params[:page])
+    @item_consumes = @search.result.page(params[:page])
 
     respond_to do |format|
       format.html

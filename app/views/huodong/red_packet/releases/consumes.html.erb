@@ -5,7 +5,7 @@
   <div id="tab-2" class="tab-pane fade active in">
     <div class="row">
       <div class="col-md-12">
-        <%= form_for @search, url: {action: action_name}, class: 'box-form form-row', html: { method: :get } do |f| %>
+        <%= search_form_for @search, url: {action: action_name}, class: 'box-form form-row', html: { method: :get } do |f| %>
           <div class="col-md-3 row">
             <div class="input-group input-group-text">
               <span class="input-group-addon">选择活动：</span>
@@ -15,7 +15,7 @@
           <div class="col-md-3">
             <div class="input-group input-group-text">
               <span class="input-group-addon">SN码：</span>
-              <%= f.text_field :consume_code_like, class: 'col-xs-12', placeholder: "请输入SN码" %>
+              <%= f.text_field :consume_code_cont, class: 'col-xs-12', placeholder: "请输入SN码" %>
             </div>
           </div>
           <div class="col-md-3 row">

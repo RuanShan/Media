@@ -43,9 +43,9 @@ class Biz::AlbumsController < ApplicationController
 
   def index
     @search = current_site.albums.order('albums.sort, albums.updated_at DESC').search(params[:search])
-    @album_first_id = @search.first.try(:id)
-    @album_last_id = @search.last.try(:id)
-    @albums = @search.page(params[:page])
+    @album_first_id = @search.result.first.try(:id)
+    @album_last_id = @search.result.last.try(:id)
+    @albums = @search.result.page(params[:page])
   end
 
   def new
@@ -128,7 +128,7 @@ class Biz::AlbumsController < ApplicationController
     else
       @search   = Comment.where(commentable_type: 'AlbumPhoto', site_id: current_site.id).order('created_at DESC').search(params[:search])
     end
-    @comments = @search.page(params[:page])
+    @comments = @search.result.page(params[:page])
   end
 
   def destroy_comment

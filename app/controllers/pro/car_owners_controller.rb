@@ -9,7 +9,7 @@ class Pro::CarOwnersController < ApplicationController
 
 	def list_owners
 		@search = @car_shop.car_owners.search(params[:search])
-		@car_owners = @search.page(params[:page])
+		@car_owners = @search.result.page(params[:page])
 	end
 
 	def show

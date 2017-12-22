@@ -27,11 +27,11 @@
               <div class="row">
 
                 <div class="col-sm-12 no-padding">
-                  <%= form_for @search, url: hotel_room_types_path, html: { method: :get } do |f| %>
+                  <%= search_form_for @search, url: hotel_room_types_path, html: { method: :get } do |f| %>
                       <div class="col-sm-3">
                         <div class="input-group input-group-text">
                           <span class="input-group-addon">房型名称：</span>
-                          <%= f.text_field :name_like, class: 'form-control' %>
+                          <%= f.text_field :name_cont, class: 'form-control' %>
                         </div>
                       </div>
                       <div class="col-sm-3">

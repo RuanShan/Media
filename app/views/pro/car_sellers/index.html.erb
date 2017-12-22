@@ -23,10 +23,10 @@
         <div id="tab-2" class="tab-pane fade active in">
            <div class="row">
             <div class="col-sm-12">
-              <%= form_for @search, url: car_sellers_path, html: { method: :get } do |f| %>
+              <%= search_form_for @search, url: car_sellers_path, html: { method: :get } do |f| %>
               <div class="col-md-3 row">
                 <div class="input-group input-group-sm input-group-text">
-                  <%= f.text_field :name_like, class: 'form-control', placeholder:"请输入销售代表名称查询" %>
+                  <%= f.text_field :name_cont, class: 'form-control', placeholder:"请输入销售代表名称查询" %>
                   <span class="input-group-addon">
                     <button class="btn btn-sm btn-filter btn-primary">查询</button>
                   </span>

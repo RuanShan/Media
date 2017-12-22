@@ -23,10 +23,10 @@
               <div class="row">
                 <div class="col-xs-12">
                   <div class="table-filter">
-                    <%= form_for @search, url: list_owners_car_owners_path, html: {method: :get} do |f| %>
+                    <%= search_form_for @search, url: list_owners_car_owners_path, html: {method: :get} do |f| %>
                         <div class="col-md-3 row">
                           <div class="input-group input-group-sm input-group-text">
-                            <%= f.text_field :car_owner_like, class: 'form-control', placeholder: "请输入车主姓名查询" %>
+                            <%= f.text_field :car_owner_cont, class: 'form-control', placeholder: "请输入车主姓名查询" %>
                             <span class="input-group-addon">
                     <button class="btn btn-sm btn-filter btn-primary">查询</button>
                   </span>

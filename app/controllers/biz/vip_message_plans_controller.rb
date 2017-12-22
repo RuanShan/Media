@@ -5,7 +5,7 @@ class Biz::VipMessagePlansController < Biz::VipController
     @search            = current_site.vip_card.vip_message_plans.order('created_at DESC').search(params[:search])
     @status_eq         = params[:search][:status_eq].to_i rescue 0
     @given_group_id_eq = params[:search][:given_group_id_eq].to_i rescue ''
-    @plans             = @search.page(params[:page])
+    @plans             = @search.result.page(params[:page])
   end
 
   def new

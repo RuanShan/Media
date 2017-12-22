@@ -24,9 +24,9 @@
 
           <div class=" col-md-12 ">
             <div class="col-md-3 row">
-              <%= form_for @search, url: keywords_path, html: { method: :get } do |f| %>
+              <%= search_form_for @search, url: keywords_path, html: { method: :get } do |f| %>
               <div class="input-group input-group-sm input-group-text">
-                <%= f.text_field :name_like, placeholder:"请输入关键字", class: 'col-xs-12' %>
+                <%= f.text_field :name_cont, placeholder:"请输入关键字", class: 'col-xs-12' %>
                 <span class="input-group-addon">
                     <%= f.submit '查询', class: 'btn btn-sm btn-filter btn-primary' %>
                 </span>
