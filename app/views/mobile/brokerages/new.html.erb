@@ -38,7 +38,7 @@
 var back = 60;
 var inter;
 $('body').on('click','input.present',function(){
-	var reg = /^[0-9_\-]*$/;
+	var reg = /\A[0-9_\-]*\z/;
 	if($('#brokerage_broker_mobile').val() == "" || !reg.test($('#brokerage_broker_mobile').val())){
 		alert('请输入正确的手机号码');
 	}else{

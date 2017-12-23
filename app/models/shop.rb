@@ -11,8 +11,8 @@ class Shop < ActiveRecord::Base
   has_many :shop_menus, dependent: :destroy
   has_many :shop_orders, dependent: :destroy
   has_many :shop_order_reports, dependent: :destroy
-  has_many :activities, as: :activityable, order: :activity_type_id, dependent: :destroy
-  has_one :micro_shop_activity, class_name: 'Activity', as: :activityable, conditions: {activity_type_id: ActivityType::MICRO_STORE}
+  has_many :activities, ->{ order(:activity_type_id) }, as: :activityable, dependent: :destroy
+  has_one :micro_shop_activity, -> { where( activity_type_id: ActivityType::MICRO_STORE ) }, class_name: 'Activity', as: :activityable
   # has_one :book_dinner_activity, through: :activityable, source: :activityable, conditions: { activity_type_id: 6 }
   accepts_nested_attributes_for :shop_categories, reject_if: proc { |attributes| attributes['name'] == '' }
 

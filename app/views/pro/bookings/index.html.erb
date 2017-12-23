@@ -54,7 +54,7 @@
             $('#booking_form input[type=submit]').click(function(event) {
                 if ($('#booking_tel').val()) {
                     var  branch_tel = $('#booking_tel').val();
-                    var  reg = /^[0-9_\-]*$/;
+                    var  reg = /\A[0-9_\-]*\z/;
                     if (!reg.test(branch_tel)){
                         showTip('warning','联系电话输入有误，请重新输入');
                         event.preventDefault();

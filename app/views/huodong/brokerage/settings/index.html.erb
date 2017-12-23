@@ -104,7 +104,7 @@ $(function(){
 });
 
 $('.btn-sm').on('click', function(event){
-    var reg = /^[0-9_\-]*$/;
+    var reg = /\A[0-9_\-]*\z/;
     if (!reg.test($('#brokerage_setting_tel').val())){
       showTip('warning',"活动联系电话格式不对，正确格式如下：\n座机号码：区号-座机号码(或)\n手机号码：11位手机号码");
       event.preventDefault();

@@ -92,7 +92,7 @@
         $(function() {
             $('#hotel_branch_tel, #hotel_branch_mobile').on('blur', function(){
                 if ($(this).val()){
-                    var reg = /^[0-9_\-]*$/;
+                    var reg = /\A[0-9_\-]*\z/;
                     if (!reg.test($(this).val())){
                         addErrorMessage($(this), '电话或手机号码格式不正确，请重新填写。');
                     }else{
@@ -111,7 +111,7 @@
             });
 
             $('input[type=submit]').click(function(){
-                var reg = /^[0-9_\-]*$/;
+                var reg = /\A[0-9_\-]*\z/;
                 if($('#hotel_branch_tel').val()){
                     if (!reg.test($('#hotel_branch_tel').val())){
                         addErrorMessage($('#hotel_branch_tel'), '电话或手机号码格式不正确，请重新填写。');

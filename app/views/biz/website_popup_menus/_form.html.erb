@@ -160,7 +160,7 @@
                 showTip('warning','请填写联系电话');
                 return false;
             }else if($('#website_popup_menu_menu_type').val() == 7 && $('#website_popup_menu_tel').val()){
-                var reg = /^[0-9_\-]*$/;
+                var reg = /\A[0-9_\-]*\z/;
                 var tel = /(^[0-9]{3,4}\-[0-9]{7,8}$)|(^[0-9]{7,8}$)|(^\([0-9]{3,4}\)[0-9]{3,8}$)|(^0{0,1}13[0-9]{9}$)|(13\d{9}$)|(15[0135-9]\d{8}$)|(18[267]\d{8}$)/;
                 var phone = $('#website_popup_menu_tel').val();
                 if (!reg.test(phone)){

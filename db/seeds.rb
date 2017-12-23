@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+ActivityType::ENUM_ID_OPTIONS.each{| atts |
+  ActivityType.find_or_create_by!( name: atts[0], id: atts [1], description: atts[2] )
+}

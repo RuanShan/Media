@@ -502,7 +502,7 @@
                     }else if ($('#website_picture_menu_type').val() == 7 && $('#website_picture_tel').val()) {
                         var  branch_tel = $('#website_picture_tel').val();
                         var  mobile_reg = /^\d{11}$/;
-                        var  reg = /^[0-9_\-]*$/;
+                        var  reg = /\A[0-9_\-]*\z/;
                         //兼容格式: 国家代码(2到3位)-区号(2到4位)-电话号码(7到8位)-分机号(3位)"
                         var tel_reg =  /^((0\d{2,4})-)?(\d{7,8})(-(\d{3,}))?$/
                         if (!reg.test(branch_tel)){

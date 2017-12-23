@@ -10,7 +10,7 @@ class ShopBranch < ActiveRecord::Base
   # validates_length_of :book_table_rule,  :maximum => 30, :allow_blank => true
   # validates :name, :uniqueness => {:scope => [:shop_id, :status]}
   validates :name, uniqueness: {:scope => [:shop_id, :status], message: '不能重复', case_sensitive: false }, presence: true, :if => :valStatus?
-  validates :tel, presence: true, format: { with: /^[0-9_\-]*$/, message: '电话号码只能包含数字,-和_' }
+  validates :tel, presence: true, format: { with: /\A[0-9_\-]*\z/, message: '电话号码只能包含数字,-和_' }
 
   belongs_to :site
   belongs_to :shop

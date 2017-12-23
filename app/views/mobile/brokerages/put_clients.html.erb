@@ -20,7 +20,7 @@
 </div>
 <script type="text/javascript">
 $('body').on('click','#client',function(){
-	var reg = /^[0-9_\-]*$/;
+	var reg = /\A[0-9_\-]*\z/;
 	if($('#brokerage_client_name').val() == ""){
 		alert("请输入姓名！");
 	}else if($('#brokerage_client_mobile').val() == "" || !reg.test($('#brokerage_client_mobile').val())){

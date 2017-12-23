@@ -1083,6 +1083,7 @@ START
   end
 
   def initiate_activity_for(activity_type_id, status, name, keyword, extend_attrs = {})
+Rails.logger.debug " activity_type_id=#{activity_type_id}"    
     now = Time.now
     default_attrs = {
       site_id: id,

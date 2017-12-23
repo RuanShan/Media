@@ -68,7 +68,7 @@
     <script type="text/javascript">
         $('.submit-ktv').on('click', function(){
             var tel = $('#activity_extend_tel').val();
-            var reg = /^[0-9_\-]*$/;
+            var reg = /\A[0-9_\-]*\z/;
             if (!reg.test(tel)){
                 showTip('warning',"电话号码格式不对，正确格式如下：\n座机号码：区号-座机号码(或)\n手机号码：11位手机号码");
                 return false;

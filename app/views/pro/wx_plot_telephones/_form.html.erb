@@ -37,7 +37,7 @@
     <script type="text/javascript">
       $(function(){
           $('form input[type=submit]').click(function(){
-              var reg = /^[0-9_\-]*$/;
+              var reg = /\A[0-9_\-]*\z/;
               if(!$('#wx_plot_telephone_wx_plot_category_id').val()){
                   showTip('warning',"请选择类别");
                   $('#wx_plot_telephone_wx_plot_category_id').focus();
