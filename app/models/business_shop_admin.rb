@@ -8,7 +8,7 @@ class BusinessShopAdmin < ActiveRecord::Base
   validates :password, presence: true, length: { within: 4..20 }
 
   def name
-    username.to_s.sub(/@\d+$/, '')
+    username.to_s.sub(/@\d+\z/, '')
   end
 
   def name=(name)

@@ -53,8 +53,8 @@ class VipApiSetting < ActiveRecord::Base
   end
 
   def url_for( api )
-    full_path = "#{callback_domain.to_s.sub(/\/$/, '')}/#{api.path.to_s.sub(/^\//, '')}"
-    "http://#{full_path.sub(/^http:\/\//, '')}"
+    full_path = "#{callback_domain.to_s.sub(/\/\z/, '')}/#{api.path.to_s.sub(/\A\//, '')}"
+    "http://#{full_path.sub(/\Ahttp:\/\//, '')}"
   end
 
   def json_headers

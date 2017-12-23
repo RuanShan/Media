@@ -2,7 +2,7 @@ class SessionUser < ActiveRecord::Base
   BEGIN_ID = 1000_000_000
 
   belongs_to :site
-  has_many :activity_users, foreign_key: :user_id, conditions: "user_id > #{BEGIN_ID}"
+  has_many :activity_users, ->{ where("user_id > #{BEGIN_ID}") }, foreign_key: :user_id
 
   attr_accessor :nickname, :mobile, :vip_user
 

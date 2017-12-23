@@ -104,7 +104,7 @@ class Wx::Card < ActiveRecord::Base
   end
 
   def card_type_specific_info
-    card_type_prefix = %r/^#{card_type.downcase}_/
+    card_type_prefix = %r/\A#{card_type.downcase}_/
     card_field_names = Wx::Card.column_names.grep(card_type_prefix)
     card_field_names.each_with_object({}) do |field_name, hash|
       key = field_name.sub(card_type_prefix, '')

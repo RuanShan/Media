@@ -41,7 +41,7 @@ class PointTransaction < ActiveRecord::Base
 
   scope :latest, -> { order('created_at DESC') }
   scope :by_direction_type, -> (type = nil) {
-    if type.to_s =~ /^in|out|recharge_in|consume_in|adjust_in|ec_purchase|ec_return|hotel_purchase|hotel_return$/
+    if type.to_s =~ /\Ain|out|recharge_in|consume_in|adjust_in|ec_purchase|ec_return|hotel_purchase|hotel_return\z/
       value = PointTransaction.const_get(type.upcase)
       value = [value, EC_PURCHASE, HOTEL_PURCHASE] if value == OUT
       where(direction_type: value)

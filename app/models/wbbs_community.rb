@@ -2,7 +2,7 @@ class WbbsCommunity < ActiveRecord::Base
   belongs_to :site
   has_many :wbbs_topics
   has_many :wbbs_replies
-  has_one :activity, as: :activityable, conditions: { activity_type_id: ActivityType::WBBS_COMMUNITY }
+  has_one :activity, -> { where(activity_type_id: ActivityType::WBBS_COMMUNITY) }, as: :activityable
   accepts_nested_attributes_for :activity
 
   enum_attr :status, :in => [

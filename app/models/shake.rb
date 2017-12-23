@@ -1,6 +1,6 @@
 class Shake < ActiveRecord::Base
 	belongs_to :site
-	has_one :activity, as: :activityable, conditions: { activity_type_id: ActivityType::SHAKE }
+	has_one :activity, -> { where(activity_type_id: ActivityType::SHAKE) }, as: :activityable
 	has_many :shake_users
   has_many :shake_rounds
   has_many :shake_prizes

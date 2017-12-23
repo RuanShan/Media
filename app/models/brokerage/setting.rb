@@ -1,5 +1,5 @@
 class Brokerage::Setting < ActiveRecord::Base
-  has_one :activity, as: :activityable, conditions: { activity_type_id: ActivityType::BROKERAGE }
+  has_one :activity, -> { where( activity_type_id: ActivityType::BROKERAGE ) }, as: :activityable
 
   accepts_nested_attributes_for :activity
 

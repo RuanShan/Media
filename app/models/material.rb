@@ -3,7 +3,7 @@ class Material < ActiveRecord::Base
 
   validates :title, presence: true, length: { maximum: 64 }
   validates :summary, length: { maximum: 120 }, if: :single_graphic?
-  validates :source_url, format: { with: /^(http|https):\/\/[a-zA-Z0-9].+$/, message: '地址格式不正确，必须以http(s)://开头' }, allow_blank: true
+  validates :source_url, format: { with: /\A(http|https):\/\/[a-zA-Z0-9].+\z/, message: '地址格式不正确，必须以http(s)://开头' }, allow_blank: true
   validates :audio, presence: true, if: :audios?
   validates :video, presence: true, if: :videos?
 

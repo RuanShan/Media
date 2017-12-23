@@ -1,7 +1,7 @@
 class WxWall < ActiveRecord::Base
   belongs_to :site
   belongs_to :material
-  has_one :activity, as: :activityable, conditions: { activity_type_id: ActivityType::WX_WALL }
+  has_one :activity, as: :activityable, -> { where(activity_type_id: ActivityType::WX_WALL) }
   has_many :wx_wall_prizes_wx_wall_users, dependent: :destroy
   has_many :wx_wall_prizes, dependent: :destroy
   has_many :wx_wall_users

@@ -3,7 +3,7 @@ class Brokerage::Broker < ActiveRecord::Base
   belongs_to :user
   has_many :clients
   has_many :commission_transactions
-  has_many :unsettled_client_changes, through: :clients, source: :client_changes, conditions: { commission_transaction_id: nil }
+  has_many :unsettled_client_changes, -> { where( commission_transaction_id: nil) }, through: :clients, source: :client_changes
 
   validates :site_id, :user_id, :name, :mobile, presence: true
   validates :bank_account_name, :bank_card_no, :bank_name, presence: true, if: :update_and_bank_card?

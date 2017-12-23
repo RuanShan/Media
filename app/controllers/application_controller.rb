@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 class ApplicationController < ActionController::Base
+  include ControllerHelpers::StrongParameters
   include ErrorHandler
 
   protect_from_forgery with: :exception

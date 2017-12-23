@@ -112,7 +112,7 @@
             <label class="">选择语音<span class="required-star">*</span></label>
 
             <div class="clearfix">
-              <%= f.select :audio_id, current_site.materials.audios.select([:id,:audio]).map!{|m| [truncate_u(m.audio.try(:file).try(:filename)), m.id] }, { selected: @reply.try(:replyable_id) }, validate: true, class: "col-xs-6" %>
+              <%= f.select :audio_id, current_site.materials.audios.select([:id,:audio]).map{|m| [truncate_u(m.audio.try(:file).try(:filename)), m.id] }, { selected: @reply.try(:replyable_id) }, validate: true, class: "col-xs-6" %>
             </div>
           </div>
         </div>

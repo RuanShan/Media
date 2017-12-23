@@ -33,7 +33,7 @@ class Kf::Staff < ActiveRecord::Base
 
     def postfix_staff_no
       postfix = "@#{self.site.id}"
-      postfix_regex = /#{postfix}$/
+      postfix_regex = /#{postfix}\z/
       unless self.staff_no =~ postfix_regex
         self.staff_no = "#{self.staff_no}#{postfix}"
       end

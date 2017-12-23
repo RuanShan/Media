@@ -14,7 +14,7 @@ class ActivityVoteItem < ActiveRecord::Base
   belongs_to :activity
   has_many :activity_user_vote_items, dependent: :destroy
   #validates :name, uniqueness: { scope: :activity_id }, allow_blank: true
-  validates :link, format: { with: /^(http|https):\/\/[a-zA-Z0-9].+$/, message: '地址格式不正确，必须以http(s)://开头' }, allow_blank: true
+  validates :link, format: { with: /\A(http|https):\/\/[a-zA-Z0-9].+\z/, message: '地址格式不正确，必须以http(s)://开头' }, allow_blank: true
 
   before_create :generate_item_no
 

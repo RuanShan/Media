@@ -3,7 +3,7 @@ class Website < ActiveRecord::Base
   validates :name, presence: true, length: { maximum: 64, message: '官网名称过长' }
   validates :address, presence: true, if: :can_validate?
   # validates :address, presence: true
-  validates_uniqueness_of :domain, :allow_blank => true, :allow_nil => true, :format => { :with => /^[a-zA-Z_\-][\w\-]{2,14}/ }
+  validates_uniqueness_of :domain, :allow_blank => true, :allow_nil => true, :format => { :with => /\A[a-zA-Z_\-][\w\-]{2,14}/ }
 
   enum_attr :template_id, :in => [
     ['template1', 1, '暗黑系'],
@@ -78,7 +78,11 @@ class Website < ActiveRecord::Base
     1.upto(12) do |size|
       break rqrcode = RQRCode::QRCode.new(url, :size => size, :level => :h ).to_img.resize(258, 258) rescue next
     end
-    img = Magick::Image::read_inline(rqrcode.to_data_url).first.adaptive_blur #二维码作为背景图
+    #img = Magick::Image::read_inline(rqrcode.to_data_url).first.adaptive_blur #二维码作为背景图
+    img = MiniMagick::Image.open(rqrcode.to_data_url)
+    img.combine_options do |c|
+      c.adaptive_blur
+    end
     # if self.logo?
     #   mark = Magick::ImageList.new
     #   begin

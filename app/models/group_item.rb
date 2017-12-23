@@ -6,7 +6,7 @@ class GroupItem < ActiveRecord::Base
   belongs_to :group_category
   belongs_to :group
   belongs_to :groupable, polymorphic: true
-  belongs_to :shop, class_name: "Wmall::Shop", foreign_key: 'groupable_id', conditions: "group_items.groupable_type = 'Wmall::Shop'"
+  belongs_to :shop, -> { where( "group_items.groupable_type = 'Wmall::Shop'" )}, class_name: "Wmall::Shop", foreign_key: 'groupable_id'
   has_many   :group_orders
 
 

@@ -10,3 +10,10 @@
 ActivityType::ENUM_ID_OPTIONS.each{| atts |
   ActivityType.find_or_create_by!( name: atts[0], id: atts [1], description: atts[2] )
 }
+
+
+SiteCopyright.find_or_create_by!( is_default: true) do |copyright|
+  copyright.is_show_link = true
+  copyright.footer_content = 'this is footer content'
+  copyright.footer_link = '<a href="www.baidu.com">footer link</a>'
+end

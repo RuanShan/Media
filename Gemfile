@@ -23,8 +23,8 @@ gem 'to_csv-rails'
 gem 'acts_as_enum'
 gem 'lazy_high_charts'
 
-#gem 'rmagick', '2.13.2', require: 'RMagick'
-#gem 'mini_magick'
+#gem 'rmagick'
+gem 'mini_magick'
 
 gem 'rucaptcha'
 # gem 'alidayu_sms'

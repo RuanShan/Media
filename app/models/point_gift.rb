@@ -6,7 +6,7 @@ class PointGift < ActiveRecord::Base
   has_many   :point_transactions, as: :pointable
   has_many   :consumes, through: :point_gift_exchanges
   has_and_belongs_to_many :shop_branches, uniq: true
-  has_and_belongs_to_many :vip_grades, conditions: "vip_grades.status IN(0,1)", uniq: true
+  has_and_belongs_to_many :vip_grades, ->{ where("vip_grades.status IN(0,1)")}, uniq: true
 
   validates :pic, presence: true, on: :create, if: "pic_key.blank?"
   validates :points, presence: true, numericality: { greater_than: 0, only_integer: true }
@@ -41,7 +41,7 @@ class PointGift < ActiveRecord::Base
   end
 
   def unexpired?
-    !expired?  
+    !expired?
   end
 
   def deleteable?

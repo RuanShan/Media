@@ -302,7 +302,7 @@ class Site < ActiveRecord::Base
     end
 
     phones = mobiles.split(',').map(&:to_s).map{|m| m.gsub(' ', '')}.compact.uniq
-    phones.map{|m| @errors << "手机号码格式不正确" unless m.to_s =~ /^\d+$/ }
+    phones.map{|m| @errors << "手机号码格式不正确" unless m.to_s =~ /\A\d+\z/ }
     @errors << "短信内容不能为空" if content.blank?
 
     if @errors.blank?

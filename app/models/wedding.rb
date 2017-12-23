@@ -93,7 +93,7 @@ class Wedding < ActiveRecord::Base
   end
 
   def save_video_url_if_uploaded_video
-    video_regex = /\.(rm)|(rmvb)|(wmv)|(avi)|(mpg)|(mpeg)|(mp4)$/i
+    video_regex = /\.(rm)|(rmvb)|(wmv)|(avi)|(mpg)|(mpeg)|(mp4)\z/i
     if uploaded_video.present? && video_regex =~ uploaded_video.original_filename
       file_path = "#{VIDEO_DIR}/#{Time.now.to_i}-#{uploaded_video.original_filename}"
       FileUtils.copy uploaded_video.tempfile, file_path

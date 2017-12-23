@@ -33,27 +33,7 @@ module ActiveRecord
       errors.full_messages.join(separator).presence
     end
   end
-  
-  module Calculations
-    def pluck(*column_names)
-      column_names = column_names.flatten.map! do |column_name|
-        if column_name.is_a?(Symbol) && column_names.include?(column_name.to_s)
-          column_name = "#{connection.quote_table_name(table_name)}.#{connection.quote_column_name(column_name)}"
-        end
-        column_name
-      end
 
-      result = klass.connection.exec_query(select(column_names).to_sql)
-
-      result = result.map do |attributes|
-        result.columns.map do |column|
-          klass.type_cast_attribute(column, klass.initialize_attributes(attributes))
-        end
-      end
-      result.flatten! if result.first.try(:length) == 1
-      result
-    end
-  end
 
   module NullRelation
     def exec_queries

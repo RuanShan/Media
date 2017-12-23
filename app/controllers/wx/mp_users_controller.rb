@@ -3,7 +3,7 @@ class Wx::MpUsersController < ApplicationController
 
   def update
     respond_to do |format|
-      if @wx_mp_user.update_attributes(params[:wx_mp_user])
+      if @wx_mp_user.update_attributes( wx_mp_user_params )
         @wx_mp_user.auth!(1) if params[:wx_mp_user].present? && params[:wx_mp_user][:app_secret].present?
         format.html {
           if params[:step]
@@ -75,4 +75,9 @@ class Wx::MpUsersController < ApplicationController
     end
   end
 
+
+  private
+  def wx_mp_user_params
+    params.require(:wx_mp_user).permit(permitted_wx_mp_user_attributes)
+  end
 end

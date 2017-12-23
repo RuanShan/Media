@@ -822,13 +822,14 @@ class Activity < ActiveRecord::Base
   end
 
   def vote_qrcode_download(type = 258)
-    require 'RMagick'
+    #require 'RMagick'
 
     1.upto(12) do |size|
       break @qrcode = RQRCode::QRCode.new(activity_qrcode_url, size: size, level: :h).to_img.resize(1280, 1280) rescue next
     end
 
-    img = Magick::Image::read_inline(@qrcode.to_data_url).first
+    #img = Magick::Image::read_inline(@qrcode.to_data_url).first
+    img = MiniMagick::Image.open(@qrcode.to_data_url)
 
     # if self.pic?
     #   mark = Magick::ImageList.new
@@ -838,8 +839,9 @@ class Activity < ActiveRecord::Base
     #   rescue
     #   end
     # end
-
-    Magick::ImageList.new.from_blob(img.to_blob).resize(type.to_i, type.to_i).to_blob
+    
+    #Magick::ImageList.new.from_blob(img.to_blob).resize(type.to_i, type.to_i).to_blob
+    img.resize(type.to_i, type.to_i).to_blob
   end
 
   def description

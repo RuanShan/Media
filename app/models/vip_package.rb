@@ -4,7 +4,7 @@ class VipPackage < ActiveRecord::Base
 	has_many :vip_packages_vip_users
   has_many :vip_package_item_consumes
   has_and_belongs_to_many :vip_package_items
-  has_and_belongs_to_many :shop_branches, conditions: { status: ShopBranch::USED }
+  has_and_belongs_to_many :shop_branches, -> { where(status: ShopBranch::USED) }
 
 	accepts_nested_attributes_for :vip_package_items_vip_packages, allow_destroy: true
 

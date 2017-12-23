@@ -7,7 +7,7 @@ class WxMenu < ActiveRecord::Base
   validates :activity_id, presence: true, if: :activity_and_child?
   validates :album_id, presence: true, if: :album_and_child?
   validates :panoramagram_id, presence: true, if: :panoramagram_and_child?
-  validates :url, format: { with: /^(http|https):\/\/[a-zA-Z0-9].+$/, message: "地址格式不正确，请重新输入，例如：http://www.baidu.com" }, if: :link?
+  validates :url, format: { with: /\A(http|https):\/\/[a-zA-Z0-9].+\z/, message: "地址格式不正确，请重新输入，例如：http://www.baidu.com" }, if: :link?
 
   belongs_to :parent, class_name: 'WxMenu', foreign_key: :parent_id
   has_many :children, class_name: 'WxMenu', foreign_key: :parent_id, dependent: :destroy#, order: :sort

@@ -4,7 +4,7 @@ class RedPacket::Setting < ActiveRecord::Base
   validates :amount, numericality: {greater_than_or_equal_to: 1, only_integer: true}
   validate :end_at_greater_than_start_at
 
-  has_one :activity, as: :activityable, conditions: { activity_type_id: ActivityType::RED_PACKET }
+  has_one :activity, -> { where( activity_type_id: ActivityType::RED_PACKET ) }, as: :activityable
   accepts_nested_attributes_for :activity
 
   delegate :name, :keyword, :summary, :starting?, to: :activity, allow_nil: true

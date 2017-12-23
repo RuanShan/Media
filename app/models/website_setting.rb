@@ -5,8 +5,8 @@ class WebsiteSetting < ActiveRecord::Base
   UNABLE_CUSTOM_NAV_TEMPLATE_IDS = [1, 8, 14, 17, 18, 21, 23, 24]
 
   belongs_to :website
-  belongs_to :home_nav_template, class_name: 'WebsiteTemplate', foreign_key: :index_nav_template_id, primary_key: :style_index, conditions: { template_type: WebsiteTemplate::NAVIGATION }
-  belongs_to :inside_nav_template, class_name: 'WebsiteTemplate', foreign_key: :nav_template_id, primary_key: :style_index, conditions: { template_type: WebsiteTemplate::NAVIGATION }
+  belongs_to :home_nav_template, -> { where(template_type: WebsiteTemplate::NAVIGATION) }, class_name: 'WebsiteTemplate', foreign_key: :index_nav_template_id, primary_key: :style_index
+  belongs_to :inside_nav_template, -> { where(template_type: WebsiteTemplate::NAVIGATION) }, class_name: 'WebsiteTemplate', foreign_key: :nav_template_id, primary_key: :style_index
 
   validates :wp_bottom_opacity, :wp_font_opacity, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 100}, presence: true
 

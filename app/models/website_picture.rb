@@ -1,5 +1,5 @@
 class WebsitePicture < ActiveRecord::Base
-  validates :url, format: { with: /^(http|https):\/\/[a-zA-Z0-9].+$/, message: '地址格式不正确，必须以http(s)://开头' }, allow_blank: true
+  validates :url, format: { with: /\A(http|https):\/\/[a-zA-Z0-9].+\z/, message: '地址格式不正确，必须以http(s)://开头' }, allow_blank: true
   validates :title, presence: true, if: :can_validate?
 
   #这个模型要加上menuable

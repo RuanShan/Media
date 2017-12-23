@@ -25,7 +25,7 @@ class VipPrivilege < ActiveRecord::Base
   has_many :vip_user_transactions, as: :transactionable
   has_many :vip_privilege_transactions, dependent: :destroy
   has_many :point_transactions, as: :pointable
-  has_and_belongs_to_many :vip_grades, conditions: "vip_grades.status IN(0,1)", uniq: true
+  has_and_belongs_to_many :vip_grades, -> { where("vip_grades.status IN(0,1)") }, uniq: true
 
   validates :title, presence: true, length: { maximum: 30, message: '标题过长' }
   # validates :content, presence: true, length: { maximum: 500, message: '内容过长' }

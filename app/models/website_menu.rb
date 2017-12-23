@@ -5,8 +5,8 @@ class WebsiteMenu < ActiveRecord::Base
 
   validates :name, presence: true, length: { maximum: 64, message: '不能超过64个字' }
   validates :tel, presence: true, if: :phone?
-  #validates :url, presence: true, format: { with: /^(http|https):\/\/[a-zA-Z0-9].+$/, message: '地址格式不正确，必须以http(s)://开头' }, if: :link?
-  validates :url, format: { with: /^(http|https):\/\/[a-zA-Z0-9].+$/, message: '地址格式不正确，必须以http(s)://开头' }, allow_blank: true
+  #validates :url, presence: true, format: { with: /\A(http|https):\/\/[a-zA-Z0-9].+\z/, message: '地址格式不正确，必须以http(s)://开头' }, if: :link?
+  validates :url, format: { with: /\A(http|https):\/\/[a-zA-Z0-9].+\z/, message: '地址格式不正确，必须以http(s)://开头' }, allow_blank: true
   validates :sort, presence: true
   validates :sort, numericality: { only_integer: true}
 

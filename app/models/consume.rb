@@ -6,7 +6,7 @@ include HasBarcode
   belongs_to :activity_prize
   belongs_to :consumable, polymorphic: true
   belongs_to :applicable, polymorphic: true
-  belongs_to :card, class_name: 'Wx::Card', foreign_key: 'consumable_id', conditions: "consumes.consumable_type = 'Wx::Card'"
+  belongs_to :card, -> { where("consumes.consumable_type = 'Wx::Card'")} , class_name: 'Wx::Card', foreign_key: 'consumable_id'
   has_one :wx_prize
 
   before_create :generate_code
@@ -62,7 +62,7 @@ include HasBarcode
 
       vip_user = site.vip_users.normal.where(user_id: user.id).first # 避免历史数据错乱导致的不一至
 
-      if activity_prize.try(:point_prize?) && vip_user.present? && vip_user.normal? 
+      if activity_prize.try(:point_prize?) && vip_user.present? && vip_user.normal?
         transaction do
           update_attributes!(status: USED, used_at: Time.now, applicable: applicable, description: description)
           if point_gift_exchange? || red_packet?
@@ -293,7 +293,7 @@ include HasBarcode
     if activity_prize.try(:point_prize?) # 积分奖需要判断是否是会员
       vip_user = site.vip_users.normal.where(user_id: user.id).first # 避免历史数据错乱导致的不一至
 
-      if activity_prize.try(:point_prize?) && vip_user.present? && vip_user.normal? 
+      if activity_prize.try(:point_prize?) && vip_user.present? && vip_user.normal?
         transaction do
           update_attributes!(status: AUTO_USED, used_at: Time.now)
           if point_gift_exchange? || red_packet?

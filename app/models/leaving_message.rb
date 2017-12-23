@@ -4,7 +4,7 @@ class LeavingMessage < ActiveRecord::Base
   belongs_to :parent,   class_name:  'LeavingMessage'
   has_many   :children, class_name:  'LeavingMessage', foreign_key: 'parent_id'
 
-  enum_attr :status, :in => [['init',1,'待审核'],['audited',2,'通过'],['denied',3,'拒绝']]
+  enum_attr :status, :in => [['status_init',1,'待审核'],['status_audited',2,'通过'],['status_denied',3,'拒绝']]
 
   scope :audited, -> { where(status: 2) }
   scope :root, -> { where(parent_id: nil) }
@@ -43,4 +43,3 @@ class LeavingMessage < ActiveRecord::Base
     end
   end
 end
-

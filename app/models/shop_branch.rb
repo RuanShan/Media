@@ -62,7 +62,7 @@ class ShopBranch < ActiveRecord::Base
   after_update :update_table
   after_save :save_sub_account
 
-  scope :visitable, :include => [:shop_products], :conditions => "shop_products.id IS NOT NULL and shop_branches.status = 1"
+  scope :visitable, ->{ where("shop_products.id IS NOT NULL and shop_branches.status = 1").includes(:shop_products)} 
   scope :any_shops, -> (ids) { where(id: ids) if ids.present? }
 
   def vip_user_transactions_pay_json
@@ -126,7 +126,7 @@ class ShopBranch < ActiveRecord::Base
     rule = self.book_rules.where(:rule_type => 3).first
     rule = create_rule 3 unless rule
     return rule
-  end 
+  end
 
   def book_table_rule
     rule = self.book_rules.where(:rule_type => 2).first
