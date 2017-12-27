@@ -1,6 +1,6 @@
 class Wx::MessagesController <  ApplicationController
 
-  before_filter do
+  before_action do
     @partialLeftNav = "/layouts/partialLeftWeixin"
   end
 

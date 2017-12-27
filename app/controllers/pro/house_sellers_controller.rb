@@ -1,5 +1,5 @@
 class Pro::HouseSellersController < Pro::HousesBaseController
-  before_filter :find_seller, only: [:edit, :destroy, :update]
+  before_action :find_seller, only: [:edit, :destroy, :update]
 
   def index
     load_sellers

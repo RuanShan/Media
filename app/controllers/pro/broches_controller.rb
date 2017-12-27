@@ -1,6 +1,6 @@
 class Pro::BrochesController < Pro::HousesBaseController
 
-  before_filter :set_broche
+  before_action :set_broche
 
   def index
 

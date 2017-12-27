@@ -1,7 +1,7 @@
 class Mobile::GroupItemsController < Mobile::BaseController
   layout "mobile/group"
-  before_filter :set_group_item, :redirect_vcoolife
-  before_filter :find_group_orders_today, :only => [:order]
+  before_action :set_group_item, :redirect_vcoolife
+  before_action :find_group_orders_today, :only => [:order]
 
   def show
     @body_class = "detail"

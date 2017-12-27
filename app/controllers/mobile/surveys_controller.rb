@@ -1,9 +1,9 @@
 class Mobile::SurveysController < Mobile::BaseController
   layout 'mobile/surveys'
-  before_filter :block_non_wx_browser
-  before_filter :find_activity
-  before_filter :check_subscribe
-  before_filter :find_activity_user
+  before_action :block_non_wx_browser
+  before_action :find_activity
+  before_action :check_subscribe
+  before_action :find_activity_user
 
   # api 里进来的,仅仅是显示描述,然后用户点击开始答题
   def show

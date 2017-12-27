@@ -1,9 +1,9 @@
 class Biz::VipPackagesController < Biz::VipController
   
-  before_filter :set_vip_card
-  before_filter :find_vip_package, only: [:edit, :update, :destroy, :save_release, :use_usable_amount]
-  before_filter :first_shop_branch, only: [:new, :update, :create, :edit]
-  before_filter :find_vip_package_items, only: [ :new, :create, :edit, :update ]
+  before_action :set_vip_card
+  before_action :find_vip_package, only: [:edit, :update, :destroy, :save_release, :use_usable_amount]
+  before_action :first_shop_branch, only: [:new, :update, :create, :edit]
+  before_action :find_vip_package_items, only: [ :new, :create, :edit, :update ]
 
   def index
     @search = @vip_card.vip_packages.show.latest.search(params[:search])

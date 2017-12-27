@@ -1,7 +1,7 @@
 class Pro::TripsController < Pro::TripBaseController
   layout "pro/trip"
-  before_filter :get_wx_mp_user, :set_seo, :require_industry
-  before_filter :exist_trip, only: [:ads, :ticket, :order]
+  before_action :get_wx_mp_user, :set_seo, :require_industry
+  before_action :exist_trip, only: [:ads, :ticket, :order]
 
   def index
     @current_titles << '旅游服务'

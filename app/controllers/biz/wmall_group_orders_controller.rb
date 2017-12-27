@@ -1,6 +1,6 @@
 class Biz::WmallGroupOrdersController < Biz::WmallGroupBaseController
-  before_filter :set_group
-  before_filter :set_group_order, only: [:show, :consume, :destroy, :sn_consume]
+  before_action :set_group
+  before_action :set_group_order, only: [:show, :consume, :destroy, :sn_consume]
 
   def index
     #conn = "and (wmall_shops.id like '%#{params[:mall_name]}%' or wmall_shops.name like '%#{params[:mall_name]}%')"if params[:mall_name].present?

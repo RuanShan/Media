@@ -3,8 +3,8 @@ class Api::WeixinController < Api::BaseController
   include WxReplyMessage
   include ApiWeixinControllerHelper
 
-  skip_before_filter :verify_authenticity_token
-  before_filter :check_signature!, only: :service
+  skip_before_action :verify_authenticity_token
+  before_action :check_signature!, only: :service
 
   def default_url_options
     {host: Settings.mhostname}

@@ -1,5 +1,5 @@
 class Huodong::GuessReportsController < ApplicationController
-  before_filter :set_help_anchor
+  before_action :set_help_anchor
   def index
     @activity_type_id = ActivityType::GUESS
     @activities = current_site.activities.guess.pluck(:name, :id)

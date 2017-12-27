@@ -1,6 +1,6 @@
 class SitesController < ApplicationController
-  before_filter :check_role, except: [:copyright, :update_copyright]
-  before_filter :load_site, only: [:show, :update]
+  before_action :check_role, except: [:copyright, :update_copyright]
+  before_action :load_site, only: [:show, :update]
 
   def index
     @partialLeftNav = "/layouts/partialLeftSys"

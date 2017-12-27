@@ -1,8 +1,8 @@
 class HomeController < ApplicationController
   include Biz::HighchartHelper
 
-  skip_before_filter *ADMIN_FILTERS, except: [:console]
-  skip_before_filter :check_account_expire, :check_auth_mobile#, only: [:index, :console]
+  skip_before_action *ADMIN_FILTERS, except: [:console]
+  #skip_before_action :check_account_expire, :check_auth_mobile #, only: [:index, :console]
 
   # caches_page :about
 

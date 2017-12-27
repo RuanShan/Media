@@ -1,5 +1,5 @@
 class Pro::CarBespeaksController < ApplicationController
-	before_filter :get_car_shop
+	before_action :get_car_shop
 
   def index
 		@query_type_options = [['车系',2],['电话',3],['预约时间',4]]

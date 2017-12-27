@@ -1,5 +1,5 @@
 class Pro::HotelsBaseController < ApplicationController
-  before_filter :require_wx_mp_user,  :require_industry, :check_hotel
+  before_action :require_wx_mp_user,  :require_industry, :check_hotel
 
   private
   def check_hotel

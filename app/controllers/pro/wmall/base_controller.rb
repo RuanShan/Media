@@ -1,5 +1,5 @@
 class Pro::Wmall::BaseController < ApplicationController
-  before_filter :set_current_objs
+  before_action :set_current_objs
 
   helper_method :current_mall
 

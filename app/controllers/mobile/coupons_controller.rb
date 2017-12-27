@@ -1,9 +1,9 @@
 class Mobile::CouponsController < Mobile::BaseController
   layout 'mobile/coupons'
-  before_filter :block_non_wx_browser, :require_wx_mp_user, :set_activity
-  before_filter :find_coupon,  only: [:detail, :apply, :shops]
-  before_filter :find_consume, only: [:user_detail]
-  before_filter :require_wx_user, only: [:my, :apply]
+  before_action :block_non_wx_browser, :require_wx_mp_user, :set_activity
+  before_action :find_coupon,  only: [:detail, :apply, :shops]
+  before_action :find_consume, only: [:user_detail]
+  before_action :require_wx_user, only: [:my, :apply]
 
   def index
     @share_title = @activity.name

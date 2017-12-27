@@ -1,5 +1,5 @@
 class Biz::VipGroupsController < Biz::VipController
-  before_filter :find_vip_groups, only: [:index, :add_to_group, :create, :update, :destroy, :remove_user_group_id]
+  before_action :find_vip_groups, only: [:index, :add_to_group, :create, :update, :destroy, :remove_user_group_id]
   PAGE_SIZE = 24
 
   def index

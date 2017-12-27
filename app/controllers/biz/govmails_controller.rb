@@ -1,6 +1,6 @@
 class Biz::GovmailsController < ApplicationController
-	before_filter :set_activity
-	before_filter :set_mail, only: [:reply_modal, :reply, :author_modal, :remove, :archive]
+	before_action :set_activity
+	before_action :set_mail, only: [:reply_modal, :reply, :author_modal, :remove, :archive]
 
 	def author_modal
 		render layout: "application_pop"

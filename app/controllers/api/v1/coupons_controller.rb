@@ -1,7 +1,7 @@
 class Api::V1::CouponsController < Api::BaseController
-  before_filter :cors_set_access_control_headers
+  before_action :cors_set_access_control_headers
 
-  before_filter :find_objects, except: [:recommend_coupons]
+  before_action :find_objects, except: [:recommend_coupons]
 
   # 优惠券接口
 

@@ -1,8 +1,8 @@
 class Mobile::WeddingsController < Mobile::BaseController
   layout 'mobile/wedding'
 
-  before_filter :set_wedding
-  #before_filter :require_wx_user, only: :create_guest
+  before_action :set_wedding
+  #before_action :require_wx_user, only: :create_guest
 
   def index
     @body_class = @wedding.template1? ? "index" : "index2"

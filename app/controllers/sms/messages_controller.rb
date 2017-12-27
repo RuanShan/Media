@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class Sms::MessagesController < ApplicationController
-  skip_before_filter *ADMIN_FILTERS, only: [:send_message, :send_text_message]
+  skip_before_action *ADMIN_FILTERS, only: [:send_message, :send_text_message]
 
   def switch
     @partialLeftNav = "/layouts/partialLeftSys"

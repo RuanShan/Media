@@ -1,6 +1,6 @@
 class Mobile::ShakesController < Mobile::BaseController
   layout 'mobile/shake'
-  before_filter :block_non_wx_browser
+  before_action :block_non_wx_browser
 
   def index
     @shake = @site.activities.shake.find(session[:activity_id]).activityable

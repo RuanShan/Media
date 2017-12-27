@@ -1,6 +1,6 @@
 class Pro::HotelPicturesController < Pro::HotelsBaseController
-  before_filter :check_hotel
-  before_filter :set_hotel_picture, only: [:destroy, :cover, :discover]
+  before_action :check_hotel
+  before_action :set_hotel_picture, only: [:destroy, :cover, :discover]
 
 
   def index

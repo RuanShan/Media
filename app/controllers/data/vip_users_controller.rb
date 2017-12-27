@@ -1,7 +1,7 @@
 class Data::VipUsersController < ApplicationController
   include Biz::HighchartHelper
 
-  before_filter do
+  before_action do
     @partialLeftNav = "/layouts/partialLeftDC"
   end
 

@@ -1,8 +1,8 @@
 class Huodong::GuessesController < ApplicationController
-  before_filter :set_help_anchor
+  before_action :set_help_anchor
 
-  before_filter :find_activity, only: [:show, :edit, :settings, :load_more, :update, :destroy]
-  before_filter :set_coupons_and_gifts,  only: [:settings]
+  before_action :find_activity, only: [:show, :edit, :settings, :load_more, :update, :destroy]
+  before_action :set_coupons_and_gifts,  only: [:settings]
 
   def settings
     @guess = ::Activity::GuessActivity.find_by_id(params[:id])

@@ -1,5 +1,5 @@
 class Pro::CarPicturesController < ApplicationController
-	before_filter :check_car_shop
+	before_action :check_car_shop
 
   def index
     @car_type = @car_shop.car_types.find_by_id params[:id]

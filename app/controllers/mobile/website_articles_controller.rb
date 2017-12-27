@@ -1,9 +1,9 @@
 class Mobile::WebsiteArticlesController < Mobile::BaseController
   # skip_filter :load_data#, :auth
   include LikeableCommentable
-  before_filter :find_website
-  before_filter :set_categories, only: [:index, :show, :tags]
-  before_filter :set_articles
+  before_action :find_website
+  before_action :set_categories, only: [:index, :show, :tags]
+  before_action :set_articles
 
   layout 'mobile/website_articles'
 

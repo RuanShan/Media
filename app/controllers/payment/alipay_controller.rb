@@ -1,6 +1,6 @@
 class Payment::AlipayController < ApplicationController
-  skip_before_filter *ADMIN_FILTERS
-  skip_before_filter :verify_authenticity_token, only: [:pay, :callback, :notify]
+  skip_before_action *ADMIN_FILTERS
+  skip_before_action :verify_authenticity_token, only: [:pay, :callback, :notify]
 
   def pay
   end

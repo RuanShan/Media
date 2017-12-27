@@ -1,5 +1,5 @@
 class App::GuaController < App::BaseController
-  before_filter :block_non_wx_browser
+  before_action :block_non_wx_browser
 
   def show
     @activity_notice = ActivityNotice.where(id: params[:anid]).first

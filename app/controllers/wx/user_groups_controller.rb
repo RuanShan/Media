@@ -1,10 +1,10 @@
 class Wx::UserGroupsController < ApplicationController
   PAGE_SIZE = 24
 
-  before_filter :require_wx_mp_user
-  before_filter :fetch_groups, only: :index
+  before_action :require_wx_mp_user
+  before_action :fetch_groups, only: :index
 
-  before_filter do
+  before_action do
     @partialLeftNav = "/layouts/partialLeftWeixin"
     @groups = @wx_mp_user.wx_user_groups
     @users = @wx_mp_user.wx_users.page(params[:page]).per(PAGE_SIZE)

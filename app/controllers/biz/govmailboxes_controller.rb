@@ -1,6 +1,6 @@
 class Biz::GovmailboxesController < ApplicationController
-  before_filter :set_activity_and_boxes
-  before_filter :set_box, only: [:edit, :update, :remove, :mails, :edit_modal]
+  before_action :set_activity_and_boxes
+  before_action :set_box, only: [:edit, :update, :remove, :mails, :edit_modal]
 
   def new
       @box = @activity.govmailboxes.new

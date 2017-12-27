@@ -1,7 +1,7 @@
 # coding: utf-8
 class SessionsController < ApplicationController
-  skip_before_filter *ADMIN_FILTERS
-  skip_before_filter :check_auth_mobile
+  skip_before_action *ADMIN_FILTERS
+  #skip_before_action :check_auth_mobile
 
   def new
     clear_login_wrong_count

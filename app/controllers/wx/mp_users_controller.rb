@@ -1,5 +1,5 @@
 class Wx::MpUsersController < ApplicationController
-  before_filter :require_wx_mp_user
+  before_action :require_wx_mp_user
 
   def update
     respond_to do |format|

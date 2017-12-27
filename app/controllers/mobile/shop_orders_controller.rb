@@ -2,7 +2,7 @@
 class Mobile::ShopOrdersController < Mobile::BaseController
   layout 'mobile/food'
 
-  before_filter :require_wx_user
+  before_action :require_wx_user
 
   def index
     @shop_orders = ShopOrder.formal.where(user_id: session[:user_id]).where(order_type: params[:order_type]).order('created_at desc').page(params[:page]).per(100)

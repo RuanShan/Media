@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 class Pro::ShopsController < Pro::ShopBaseController
-  skip_before_filter :require_industry, only: [:pos]
+  skip_before_action :require_industry, only: [:pos]
 
   def index
     if params[:activity_type_id].to_s == "6" || params[:activity_type_id].to_s == "7" || session[:current_industry_id] == 10001

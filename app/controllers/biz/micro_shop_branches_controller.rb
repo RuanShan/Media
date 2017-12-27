@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 class Biz::MicroShopBranchesController < ApplicationController
-  before_filter :find_shop, except: :login
-  before_filter :find_shop_branch, only: [ :edit, :update, :destroy, :highchart, :pictures, :create_pic, :toggle_sub_account ]
-  skip_before_filter *ADMIN_FILTERS, :find_shop, :find_shop_branch, only: :location_img
+  before_action :find_shop, except: :login
+  before_action :find_shop_branch, only: [ :edit, :update, :destroy, :highchart, :pictures, :create_pic, :toggle_sub_account ]
+  skip_before_action *ADMIN_FILTERS, :find_shop, :find_shop_branch, only: :location_img
 
   def index
     return redirect_to micro_shops_url, alert: '请先添加门店' unless @shop

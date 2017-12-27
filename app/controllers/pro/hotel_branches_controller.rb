@@ -1,6 +1,6 @@
 class Pro::HotelBranchesController < Pro::HotelsBaseController
-  before_filter :check_hotel
-  before_filter :set_hotel_branch, only: [:show, :edit, :update, :destroy]
+  before_action :check_hotel
+  before_action :set_hotel_branch, only: [:show, :edit, :update, :destroy]
 
   def index
     @total_hotel_branches = @hotel.hotel_branches.normal.order("is_default desc,created_at desc")

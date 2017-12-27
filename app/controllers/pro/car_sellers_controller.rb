@@ -1,5 +1,5 @@
 class Pro::CarSellersController < ApplicationController
-	# before_filter :check_car_shop
+	# before_action :check_car_shop
 
   def index
   	# seller_type = (params[:seller_type].present? and params[:seller_type].to_i == CarSeller::SALES_CONSULTANT) ? CarSeller::SALES_CONSULTANT : CarSeller::SALES_REP

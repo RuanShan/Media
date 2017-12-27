@@ -1,5 +1,5 @@
 module PermittedAttributes
-    ATTRIBUTES=[:site_attributes, :account_attributes, :wx_mp_user_attributes, :website_menu_attributes, :material_attributes]
+    ATTRIBUTES=[:site_attributes, :account_attributes, :wx_mp_user_attributes, :website_menu_attributes, :material_attributes, :activity_attributes, :shop_attributes]
     mattr_reader *ATTRIBUTES
 
     @@site_attributes = [ :section_id,:title, :content_param, :data_source, :data_filter, :data_source_order_by, :data_source_param, :css_class, :css_class_for_js, :content_css_class, :stylish, :section_context ]
@@ -12,4 +12,20 @@ module PermittedAttributes
 
     # "material"=>{"material_type"=>"1", "title"=>"test", "author"=>"", "pic_key"=>"FlL1C_QEO1l-6TwumUieLdO8kjKN", "is_show_pic"=>"1", "reply_type"=>"1", "summary"=>"", "content"=>"this is content", "activity_id"=>"1", "source_url"=>""}
     @@material_attributes = [:material_type, :title, :author, :pic_key, :is_show_pic, :reply_type, :summary, :content, :activity_id, :source_url ]
+
+
+
+   # "activity"=>{"status"=>"1", "id"=>"2",
+   #   "keyword"=>"会员卡", "pic_key"=>"",
+   #   "vip_card_attributes"=>{"status"=>"1", "merchant_name"=>"getstore", "id"=>"1"},
+   #   "ready_activity_notice_attributes"=>{"title"=>"申请微信会员卡", "summary"=>"您尚未申请会员特权,快来点击申领吧!!", "id"=>"1"},
+   #   "active_activity_notice_attributes"=>{"title"=>"尊敬的会员{name}", "summary"=>"尊敬的会员{name},您的会员卡号为{card_id},快来点击查看优惠信息吧!!", }}
+   @@activity_attributes = [:status, :keyword, :pic_key,
+     vip_card_attributes: [:status, :merchant_name, :id],
+     ready_activity_notice_attributes: [:title, :summary, :id],
+     active_activity_notice_attributes: [:title, :summary, :id]
+   ]
+
+   @@shop_attributes = []
+
 end

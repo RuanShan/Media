@@ -1,6 +1,6 @@
 class Mobile::Wmall::BaseController < Mobile::BaseController
   layout "mobile/wmall"
-  before_filter :set_seo, :cors_set_access_control_headers#, :current_mall
+  before_action :set_seo, :cors_set_access_control_headers#, :current_mall
   helper_method :auth_params
 
   def auth_params

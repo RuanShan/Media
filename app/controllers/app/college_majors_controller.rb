@@ -2,7 +2,7 @@ module App
   class CollegeMajorsController < BaseController
 
     layout "app/educations"
-    before_filter :find_college
+    before_action :find_college
 
     def index
       @college_majors = @college.majors

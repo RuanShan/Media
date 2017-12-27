@@ -1,6 +1,6 @@
 class Mobile::RedPacketsController < Mobile::BaseController
-  before_filter :require_wx_user, :require_activity, :get_share_image
-  before_filter :require_red_packet_release, only: [:new, :create]
+  before_action :require_wx_user, :require_activity, :get_share_image
+  before_action :require_red_packet_release, only: [:new, :create]
   layout 'mobile/red_packets'
 
   def index

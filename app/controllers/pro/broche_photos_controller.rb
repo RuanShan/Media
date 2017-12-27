@@ -1,7 +1,7 @@
 class Pro::BrochePhotosController < Pro::HousesBaseController
 
-  before_filter :find_broche
-  before_filter :find_broche_photo, only: [:edit, :update, :destroy]
+  before_action :find_broche
+  before_action :find_broche_photo, only: [:edit, :update, :destroy]
 
   def index
     @broche_photos = @broche.broche_photos.order("sort asc")

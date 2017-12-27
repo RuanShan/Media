@@ -1,5 +1,5 @@
 class Biz::WbbsTopicsController < ApplicationController
-  before_filter :fetch_wbbs_community
+  before_action :fetch_wbbs_community
 
   def index
     @topics = @wbbs_community.wbbs_topics.normal.order('created_at DESC').page(params[:page])

@@ -1,5 +1,5 @@
 class Mobile::ShopOrderItemsController < Mobile::BaseController
-  before_filter :require_wx_user
+  before_action :require_wx_user
 
   def minus
     @item = ShopOrderItem.find(params[:id])

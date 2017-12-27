@@ -1,7 +1,7 @@
 class Pro::HotelRoomTypesController < Pro::HotelsBaseController
-  before_filter :check_hotel
-  before_filter :set_hotel_branches
-  before_filter :set_hotel_room_type, only: [:show, :edit, :update, :destroy]
+  before_action :check_hotel
+  before_action :set_hotel_branches
+  before_action :set_hotel_room_type, only: [:show, :edit, :update, :destroy]
 
   def index
     @hotel_room_types = @hotel.hotel_room_types.normal.order("created_at desc")

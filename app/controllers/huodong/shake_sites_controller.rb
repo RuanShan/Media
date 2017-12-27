@@ -3,10 +3,10 @@ class Huodong::ShakeSitesController < ApplicationController
 
   helper_method :broadcast, :shake_site
 
-  skip_before_filter *ADMIN_FILTERS
+  skip_before_action *ADMIN_FILTERS
 
-  before_filter :require_shake_site, except: [:index]
-  before_filter :find_shake, only: [:get_user_count, :update_user, :shake_start, :shake_end]
+  before_action :require_shake_site, except: [:index]
+  before_action :find_shake, only: [:get_user_count, :update_user, :shake_start, :shake_end]
 
   def index
     session[:shake_site_id] = Des.decrypt(params[:site_id], validate_time: false)

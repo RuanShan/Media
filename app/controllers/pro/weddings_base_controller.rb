@@ -1,5 +1,5 @@
 class Pro::WeddingsBaseController < ApplicationController
- before_filter :require_industry, :find_wedding
+ before_action :require_industry, :find_wedding
 
   private
 

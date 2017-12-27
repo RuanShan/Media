@@ -1,7 +1,7 @@
 class Mobile::WxCardsController < Mobile::BaseController
-  # skip_before_filter :auth, :authorize
-  before_filter :block_non_wx_browser
-  before_filter :get_share_image, only: [:index]
+  # skip_before_action :auth, :authorize
+  before_action :block_non_wx_browser
+  before_action :get_share_image, only: [:index]
   
   layout 'mobile/wx_cards'
 

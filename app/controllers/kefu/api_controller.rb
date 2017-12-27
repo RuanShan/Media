@@ -23,7 +23,7 @@ end
 
 module Kefu
   class ApiController < ApplicationController
-    skip_before_filter *ADMIN_FILTERS, :set_current_user
+    skip_before_action *ADMIN_FILTERS, :set_current_user
     def index
       token = params[:kefu_token]
       wx_mp_user = WxMpUser.where(kefu_token: token).first

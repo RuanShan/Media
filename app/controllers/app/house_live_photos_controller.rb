@@ -1,7 +1,7 @@
 module App
   class HouseLivePhotosController < BaseController
     layout false
-    before_filter :find_house
+    before_action :find_house
 
     def index
       @live_photos = @house.live_photos.order("created_at desc").page(params[:page])

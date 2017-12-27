@@ -1,6 +1,6 @@
 class Biz::VipCardsController < Biz::VipController
-  before_filter :fetch_activity_and_vip_card
-  skip_before_filter :require_vip_card, only: [:settings, :index]
+  before_action :fetch_activity_and_vip_card
+  skip_before_action :require_vip_card, only: [:settings, :index]
 
   def index
     @activity_notice = @activity.active_activity_notice || @activity.activity_notices.create({description: "会员卡", activity_status: 1}.merge({title: "尊敬的会员{name}", summary: "尊敬的会员{name},您的会员卡号为{card_id},快来点击查看优惠信息吧!!"}))

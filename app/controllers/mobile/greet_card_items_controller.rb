@@ -1,6 +1,6 @@
 class Mobile::GreetCardItemsController < Mobile::BaseController
   layout 'mobile/greets'
-  before_filter :block_non_wx_browser
+  before_action :block_non_wx_browser
 
   def index
     @activity = Activity.find(params[:aid])

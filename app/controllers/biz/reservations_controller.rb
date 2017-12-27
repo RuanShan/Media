@@ -1,5 +1,5 @@
 class Biz::ReservationsController < ApplicationController
-  before_filter :get_activity, only: [:new, :edit, :create, :update, :intro, :start, :stop, :orders, :fields, :remove_logo]
+  before_action :get_activity, only: [:new, :edit, :create, :update, :intro, :start, :stop, :orders, :fields, :remove_logo]
   def index
     all_activities = current_site.activities.reservations.show
     if params[:name].present?

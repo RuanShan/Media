@@ -3,7 +3,7 @@ class Huodong::WxWallsController < ApplicationController
   helper_method :message_html
   Refresh_Time = 5000
   
-  before_filter :find_wx_wall, except: [ :index, :new, :create, :help, :save_qiniu_keys, :destroy_qiniu_keys, :preview_template ]
+  before_action :find_wx_wall, except: [ :index, :new, :create, :help, :save_qiniu_keys, :destroy_qiniu_keys, :preview_template ]
 
   def index
     wx_walls = current_site.wx_walls.show.order('id DESC')

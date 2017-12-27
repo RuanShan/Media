@@ -3,9 +3,9 @@ class Biz::ShopsController < ApplicationController
   layout 'micro_shop'
   helper_method :current_shop_branch, :current_shop_account, :current_shop_vip_user, :hotel_branch_path
 
-  skip_before_filter *ADMIN_FILTERS
-  before_filter :require_shop_account
-  before_filter :require_shop_branch, :require_privilege, except: [ :sign_in, :sign_out ]
+  skip_before_action *ADMIN_FILTERS
+  before_action :require_shop_account
+  before_action :require_shop_branch, :require_privilege, except: [ :sign_in, :sign_out ]
 
   def sign_in
     return render layout: false if request.get?

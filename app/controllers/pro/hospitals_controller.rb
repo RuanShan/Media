@@ -1,6 +1,6 @@
 class Pro::HospitalsController < Pro::HospitalBaseController
-  skip_before_filter :require_hospital, only: [:index]
-  before_filter :set_hospital
+  skip_before_action :require_hospital, only: [:index]
+  before_action :set_hospital
 
   def index
     return redirect_to wx_mp_users_path, alert: '请先添加微信公共帐号' unless current_site.wx_mp_user

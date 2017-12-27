@@ -1,7 +1,7 @@
 class Pro::TripTicketCategoriesController < Pro::TripBaseController
-  before_filter :get_wx_mp_user, :set_seo, :require_industry
-  before_filter :set_trip_ticket_categories
-  before_filter :set_trip_ticket_category, only: [:edit, :update, :destroy, :update_position]
+  before_action :get_wx_mp_user, :set_seo, :require_industry
+  before_action :set_trip_ticket_categories
+  before_action :set_trip_ticket_category, only: [:edit, :update, :destroy, :update_position]
 
   def index
   end

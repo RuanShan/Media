@@ -1,8 +1,8 @@
 class Biz::WmallGroupItemsController < Biz::WmallGroupBaseController
 
-  before_filter :set_group
-  before_filter :find_group_item, only: [:edit, :update, :destroy, :recommend_switch]
-  before_filter :belongs_to_shops, only:[:create, :new, :edit]
+  before_action :set_group
+  before_action :find_group_item, only: [:edit, :update, :destroy, :recommend_switch]
+  before_action :belongs_to_shops, only:[:create, :new, :edit]
 
   def index
     conn = GroupItem.get_conditions params

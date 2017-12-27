@@ -1,7 +1,7 @@
 class Pro::WxPlotRepairComplainsController < Pro::WxPlotBaseController
 
-  before_filter :set_repair_complain, only: [:show, :reply, :change, :update]
-  before_filter :set_activity_wx_plot_repair_complain
+  before_action :set_repair_complain, only: [:show, :reply, :change, :update]
+  before_action :set_activity_wx_plot_repair_complain
 
   def index
     @search = params[:type] == 'repair' ? @wx_plot.repairs.order('created_at DESC').search(params[:search]) :  @wx_plot.complain_advices.order('created_at DESC').search(params[:search])

@@ -1,6 +1,6 @@
 class Pro::WxPlotOwnersController < Pro::WxPlotBaseController
 
-  before_filter :set_activity_wx_plot_owner
+  before_action :set_activity_wx_plot_owner
 
   def index
 

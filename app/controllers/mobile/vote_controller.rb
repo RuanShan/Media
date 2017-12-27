@@ -1,11 +1,11 @@
 class Mobile::VoteController < Mobile::BaseController
   layout 'mobile/vote'
-  before_filter :block_non_wx_browser, :find_activity
-  before_filter :check_subscribe
-  before_filter :find_activity_user, only: [:login, :success, :result]
-  before_filter :validate_can_vote, only: [:success]
-  skip_before_filter :fetch_wx_user_info
-  before_filter :fetch_wx_user_info!
+  before_action :block_non_wx_browser, :find_activity
+  before_action :check_subscribe
+  before_action :find_activity_user, only: [:login, :success, :result]
+  before_action :validate_can_vote, only: [:success]
+  skip_before_action :fetch_wx_user_info
+  before_action :fetch_wx_user_info!
 
   def login
     @vip_user = @user.vip_user

@@ -1,7 +1,7 @@
 class ActivityPrizesController < ApplicationController
   DEFAULT_TITLES = %W(一等奖 二等奖 三等奖 四等奖 五等奖 六等奖)
-  before_filter :require_activity
-  before_filter :find_prize, only: [:show, :update, :destroy]
+  before_action :require_activity
+  before_action :find_prize, only: [:show, :update, :destroy]
 
   def new
     title = (DEFAULT_TITLES - @activity.activity_prizes.pluck(:title)).first

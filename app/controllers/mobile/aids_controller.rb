@@ -1,12 +1,12 @@
 class Mobile::AidsController < Mobile::BaseController
   skip_filter   :auth, :authorize, :fetch_wx_user_info
 
-  before_filter :auth_with_user_info, if: -> { @wx_mp_user.manual? and !@wx_user.try(:has_info?) }
-  before_filter :authorize_with_user_info, if: -> { @wx_mp_user.plugin? and !@wx_user.try(:has_info?) }
+  before_action :auth_with_user_info, if: -> { @wx_mp_user.manual? and !@wx_user.try(:has_info?) }
+  before_action :authorize_with_user_info, if: -> { @wx_mp_user.plugin? and !@wx_user.try(:has_info?) }
 
-  before_filter :block_non_wx_browser, :block_none_wx_user, :find_activity, :require_owner_user_none_self
-  #before_filter :find_activity, :require_owner_user_none_self
-  before_filter :wx_share_setting
+  before_action :block_non_wx_browser, :block_none_wx_user, :find_activity, :require_owner_user_none_self
+  #before_action :find_activity, :require_owner_user_none_self
+  before_action :wx_share_setting
 
   helper_method :aided?, :self?, :prized?, :received?, :accepted?, :self_joined?, :rank_reached?, :auto_retry_received?
   helper_method :get_rank, :get_points

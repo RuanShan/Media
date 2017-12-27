@@ -1,7 +1,7 @@
 class RepliesController < ApplicationController
-  before_filter :require_wx_mp_user
+  before_action :require_wx_mp_user
 
-  before_filter do
+  before_action do
     @partialLeftNav = "/layouts/partialLeftWeixin"
   end
 

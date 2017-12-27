@@ -1,5 +1,5 @@
 class Pro::BusinessShopPicturesController < WebsiteShared::WebsiteBaseController
-  before_filter :require_business_website, :find_business_shop
+  before_action :require_business_website, :find_business_shop
 
   def index
     @business_shop_pictures = @business_shop.business_shop_pictures.recent.page(params[:page]).per(9)

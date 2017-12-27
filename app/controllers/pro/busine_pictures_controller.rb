@@ -1,7 +1,7 @@
 class Pro::BusinePicturesController < WebsiteShared::WebsitePicturesController
 
-  before_filter :require_business_website
-  before_filter :find_picture, only: [:edit, :update, :destroy]
+  before_action :require_business_website
+  before_action :find_picture, only: [:edit, :update, :destroy]
 
   def index
     @pictures = @website.website_pictures.sorted

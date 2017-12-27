@@ -1,6 +1,6 @@
 class Mobile::TripOrdersController < Mobile::BaseController
   layout "mobile/trips"
-  before_filter :body_class, :require_wx_user
+  before_action :body_class, :require_wx_user
 
   def index
     @orders = @user.trip_orders.where(site_id: @site.id).order('created_at desc')

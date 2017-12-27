@@ -1,5 +1,5 @@
 class Pro::HousesBaseController < ApplicationController
-  before_filter :require_wx_mp_user, :require_industry, :require_house
+  before_action :require_wx_mp_user, :require_industry, :require_house
 
   private
   

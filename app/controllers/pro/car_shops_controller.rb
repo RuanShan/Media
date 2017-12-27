@@ -1,5 +1,5 @@
 class Pro::CarShopsController < ApplicationController
-  before_filter :require_industry
+  before_action :require_industry
 
   def index
     @wx_mp_user = current_site.wx_mp_user

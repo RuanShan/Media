@@ -1,6 +1,6 @@
 class Pro::HospitalBaseController < ApplicationController
 
-  before_filter :require_wx_mp_user, :require_industry, :require_hospital
+  before_action :require_wx_mp_user, :require_industry, :require_hospital
 
   private
   def require_hospital

@@ -1,6 +1,6 @@
 class Biz::PointGiftsController < Biz::VipController
-  before_filter :find_gift, only: [:show, :update, :destroy, :edit, :gift_exchange, :use_gift, :update_consumes, :exchange_info]
-  before_filter :find_shop_branches, only: [:new, :update, :create, :edit]
+  before_action :find_gift, only: [:show, :update, :destroy, :edit, :gift_exchange, :use_gift, :update_consumes, :exchange_info]
+  before_action :find_shop_branches, only: [:new, :update, :create, :edit]
 
   def index
     @search = current_site.point_gifts.online.latest.where('status > 0').search(params[:search])

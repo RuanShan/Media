@@ -12,11 +12,11 @@ class ApplicationController < ActionController::Base
 
   ADMIN_FILTERS = [:required_sign_in, :filter_out_shop_branch_sub_account, :require_wx_mp_user]
 
-  before_filter :prepare_session, :set_current_user
-  before_filter *ADMIN_FILTERS
-  # before_filter :check_account_expire
-  # before_filter :check_auth_mobile
-  # before_filter :require_wx_mp_user
+  before_action :prepare_session, :set_current_user
+  before_action *ADMIN_FILTERS
+  # before_action :check_account_expire
+  # before_action :check_auth_mobile
+  # before_action :require_wx_mp_user
 
   helper_method :current_user, :services_config, :current_shop_account, :current_sub_account, :current_shop_branch
   helper_method :current_site, :mobile_subdomain, :mobile_domain, :admin?
@@ -154,6 +154,7 @@ class ApplicationController < ActionController::Base
     # if current_user && current_user.normal_account? && current_user.expired? && !current_user.need_auth_mobile?
     #   return redirect_to console_url, alert: '您的账号使用期限已过，请联系客服进行续费。'
     # end
+    true == false
   end
 
   def check_auth_mobile

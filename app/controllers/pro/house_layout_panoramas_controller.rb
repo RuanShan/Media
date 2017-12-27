@@ -1,5 +1,5 @@
 class Pro::HouseLayoutPanoramasController < Pro::HousesBaseController
-  before_filter :find_house
+  before_action :find_house
 
   def index
     @house_layout = HouseLayout.find params[:house_layout_id]

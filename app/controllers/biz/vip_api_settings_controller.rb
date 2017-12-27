@@ -1,6 +1,6 @@
 class Biz::VipApiSettingsController < ApplicationController
-  before_filter :find_vip_api_setting, except: [:spec]
-  before_filter do
+  before_action :find_vip_api_setting, except: [:spec]
+  before_action do
     @partialLeftNav  = 'layouts/partialLeftAPI'
   end
 

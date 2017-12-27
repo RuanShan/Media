@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 class Pro::ShopBranchPrintTemplatesController < Pro::ShopBaseController
 
-  skip_before_filter *ADMIN_FILTERS, :require_wx_mp_user, :require_industry, :authorize_shop_branch_account, only: [:recepit, :config_ec_print, :update, :create]
+  skip_before_action *ADMIN_FILTERS, :require_wx_mp_user, :require_industry, :authorize_shop_branch_account, only: [:recepit, :config_ec_print, :update, :create]
 
   def index
     template_type = params[:template_type]

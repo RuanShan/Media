@@ -1,6 +1,6 @@
 module App
   class LeavingMessagesController < BaseController
-    before_filter :block_non_wx_browser
+    before_action :block_non_wx_browser
 
     def index
       @activity = Activity.find(session[:activity_id])

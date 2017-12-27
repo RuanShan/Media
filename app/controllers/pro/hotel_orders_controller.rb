@@ -1,6 +1,6 @@
 class Pro::HotelOrdersController < Pro::HotelsBaseController
-  before_filter :check_hotel
-  before_filter :set_hotel_order, only: [:show, :revoked, :completed]
+  before_action :check_hotel
+  before_action :set_hotel_order, only: [:show, :revoked, :completed]
 
   def index
     conds, conds_h = [], {}

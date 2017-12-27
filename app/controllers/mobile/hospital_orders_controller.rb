@@ -1,7 +1,7 @@
 class Mobile::HospitalOrdersController < Mobile::BaseController
   layout 'mobile/hospital'
 
-  before_filter :find_hospital
+  before_action :find_hospital
   
   def index
     @page_class = "detail"

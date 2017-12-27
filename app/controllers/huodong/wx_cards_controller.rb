@@ -1,6 +1,6 @@
 class Huodong::WxCardsController < ApplicationController
-	before_filter :require_wx_mp_user
-	before_filter :find_activity, only: [:card_admins,:card_consumes,:card_reports]
+	before_action :require_wx_mp_user
+	before_action :find_activity, only: [:card_admins,:card_consumes,:card_reports]
 
 	def index
 		@activity = current_site.activities.where(activity_type_id: Activity::WX_CARD, status:1, activityable_type: nil).first_or_initialize

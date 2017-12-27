@@ -1,6 +1,6 @@
 class Mobile::WavesController < Mobile::BaseController
   layout 'mobile/wave'
-  before_filter :block_non_wx_browser, :set_activity
+  before_action :block_non_wx_browser, :set_activity
 
   def index
     session[:simulate] = params[:simulate].presence || "blank"

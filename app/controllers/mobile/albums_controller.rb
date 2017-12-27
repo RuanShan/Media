@@ -1,9 +1,9 @@
 class Mobile::AlbumsController < Mobile::BaseController
-  skip_before_filter :auth, :authorize
-  before_filter :authorize, only: [:comments, :create_comment]
-  before_filter :block_non_wx_browser
-  before_filter :find_photo, only: [:show, :comments, :create_comment, :load_more_comments]
-  before_filter :find_album, only: [:list, :load_more_photos]
+  skip_before_action :auth, :authorize
+  before_action :authorize, only: [:comments, :create_comment]
+  before_action :block_non_wx_browser
+  before_action :find_photo, only: [:show, :comments, :create_comment, :load_more_comments]
+  before_action :find_album, only: [:list, :load_more_photos]
   
   layout 'mobile/albums'
 

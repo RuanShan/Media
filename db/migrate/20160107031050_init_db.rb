@@ -2488,8 +2488,8 @@ class InitDb < ActiveRecord::Migration
 
   create_table "keywords" do |t|
     t.integer  "site_id",                          :null => false
-    t.integer  "msg_type", :limit => 11, :default => 1, :null => false
-    t.integer  "match_type", :limit => 11, :default => 1, :null => false
+    t.integer  "msg_type",   :default => 1, :null => false
+    t.integer  "match_type", :default => 1, :null => false
     t.string   "name"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false

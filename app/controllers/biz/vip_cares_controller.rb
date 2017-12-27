@@ -1,5 +1,5 @@
 class Biz::VipCaresController < Biz::VipController
-  before_filter :set_vip_card
+  before_action :set_vip_card
 
   def index
     if params[:search].present?

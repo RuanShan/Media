@@ -1,5 +1,5 @@
 class Pro::BookingOrdersController < Pro::BookingBaseController
-  before_filter :set_booking_order, only: [:show, :edit, :update, :destroy, :cancele, :complete]
+  before_action :set_booking_order, only: [:show, :edit, :update, :destroy, :cancele, :complete]
 
   def index
     @search = @booking.booking_orders.latest.search(params[:search])

@@ -1,9 +1,9 @@
 class App::VipsController < App::BaseController
-  skip_before_filter :verify_authenticity_token
-  before_filter :block_non_wx_browser, :require_vip_card, :find_vip_user, except: [:map, :tenpay_notify, :tenpay_callback]
-  before_filter :require_wx_user, except: [:map, :passwd, :edit_passwd, :find_passwd, :tenpay_notify, :tenpay_callback, :recharge_back, :vip_package_show]
-  skip_before_filter :auth, :authorize, only: [:tenpay_notify, :tenpay_callback, :recharge_back]
-  before_filter :require_vip_user, except: [ :index, :success, :signup, :apply, :shops, :map, :description, :send_sms, :mine, :gifts, :signin, :tenpay_notify, :tenpay_callback, :recharge_back, :vip_packages, :vip_package_show, :activate]
+  skip_before_action :verify_authenticity_token
+  before_action :block_non_wx_browser, :require_vip_card, :find_vip_user, except: [:map, :tenpay_notify, :tenpay_callback]
+  before_action :require_wx_user, except: [:map, :passwd, :edit_passwd, :find_passwd, :tenpay_notify, :tenpay_callback, :recharge_back, :vip_package_show]
+  skip_before_action :auth, :authorize, only: [:tenpay_notify, :tenpay_callback, :recharge_back]
+  before_action :require_vip_user, except: [ :index, :success, :signup, :apply, :shops, :map, :description, :send_sms, :mine, :gifts, :signin, :tenpay_notify, :tenpay_callback, :recharge_back, :vip_packages, :vip_package_show, :activate]
   layout 'app/vip'
 
   def index

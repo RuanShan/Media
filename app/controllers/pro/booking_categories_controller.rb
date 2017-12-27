@@ -1,6 +1,6 @@
 class Pro::BookingCategoriesController < Pro::BookingBaseController
-  before_filter :set_booking_category, only: [:show, :edit, :update, :destroy, :update_sorts]
-  before_filter :set_booking_categories , only: [:index]
+  before_action :set_booking_category, only: [:show, :edit, :update, :destroy, :update_sorts]
+  before_action :set_booking_categories , only: [:index]
 
   def new
     @booking_category = @booking.booking_categories.new(parent_id: params[:parent_id].to_i)

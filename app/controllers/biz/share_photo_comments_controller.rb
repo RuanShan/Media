@@ -1,5 +1,5 @@
 class Biz::SharePhotoCommentsController < ApplicationController
-  before_filter :find_share_photo, only: [:index, :destroy]
+  before_action :find_share_photo, only: [:index, :destroy]
 
   def index
     #@share_photo_comments =

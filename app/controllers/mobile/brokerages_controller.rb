@@ -1,6 +1,6 @@
 class Mobile::BrokeragesController < Mobile::BaseController
-  before_filter :require_wx_user, :get_share_image, :require_brokerage_setting
-  before_filter :require_broker, only: [ :broker, :edit, :update, :my_clients, :put_clients, :save_client, :commission_list, :client_change_list ]
+  before_action :require_wx_user, :get_share_image, :require_brokerage_setting
+  before_action :require_broker, only: [ :broker, :edit, :update, :my_clients, :put_clients, :save_client, :commission_list, :client_change_list ]
   layout 'mobile/brokerages'
 
   def index;end

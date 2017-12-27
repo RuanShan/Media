@@ -1,8 +1,8 @@
 # coding: utf-8
 class Pro::ShopBaseController < ApplicationController
-  before_filter :require_wx_mp_user, :require_industry
-  skip_before_filter :filter_out_shop_branch_sub_account
-  before_filter :authorize_shop_branch_account
+  before_action :require_wx_mp_user, :require_industry
+  skip_before_action :filter_out_shop_branch_sub_account
+  before_action :authorize_shop_branch_account
   helper_method :can_see?
 
   private

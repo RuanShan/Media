@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 class PasswordsController < ApplicationController
 
-  before_filter do
+  before_action do
     @partialLeftNav = "/layouts/partialLeftSys"
   end
 

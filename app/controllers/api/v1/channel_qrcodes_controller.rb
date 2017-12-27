@@ -1,5 +1,5 @@
 class Api::V1::QrcodeChannelsController < ActionController::Base
-	before_filter :cors_set_access_control_headers
+	before_action :cors_set_access_control_headers
 	# 二维码推广接口，输入参数: wx_user_open_id, column_name, amount
   # 成功返回: { errcode: 0, errmsg: "ok" }
   # demo: http://localhost:3000/v1/qrcode_channels/qrcode_user_amount_api?wx_user_open_id=oZmj5jinqjCrKZJAUUI0fnJ7bcqU&column_name=hotel_amount&amount=1&payment_type="支付宝"

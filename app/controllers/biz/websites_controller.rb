@@ -1,5 +1,5 @@
 class Biz::WebsitesController < ApplicationController
-  before_filter :find_website, except: [:create_initial_data]
+  before_action :find_website, except: [:create_initial_data]
 
   def index
     #pp request.domain

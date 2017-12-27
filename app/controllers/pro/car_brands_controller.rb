@@ -1,5 +1,5 @@
 class Pro::CarBrandsController < ApplicationController
-	# before_filter :check_car_shop
+	# before_action :check_car_shop
   layout "application_gm"
 
   def index

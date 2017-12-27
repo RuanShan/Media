@@ -1,6 +1,6 @@
 class Biz::VipImportingsController < ApplicationController
-  before_filter :set_vip_card, only: :index
-  before_filter :find_vip_importing, only: [:edit, :update]
+  before_action :set_vip_card, only: :index
+  before_action :find_vip_importing, only: [:edit, :update]
 
   def index
     @search = current_site.vip_importings.search(params[:search])

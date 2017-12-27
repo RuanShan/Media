@@ -15,9 +15,9 @@
 # http://redirect_url?openid=123
 
 class AuthAgentController < ApplicationController
-  skip_before_filter *ADMIN_FILTERS
-  skip_before_filter :verify_authenticity_token, only: [:wx_oauth, :wx_oauth_callback]
-  before_filter :detected_wx_mp_user
+  skip_before_action *ADMIN_FILTERS
+  skip_before_action :verify_authenticity_token, only: [:wx_oauth, :wx_oauth_callback]
+  before_action :detected_wx_mp_user
 
   OAUTH_STATE = 'oauth:state'
 

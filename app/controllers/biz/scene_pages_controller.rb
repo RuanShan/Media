@@ -1,6 +1,6 @@
 class Biz::ScenePagesController < ApplicationController
-  before_filter :fetch_activity
-  before_filter :fetch_scene_html, only: [:save_html, :save_json, :pages_config]
+  before_action :fetch_activity
+  before_action :fetch_scene_html, only: [:save_html, :save_json, :pages_config]
 
   def index
   end

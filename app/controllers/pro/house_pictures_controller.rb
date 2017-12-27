@@ -1,6 +1,6 @@
 class Pro::HousePicturesController < Pro::HousesBaseController
-  before_filter :get_house
-  before_filter :find_picture, only: [:destroy, :cover, :discover]
+  before_action :get_house
+  before_action :find_picture, only: [:destroy, :cover, :discover]
 
   def index
     conds = { house_layout_id: params[:house_layout_id] }

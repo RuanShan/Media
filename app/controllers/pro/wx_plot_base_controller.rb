@@ -1,5 +1,5 @@
 class Pro::WxPlotBaseController < ApplicationController
-  before_filter :require_wx_mp_user,  :require_industry, :require_wx_plot
+  before_action :require_wx_mp_user,  :require_industry, :require_wx_plot
 
   private
   def require_wx_plot

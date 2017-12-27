@@ -1,5 +1,5 @@
 class Biz::WavesController < ApplicationController
-  before_filter :find_activity, except: [:create]
+  before_action :find_activity, except: [:create]
   def new
   end
 

@@ -1,7 +1,7 @@
 class Biz::VipPackageItemsController < Biz::VipController
 
-  before_filter :set_vip_card
-  before_filter :find_vip_package_item, only: [:edit, :update, :destroy]
+  before_action :set_vip_card
+  before_action :find_vip_package_item, only: [:edit, :update, :destroy]
 
   def index
     @search = @vip_card.vip_package_items.normal.latest.search(params[:search])

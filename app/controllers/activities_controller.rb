@@ -2,7 +2,7 @@ class ActivitiesController < ApplicationController
 
   TIME_ERROR_MESSAGE = '活动时间填写不正确，开始时间（如填写）必须大于当前时间，结束时间（如填写）必须大于开始时间'
 
-  before_filter :set_activity, only: [:show, :edit, :update, :destroy,
+  before_action :set_activity, only: [:show, :edit, :update, :destroy,
                                       :stop, :active, :delete, :unset_delete,
                                       :deal_success, :deal_failed,
                                       :edit_prepare_settings, :edit_start_settings,
@@ -648,7 +648,7 @@ class ActivitiesController < ApplicationController
       total_prize_rate = params[:activity][:activity_prizes_attributes].to_h.sum { |k, v| v[:prize_rate].to_f }
       return render_with_alert 'edit', '保存失败, 中奖几率总和不能大于100%' if total_prize_rate > 100
       @activity.status = Activity::SETTED if @activity.setting? && !@activity.fight? && !@activity.surveys? && !@activity.vote?
-      @activity.attributes = params[:activity]
+      @activity.attributes = activity_params
       extend_format
       #@activity.extend.closing_note = params[:extend_closing_note] if params[:extend_closing_note].present?
       #@activity.extend.tel = params[:activity][:extend][:tel] if params[:activity] && params[:activity][:extend] && params[:activity][:extend][:tel]
@@ -759,6 +759,11 @@ class ActivitiesController < ApplicationController
 
     def notice_for( success )
       success ? '操作成功' : '操作失败'
+    end
+
+    def activity_params
+      params.require(:activity).permit(permitted_activity_attributes)
+
     end
 
 end

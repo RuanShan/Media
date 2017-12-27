@@ -1,5 +1,5 @@
 class Sms::ExpensesController < ApplicationController
-  before_filter do
+  before_action do
     @partialLeftNav = "/layouts/partialLeftSys"
   end
 

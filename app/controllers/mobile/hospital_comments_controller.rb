@@ -1,7 +1,7 @@
 class Mobile::HospitalCommentsController < Mobile::BaseController
   layout "mobile/hospital"
 
-  before_filter :set_doctor_and_comments, only: [:index, :create, :new]
+  before_action :set_doctor_and_comments, only: [:index, :create, :new]
 
   def index
     @page_class = "detail"    

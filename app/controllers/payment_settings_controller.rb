@@ -1,9 +1,9 @@
 class PaymentSettingsController < ApplicationController
-  before_filter do
+  before_action do
     @partialLeftNav = "/layouts/partialLeftSys"
   end
 
-  before_filter :fetch_payment_settings, only: [:index, :enable, :disable]
+  before_action :fetch_payment_settings, only: [:index, :enable, :disable]
 
   def edit
     @payment_setting = current_site.payment_settings.find(params[:id])

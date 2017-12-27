@@ -1,8 +1,8 @@
 class SurveyQuestionsController < ApplicationController
 
-  before_filter :set_activity, only: [:index, :new, :create, :edit, :update, :destroy, :update_sorts, :diagram]
+  before_action :set_activity, only: [:index, :new, :create, :edit, :update, :destroy, :update_sorts, :diagram]
 
-  before_filter :set_survey_question, only: [:edit, :show, :update, :destroy, :update_sorts]
+  before_action :set_survey_question, only: [:edit, :show, :update, :destroy, :update_sorts]
 
 
   def index

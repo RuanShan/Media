@@ -1,6 +1,6 @@
 class Pro::WebsitesController < WebsiteShared::WebsitesController
-  before_filter :require_wx_mp_user, :require_industry
-  before_filter :set_life_website
+  before_action :require_wx_mp_user, :require_industry
+  before_action :set_life_website
 
   private
     def set_life_website

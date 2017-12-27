@@ -1,9 +1,9 @@
 class Mobile::ScenesController < Mobile::BaseController
   layout 'mobile/scenes'
 
-  skip_before_filter :load_user_data, :auth, :authorize
+  skip_before_action :load_user_data, :auth, :authorize
 
-  before_filter  :require_wx_mp_user, :set_activity
+  before_action  :require_wx_mp_user, :set_activity
 
   def index
     if @scene_html.try(:version).present?

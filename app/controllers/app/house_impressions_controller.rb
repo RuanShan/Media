@@ -1,7 +1,7 @@
 module App
   class HouseImpressionsController < BaseController
     layout false
-    before_filter :find_house
+    before_action :find_house
 
     def index
     end

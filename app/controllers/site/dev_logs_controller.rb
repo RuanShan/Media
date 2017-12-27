@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 class Site::DevLogsController < ApplicationController
-  skip_before_filter *ADMIN_FILTERS
+  skip_before_action *ADMIN_FILTERS
 
   layout 'dev_log'
 

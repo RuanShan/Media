@@ -1,5 +1,5 @@
 class Pro::WxPlotsController < Pro::WxPlotBaseController
-  skip_before_filter :require_wx_plot, only: [:index, :create]
+  skip_before_action :require_wx_plot, only: [:index, :create]
 
   def index
     @wx_plot = current_site.wx_plot

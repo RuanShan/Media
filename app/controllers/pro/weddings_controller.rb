@@ -1,5 +1,5 @@
 class Pro::WeddingsController < Pro::WeddingsBaseController
-  before_filter :render_index, :except => [:index]
+  before_action :render_index, :except => [:index]
 
   def index
     conn = Wedding.get_conditions params

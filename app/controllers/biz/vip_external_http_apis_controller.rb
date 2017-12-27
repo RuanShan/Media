@@ -1,7 +1,7 @@
 class Biz::VipExternalHttpApisController < ApplicationController
   layout 'application_pop'
-  before_filter :find_api, only: [ :edit, :update, :destroy ]
-  before_filter do
+  before_action :find_api, only: [ :edit, :update, :destroy ]
+  before_action do
     @partialLeftNav  = 'layouts/partialLeftAPI'
   end
 

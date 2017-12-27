@@ -1,7 +1,7 @@
 class Mobile::BookingCommentsController < Mobile::BaseController
   layout "mobile/booking"
 
-  before_filter :set_booking_item, only: [:index, :new]
+  before_action :set_booking_item, only: [:index, :new]
 
   def new
     @booking_comment = BookingComment.new(booking_item_id: params[:booking_item_id], user_id: session[:user_id])

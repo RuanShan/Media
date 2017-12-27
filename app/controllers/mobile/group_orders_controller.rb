@@ -2,9 +2,9 @@ class Mobile::GroupOrdersController < Mobile::BaseController
     
   layout "mobile/group"
   
-  before_filter :set_group_order, only: [:edit, :update, :destroy]
-  before_filter :set_group_item, only: [:new, :edit]
-  before_filter :set_payment_types, only: [:new, :edit]
+  before_action :set_group_order, only: [:edit, :update, :destroy]
+  before_action :set_group_item, only: [:new, :edit]
+  before_action :set_payment_types, only: [:new, :edit]
 
   def index
     @pending_orders = @user.group_orders.pending.order("created_at desc")

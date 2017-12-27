@@ -1,6 +1,6 @@
 class Pro::BusinessPrivilegesController < WebsiteShared::WebsiteBaseController
-  before_filter :require_business_website, :find_business_shop
-  before_filter :find_business_privilege, only: [:edit, :update, :destroy]
+  before_action :require_business_website, :find_business_shop
+  before_action :find_business_privilege, only: [:edit, :update, :destroy]
   layout 'application_pop'
 
   def index

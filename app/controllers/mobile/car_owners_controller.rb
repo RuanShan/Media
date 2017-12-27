@@ -1,6 +1,6 @@
 class Mobile::CarOwnersController < Mobile::BaseController
   layout 'mobile/car'
-  before_filter :get_shop, :except => [:select_type]
+  before_action :get_shop, :except => [:select_type]
 
   def index
     @body_class = "body-detail"

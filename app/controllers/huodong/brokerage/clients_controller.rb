@@ -1,7 +1,7 @@
 class Huodong::Brokerage::ClientsController < Huodong::Brokerage::BaseController
-	before_filter :find_brokerage_client, only: [:edit, :update]
-	before_filter :find_commission_types
-	before_filter :find_commission_types_enable
+	before_action :find_brokerage_client, only: [:edit, :update]
+	before_action :find_commission_types
+	before_action :find_commission_types_enable
 
 	def index
 		@total_brokerage_clients = current_site.brokerage_clients

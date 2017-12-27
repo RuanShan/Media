@@ -1,6 +1,6 @@
 module App
   class ConsumesController < BaseController
-    before_filter :block_non_wx_browser
+    before_action :block_non_wx_browser
 
     def show
       @activity = @site.activities.old_coupon.find params[:aid]

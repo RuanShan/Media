@@ -1,9 +1,9 @@
 class Biz::WebsiteMenusController < ApplicationController
   include WxReplyMessage
 
-  before_filter :require_wx_mp_user
-  before_filter :set_website#, only: [:index, :new]
-  before_filter :set_website_menu, only: [:show, :edit, :update, :destroy, :update_sorts, :sort, :sub_menu]
+  before_action :require_wx_mp_user
+  before_action :set_website#, only: [:index, :new]
+  before_action :set_website_menu, only: [:show, :edit, :update, :destroy, :update_sorts, :sort, :sub_menu]
 
 
   def index

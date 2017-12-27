@@ -1,5 +1,5 @@
 class Pro::CarTypesController < ApplicationController
-	before_filter :check_car_shop
+	before_action :check_car_shop
 
   def index
     # @total_car_types = @car_shop.car_types.normal.includes(:car_brand).includes(:car_catena).where('car_brands.status = ? and car_catenas.status = ?', CarBrand::NORMAL, CarCatena::NORMAL)

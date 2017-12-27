@@ -1,5 +1,5 @@
 class Pro::CollegeBranchesController < Pro::CollegesBaseController
-  before_filter :find_college_branch, only: [ :edit, :update, :destroy ]
+  before_action :find_college_branch, only: [ :edit, :update, :destroy ]
   
   def index
     @branches = @college.branches.order('id DESC').page(params[:page])

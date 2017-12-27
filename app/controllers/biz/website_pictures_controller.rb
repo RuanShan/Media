@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 class Biz::WebsitePicturesController < ApplicationController
   include WxReplyMessage
-  before_filter :set_website
-  before_filter :set_website_picture, only: [:show, :edit, :update, :destroy]
+  before_action :set_website
+  before_action :set_website_picture, only: [:show, :edit, :update, :destroy]
 
   def index
     return redirect_to websites_path, alert: '请先添加微信公共帐号' unless @website

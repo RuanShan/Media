@@ -1,6 +1,6 @@
 class Mobile::SharePhotoCommentsController < Mobile::BaseController
   layout 'mobile/share_photo'
-  before_filter :block_non_wx_browser, :find_photo
+  before_action :block_non_wx_browser, :find_photo
   
   def index
     @share_photo_comments = @share_photo.share_photo_comments

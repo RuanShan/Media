@@ -1,5 +1,5 @@
 class Pro::HotelsController < Pro::HotelsBaseController
-  skip_before_filter :check_hotel, only: [:index, :create]
+  skip_before_action :check_hotel, only: [:index, :create]
   def index
     @wx_mp_user = current_site.wx_mp_user
     return redirect_to wx_mp_users_path, alert: '请先添加微信公共帐号' unless @wx_mp_user

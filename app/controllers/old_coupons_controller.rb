@@ -1,5 +1,5 @@
 class OldCouponsController < ActivitiesController
-  before_filter :set_activity, only: [ :step2, :step3, :update ]
+  before_action :set_activity, only: [ :step2, :step3, :update ]
   def create
     @activity = current_site.activities.new(params[:activity])
     return render_with_alert form_name, TIME_ERROR_MESSAGE if activity_time_invalid?

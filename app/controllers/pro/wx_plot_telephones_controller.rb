@@ -1,7 +1,7 @@
 class Pro::WxPlotTelephonesController < Pro::WxPlotBaseController
 
-  before_filter :set_phone, only: [:edit, :update, :destroy]
-  before_filter :set_activity_wx_plot_telephone
+  before_action :set_phone, only: [:edit, :update, :destroy]
+  before_action :set_activity_wx_plot_telephone
   def index
     @search = @wx_plot.wx_plot_telephones.order('created_at DESC').search(params[:search])
     @phones = @search.result.page(params[:page])

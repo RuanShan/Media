@@ -1,5 +1,5 @@
 class Pro::WebsitePicturesController < WebsiteShared::WebsitePicturesController
-  before_filter :set_life_website
+  before_action :set_life_website
 
   
   private

@@ -1,6 +1,6 @@
 class Mobile::GovchatsController < Mobile::BaseController
   layout 'mobile/gov'
-  before_filter :set_activity
+  before_action :set_activity
 
   def index
 

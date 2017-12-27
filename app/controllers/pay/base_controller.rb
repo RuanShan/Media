@@ -1,8 +1,8 @@
 class Pay::BaseController < ApplicationController
-  # before_filter :require_wx_mp_user,  :require_privilege
-  before_filter :fetch_pay_account, expect: [:conditions]
+  # before_action :require_wx_mp_user,  :require_privilege
+  before_action :fetch_pay_account, expect: [:conditions]
 
-  before_filter do
+  before_action do
     @partialLeftNav = "/layouts/partialLeftSys"
   end
 

@@ -1,7 +1,7 @@
 class Mobile::CarShopsController < Mobile::BaseController
   layout 'mobile/car'
-  before_filter :get_shop
-  before_filter :redirect_unless_wx_user_present,  only: [:car_bespeak, :user_bespeak]
+  before_action :get_shop
+  before_action :redirect_unless_wx_user_present,  only: [:car_bespeak, :user_bespeak]
 
   #车系列表
   def index

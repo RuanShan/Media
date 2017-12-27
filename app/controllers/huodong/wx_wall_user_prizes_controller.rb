@@ -1,6 +1,6 @@
 class Huodong::WxWallUserPrizesController < ApplicationController
 
-  before_filter :get_wall
+  before_action :get_wall
 
   def index
     @search = @wx_wall.wx_wall_prizes_wx_wall_users.show.search(params[:search])

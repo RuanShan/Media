@@ -1,8 +1,8 @@
 class Biz::GroupCategoriesController < Biz::GroupBaseController
   include Biz::GroupCategoriesHelper
 
-  before_filter :set_group, only: [:index, :new, :move_higher, :move_lower]
-  before_filter :set_group_category, only: [:show, :edit, :update,
+  before_action :set_group, only: [:index, :new, :move_higher, :move_lower]
+  before_action :set_group_category, only: [:show, :edit, :update,
                                            :destroy, :move_higher, :move_lower]
   def index
     @current_titles << '分类管理'

@@ -1,7 +1,7 @@
 class Pro::BookingsController < Pro::BookingBaseController
-  skip_before_filter :require_booking, only: [:index]
+  skip_before_action :require_booking, only: [:index]
 
-  before_filter :load_booking, only: [:edit, :update, :destroy, :show]
+  before_action :load_booking, only: [:edit, :update, :destroy, :show]
 
   def index
     @bookings = current_site.bookings.page(params[:page])

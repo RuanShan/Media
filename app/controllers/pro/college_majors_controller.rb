@@ -1,5 +1,5 @@
 class Pro::CollegeMajorsController < Pro::CollegesBaseController
-  before_filter :find_college_major, only: [ :edit, :update, :destroy ]
+  before_action :find_college_major, only: [ :edit, :update, :destroy ]
   def index
     @search = @college.majors.search(params[:search])
     @majors = @search.result.order('id DESC').page(params[:page])

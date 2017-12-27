@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 class Pro::ShopTableOrdersController < Pro::ShopBaseController
-  before_filter :find_record, only: [:show, :edit, :update, :destroy, :complete, :cancel, :print]
+  before_action :find_record, only: [:show, :edit, :update, :destroy, :complete, :cancel, :print]
 
   def index
     params[:search] ||= {}

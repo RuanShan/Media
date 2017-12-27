@@ -1,5 +1,5 @@
 class Pro::CollegeTeachersController < Pro::CollegesBaseController
-  before_filter :find_college_teacher, only: [ :edit, :update, :destroy ]
+  before_action :find_college_teacher, only: [ :edit, :update, :destroy ]
 
   def index
     @search = @college.teachers.search(params[:search])

@@ -1,5 +1,5 @@
 class Biz::VipController < ApplicationController
-  before_filter :require_vip_card
+  before_action :require_vip_card
 
   private
   def require_vip_card

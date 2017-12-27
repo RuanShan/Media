@@ -1,5 +1,5 @@
 class QrcodeChannelTypesController < ApplicationController
-  before_filter :require_wx_mp_user#, :mp_user_is_sync
+  before_action :require_wx_mp_user#, :mp_user_is_sync
 
   def index
     @qrcode_channel_types = current_site.qrcode_channel_types.normal.latest.page(params[:page])

@@ -1,8 +1,8 @@
 # encoding: utf-8
 class PaymentsController < ApplicationController
-  skip_before_filter *ADMIN_FILTERS, :only => [:callback, :notify, :merchant, :alipayapi,:payment_request]
+  skip_before_action *ADMIN_FILTERS, :only => [:callback, :notify, :merchant, :alipayapi,:payment_request]
   protect_from_forgery :except => [:create, :callback, :notify, :merchant, :alipayapi,:payment_request]
-  # skip_before_filter :verify_authenticity_token, :except => [:create]
+  # skip_before_action :verify_authenticity_token, :except => [:create]
   layout 'application_gm'
 
   def callback

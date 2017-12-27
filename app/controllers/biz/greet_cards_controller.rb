@@ -1,7 +1,7 @@
 class Biz::GreetCardsController < ApplicationController
-  skip_before_filter :verify_authenticity_token, only: [:upload]
-  before_filter :find_greet, except: [:help]
-  before_filter :check_activity, except: [:help]
+  skip_before_action :verify_authenticity_token, only: [:upload]
+  before_action :find_greet, except: [:help]
+  before_action :check_activity, except: [:help]
 
   def index
     @cards = @greet.greet_cards.order('id ASC').page(params[:page]).per(17)

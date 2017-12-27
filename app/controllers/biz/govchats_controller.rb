@@ -1,6 +1,6 @@
 class Biz::GovchatsController < ApplicationController
-  before_filter :set_activity
-  before_filter :find_chat, only: [:reply_modal, :reply, :author_modal, :remove, :archive]
+  before_action :set_activity
+  before_action :find_chat, only: [:reply_modal, :reply, :author_modal, :remove, :archive]
 
   def conditions
     @search = @activity.custom_fields.normal.search(params[:search])

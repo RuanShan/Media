@@ -1,5 +1,5 @@
 class Mobile::BusinessShopsController < Mobile::BaseController
-  before_filter :find_website, :find_business_shop, :find_vip_user
+  before_action :find_website, :find_business_shop, :find_vip_user
   layout "mobile/business_shops"
 
   def show

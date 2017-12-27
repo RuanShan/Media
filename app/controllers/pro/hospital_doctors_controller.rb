@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 class Pro::HospitalDoctorsController < Pro::HospitalBaseController
-  before_filter :get_hospital
+  before_action :get_hospital
 
   def index
     @search = @hospital.hospital_doctors.search(params[:search])

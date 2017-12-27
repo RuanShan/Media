@@ -2,11 +2,11 @@ class Mobile::WxPlotsController < Mobile::BaseController
 
   layout 'mobile/wx_plot'
 
-  before_filter :require_wx_user, only: [:repair_complains, :repair_complain, :new_repair_complain, :create_repair_complain, :cancel_repair_complain, :repair_complain_message]
-  before_filter :set_wx_plot
-  before_filter :set_wx_plot_repair_complains, only: [:repair_complains, :repair_complain, :new_repair_complain, :create_repair_complain, :cancel_repair_complain, :repair_complain_message]
-  before_filter :set_wx_plot_repair_complain, only: [:repair_complain, :cancel_repair_complain, :repair_complain_message]
-  before_filter :set_site_website, only: [:bulletins, :bulletin]
+  before_action :require_wx_user, only: [:repair_complains, :repair_complain, :new_repair_complain, :create_repair_complain, :cancel_repair_complain, :repair_complain_message]
+  before_action :set_wx_plot
+  before_action :set_wx_plot_repair_complains, only: [:repair_complains, :repair_complain, :new_repair_complain, :create_repair_complain, :cancel_repair_complain, :repair_complain_message]
+  before_action :set_wx_plot_repair_complain, only: [:repair_complain, :cancel_repair_complain, :repair_complain_message]
+  before_action :set_site_website, only: [:bulletins, :bulletin]
 
   def bulletins
     @share_image = @wx_plot.cover_pic.present? ? @wx_plot.cover_pic_url : @wx_plot.activity_wx_plot_bulletin.try(:qiniu_pic_url)

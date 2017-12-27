@@ -1,8 +1,8 @@
 class KeywordsController < ApplicationController
 
-  before_filter :load_keyword, only: [:show, :edit, :update, :destroy]
+  before_action :load_keyword, only: [:show, :edit, :update, :destroy]
 
-  before_filter do
+  before_action do
     @partialLeftNav = "/layouts/partialLeftWeixin"
   end
 

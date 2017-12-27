@@ -1,5 +1,5 @@
 class WebsiteShared::WebsiteBaseController < ApplicationController
-  before_filter :require_wx_mp_user
+  before_action :require_wx_mp_user
 
   private
     def set_life_website

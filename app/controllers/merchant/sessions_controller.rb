@@ -1,5 +1,5 @@
 class Merchant::SessionsController < ApplicationController
-  skip_before_filter *ADMIN_FILTERS
+  skip_before_action *ADMIN_FILTERS
 
   def new
     render layout: false

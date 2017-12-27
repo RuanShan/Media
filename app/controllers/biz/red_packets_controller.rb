@@ -1,7 +1,7 @@
 class Biz::RedPacketsController < ApplicationController
 
-  before_filter :find_payment_setting, only: :payment_setting_new
-  before_filter :find_red_packet, only: [:show, :edit, :update, :destroy]
+  before_action :find_payment_setting, only: :payment_setting_new
+  before_action :find_red_packet, only: [:show, :edit, :update, :destroy]
 
   def index
     @search = current_site.red_packets.normal.where("type is not null").search(params[:search])

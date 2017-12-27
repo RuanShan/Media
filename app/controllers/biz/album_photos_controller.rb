@@ -1,8 +1,8 @@
 class Biz::AlbumPhotosController < ApplicationController
   layout 'application_gm'
-  skip_before_filter :verify_authenticity_token, only: [:upload]
-  before_filter :find_album
-  before_filter :check_activity
+  skip_before_action :verify_authenticity_token, only: [:upload]
+  before_action :find_album
+  before_action :check_activity
 
 
   def index

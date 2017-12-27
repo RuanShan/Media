@@ -1,7 +1,7 @@
 module App
   class HouseMarketsController < BaseController
     layout "app/house_market"
-    before_filter :find_house, :require_wx_user
+    before_action :find_house, :require_wx_user
 
     def new
       @house_bespeak = HouseBespeak.new(user_id: session[:user_id])

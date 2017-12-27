@@ -1,7 +1,7 @@
 class Pro::CollegesController < Pro::CollegesBaseController
-  skip_before_filter :require_college, only: [:index, :create, :show]
-  before_filter :validate_college_info, only: :update
-  before_filter :validate_college_activity, only: :message
+  skip_before_action :require_college, only: [:index, :create, :show]
+  before_action :validate_college_info, only: :update
+  before_action :validate_college_activity, only: :message
 
   def index
     @college = current_site.college || College.new

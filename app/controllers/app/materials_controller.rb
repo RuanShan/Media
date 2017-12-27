@@ -1,8 +1,8 @@
 module App
   class MaterialsController < BaseController
-    skip_before_filter :load_data, :auth
+    skip_before_action :load_data, :auth
   
-    before_filter :find_material, only: [:show, :blue]
+    before_action :find_material, only: [:show, :blue]
 
     def show
       render layout: false

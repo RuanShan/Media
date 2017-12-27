@@ -1,5 +1,5 @@
 class App::FightController < App::BaseController
-  before_filter :block_non_wx_browser
+  before_action :block_non_wx_browser
 
   layout 'app/fight'
 

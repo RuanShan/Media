@@ -1,8 +1,8 @@
 # -*- encoding : utf-8 -*-
 class AccountsController < ApplicationController
-  skip_before_filter *ADMIN_FILTERS, only: [:new, :create]
-  before_filter :set_account, only: [:edit, :update_mobile, :update]
-  skip_before_filter :check_auth_mobile, only: [:send_sms, :update_mobile]
+  skip_before_action *ADMIN_FILTERS, only: [:new, :create]
+  before_action :set_account, only: [:edit, :update_mobile, :update]
+  #skip_before_action :check_auth_mobile, only: [:send_sms, :update_mobile]
 
   def index
     @partialLeftNav = "/layouts/partialLeftSys"

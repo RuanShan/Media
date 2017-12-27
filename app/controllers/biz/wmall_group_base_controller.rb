@@ -1,6 +1,6 @@
 class Biz::WmallGroupBaseController < Biz::GroupBaseController
-  skip_before_filter :sso_by_cas, :required_sign_in, :set_current_site, :filter_out_shop_branch_sub_account, :require_group
-  before_filter :login_from_api, :require_sign_in_for_group, :cors_set_access_control_headers
+  skip_before_action :sso_by_cas, :required_sign_in, :set_current_site, :filter_out_shop_branch_sub_account, :require_group
+  before_action :login_from_api, :require_sign_in_for_group, :cors_set_access_control_headers
 
   private
 

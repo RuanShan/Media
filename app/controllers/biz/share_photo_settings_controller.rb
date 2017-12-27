@@ -1,6 +1,6 @@
 class Biz::SharePhotoSettingsController < ApplicationController
 
-  before_filter :set_share_photo_setting, except: :help
+  before_action :set_share_photo_setting, except: :help
 
   def index
     return redirect_to wx_mp_users_path, alert: '请先添加微信公共帐号' unless current_site.wx_mp_user

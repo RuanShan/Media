@@ -1,7 +1,7 @@
 class Biz::GroupsController < Biz::GroupBaseController
-  skip_before_filter :require_group, only: [:index]
+  skip_before_action :require_group, only: [:index]
 
-  before_filter :set_group, except: [:items, :orders]
+  before_action :set_group, except: [:items, :orders]
 
   def index
   end

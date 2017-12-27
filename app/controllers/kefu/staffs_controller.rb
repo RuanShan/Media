@@ -1,6 +1,6 @@
 module Kefu
   class StaffsController < ApplicationController
-    before_filter :load_staffs, only: [:index, :edit, :update, :destroy]
+    before_action :load_staffs, only: [:index, :edit, :update, :destroy]
 
     def index
       # @staffs = current_site.staffs

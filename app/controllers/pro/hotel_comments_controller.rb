@@ -1,6 +1,6 @@
 class Pro::HotelCommentsController < Pro::HotelsBaseController
-  before_filter :check_hotel
-  before_filter :set_hotel_comment, only: [:show, :edit, :update, :destroy]
+  before_action :check_hotel
+  before_action :set_hotel_comment, only: [:show, :edit, :update, :destroy]
 
   def index
 

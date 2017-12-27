@@ -1,5 +1,5 @@
 class Pro::BookingAdsController < Pro::BookingBaseController
-  before_filter :set_booking_ad, only: [:edit, :update, :destroy]
+  before_action :set_booking_ad, only: [:edit, :update, :destroy]
 
   def index
     @pictures = @booking.booking_ads

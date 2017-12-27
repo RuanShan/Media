@@ -1,5 +1,5 @@
 class WebsiteShared::WebsitePopupMenusController < WebsiteShared::WebsiteBaseController
-  before_filter :find_pop_menu, only: [:show, :edit, :update, :destroy]
+  before_action :find_pop_menu, only: [:show, :edit, :update, :destroy]
 
   def index
     find_pop_menus

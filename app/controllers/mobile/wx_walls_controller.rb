@@ -1,6 +1,6 @@
 class Mobile::WxWallsController < Mobile::BaseController
-  skip_before_filter :auth, :authorize
-  before_filter :block_non_wx_browser
+  skip_before_action :auth, :authorize
+  before_action :block_non_wx_browser
 
   def show
     @wx_wall = @site.wx_walls.find params[:id]

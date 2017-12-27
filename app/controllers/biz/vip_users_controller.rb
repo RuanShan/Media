@@ -1,6 +1,6 @@
 class Biz::VipUsersController < Biz::VipController
-  before_filter :fetch_activity_and_vip_card
-  before_filter :find_vip_user, except: [:index, :pending, :rejected, :deleted, :freezed, :inactive]
+  before_action :fetch_activity_and_vip_card
+  before_action :find_vip_user, except: [:index, :pending, :rejected, :deleted, :freezed, :inactive]
 
   def index
     @total_vip_users  = current_site.vip_users.sorted.normal.includes(:vip_grade)

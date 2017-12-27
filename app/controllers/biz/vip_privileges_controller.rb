@@ -1,8 +1,8 @@
 class Biz::VipPrivilegesController < Biz::VipController
   
-  before_filter :set_vip_card
-  before_filter :find_vip_privilege, only: [:show, :edit, :update, :destroy, :stop]
-  before_filter :find_point_types, only: [:new, :edit, :create, :update]
+  before_action :set_vip_card
+  before_action :find_vip_privilege, only: [:show, :edit, :update, :destroy, :stop]
+  before_action :find_point_types, only: [:new, :edit, :create, :update]
 
   def index
     @vip_privileges = @vip_card.vip_privileges.show.order('created_at DESC').page(params[:page])

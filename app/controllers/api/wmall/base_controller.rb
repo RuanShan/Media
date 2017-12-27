@@ -1,6 +1,6 @@
 class Api::Wmall::BaseController < ActionController::Base
-  before_filter :set_current_objs
-  before_filter :set_headers
+  before_action :set_current_objs
+  before_action :set_headers
 
   helper_method :current_user
   helper_method :current_wx_user

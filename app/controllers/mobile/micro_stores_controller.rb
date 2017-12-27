@@ -1,6 +1,6 @@
 class Mobile::MicroStoresController < Mobile::BaseController
-  skip_before_filter :auth, :authorize, except: [:map]
-  before_filter :update_wx_user_location
+  skip_before_action :auth, :authorize, except: [:map]
+  before_action :update_wx_user_location
   layout "mobile/micro_stores"
 
   def index

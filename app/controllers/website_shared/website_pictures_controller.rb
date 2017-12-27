@@ -1,7 +1,7 @@
 class WebsiteShared::WebsitePicturesController < WebsiteShared::WebsiteBaseController
 
-  before_filter :set_life_website
-  before_filter :find_picture, only: [:edit, :show, :update, :destroy]
+  before_action :set_life_website
+  before_action :find_picture, only: [:edit, :show, :update, :destroy]
 
   def index
     @pictures = @website.website_pictures.page(params[:page]).per(8)

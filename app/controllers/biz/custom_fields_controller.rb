@@ -1,5 +1,5 @@
 class Biz::CustomFieldsController < ApplicationController
-  before_filter :fetch_field
+  before_action :fetch_field
 
   layout 'application_pop'
 

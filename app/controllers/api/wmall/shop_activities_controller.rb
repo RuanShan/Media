@@ -1,7 +1,7 @@
 class Api::Wmall::ShopActivitiesController < Api::Wmall::BaseController
   # GET /api/wmall/shop_activities
   # GET /api/wmall/shop_activities.json
-  before_filter :set_shop
+  before_action :set_shop
 
   def index
     @activities = @shop.activities

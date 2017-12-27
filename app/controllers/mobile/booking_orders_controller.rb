@@ -1,9 +1,9 @@
 class Mobile::BookingOrdersController < Mobile::BaseController
   layout "mobile/booking"
 
-  before_filter :set_booking_order, only: [:show, :update, :destroy, :cancel]
-  before_filter :set_booking_item, only: [:new, :create]
-  before_filter :set_payment_types, only: [:show, :new]
+  before_action :set_booking_order, only: [:show, :update, :destroy, :cancel]
+  before_action :set_booking_item, only: [:new, :create]
+  before_action :set_payment_types, only: [:show, :new]
 
   def index
     @booking = @site.bookings.where(id: params[:booking_id]).first

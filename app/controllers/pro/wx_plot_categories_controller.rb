@@ -1,7 +1,7 @@
 class Pro::WxPlotCategoriesController < Pro::WxPlotBaseController
 
   layout 'application_pop'
-  before_filter :set_category, only: [:edit, :update, :destroy]
+  before_action :set_category, only: [:edit, :update, :destroy]
 
   def index
     @categories = @wx_plot.wx_plot_categories.where(category: params[:category].to_s.split(',').map(&:to_i))

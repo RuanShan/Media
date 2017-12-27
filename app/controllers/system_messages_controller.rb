@@ -1,6 +1,6 @@
 class SystemMessagesController < ApplicationController
-  skip_before_filter *ADMIN_FILTERS, only: [:api]
-  before_filter :set_message, only: [:update, :show, :destroy, :read, :ajax_update]
+  skip_before_action *ADMIN_FILTERS, only: [:api]
+  before_action :set_message, only: [:update, :show, :destroy, :read, :ajax_update]
 
   def index
     current_site.update_all_system_messages

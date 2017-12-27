@@ -1,5 +1,5 @@
 class Huodong::GuessQuestionsController < FightQuestionsController         #  guess_questions  from  fight_questions
-  before_filter :set_help_anchor
+  before_action :set_help_anchor
   def destroy
     @guess_question = scoped_questions.find(params[:id])
       if @guess_question.delete!

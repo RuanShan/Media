@@ -1,5 +1,5 @@
 class Pro::BookingItemsController < Pro::BookingBaseController
-  before_filter :set_booking_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_booking_item, only: [:show, :edit, :update, :destroy]
 
   def index
     @booking_items = Kaminari.paginate_array(@booking.show_items(params)).page(params[:page])

@@ -1,7 +1,7 @@
 module App
   class HouseSellersController < BaseController
     layout "app/house_market"
-    before_filter :find_house
+    before_action :find_house
 
     private
     def find_house

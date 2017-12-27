@@ -1,6 +1,6 @@
 class LeavingMessagesController < ApplicationController
-  before_filter :set_activity, :set_message
-  skip_before_filter :auth, :authorize
+  before_action :set_activity, :set_message
+  skip_before_action :auth, :authorize
 
   def index
     @search = @messages.where(parent_id: nil).search(params[:search])

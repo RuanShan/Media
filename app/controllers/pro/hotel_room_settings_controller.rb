@@ -1,7 +1,7 @@
 class Pro::HotelRoomSettingsController < Pro::HotelsBaseController
-  before_filter :check_hotel
-  before_filter :set_hotel_branches, only: [:index, :new, :edit]
-  before_filter :set_hotel_room_setting, only: [:show, :edit, :update, :destroy]
+  before_action :check_hotel
+  before_action :set_hotel_branches, only: [:index, :new, :edit]
+  before_action :set_hotel_room_setting, only: [:show, :edit, :update, :destroy]
 
   def index
     @total_hotel_room_settings = @hotel.hotel_room_settings.normal

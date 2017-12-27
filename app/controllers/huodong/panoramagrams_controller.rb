@@ -1,5 +1,5 @@
 class Huodong::PanoramagramsController < ApplicationController
-    before_filter :find_panoramagram, only: [ :edit, :update, :destroy, :item_activity, :item_activity_create, :item_activity_update ]
+    before_action :find_panoramagram, only: [ :edit, :update, :destroy, :item_activity, :item_activity_create, :item_activity_update ]
     
     def index
     @activity = current_site.activities.where(activity_type_id:74, status:1, activityable_type: nil).first_or_initialize

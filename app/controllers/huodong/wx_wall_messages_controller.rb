@@ -1,7 +1,7 @@
 class Huodong::WxWallMessagesController < ApplicationController
 
-  before_filter :get_wall
-  before_filter :find_wx_wall_message, only: [ :destroy, :pull_black, :allow ]
+  before_action :get_wall
+  before_action :find_wx_wall_message, only: [ :destroy, :pull_black, :allow ]
 
   def index
     @type = params[:type].presence || "normal"

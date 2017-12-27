@@ -1,5 +1,5 @@
 class Pro::BookingBaseController < ApplicationController
-  before_filter :require_industry, :require_booking
+  before_action :require_industry, :require_booking
 
   private
 

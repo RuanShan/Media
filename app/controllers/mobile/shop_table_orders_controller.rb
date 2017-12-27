@@ -2,7 +2,7 @@
 class Mobile::ShopTableOrdersController < Mobile::BaseController
   layout 'mobile/shops'
 
-  before_filter :require_wx_user
+  before_action :require_wx_user
 
   def index
     @shop_table_orders = ShopTableOrder.where(user_id: session[:user_id]).order('created_at desc')

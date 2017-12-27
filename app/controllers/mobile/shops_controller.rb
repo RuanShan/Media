@@ -1,7 +1,7 @@
 class Mobile::ShopsController < Mobile::BaseController
   layout 'mobile/food'
 
-  before_filter :require_wx_user
+  before_action :require_wx_user
 
   def index
     if @site

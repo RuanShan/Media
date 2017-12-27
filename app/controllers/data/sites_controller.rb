@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class Data::SitesController < ApplicationController
-  before_filter only: :index do
+  before_action only: :index do
     @partialLeftNav = "/layouts/partialLeftDC"
   end
 

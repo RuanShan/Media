@@ -1,6 +1,6 @@
 class Api::V1::VipsController < Api::BaseController
-  before_filter :cors_set_access_control_headers
-  before_filter :set_users, except: [:pay, :spm_points, :spm_vip]
+  before_action :cors_set_access_control_headers
+  before_action :set_users, except: [:pay, :spm_points, :spm_vip]
   EC_SOURCE, HOTEL_SOURCE, SPM_SOURCE = 'ec', 'hotel'
   # 会员卡余额支付接口 site_id, open_id, out_trade_no, amount, subject, body, source, trade_token
   def pay

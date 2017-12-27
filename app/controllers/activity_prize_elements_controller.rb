@@ -1,5 +1,5 @@
 class ActivityPrizeElementsController < ApplicationController
-  before_filter :find_element, except: [:create]
+  before_action :find_element, except: [:create]
 
   def create
     @element = ActivityPrizeElement.new(activity_id: params[:activity_id], name: '新元素', pic_key: ActivityPrizeElement.default_pic_key)

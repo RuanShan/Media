@@ -1,7 +1,7 @@
 class Mobile::RecommendsController < Mobile::BaseController
   layout 'mobile/recommends'
-  before_filter :block_non_wx_browser
-  before_filter :find_activity, :check_subscribe, :find_participate
+  before_action :block_non_wx_browser
+  before_action :find_activity, :check_subscribe, :find_participate
 
   def index
     @possible_prize = nil

@@ -1,5 +1,5 @@
 class Biz::WbbsCommunitiesController < ApplicationController
-  before_filter :fetch_activity_and_wbbs_community, except: [:index, :new, :create]
+  before_action :fetch_activity_and_wbbs_community, except: [:index, :new, :create]
 
   def new
     @activity = current_site.new_activity_for_wbbs_community

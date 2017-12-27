@@ -1,6 +1,6 @@
 class TenpayController < ApplicationController
 
-  skip_before_filter *ADMIN_FILTERS
+  skip_before_action *ADMIN_FILTERS
 
   # 财付通回调 验证签名
   def callback

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 class Mobile::HospitalDoctorsController < Mobile::BaseController
   layout 'mobile/hospital'
-  before_filter :set_branch
+  before_action :set_branch
 
   def index
     department_id = params[:department_id] if params[:department_id]

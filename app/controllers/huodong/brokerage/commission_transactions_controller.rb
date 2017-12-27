@@ -1,5 +1,5 @@
 class Huodong::Brokerage::CommissionTransactionsController < ApplicationController
-  before_filter :find_broker
+  before_action :find_broker
 
   def index
     @brokerage_commission_transactions = current_site.brokerage_commission_transactions.where(broker_id: params[:broker_id]).order("id DESC").page(params[:page])

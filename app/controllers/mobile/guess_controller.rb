@@ -1,9 +1,9 @@
 class Mobile::GuessController < Mobile::BaseController
   layout 'mobile/guess'
-  before_filter :find_activity, :check_subscribe, :find_activity_user
-  before_filter :find_participations, only: [:detail, :create_participation]
-  before_filter :find_guess_activity_question, only: [:detail, :create_participation]
-  before_filter :check_activity_status, :check_wx_user_status, :check_vip_user_status, :check_guess_status, only: [:detail, :create_participation]
+  before_action :find_activity, :check_subscribe, :find_activity_user
+  before_action :find_participations, only: [:detail, :create_participation]
+  before_action :find_guess_activity_question, only: [:detail, :create_participation]
+  before_action :check_activity_status, :check_wx_user_status, :check_vip_user_status, :check_guess_status, only: [:detail, :create_participation]
 
   def index
     @questions = @activity.guess_activity_questions.visible

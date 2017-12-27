@@ -1,7 +1,7 @@
 class Mobile::GroupCommentsController < Mobile::BaseController
   layout "mobile/group"
 
-  before_filter :set_item_and_comments, :except => [:create]
+  before_action :set_item_and_comments, :except => [:create]
 
   def index
     @body_class = "shopcar comment"

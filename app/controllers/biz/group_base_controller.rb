@@ -1,6 +1,6 @@
 class Biz::GroupBaseController < ApplicationController
   layout 'biz/group'
-  before_filter :require_group, :set_seo
+  before_action :require_group, :set_seo
 
   private
 

@@ -1,8 +1,8 @@
 module App
   class ActivityGroupsController < BaseController
     layout 'app/activity_groups'
-    before_filter :require_activity, only: [:index, :show, :new]
-    before_filter :require_wx_user
+    before_action :require_activity, only: [:index, :show, :new]
+    before_action :require_wx_user
 
     def index
       @consume_code = get_consume!(@activity) if @activity.deal_success?

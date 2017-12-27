@@ -1,7 +1,7 @@
 class PlatformsController < ApplicationController
-  skip_before_filter :check_auth_mobile
+  #skip_before_action :check_auth_mobile
 
-  before_filter do
+  before_action do
     @partialLeftNav = "/layouts/partialLeftWeixin"
   end
 

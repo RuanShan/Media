@@ -1,7 +1,7 @@
 class Mobile::WbbsTopicsController < Mobile::BaseController
   layout 'app'
-  before_filter :block_non_wx_browser, :set_class_name, :find_wbbs_community
-  before_filter :find_wbbs_topic, only: [ :show, :vote_up, :create_reply, :report, :load_replies, :display_photo ]
+  before_action :block_non_wx_browser, :set_class_name, :find_wbbs_community
+  before_action :find_wbbs_topic, only: [ :show, :vote_up, :create_reply, :report, :load_replies, :display_photo ]
 
   def index
     if params[:receiver_id]

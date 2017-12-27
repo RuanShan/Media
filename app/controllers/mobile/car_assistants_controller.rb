@@ -1,6 +1,6 @@
 class Mobile::CarAssistantsController < Mobile::BaseController
   layout 'mobile/car'
-  before_filter :get_shop
+  before_action :get_shop
 
   def index
     @assistants = Assistant.enabled.cars.order('sort ASC')

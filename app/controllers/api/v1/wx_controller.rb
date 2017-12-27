@@ -1,8 +1,8 @@
 class Api::V1::WxController < Api::BaseController
   include Api::WxHelper
 
-  before_filter :cors_set_access_control_headers
-  before_filter :find_objects, only: [:jsapi_config]
+  before_action :cors_set_access_control_headers
+  before_action :find_objects, only: [:jsapi_config]
 
   # http://www.winwemedia.com/v1/wx/token?app_id=111
   def token

@@ -1,6 +1,6 @@
 class Biz::WmallGroupsController < Biz::WmallGroupBaseController
 
-  before_filter :set_group, only:[:index]
+  before_action :set_group, only:[:index]
 
   def index
     @activity =  @group.activity

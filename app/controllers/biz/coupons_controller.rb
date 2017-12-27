@@ -1,9 +1,9 @@
 class Biz::CouponsController < ApplicationController
-  before_filter :set_activity
-  before_filter :set_coupons, except: [:consumes, :reports, :offline_consumes]
-  before_filter :find_coupon, only: [:edit, :show, :update, :start, :stop,
+  before_action :set_activity
+  before_action :set_coupons, except: [:consumes, :reports, :offline_consumes]
+  before_action :find_coupon, only: [:edit, :show, :update, :start, :stop,
                                      :move_up, :move_down, :new, :create, :destroy]
-  before_filter :find_shop_branches, only: [:new, :update, :create, :edit, :show]
+  before_action :find_shop_branches, only: [:new, :update, :create, :edit, :show]
   def index
   end
 

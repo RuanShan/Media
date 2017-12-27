@@ -1,7 +1,7 @@
 class Mobile::UnfoldsController < Mobile::BaseController
   layout 'mobile/unfolds'
-  before_filter :block_non_wx_browser
-  before_filter :check_subscribe, :find_activity,  :find_participate,  :find_invites,  :find_prize
+  before_action :block_non_wx_browser
+  before_action :check_subscribe, :find_activity,  :find_participate,  :find_invites,  :find_prize
 
   def index
     if params[:origin_openid].present? && params[:origin_openid] != @wx_user.openid

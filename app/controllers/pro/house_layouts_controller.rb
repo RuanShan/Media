@@ -1,5 +1,5 @@
 class Pro::HouseLayoutsController < Pro::HousesBaseController
-  before_filter :find_house
+  before_action :find_house
 
   def index
     @activity = @house.activity

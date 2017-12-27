@@ -1,5 +1,5 @@
 class Api::V1::VipPackagesController < ActionController::Base
-	before_filter :cors_set_access_control_headers
+	before_action :cors_set_access_control_headers
 	# 会员卡套餐接口，输入参数: wx_mp_user_open_id
   # 成功返回的参数: {id:套餐id,package_name:套餐名称,items_name:服务名称,price:价格,old_price:原价,expiry_num:几个月过期}
   # demo: http://localhost:3000/v1/vip_packages/get_vip_packages_api?mp_user_open_id=gh_db4ac511bbf0

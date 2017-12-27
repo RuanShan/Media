@@ -1,14 +1,14 @@
 # -*- encoding : utf-8 -*-
 class OperatingReportsController < ApplicationController
-  before_filter :require_wx_mp_user
+  before_action :require_wx_mp_user
 
-  before_filter do
+  before_action do
     @partialLeftNav = "/layouts/partialLeftDC"
   end
   # skip_filter :login_required
 
-  before_filter :set_dates, only: [:index, :subscribes, :keyword]
-  before_filter :set_data, only: [:index, :subscribes, :keyword]
+  before_action :set_dates, only: [:index, :subscribes, :keyword]
+  before_action :set_data, only: [:index, :subscribes, :keyword]
 
   def index
     @high_chart = {"文本请求" => {}, "图片请求" => {}, "事件请求" => {}, "全部请求" => {}}

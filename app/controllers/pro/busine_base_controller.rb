@@ -1,5 +1,5 @@
 class Pro::BusineBaseController < ApplicationController
-  before_filter :require_wx_mp_user,  :require_industry, :require_website
+  before_action :require_wx_mp_user,  :require_industry, :require_website
 
   private
   def require_website

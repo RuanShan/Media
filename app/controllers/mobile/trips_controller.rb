@@ -1,5 +1,5 @@
 class Mobile::TripsController < Mobile::BaseController
-  before_filter :load_trip
+  before_action :load_trip
 
   def index
     @body_class = 'index'

@@ -1,6 +1,7 @@
 source 'http://gems.ruby-china.org/'
 
-gem 'rails', '4.2'
+gem 'rails', '~> 5.0.6'
+#gem 'rails', '4.2'
 #gem 'rails', '3.2.14'
 
 gem 'sass-rails', '~> 5.0'
@@ -8,12 +9,13 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2.0'
 
 
-gem 'activerecord-mysql2-adapter'
+#gem 'activerecord-mysql2-adapter'
 gem 'mysql2', '0.4.10'
 gem 'jquery-rails'
 gem 'jquery-ui-rails', '4.0.2'
-gem 'rails-i18n'
-gem 'client_side_validations', '~> 4.2.12'
+#gem 'rails-i18n'
+gem 'client_side_validations','~> 10.1.0'
+#gem 'client_side_validations', '~> 4.2.12'
 # gem 'cancan'
 gem 'kaminari'
 gem 'spreadsheet'
@@ -44,13 +46,14 @@ gem "ckeditor", "4.0.4"
 
 gem 'rest-client'
 
-gem 'squeel'
+#gem 'squeel'
 gem "exception_logger", :require => "exception_logger", :git => "git://github.com/liangwenke/exception_logger.git"
 gem 'exception_notification'
 
-gem "audited-activerecord"
+#gem "audited-activerecord","~> 4.2.2"
+gem "audited", "~> 4.5"
 
-# gem 'chronic', :git => 'git@github.com:mojombo/chronic.git'
+# Whenever is a Ruby gem that provides a clear syntax for writing and deploying cron jobs.
 gem 'whenever', :require => false
 
 # Bunny, a Ruby RabbitMQ Client
@@ -75,7 +78,8 @@ gem "jasl_tenpay", :git => "git://github.com/teddy-ma/tenpay.git"
 
 gem 'sidekiq'
 gem 'sidekiq-status'
-gem 'sinatra', '>= 1.3.0', :require => nil
+#gem 'sinatra', '~> 1.3.0', :require => nil
+gem 'sinatra', '~> 2.0.0', :require => nil
 
 #gem 'thin'
 gem 'faye'
@@ -83,7 +87,7 @@ gem 'faye'
 group :development do
   gem 'sqlite3'
   # gem 'rails_best_practices'
-  gem 'quiet_assets'
+  #gem 'quiet_assets'
   #gem 'better_errors'
   gem 'binding_of_caller'
   gem 'pry-rails'
@@ -124,7 +128,7 @@ gem "select2-rails"
 
 # # This gem adds a video converter using ffmpeg and the streamio-ffmpeg rubygem.
 # # # Remember to install ffmpeg in your server
-gem 'carrierwave-video'
+# gem 'carrierwave-video'
 
 # To use Jbuilder templates for JSON
 gem 'jbuilder'

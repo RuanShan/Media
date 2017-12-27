@@ -1,6 +1,6 @@
 class Biz::RecommendsController < ApplicationController
-  before_filter :find_activity, except: [:create, :consumes, :chart, :find_consume, :use_consume]
-  before_filter :set_coupons_and_gifts,  only: [:settings]
+  before_action :find_activity, except: [:create, :consumes, :chart, :find_consume, :use_consume]
+  before_action :set_coupons_and_gifts,  only: [:settings]
   def new
   end
 

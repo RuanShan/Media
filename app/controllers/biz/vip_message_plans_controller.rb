@@ -1,5 +1,5 @@
 class Biz::VipMessagePlansController < Biz::VipController
-  before_filter :find_vip_message_plan, only: [:edit, :update, :show]
+  before_action :find_vip_message_plan, only: [:edit, :update, :show]
 
   def index
     @search            = current_site.vip_card.vip_message_plans.order('created_at DESC').search(params[:search])

@@ -1,5 +1,5 @@
 class Huodong::ShakesController < ApplicationController
-	before_filter :find_shake, except: [ :index, :new, :create, :shake_round, :shake_round_show ]
+	before_action :find_shake, except: [ :index, :new, :create, :shake_round, :shake_round_show ]
 	
 	def index
 		@total_shakes = current_site.shakes.show.order('created_at DESC')

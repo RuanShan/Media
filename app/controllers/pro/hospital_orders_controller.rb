@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 class Pro::HospitalOrdersController < Pro::HospitalBaseController
-  before_filter :set_hospital
-  before_filter :set_hospital_order, only: [:cancele, :complete, :show]
+  before_action :set_hospital
+  before_action :set_hospital_order, only: [:cancele, :complete, :show]
 
   def index
     #@search = current_site.hospital_orders.search(params[:search])

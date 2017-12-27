@@ -1,11 +1,11 @@
 class Mobile::BaseController < ActionController::Base
   include ErrorHandler, DetectUserAgent
 
-  before_filter :redirect_to_non_openid_url, :load_site, :load_data, :load_user_data, except: [:notice]
+  before_action :redirect_to_non_openid_url, :load_site, :load_data, :load_user_data, except: [:notice]
 
-  before_filter :auth, if: -> { @wx_mp_user.try(:manual?) }
-  before_filter :authorize, if: -> { @wx_mp_user.try(:plugin?) }
-  before_filter :fetch_wx_user_info
+  before_action :auth, if: -> { @wx_mp_user.try(:manual?) }
+  before_action :authorize, if: -> { @wx_mp_user.try(:plugin?) }
+  before_action :fetch_wx_user_info
 
   helper_method :judge_andriod_version, :wx_browser?
 

@@ -1,6 +1,6 @@
 class Pro::CollegesBaseController < ApplicationController
 
-  before_filter :require_wx_mp_user, :require_college
+  before_action :require_wx_mp_user, :require_college
 
   private
 

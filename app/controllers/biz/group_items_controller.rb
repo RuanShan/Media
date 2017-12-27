@@ -1,6 +1,6 @@
 class Biz::GroupItemsController < Biz::GroupBaseController
-  before_filter :set_group
-  before_filter :set_group_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_group
+  before_action :set_group_item, only: [:show, :edit, :update, :destroy]
 
   def new
     @current_titles << '商品管理'

@@ -1,6 +1,6 @@
 class Huodong::FansGamesController < ApplicationController
-  before_filter :require_wx_mp_user
-  before_filter :find_activity, except: [ :create ]
+  before_action :require_wx_mp_user
+  before_action :find_activity, except: [ :create ]
 
   def index
   @activity ||= current_site.activities.new(activity_type_id:67)

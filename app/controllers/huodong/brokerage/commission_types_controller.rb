@@ -1,5 +1,5 @@
 class Huodong::Brokerage::CommissionTypesController < Huodong::Brokerage::BaseController
-    before_filter :find_commission_type, only: [ :show, :edit, :update, :edit_status ]
+    before_action :find_commission_type, only: [ :show, :edit, :update, :edit_status ]
 
     def index
         @commission_types = current_site.brokerage_commission_types.page(params[:page])

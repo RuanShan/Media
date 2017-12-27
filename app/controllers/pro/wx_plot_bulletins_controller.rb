@@ -1,7 +1,7 @@
 class Pro::WxPlotBulletinsController < Pro::WxPlotBaseController
 
-  before_filter :set_bulletin, only: [:edit, :update, :destroy, :done]
-  before_filter :set_activity_wx_plot_bulletin
+  before_action :set_bulletin, only: [:edit, :update, :destroy, :done]
+  before_action :set_activity_wx_plot_bulletin
 
   def index
     @search = @wx_plot.wx_plot_bulletins.order('wx_plot_bulletins.created_at DESC').search(params[:search])

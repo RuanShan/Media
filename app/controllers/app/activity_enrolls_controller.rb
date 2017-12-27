@@ -1,7 +1,7 @@
 module App
   class ActivityEnrollsController < BaseController
     layout 'app/activity_enrolls'
-    before_filter :check_subscribe
+    before_action :check_subscribe
 
     def new
       @vip_user = @site.vip_users.visible.where(user_id: @user.id).first

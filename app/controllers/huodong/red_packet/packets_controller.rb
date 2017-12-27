@@ -1,6 +1,6 @@
 class Huodong::RedPacket::PacketsController < ApplicationController
-  before_filter :require_wx_mp_user
-  before_filter :find_packet, only: [:edit, :update, :show, :destroy]
+  before_action :require_wx_mp_user
+  before_action :find_packet, only: [:edit, :update, :show, :destroy]
   def index
     @total_packet_activities = current_site.activities.red_packet.show.order("id DESC")
     @search = @total_packet_activities.search(params[:search])

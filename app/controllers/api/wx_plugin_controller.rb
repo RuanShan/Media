@@ -1,6 +1,6 @@
 class Api::WxPluginController < ApplicationController
-  skip_before_filter *ADMIN_FILTERS, :verify_authenticity_token
-  before_filter :decrypt_string, only: :ticket
+  skip_before_action *ADMIN_FILTERS, :verify_authenticity_token
+  before_action :decrypt_string, only: :ticket
 
   def ticket
     if @xml['ComponentVerifyTicket'].present?

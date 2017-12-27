@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 class Pro::HospitalDepartmentsController < Pro::HospitalBaseController
-  before_filter :set_hospital, only: [:index, :new]
-  before_filter :set_hospital_department, only: [:show, :edit, :update, :destroy, :doctors]
+  before_action :set_hospital, only: [:index, :new]
+  before_action :set_hospital_department, only: [:show, :edit, :update, :destroy, :doctors]
 
   def index
     @hospital_departments = @hospital.hospital_departments.order("sort asc")

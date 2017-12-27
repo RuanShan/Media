@@ -1,5 +1,5 @@
 class Pro::HousesController < Pro::HousesBaseController
-  skip_before_filter :require_house, except: [:edit, :update, :destroy]
+  skip_before_action :require_house, except: [:edit, :update, :destroy]
 
   def index
     @house = current_site.house || House.create!(site_id: current_site.id, name: '微房产')

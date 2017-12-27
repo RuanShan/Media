@@ -1,7 +1,7 @@
 class Biz::WebsiteSettingsController < ApplicationController
 
-  skip_before_filter :verify_authenticity_token, :only => [:set_template_id, :update_update_nav_template]
-  before_filter :find_website
+  skip_before_action :verify_authenticity_token, :only => [:set_template_id, :update_update_nav_template]
+  before_action :find_website
 
   def index
     @website_tags = WebsiteTag.order(:sort) #if @use_website_tag

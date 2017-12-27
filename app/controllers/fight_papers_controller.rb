@@ -1,5 +1,5 @@
 class FightPapersController < ApplicationController
-  before_filter :find_fight_paper, only: [:show, :edit, :update, :destroy]
+  before_action :find_fight_paper, only: [:show, :edit, :update, :destroy]
 
   def index
     if params[:activity_id]

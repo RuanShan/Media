@@ -1,5 +1,5 @@
 class Pro::WeddingSeatsController < Pro::WeddingsBaseController
-  before_filter :find_seat, only: [:show, :update, :destroy]
+  before_action :find_seat, only: [:show, :update, :destroy]
 
   def index
     @seats = @wedding.seats.order('id DESC').page(params[:page])

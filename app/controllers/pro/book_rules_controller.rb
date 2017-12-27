@@ -1,5 +1,5 @@
 class Pro::BookRulesController < Pro::ShopBaseController
-  # before_filter :set_booking_order, only: [:show, :edit, :update, :destroy, :cancele, :complete]
+  # before_action :set_booking_order, only: [:show, :edit, :update, :destroy, :cancele, :complete]
 
   def index
     if current_site.shop_branches.used.count == 0

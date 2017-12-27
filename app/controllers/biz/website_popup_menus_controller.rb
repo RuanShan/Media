@@ -1,6 +1,6 @@
 class Biz::WebsitePopupMenusController < ApplicationController
-  before_filter :set_website
-  before_filter :set_website_popup_menu, only: [:show, :edit, :update, :destroy]
+  before_action :set_website
+  before_action :set_website_popup_menu, only: [:show, :edit, :update, :destroy]
 
   def index
     @nav_type = params[:nav_type].present? ? params[:nav_type].to_i : [1, 2]

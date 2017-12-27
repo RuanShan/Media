@@ -1,6 +1,6 @@
 class WebsiteShared::WebsiteArticlesController < WebsiteShared::WebsiteBaseController
   
-  before_filter :find_website_article, only: [:edit, :update, :destroy, :toggle_recommend]
+  before_action :find_website_article, only: [:edit, :update, :destroy, :toggle_recommend]
 
   def index
     @website_articles = @website.website_articles.order("sort DESC").page(params[:page])

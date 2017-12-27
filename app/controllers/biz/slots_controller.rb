@@ -1,5 +1,5 @@
 class Biz::SlotsController < ApplicationController
-  before_filter :find_activity, except: [:index, :new, :create]
+  before_action :find_activity, except: [:index, :new, :create]
 
   def new
     @activity = current_site.activities.new(activity_type_id: 28, ready_at: 10.minutes.since)

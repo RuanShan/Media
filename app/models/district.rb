@@ -12,6 +12,8 @@
 #
 
 class District < ActiveRecord::Base
+  DefaultID = 310101
+  
   validates :name, presence: true
 
   belongs_to :city

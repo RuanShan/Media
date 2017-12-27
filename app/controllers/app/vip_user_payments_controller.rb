@@ -1,6 +1,6 @@
 class App::VipUserPaymentsController < ActionController::Base
   layout "vip_user_payment"
-  before_filter :set_vip_user_payment, only: [:update]
+  before_action :set_vip_user_payment, only: [:update]
 
   def payment
     result = {}

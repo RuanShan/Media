@@ -1,10 +1,10 @@
 class Biz::AlbumsController < ApplicationController
 
-  before_filter :find_album_activity
-  before_filter :set_activity_url, only: [:activity, :create_activity, :update_activity, :destroy_comment]
-  before_filter :check_activity, except: [:activity, :create_activity, :destroy_comment]
-  # before_filter :require_wx_mp_user, only: [:activity, :index, :destroy_comment]
-  before_filter :set_album, only: [:edit, :update, :destroy, :sort, :visible, :delete_photo]
+  before_action :find_album_activity
+  before_action :set_activity_url, only: [:activity, :create_activity, :update_activity, :destroy_comment]
+  before_action :check_activity, except: [:activity, :create_activity, :destroy_comment]
+  # before_action :require_wx_mp_user, only: [:activity, :index, :destroy_comment]
+  before_action :set_album, only: [:edit, :update, :destroy, :sort, :visible, :delete_photo]
   def activity
   end
 

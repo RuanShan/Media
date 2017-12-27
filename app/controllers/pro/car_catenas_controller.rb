@@ -1,6 +1,6 @@
 class Pro::CarCatenasController < ApplicationController
-	before_filter :check_car_shop
-  before_filter :find_car_cattena, only: [:edit, :update, :destroy]
+	before_action :check_car_shop
+  before_action :find_car_cattena, only: [:edit, :update, :destroy]
 
 	def index
 		@search = @car_shop.car_catenas.order(:sort).search(params[:search])

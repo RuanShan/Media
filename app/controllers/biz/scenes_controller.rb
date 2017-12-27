@@ -1,5 +1,5 @@
 class Biz::ScenesController < ApplicationController
-  before_filter :find_activity, except: [:index, :new, :create]
+  before_action :find_activity, except: [:index, :new, :create]
 
   def qrcode
     render layout: "application_pop"

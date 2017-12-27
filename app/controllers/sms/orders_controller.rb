@@ -1,8 +1,8 @@
 class Sms::OrdersController < ApplicationController
-  skip_before_filter *ADMIN_FILTERS, only: [:notify, :notify_verify, :error_notify]
-  before_filter :set_sms_order, only: [:show, :edit, :update, :destroy, :cancel]
+  skip_before_action *ADMIN_FILTERS, only: [:notify, :notify_verify, :error_notify]
+  before_action :set_sms_order, only: [:show, :edit, :update, :destroy, :cancel]
 
-  before_filter do
+  before_action do
     @partialLeftNav = "/layouts/partialLeftSys"
   end
 

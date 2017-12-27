@@ -1,6 +1,6 @@
 class Pro::BusinessController < WebsiteShared::WebsitesController
-  before_filter :require_business_website, except: :index
-  before_filter :require_business_industry, :set_website
+  before_action :require_business_website, except: :index
+  before_action :require_business_industry, :set_website
 
   def address
   	render "pro/websites/address"

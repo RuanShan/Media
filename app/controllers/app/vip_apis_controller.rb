@@ -1,7 +1,7 @@
 class App::VipApisController < App::VipsController
   layout 'app/vip'
   # layout false
-  before_filter :require_enable_api_setting
+  before_action :require_enable_api_setting
 
   def vip_info
     # @vip_hash = { "姓名" => "张三", "生日" => "1982-12-04" }

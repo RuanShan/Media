@@ -1,6 +1,6 @@
 class Pro::BusineArticlesController < WebsiteShared::WebsiteArticlesController
 
-  before_filter :require_business_website
+  before_action :require_business_website
 
   private
   def find_website_article

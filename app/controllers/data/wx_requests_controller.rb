@@ -1,12 +1,12 @@
 # -*- encoding : utf-8 -*-
 class Data::WxRequestsController < ApplicationController
-  before_filter :require_wx_mp_user
+  before_action :require_wx_mp_user
 
-  before_filter do
+  before_action do
     @partialLeftNav = "/layouts/partialLeftDC"
   end
 
-  before_filter :set_dates, :set_data, only: [:index, :subscribe, :article, :message, :keyword]
+  before_action :set_dates, :set_data, only: [:index, :subscribe, :article, :message, :keyword]
 
   def index
     @high_chart = {"文本请求" => {}, "图片请求" => {}, "事件请求" => {}, "全部请求" => {}}

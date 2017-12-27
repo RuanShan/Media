@@ -1,7 +1,7 @@
 class Payment::WxpayController < ApplicationController
-  skip_before_filter *ADMIN_FILTERS
-  before_filter :find_payment, :only => [:success, :fail]
-  before_filter :micro_messageer_browser, :micro_messageer_browser_version,:only => [:success, :fail, :test, :pay]
+  skip_before_action *ADMIN_FILTERS
+  before_action :find_payment, :only => [:success, :fail]
+  before_action :micro_messageer_browser, :micro_messageer_browser_version,:only => [:success, :fail, :test, :pay]
 
   layout 'mobile/wxpay'
 

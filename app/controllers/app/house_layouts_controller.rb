@@ -3,7 +3,7 @@ module App
     #layout "app/house_market"
 
 
-    before_filter :find_house
+    before_action :find_house
 
     def index
       @house_pictures = @house.house_pictures.cover

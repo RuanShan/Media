@@ -1,5 +1,5 @@
 class Huodong::Brokerage::BaseController < ApplicationController
-  before_filter :require_brokerage_setting
+  before_action :require_brokerage_setting
 
   private
     def require_brokerage_setting

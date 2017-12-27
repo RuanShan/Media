@@ -1,5 +1,5 @@
 class Api::V1::WbbsController < Api::BaseController
-  before_filter :cors_set_access_control_headers
+  before_action :cors_set_access_control_headers
 
   def find
     keyword, site_id, auth_token= params.values_at(:keyword, :site_id, :auth_token)

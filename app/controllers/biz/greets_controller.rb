@@ -1,9 +1,9 @@
 class Biz::GreetsController < ApplicationController  
 
-  before_filter :find_greet_activity
-  before_filter :set_activity_url, only: [:activity, :create_activity, :update_activity]
-  before_filter :check_activity, except: [:activity, :create_activity]
-  # before_filter :require_wx_mp_user, only: [:activity, :index]
+  before_action :find_greet_activity
+  before_action :set_activity_url, only: [:activity, :create_activity, :update_activity]
+  before_action :check_activity, except: [:activity, :create_activity]
+  # before_action :require_wx_mp_user, only: [:activity, :index]
 
   def activity
   end

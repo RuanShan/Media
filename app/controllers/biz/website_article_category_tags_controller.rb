@@ -1,8 +1,8 @@
 class Biz::WebsiteArticleCategoryTagsController < ApplicationController
-  before_filter :set_website
-  before_filter :set_categories
-  before_filter :set_category
-  before_filter :set_tag, only: [:edit, :update, :destroy, :update_sorts, :copy]
+  before_action :set_website
+  before_action :set_categories
+  before_action :set_category
+  before_action :set_tag, only: [:edit, :update, :destroy, :update_sorts, :copy]
   
   def index
     @tags_all = @category.tags.order('tags.position DESC')

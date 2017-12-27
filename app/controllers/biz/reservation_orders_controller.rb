@@ -1,5 +1,5 @@
 class Biz::ReservationOrdersController < ApplicationController
-  before_filter :get_order
+  before_action :get_order
 
   def show
     render layout: 'application_pop'

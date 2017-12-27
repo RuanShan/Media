@@ -1,7 +1,7 @@
 module App
   class LivesController < BaseController
     layout 'app/life'
-    #before_filter :find_life, :except=> [:page]
+    #before_action :find_life, :except=> [:page]
 
     def index
       @website = Website.find(params[:id])

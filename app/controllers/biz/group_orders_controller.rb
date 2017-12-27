@@ -1,6 +1,6 @@
 class Biz::GroupOrdersController < Biz::GroupBaseController
-  before_filter :set_group
-  before_filter :set_group_order, only: [:show, :consume, :destroy]
+  before_action :set_group
+  before_action :set_group_order, only: [:show, :consume, :destroy]
 
   def index
     @search    = current_site.group_orders.latest.search(params[:search])

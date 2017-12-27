@@ -1,6 +1,6 @@
 class Mobile::FansGamesController < Mobile::BaseController
   layout 'mobile/fans_game'
-  before_filter :block_non_wx_browser, :require_wx_mp_user
+  before_action :block_non_wx_browser, :require_wx_mp_user
 
   def index
     @activity = @site.activities.where(activity_type_id: 67).first

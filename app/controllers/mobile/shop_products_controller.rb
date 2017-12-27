@@ -1,7 +1,7 @@
 class Mobile::ShopProductsController < Mobile::BaseController
 
   layout false
-  before_filter :require_wx_user
+  before_action :require_wx_user
 
   def index
     shop = Shop.find(params[:shop_id])

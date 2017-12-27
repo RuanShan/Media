@@ -1,6 +1,6 @@
 class Huodong::RedPacket::ReleasesController < ApplicationController
-  before_filter :require_red_packet_setting
-  before_filter :find_activities
+  before_action :require_red_packet_setting
+  before_action :find_activities
 
   def consumes
     @total_releases = current_site.red_packet_releases

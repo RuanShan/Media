@@ -1,5 +1,5 @@
 class App::SlotsController < App::BaseController
-  before_filter :block_non_wx_browser, :find_activity
+  before_action :block_non_wx_browser, :find_activity
 
   def index
     @slot_prizes_left_count = @activity.slot_prizes_left_count

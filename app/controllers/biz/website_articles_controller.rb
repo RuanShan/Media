@@ -1,7 +1,7 @@
 class Biz::WebsiteArticlesController < ApplicationController
   
-  before_filter :set_website
-  before_filter :find_article, only: [:edit, :update, :destroy, :edit_pic, :update_pic, :delete_pic, :update_sort, :change_is_top]
+  before_action :set_website
+  before_action :find_article, only: [:edit, :update, :destroy, :edit_pic, :update_pic, :delete_pic, :update_sort, :change_is_top]
 
 	def index
 		params[:article_type] ||= "as_article"

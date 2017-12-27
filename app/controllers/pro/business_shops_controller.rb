@@ -1,6 +1,6 @@
 class Pro::BusinessShopsController < WebsiteShared::WebsiteBaseController
-  before_filter :require_business_website
-  before_filter :find_business_shop, except: [:index, :new, :create, :comments, :destroy_comment, :set_template]
+  before_action :require_business_website
+  before_action :find_business_shop, except: [:index, :new, :create, :comments, :destroy_comment, :set_template]
   layout 'application_pop'
 
   def index

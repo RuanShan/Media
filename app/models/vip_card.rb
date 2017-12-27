@@ -261,7 +261,9 @@ class VipCard < ActiveRecord::Base
     end
 
     def set_defaults
+      self.province_id = Province::DefaultID
       self.city_id = City::DefaultID
+      self.district_id = District::DefaultID
     end
 
 end

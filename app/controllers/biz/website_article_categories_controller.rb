@@ -1,7 +1,7 @@
 class Biz::WebsiteArticleCategoriesController < ApplicationController
-  before_filter :set_website
-  before_filter :set_categories, only: [:index, :new, :create, :edit, :update]
-  before_filter :set_category, only: [:edit, :update, :destroy, :update_sorts, :copy]
+  before_action :set_website
+  before_action :set_categories, only: [:index, :new, :create, :edit, :update]
+  before_action :set_category, only: [:edit, :update, :destroy, :update_sorts, :copy]
 
   def index
   end

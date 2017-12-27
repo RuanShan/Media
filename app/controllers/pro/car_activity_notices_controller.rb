@@ -1,5 +1,5 @@
 class Pro::CarActivityNoticesController < ApplicationController
-  # before_filter :check_car_shop
+  # before_action :check_car_shop
 
   def create
     @car_activity_notice = CarActivityNotice.new(params[:car_activity_notice])

@@ -1,6 +1,6 @@
 class Biz::VipGradesController < Biz::VipController
-  before_filter :set_vip_card
-  before_filter :find_vip_grade, only: [ :edit, :update, :destroy ]
+  before_action :set_vip_card
+  before_action :find_vip_grade, only: [ :edit, :update, :destroy ]
 
   def index
     @vip_grades = @vip_card.vip_grades.visible.sorted.page(params[:page])

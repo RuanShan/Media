@@ -1,5 +1,5 @@
 class Pro::CarAssistantsController < ApplicationController
-  before_filter :check_car_shop
+  before_action :check_car_shop
 
   def index
 		now = Time.now
