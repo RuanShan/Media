@@ -19,7 +19,7 @@ class MaterialsController < ApplicationController
   end
 
   def create
-    @material = current_site.materials.new(params[:material])
+    @material = current_site.materials.new( material_params )
 
     respond_to do |format|
       if @material.save
@@ -64,4 +64,7 @@ class MaterialsController < ApplicationController
       render text: '素材不存在'
     end
 
+    def material_params
+      params.require(:material).permit(permitted_material_attributes)
+    end
 end

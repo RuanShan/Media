@@ -20,9 +20,9 @@ class InitDb < ActiveRecord::Migration
     t.boolean  "is_open_sms",            :default => false, :null => false
     t.integer  "pay_sms_count",          :default => 0,   :null => false
     t.integer  "free_sms_count",         :default => 0,   :null => false
-    t.integer  "province_id",            :default => 9,   :null => false
-    t.integer  "city_id",                :default => 73,  :null => false
-    t.integer  "district_id",            :default => 702, :null => false
+    t.integer  "province_id"
+    t.integer  "city_id"
+    t.integer  "district_id"
     t.string   "address"
     t.integer  "sign_in_count",          :default => 0,   :null => false
     t.datetime "current_sign_in_at"

@@ -12,6 +12,8 @@
 #
 
 class City < ActiveRecord::Base
+  DefaultID = 310100
+
   belongs_to :province
   has_many :districts
 end

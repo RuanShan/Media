@@ -78,10 +78,11 @@ class Website < ActiveRecord::Base
     1.upto(12) do |size|
       break rqrcode = RQRCode::QRCode.new(url, :size => size, :level => :h ).to_img.resize(258, 258) rescue next
     end
+
     #img = Magick::Image::read_inline(rqrcode.to_data_url).first.adaptive_blur #二维码作为背景图
-    img = MiniMagick::Image.open(rqrcode.to_data_url)
+    img = MiniMagick::Image.read(rqrcode.to_blob)
     img.combine_options do |c|
-      c.adaptive_blur
+      c.adaptive_blur '0.0 1.0'
     end
     # if self.logo?
     #   mark = Magick::ImageList.new

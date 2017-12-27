@@ -1,11 +1,11 @@
 defaults: &defaults
-  access_key: 'rnSju14NS7v0hiwky1SMMJhGogoUkOme0lLERyQP'
-  secret_key: 'CRDw3usa6KxxOaGBRBOVO8EWR7Fhpyh6SYqc4Rbc'
-  bucket_pictures: 'img-asset'
-  bucket_media: 'media-asset'
-  bucket_views720: 'media-asset'
-  bucket_wmall: 'img-asset'
-  domain: 'winwemedia.com'
+  access_key: 'YxQM2umRtzrlXuzaxGccC-7UJbdwwD2BUGXO9ufo'
+  secret_key: 'u0UKs-SHXd6xehQKrOp-YNDtxOP8FQsHZ3n4sMIR'
+  bucket_pictures: 'wp-img-asset'
+  bucket_media: 'wp-media-asset'
+  bucket_views720: 'wp-media-asset'
+  bucket_wmall: 'wp-img-asset'
+  domain: 'wechatplus.getstore.cn'
   domain_old: 'qiniucdn.com'
 
 development:

@@ -121,7 +121,7 @@
         <div class="form-group">
           <label class="control-label">选择语音<span class="required-star">*</span></label>
           <div class="clearfix">
-            <%= f.select :audio_id, current_site.materials.audios.select([:id,:audio]).map!{|m| [truncate_u(m.audio.try(:file).try(:filename)), m.id] }, { selected: @website_menu.try(:menuable_id) }, validate: true, class: 'col-xs-6' %>
+            <%= f.select :audio_id, current_site.materials.audios.select([:id,:audio]).map{|m| [truncate_u(m.audio.try(:file).try(:filename)), m.id] }, { selected: @website_menu.try(:menuable_id) }, validate: true, class: 'col-xs-6' %>
           </div>
         </div>
       </div>
@@ -513,13 +513,13 @@
             if($('#website_menu_docking_type').val() == 1){
 		if($('#website_menu_docking_function').attr('data-initialize') == 'true'){
 			if(parseInt($('#website_menu_docking_function').attr('data-value')) == 4){
-				$('#website_menu_docking_function').append("<option value='1'>首页</option><option value='4' selected='selected'>商品分类</option>");			
+				$('#website_menu_docking_function').append("<option value='1'>首页</option><option value='4' selected='selected'>商品分类</option>");
 				$('#website_menu_goods_category_id').closest('.form-group').show();
 				$.each($('.ec_seller_cat'), function(){
 					$(this).val($(this).attr('rel'));
 				});
 			}else{
-				$('#website_menu_docking_function').append("<option value='1' selected='selected'>首页</option><option value='4'>商品分类</option>");			
+				$('#website_menu_docking_function').append("<option value='1' selected='selected'>首页</option><option value='4'>商品分类</option>");
 			}
 			$('#website_menu_docking_function').attr('data-initialize', false);
 		}else{

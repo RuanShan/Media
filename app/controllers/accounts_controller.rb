@@ -15,7 +15,7 @@ class AccountsController < ApplicationController
   end
 
   def create
-    @account = Account.new(params[:account])
+    @account = Account.new(account_params)
     # return render json: {code: -4, message: "图形验证码错误!", num: 3, status: 0}  if session[:image_code] and session[:image_code] != params[:verify_code]
     # return render json: {code: -3, message: "手机号或验证码错误!", num: 6, status: 0} if params[:account][:mobile].blank? || params[:account][:mobile] != session[:mobile]
     # return render json: {code: -1, message: "验证码错误!", num: 6, status: 0} if params[:captcha].blank? || params[:captcha].to_i != session[:captcha].to_i
@@ -53,7 +53,7 @@ class AccountsController < ApplicationController
   end
 
   def update
-    if @account.update_attributes(params[:account])
+    if @account.update_attributes(account_params)
       redirect_to :back, notice: '更新成功'
     else
       redirect_to :back, alert: "更新失败，#{@account.errors.full_messages.join(",")}"
@@ -83,6 +83,10 @@ class AccountsController < ApplicationController
   end
 
   private
+    def account_params
+      params.require(:account).permit(permitted_account_attributes)
+    end
+
     def set_account
       @account = current_user
     end

@@ -36,7 +36,7 @@ class VipCard < ActiveRecord::Base
 
   MAX_LABELED_CUSTOM_FIELD_COUNT = 2
 
-  store :metadata, accessors: [:show_introduce, :init_grade_name, :sms_check, :vip_importing_enabled, 
+  store :metadata, accessors: [:show_introduce, :init_grade_name, :sms_check, :vip_importing_enabled,
     :open_card_sms_notify, :recharge_consume_sms_notify, :labeled_custom_field_ids, :use_vip_avatar,
     :name_font_size, :card_font_size, :settings_json
   ]
@@ -70,6 +70,8 @@ class VipCard < ActiveRecord::Base
   before_save :format_content
   before_create :init_metadata
   after_create :create_default_vip_grade, :create_default_custom_field
+
+  after_initialize :set_defaults, if: :new_record?
 
   def self.export_excel(vip_users)
     xls_report = StringIO.new
@@ -257,4 +259,9 @@ class VipCard < ActiveRecord::Base
     def init_metadata
       # self.sms_check = '1' if sms_check.nil?
     end
+
+    def set_defaults
+      self.city_id = City::DefaultID
+    end
+
 end

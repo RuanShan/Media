@@ -17,7 +17,7 @@ development:
   adapter: sqlite3
   encoding: utf8
   reconnect: false
-  database: ecashier_development
+  database: wechatplus_development
   pool: 5
   username: root
   password:
@@ -30,7 +30,7 @@ test:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: ecashier_test
+  database: wechatplus_test
   pool: 5
   username: root
   password:
@@ -40,7 +40,7 @@ production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: ecashier_production
+  database: wechatplus_production
   pool: 5
   username: root
   password: 123456
@@ -50,7 +50,7 @@ kefu_app_development:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: ecashier_kefu
+  database: wechatplus_kefu
   pool: 5
   username: root
   password:
@@ -60,7 +60,7 @@ kefu_app_staging:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: ecashier_kefu_staging
+  database: wechatplus_kefu_staging
   pool: 5
   username: root
   password:
@@ -70,7 +70,7 @@ kefu_app_production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: ecashier_kefu
+  database: wechatplus_kefu
   pool: 5
   username: root
   password:

@@ -28,7 +28,7 @@ class Biz::WebsiteMenusController < ApplicationController
   end
 
   def create
-    @website_menu = WebsiteMenu.new(params[:website_menu])
+    @website_menu = WebsiteMenu.new( website_menu_params )
     if @website_menu.save
       # if current_site.can_show_introduce? && current_site.task1?
       #   current_site.update_attributes(show_introduce: 2)
@@ -103,7 +103,7 @@ class Biz::WebsiteMenusController < ApplicationController
   def sub_menu
     render partial: "sub_menu", collection: @website_menu.children.order(:sort), as: :sub_menu
   end
-  
+
   def sort
     @website_menu.send(params[:type].to_sym)
     redirect_to website_menus_path, notice: '操作成功'
@@ -140,6 +140,11 @@ class Biz::WebsiteMenusController < ApplicationController
   def set_website_menu
     @website_menu = @website.website_menus.where(id: params[:id]).first
     return redirect_to website_menus_path, alert: '站点不存在或已删除' unless @website_menu
+  end
+
+
+  def website_menu_params
+    params.require(:website_menu).permit(permitted_website_menu_attributes)
   end
 
 end

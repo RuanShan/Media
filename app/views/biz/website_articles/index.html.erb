@@ -21,7 +21,7 @@
             <%= f.hidden_field :website_article_category_id_eq %>
             <!--input type="hidden" value="10" name="per_page" id="per_page"-->
             <div class="form-group select-categories">
-              
+
               <!--div class="col-lg-2 col-md-2 col-sm-2">
                 <%# options = @website.website_article_categories.root.pluck(:name, :id).unshift(['请选择一级分类', '']) %>
                 <%#= select_tag :product_category_map_category_id_1, options_for_select(options, params[:website_article_category_id_eq]), class: "form-control" %>
@@ -121,7 +121,7 @@
         </div>
         <div class="content-ft clearfix">
           <div class="pagination pull-left line-height-32">
-            <span class="text-muted">总共<%= @search.relation.count %>条 当前为第<span><%= [params[:page].to_i,1].max %></span>页</span>
+            <span class="text-muted">总共<%= @search.result.count %>条 当前为第<span><%= [params[:page].to_i,1].max %></span>页</span>
             <span>每页显示</span>
             <%= select_tag "per_page_total", options_for_select([['10条', 10], ['20条', 20], ['30条', 30]], selected: @per_page)  %>
           </div>
@@ -203,33 +203,33 @@
               $.each(data.categories, function(i,c){
                 if(c.id != 0){
                 if(data.selected == c.id){
-                  html += '<option value="'+c.id+'" selected="selected">'+c.name+'</option>'  
+                  html += '<option value="'+c.id+'" selected="selected">'+c.name+'</option>'
                 }
                 else{
-                  html += '<option value="'+c.id+'">'+c.name+'</option>'  
+                  html += '<option value="'+c.id+'">'+c.name+'</option>'
                 }
                 }
               });
               html += '</select></div>'
             });
             $('.search-title').before(html);
-          }   
-        }   
+          }
+        }
 
         function change_select_category(){
           $('.select-categories').on('change', 'select', function(){
-            $.each($(this).closest('div').nextAll().find('select'), function(i, e){ 
+            $.each($(this).closest('div').nextAll().find('select'), function(i, e){
               $(e).closest('div').addClass('hide');
             });
             if($(this).val() == ''){
               $(this).closest('div').nextAll().find('select').find('option').remove();
               $(this).closest('div').nextAll().find('select').append("<option value>全部</option>");
               if($(this).closest('div').prev().find('select').length > 0){
-                $('#website_article_search #category_id').val($(this).closest('div').prev().find('select').val());      
+                $('#website_article_search #category_id').val($(this).closest('div').prev().find('select').val());
               }
               else{
                 $('#website_article_search #category_id').val('');
-              }  
+              }
             }
             else{
               if($(this).closest('div').next().find('select').length > 0){
@@ -247,20 +247,20 @@
                 }
                 $.each(categories,function(k,p){
                   select.closest('div').next().find('select').append("<option value="+p.id+">"+p.name+"</option>")
-                });  
+                });
               }
 	      $('#website_article_search #category_id').val($(this).val());
             }
           });
-        }  
+        }
 
       $(function(){
         select_categories(<%= @category.try(:id).to_i %>, <%= @category.try(:parent_id).to_i %>);
 	change_select_category();
-        
+
         $('label.gettop').click(function(){
-          var self = $(this), 
-              is_tops = {'true': {'reverse': {is_top_num: 0, is_top_str: 'false' }}, 'false': {'reverse': {is_top_num: 1, is_top_str: 'true' }}}, 
+          var self = $(this),
+              is_tops = {'true': {'reverse': {is_top_num: 0, is_top_str: 'false' }}, 'false': {'reverse': {is_top_num: 1, is_top_str: 'true' }}},
               is_top = is_tops[self.attr('data-is-top')].reverse.is_top_num;
           $.ajax({
             type: "GET",
@@ -296,7 +296,7 @@
             }
           });
         });
-        
+
         $('#per_page_total').change(function(){
           $('#website_article_search #per_page').val($(this).val());
 	  $('#website_article_search').submit();
@@ -349,7 +349,7 @@
           });
         });
 
-         
+
         $('a[data-do="getup"], a[data-do="getdown"]').click(function(){
           var status = $(this).attr('data-status'), ids =[], checkboxs = $('td input[role="checkbox"]:checked'), elements = [];
           checkboxs.each(function () {
@@ -357,10 +357,10 @@
 	    elements.push($(this).closest('tr').find('label.openoff input[type=checkbox]'));
           });
           if(ids.length > 0){
-            change_status(ids, elements, status);          
+            change_status(ids, elements, status);
           }
         });
-        
+
         $('label.openoff').click(function(){
           var status, ids = [$(this).attr('data-id')], elements = [$(this).find('input[type=checkbox]')];
           if($(this).find('input').is(':checked')){
@@ -370,7 +370,7 @@
           }
           change_status(ids, elements, status);
         });
-         
+
         $('.all:input[type=checkbox]').click(function(){
           var self = $(this);
           $.each($('td input[role="checkbox"]'), function(i, e){
@@ -394,10 +394,10 @@
           }
           else{
             $(this).next().attr('href', 'javascript:;');
-          }          
+          }
 
         });
-        
+
         $('a[data-do="getdelete"]').click(function(){
           var ids =[];
           $('td input[role="checkbox"]:checked').each(function () {
@@ -406,10 +406,10 @@
           if(ids.length > 0){
             $(this).next().attr('href', "/website_articles/delete_articles?ids=" + ids.join(','));
 	    $(this).next().click();
-          }   
+          }
           else{
             $(this).next().attr('href', 'javascript:;');
-          }       
+          }
         });
 
         $('a[data-do="clonelink"]').click(function(){

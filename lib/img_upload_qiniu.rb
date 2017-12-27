@@ -6,7 +6,7 @@ class ImgUploadQiniu
     Tempfile.open('qrcode_img', encoding: 'ascii-8bit') do |tempfile|
       tempfile.write(img)
       put_policy = Qiniu::Auth::PutPolicy.new(BUCKET_PICTURES)
-      code, result, response_headers = Qiniu::Storage.upload_with_put_policy(put_policy,tempfile.path)
+      code, result, response_headers = Qiniu::Storage.upload_with_put_policy(put_policy,tempfile.path, nil, nil, { bucket:BUCKET_PICTURES})
       result["key"]
     end
   end

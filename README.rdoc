@@ -1,3 +1,5 @@
+WechatPlus
+
 环境安装：
   bundle install
   修改 config/database.yml，并将 cms 项目的数据库结构导入数据库中

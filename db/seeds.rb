@@ -17,3 +17,5 @@ SiteCopyright.find_or_create_by!( is_default: true) do |copyright|
   copyright.footer_content = 'this is footer content'
   copyright.footer_link = '<a href="www.baidu.com">footer link</a>'
 end
+
+load 'db/china_regions/init.rb'

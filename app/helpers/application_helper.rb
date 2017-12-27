@@ -84,26 +84,30 @@ module ApplicationHelper
     html.html_safe
   end
 
-  def options_for_province(selected = 9)
+  DefaultProvinceID = 310000 #上海市
+  DefaultCityID = 310100
+  DefaultDistrictID = 310101
+
+  def options_for_province(selected = DefaultProvinceID)
     options_for_select(Province.pluck(:name, :id), selected.to_i)
   end
 
-  def options_for_city(province_id = 9, city_id = 73)
+  def options_for_city(province_id = DefaultProvinceID, city_id = DefaultCityID)
     province = Province.where(id: province_id).first
     if province
       cities = province.cities
       options_for_select(cities.pluck(:name, :id), city_id.to_i)
     else
-      options_for_select([['上海市', 73]])
+      options_for_select([['上海市', DefaultCityID]])
     end
   end
 
-  def options_for_district(city_id = 73, district_id = 702, options={})
+  def options_for_district(city_id = DefaultCityID, district_id = DefaultDistrictID, options={})
     if city_id.blank?
       if options[:province_id]
         options_for_select([['', '']])
       else
-        options_for_select([['黄浦区', 702]])
+        options_for_select([['黄浦区', 310101]])
       end
     else
       districts = City.find(city_id).districts
@@ -117,10 +121,10 @@ module ApplicationHelper
     no_city, no_district = options.delete(:no_city), options.delete(:no_district)
     select_gap = options.key?(:select_gap) ? options.delete(:select_gap).to_s : ' '
 
-    model.province_id ||= 9
-    model.city_id     ||= 73
-    model.district_id ||= 702 if model.respond_to?(:district_id)
-
+    model.province_id ||= DefaultProvinceID
+    model.city_id     ||= DefaultCityID
+    model.district_id ||= DefaultDistrictID if model.respond_to?(:district_id)
+Rails.logger.debug " model=#{model.inspect}"
     html = select_tag("#{name_prefix}[province_id]", options_for_province(model.province_id), options.merge(id: 'province') )
     unless no_city
       html << select_gap

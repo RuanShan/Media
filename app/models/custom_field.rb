@@ -11,7 +11,7 @@ class CustomField < ActiveRecord::Base
   scope :visible,  -> { where(visible: true) }
   scope :sorted, -> { order('position ASC') }
 
-  attr_accessible :field_type, :position, :name, :field_format, :possible_values, :name, :value, :status, :editable, :is_required, :customized_id, :customized_type, :placeholder
+  #attr_accessible :field_type, :position, :name, :field_format, :possible_values, :name, :value, :status, :editable, :is_required, :customized_id, :customized_type, :placeholder
 
   enum_attr :status, :in => [
     ['normal', 1, '正常'],
