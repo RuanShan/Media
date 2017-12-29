@@ -210,7 +210,7 @@
         self.getImgUrl=function(input,r,idx,type,fileInfo,fname){
             var token= $(input).attr('data-token') || window.qiniu_token;
             var bucket= $(input).attr('data-bucket') || window.qiniu_bucket;
-            var Qiniu_UploadUrl = "http://up.qiniu.com";
+            var Qiniu_UploadUrl = "http://upload-z1.qiniup.com";
             var Qiniu_upload = function(f, token) {
                 var xhr = new XMLHttpRequest();
                 xhr.open('POST', Qiniu_UploadUrl, true);
@@ -249,7 +249,7 @@
                 xhr.onreadystatechange = function(response) {
                     if (xhr.readyState == 4 && xhr.status == 200 && xhr.responseText != "") {
                         var blkRet = JSON.parse(xhr.responseText);
-                        var imgUrl='http://'+bucket+'.winwemedia.com/'+blkRet.key;
+                        var imgUrl='http://'+bucket+'.qiniu.getstore.cn/'+blkRet.key;
                         // 判断是否需要执行回调函数
                         if (self.$el.attr("data-callback") != undefined) {
                            eval(self.$el.attr("data-callback") + "('" + blkRet.key + "', '" + imgUrl + "')")
@@ -435,7 +435,7 @@
                         fileImg.next().append('<input class="destroy" name="booking_item[booking_item_pictures_attributes]['+uuid+'][_destroy]" type="hidden">')
                         fileImg.next().append('<input class="pic_key" name="booking_item[booking_item_pictures_attributes]['+uuid+'][pic_key]" type="hidden" value="'+key+'">')
                     }
-                  
+
                     else if(self.imgs_type == "panoramagram"){
                         // 360全景图片上传
                         if($(".file-del").length >= 6){

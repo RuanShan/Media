@@ -22,7 +22,7 @@ class Wx::MenusController < ApplicationController
   end
 
   def create
-    @wx_menu = @wx_mp_user.wx_menus.new(params[:wx_menu])
+    @wx_menu = @wx_mp_user.wx_menus.new(wx_menu_params)
 
     respond_to do |format|
       if @wx_menu.save
@@ -39,7 +39,7 @@ class Wx::MenusController < ApplicationController
 
   def update
     respond_to do |format|
-      if @wx_menu.update_attributes(params[:wx_menu])
+      if @wx_menu.update_attributes(wx_menu_params)
         format.html { redirect_to wx_menus_url, notice: '保存成功' }
         format.json { head :no_content }
       else
@@ -66,7 +66,7 @@ class Wx::MenusController < ApplicationController
       first_wx_menu.minus_sort
       second_wx_menu.add_sort
     end
-    render text: nil 
+    render text: nil
   end
 
   def down_menu
@@ -87,4 +87,7 @@ class Wx::MenusController < ApplicationController
       return redirect_to wx_menus_url, alert: '不存在' unless @wx_menu
     end
 
+    def wx_menu_params
+      params.require(:wx_menu).permit(permitted_wx_menu_attributes)
+    end
 end

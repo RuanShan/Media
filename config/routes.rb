@@ -26,7 +26,7 @@ Wp::Application.routes.draw do
   resources :password_resets do
     post :resend_email, on: :member
   end
-  get :verify_code, :to => 'ru_captcha/captcha#index'  
+  get :verify_code, :to => 'ru_captcha/captcha#index'
   match :validate_image_code, :helpers, :games, :help_menus, :console, controller: :home, via: [:get, :post]
   match :about, :joins, :micro_channel, :h5_marketing, :large_customer, :optimal_code, :store, :electricity, :retail, :agents_inquiry, controller: 'site/pages', via: [:get, :post]
 

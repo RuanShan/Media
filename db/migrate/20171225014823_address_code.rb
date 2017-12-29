@@ -6,5 +6,7 @@ class AddressCode < ActiveRecord::Migration
     #add_column :districts, :code, :integer#, limit: 12
     #add_column :districts, :city_code, :integer#, limit: 12
     add_column :website_templates, :permit_accounts, :string
+    add_column :wx_mp_users, :binds_count, :integer, null: false, default:0 
+
   end
 end

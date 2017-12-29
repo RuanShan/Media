@@ -5,7 +5,7 @@ defaults: &defaults
   bucket_media: 'wp-media-asset'
   bucket_views720: 'wp-media-asset'
   bucket_wmall: 'wp-img-asset'
-  domain: 'wechatplus.getstore.cn'
+  domain: 'qiniu.getstore.cn'
   domain_old: 'qiniucdn.com'
 
 development:

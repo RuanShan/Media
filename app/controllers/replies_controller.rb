@@ -14,7 +14,7 @@ class RepliesController < ApplicationController
   end
 
   def create
-    @reply = @wx_mp_user.replies.new(params[:reply].merge(site_id: @wx_mp_user.site_id))
+    @reply = @wx_mp_user.replies.new(reply_params.merge(site_id: @wx_mp_user.site_id))
     if @reply.save
       redirect_to :back, notice: '保存成功'
     else
@@ -26,11 +26,16 @@ class RepliesController < ApplicationController
 
   def update
     @reply = @wx_mp_user.replies.find(params[:id])
-    if @reply.update_attributes(params[:reply])
+    if @reply.update_attributes(reply_params)
       redirect_to :back, notice: '保存成功'
     else
       redirect_to :back, alert: '保存失败'
     end
   end
 
+  private
+
+  def reply_params
+    params.require(:reply).permit(permitted_reply_attributes)
+  end
 end

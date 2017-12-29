@@ -1,4 +1,28 @@
 module Concerns::ActivityQiniuPicKeys
+  #vip=FitJY1_Agsv5V9W5-dH-M5FVUM0E
+  #gua=Fkgsh_bQL0bVzzB--_vlgXh_XEg-
+  #fight=FknTGEgpxbPd-N0LhujFkAbVObEZ
+  #wheel=Fl-25j4H93sfZ-B0ouwCusJfXK7D
+  #enroll=Fq3yau2in3gxC15TcsIrImIDFbdw
+  #groups=FmPmG9Qi9qkBTGEQrcY70jGxiQ4w
+  #life=FpYCG7QI2N5s0L2MJoebLs96pQV2
+  #circle=Fg7y_-6AMUi3vRFmtULpqE4s8D-w
+  #slot=FmP_AWEx35d2zhFnIXx_55aaDMkS
+  #booking=FsbEJWQgWNg7Ga5S8A2UGB54EDqA
+  #business_shop=Fg7y_-6AMUi3vRFmtULpqE4s8D-w
+  #shake=FhnW0qwKkTC4uxMV1ZwY2niFf4of
+  #coupon=FnoIyiqaGaYVViwiEqHImqmnqC7C
+  #reservation=FocY5CovSW0PpjozyeEcnM-1bMQV
+  #wave=FiALiRQKq-vTYiIXbS6IAivM_8Vx
+  #fans_game=FqevqsHf1cxzyBlxLd3gJL6M3LRV
+  #recommend=FvKlSn2sj3mov1njd3sJs5mZ6Es9
+  #unfold=FpTTvgANcRl0it7NzhQk745N4ZJx
+  #scene=FneRCw-FhBJ2iB6bQ1KaQCsG4kwV
+  #guess=Fjm04tDsI6TcKNbWFMsrugyUVjdx
+  #wx_card=FsRRrPGYKkTga6uZf5dqEq213IBT
+  #brokerage=FqrqdYm_6c4ih0EGQ1rcEUMLtdlB
+  #red_packet=FtyH1xI2Y61WKdpIeJO196XTKy-p
+  #micro_aid=FmkcCvuv-qfnVgT3prcxrkHCFYds
 
   KEY_MAPS = {
     ActivityType::VIP              => "FitJY1_Agsv5V9W5-dH-M5FVUM0E",
@@ -24,7 +48,7 @@ module Concerns::ActivityQiniuPicKeys
     ActivityType::HOUSE_SELLER     => "FlcZr6734s-BiXD-a35MyxGI_yRx",
     ActivityType::SLOT             => "FmP_AWEx35d2zhFnIXx_55aaDMkS",
     ActivityType::BOOKING          => "FsbEJWQgWNg7Ga5S8A2UGB54EDqA",
-    ActivityType::hospital         => "FoZWEvFw-1v5aRGdnmnus4ytiqBk",
+    ActivityType::HOSPITAL         => "FoZWEvFw-1v5aRGdnmnus4ytiqBk",
     ActivityType::TRIP             => "Fjcw7LfeW9meLcoLYyshnlSv0Vzz",
     ActivityType::BUSINESS_SHOP    => "Fg7y_-6AMUi3vRFmtULpqE4s8D-w",
     ActivityType::HOUSE_IMPRESSION => "FtKIozMXq2WGzJZDshqgvlZyy8hZ",

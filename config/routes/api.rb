@@ -6,9 +6,17 @@ Wp::Application.routes.draw do
 
     match '/service/:code' => 'weixin#service', via: [:post, :get]
     match '/message/:app_id/notify' => 'weixin#service', via: [:post, :get]
+
+
   end
 
   namespace :api do
+    ##############################################################################
+    # weixin open
+    ##############################################################################
+    post  'weixin_open/ticket', to: 'weixin_open#ticket'
+    get 'weixin_open/auth', to: 'weixin_open#auth'
+    match 'v1/wechat' => 'weixin#service', via: [:post, :get]
 
     resources :weixin, only: [] do
       get :msg_test, :map_url, on: :collection

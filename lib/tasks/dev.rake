@@ -42,13 +42,6 @@ namespace :dev do
   end
 
 
-  desc 'initialize website templates'
-  task :create_website_templates => :environment do
-    puts 'Starting create website_templates ******'
-    load File.join( Rails.application.root,'db/templates/template_tag.rb')
-    load File.join( Rails.application.root,'db/templates/parse.rb')
-    puts "created website_templates. count: #{WebsiteTemplate.count}"
-  end
 
 
 end

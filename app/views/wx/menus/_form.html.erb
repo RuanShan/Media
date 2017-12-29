@@ -47,7 +47,7 @@
                 <div class="form-group">
                   <label class="">图文资源<span class="required-star">*</span></label>
                   <div class="clearfix">
-                    <%= f.select :material_id, current_site.materials.graphic.root.pluck(:title,:id).map!{|m| [truncate_u(m.first), m.last] }, { selected: @wx_menu.menuable_id, include_blank: true }, validate: true, class: 'col-sm-8 required' %>
+                    <%= f.select :material_id, current_site.materials.graphic.root.pluck(:title,:id).map{|m| [truncate_u(m.first), m.last] }, { selected: @wx_menu.menuable_id, include_blank: true }, validate: true, class: 'col-sm-8 required' %>
                     <%= link_to "　管理图文资源", materials_url, class: 'help-inline line-height-32', target: '_blank' %>
                   </div>
                 </div>
@@ -86,7 +86,7 @@
                 <div class="form-group">
                   <label class="">选择活动<span class="required-star"> * </span></label>
                   <div class="clearfix">
-                    <%= f.select :activity_id, current_site.activities.valid.unexpired.pluck(:name,:id).map!{|m| [truncate_u(m.first), m.last] }, { selected: @wx_menu.menuable_id }, validate: true, class: 'col-sm-8 required' %>
+                    <%= f.select :activity_id, current_site.activities.valid.unexpired.pluck(:name,:id).map{|m| [truncate_u(m.first), m.last] }, { selected: @wx_menu.menuable_id }, validate: true, class: 'col-sm-8 required' %>
                   </div>
                 </div>
               </div>
@@ -95,7 +95,7 @@
                 <div class="form-group">
                   <label class="">选择相册<span class="required-star"> * </span></label>
                   <div class="clearfix">
-                    <%= f.select :album_id, current_site.albums.show.order('albums.sort, albums.updated_at DESC').pluck(:name,:id).map!{|m| [truncate_u(m.first), m.last] }, { selected: @wx_menu.menuable_id }, validate: true, class: 'col-sm-8 required' %>
+                    <%= f.select :album_id, current_site.albums.show.order('albums.sort, albums.updated_at DESC').pluck(:name,:id).map{|m| [truncate_u(m.first), m.last] }, { selected: @wx_menu.menuable_id }, validate: true, class: 'col-sm-8 required' %>
                   </div>
                 </div>
               </div>
@@ -104,7 +104,7 @@
                 <div class="form-group">
                   <label class="">选择360全景<span class="required-star"> * </span></label>
                   <div class="clearfix">
-                    <%= f.select :panoramagram_id, current_site.activities.panoramagram.active.pluck(:name,:id).map!{|m| [truncate_u(m.first), m.last] }, { selected: @wx_menu.menuable_id }, validate: true, class: 'col-sm-8 required' %>
+                    <%= f.select :panoramagram_id, current_site.activities.panoramagram.active.pluck(:name,:id).map{|m| [truncate_u(m.first), m.last] }, { selected: @wx_menu.menuable_id }, validate: true, class: 'col-sm-8 required' %>
                   </div>
                 </div>
               </div>
@@ -130,7 +130,7 @@
                   <label class="">选择语音<span class="required-star">*</span></label>
 
                   <div class="clearfix">
-                    <%= f.select :audio_id, current_site.materials.audios.select([:id,:audio]).map!{|m| [truncate_u(m.audio.try(:file).try(:filename)), m.id] }, { selected: @wx_menu.menuable_id }, validate: true, class: 'col-md-8 required' %>
+                    <%= f.select :audio_id, current_site.materials.audios.select([:id,:audio]).map{|m| [truncate_u(m.audio.try(:file).try(:filename)), m.id] }, { selected: @wx_menu.menuable_id }, validate: true, class: 'col-md-8 required' %>
                   </div>
                 </div>
               </div>

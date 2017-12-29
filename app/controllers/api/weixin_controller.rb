@@ -3,7 +3,6 @@ class Api::WeixinController < Api::BaseController
   include WxReplyMessage
   include ApiWeixinControllerHelper
 
-  skip_before_action :verify_authenticity_token
   before_action :check_signature!, only: :service
 
   def default_url_options
@@ -40,7 +39,7 @@ class Api::WeixinController < Api::BaseController
     attrs = @xml.is_a?(Hash) ? params.merge(xml: @xml) : params
     attrs = attrs.merge(ReplyMsg: @echostr, IsSuccess: @is_success, ConnectTime: Time.now - @start_time)
     SiteLog::Base.logger('weixin_logs', attrs.to_json)
-    render text: @echostr
+    render plain: @echostr
 
     send_kf_text_message
   end
@@ -49,17 +48,17 @@ class Api::WeixinController < Api::BaseController
 
   def so_resecse_test
     #{"ToUserName"=>"gh_3c884a361561", "FromUserName"=>"ozy4qt1eDxSxzCr0aNT0mXCWfrDE", "CreateTime"=>"1423617739", "MsgType"=>"text", "Content"=>"QUERY_AUTH_CODE:HGwmE-HCBBuWAF72DkX75DZNH4Pgqb0XqbfF5LnmnZHoeXj3wfH4nDJyM63MWg8D", "MsgId"=>"6114391631216365994"}
-    #{"ToUserName"=>"gh_3c884a361561", "FromUserName"=>"ozy4qt1eDxSxzCr0aNT0mXCWfrDE", "CreateTime"=>"1423617744", "MsgType"=>"text", "Content"=>"TESTCOMPONENT_MSG_TYPE_TEXT", "MsgId"=>"6114391652691202477"} 
-    #{"ToUserName"=>"gh_3c884a361561", "FromUserName"=>"ozy4qt1eDxSxzCr0aNT0mXCWfrDE", "CreateTime"=>"1423617748", "MsgType"=>"event", "Event"=>"LOCATION", "Latitude"=>"111.000000", "Longitude"=>"222.000000", "Precision"=>"333.000000"} 
+    #{"ToUserName"=>"gh_3c884a361561", "FromUserName"=>"ozy4qt1eDxSxzCr0aNT0mXCWfrDE", "CreateTime"=>"1423617744", "MsgType"=>"text", "Content"=>"TESTCOMPONENT_MSG_TYPE_TEXT", "MsgId"=>"6114391652691202477"}
+    #{"ToUserName"=>"gh_3c884a361561", "FromUserName"=>"ozy4qt1eDxSxzCr0aNT0mXCWfrDE", "CreateTime"=>"1423617748", "MsgType"=>"event", "Event"=>"LOCATION", "Latitude"=>"111.000000", "Longitude"=>"222.000000", "Precision"=>"333.000000"}
     @xml = $encrypt_type.to_s.eql?('aes') && $app_id.present? ? decrypt_xml : params[:xml]
     if $app_id == 'wx570bc396a51b8ff8' && @xml[:ToUserName] == 'gh_3c884a361561'
       if @xml[:MsgType] == 'text'
         @echostr = Weixin.respond_text(@xml[:FromUserName], @xml[:ToUserName], 'TESTCOMPONENT_MSG_TYPE_TEXT_callback') if @xml[:Content] == 'TESTCOMPONENT_MSG_TYPE_TEXT'
         if @xml[:Content] =~/^QUERY_AUTH_CODE:\w+/
           @query_auth_code = @xml[:Content].split(':').last
-          @echostr = Weixin.respond_text(@xml[:FromUserName], @xml[:ToUserName], '')  
+          @echostr = Weixin.respond_text(@xml[:FromUserName], @xml[:ToUserName], '')
         end
-      elsif @xml[:MsgType] == 'event' 
+      elsif @xml[:MsgType] == 'event'
         @echostr = Weixin.respond_text(@xml[:FromUserName], @xml[:ToUserName], "#{@xml[:Event]}from_callback")
       end
     end
@@ -103,7 +102,7 @@ class Api::WeixinController < Api::BaseController
   end
 
   def check_signature!
-    return render text: '请求参数不正确' if params[:code].blank? && params[:app_id].blank?
+    return render plain: '请求参数不正确' if params[:code].blank? && params[:app_id].blank?
     $wx_mp_user = @mp_user = WxMpUser.find_by_code_or_app_id(params[:code].to_s, params[:app_id].to_s)
     return @checked = false unless @mp_user
     token = @mp_user.plugin? ? Settings.wx_plugin.token : @mp_user.token

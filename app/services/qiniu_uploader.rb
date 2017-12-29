@@ -17,6 +17,6 @@ class QiniuUploader
     else file
     end
     put_policy = Qiniu::Auth::PutPolicy.new(bucket)
-    Qiniu::Storage.upload_with_put_policy(put_policy, file_path)
+    Qiniu::Storage.upload_with_put_policy(put_policy, file_path, nil, nil, { bucket:BUCKET_PICTURES})
   end
 end

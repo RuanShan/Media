@@ -155,3 +155,5 @@ gem 'rubyntlm', '~> 0.3.2'
 gem 'test-unit'
 
 gem 'redis'
+
+gem 'puma'

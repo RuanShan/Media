@@ -22,11 +22,11 @@ common: &common
     callbackurl: "http://ui.m.wp.ruanshan.com/yeepay/callback"
     fcallbackurl: 'http://ui.m.wp.ruanshan.com/yeepay/callback'
   wx_plugin:
-    token: 44cb682582f069877356daee2de39a0a
-    base64_aes_key: winc44b9f22bcef72d2ea76b621b6f2c095160e81e6
-    encoding_aes_key: winc44b9f22bcef72d2ea76b621b6f2c095160e81e6
-    component_app_id: wx76b32f516a607539
-    component_app_secret: 6595b1727a7e4c1921a5f7c68919083b
+    token: <%= Rails.application.secrets.wx_open['token'] %>
+    base64_aes_key: <%= Rails.application.secrets.wx_open['base64_aes_key'] %>
+    encoding_aes_key: <%= Rails.application.secrets.wx_open['encoding_aes_key'] %>
+    component_app_id: <%= Rails.application.secrets.wx_open['component_app_id'] %>
+    component_app_secret: <%= Rails.application.secrets.wx_open['component_app_secret'] %>
 
 production:
   <<: *common
@@ -49,11 +49,11 @@ production:
     callbackurl: "http://m.wp.ruanshan.com/yeepay/callback"
     fcallbackurl: 'http://m.wp.ruanshan.com/yeepay/callback'
   wx_plugin:
-    token: 44cb682582f069877356daee2de39a0a
-    base64_aes_key: winc44b9f22bcef72d2ea76b621b6f2c095160e81e6
-    encoding_aes_key: winc44b9f22bcef72d2ea76b621b6f2c095160e81e6
-    component_app_id: wx76b32f516a607539
-    component_app_secret: 6595b1727a7e4c1921a5f7c68919083b
+    token: <%= Rails.application.secrets.wx_open['token'] %>
+    base64_aes_key: <%= Rails.application.secrets.wx_open['base64_aes_key'] %>
+    encoding_aes_key: <%= Rails.application.secrets.wx_open['encoding_aes_key'] %>
+    component_app_id: <%= Rails.application.secrets.wx_open['component_app_id'] %>
+    component_app_secret: <%= Rails.application.secrets.wx_open['component_app_secret'] %>
 
 staging:
   <<: *common
@@ -74,8 +74,8 @@ staging:
 
 development:
   <<: *common
-  hostname: "wp.david.dev:3000"
-  mhostname: "m.wp.david.dev:3000"
+  hostname: "wx.test.getstore.cn"
+  mhostname: "m.wx.test.getstore.cn"
   wshop_host:     "http://127.0.0.1:3003"
   wmall_host:     "http://127.0.0.1:3002"
   wlife_host:     "http://127.0.0.1:3001"
