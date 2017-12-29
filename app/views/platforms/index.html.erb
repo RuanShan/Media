@@ -86,7 +86,7 @@
               <div class="col-md-5">
                 <div class="input-group input-group-text">
                   <%= @wx_mp_user.status_name %>
-                  <%#= link_to '重新绑定', bind_platforms_url, target: '_blank', id: 'rebind_link', data: {confirm: '<h4>警告：变更公众账号绑定，会导致会员卡和电商数据丢失！请谨慎操作！后果商家自负！</h4>'} %>
+                  <%= link_to '重新绑定', bind_platforms_url, target: '_blank', id: 'rebind_link', data: {confirm: '<h4>警告：变更公众账号绑定，会导致会员卡和电商数据丢失！请谨慎操作！后果商家自负！</h4>'} %>
                 </div>
               </div>
             </div>

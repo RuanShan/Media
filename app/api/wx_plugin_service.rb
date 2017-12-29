@@ -1,14 +1,14 @@
 class WxPluginService
-  VERIFY_TICKET_KEY          = "#{Rails.env}:winwemedia:wx_plugin:component_verify_ticket"
-  COMPONENT_ACCESS_TOKEN_KEY = "#{Rails.env}:winwemedia:wx_plugin:component_access_token"
-  PRE_AUTH_CODE_KEY          = "#{Rails.env}:winwemedia:wx_plugin:pre_auth_code"
+  VERIFY_TICKET_KEY          = "#{Rails.env}:wechatplus:wx_plugin:component_verify_ticket"
+  COMPONENT_ACCESS_TOKEN_KEY = "#{Rails.env}:wechatplus:wx_plugin:component_access_token"
+  PRE_AUTH_CODE_KEY          = "#{Rails.env}:wechatplus:wx_plugin:pre_auth_code"
 
   class << self
 
     def component_verify_ticket
       $redis.get(WxPluginService::VERIFY_TICKET_KEY)
     end
-    
+
     # Result Example Data: {"component_access_token":"61W3mEpU66027wgNZ_MhGHNQDHnFATkDa9-2llqrMBjUwxRSNPbVsMmyD-yq8wZETSoE5NQgecigDrSHkPtIYA","expires_in":7200}
     def fetch_component_access_token
       post_body = {
@@ -52,8 +52,8 @@ class WxPluginService
     end
 
 
-    def fetch_wx_mp_user_api_auth(auth_code, site)
-      return unless site
+    def fetch_wx_mp_user_api_auth(auth_code, account)
+      return unless account
 
       url = 'https://api.weixin.qq.com/cgi-bin/component/api_query_auth?component_access_token=' + WxPluginService.component_access_token
       post_body = { component_appid: Settings.wx_plugin.component_app_id, authorization_code: auth_code }.to_json
@@ -66,7 +66,7 @@ class WxPluginService
       app_id, access_token, expires_in, refresh_token, func_info = auth_info.values_at('authorizer_appid', 'authorizer_access_token', 'expires_in', 'authorizer_refresh_token', 'func_info')
       wx_mp_user = nil
       WxMpUser.transaction do
-        wx_mp_user = site.wx_mp_user || WxMpUser.where(site_id: site.id, app_id: app_id).first_or_create(nickname: site.name)
+        wx_mp_user = account.wx_mp_user || WxMpUser.where(account_id: account.id, app_id: app_id).first_or_create(nickname: account.name)
         wx_mp_user.update_attributes(app_id: app_id, access_token: access_token, refresh_token: refresh_token, expires_in: expires_in.to_i.seconds.from_now, func_info: func_info, auth_code: auth_code, bind_type: WxMpUser::PLUGIN, binds_count: wx_mp_user.binds_count.to_i + 1, status: WxMpUser::ACTIVE)
         wx_mp_user.fetch_auth_info
       end
@@ -83,7 +83,7 @@ end
 # component_access_token = WxPluginService.component_access_token
 # pre_auth_code = WxPluginService.pre_auth_code
 # app_id       = 'wx818e511f332984b9'
-# redirect_uri = URI.encode_www_form_component('http://plugin.weixin.winwemedia.com/xxxxx')
+# redirect_uri = URI.encode_www_form_component('http://plugin.weixin.wechatplus.com/xxxxx')
 # scope        = 'snsapi_base'
 # url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=#{app_id}&redirect_uri=#{redirect_uri}&response_type=code&scope=#{scope}&state=my_state&component_appid=#{Settings.wx_plugin.component_app_id}#wechat_redirect"
-# "http://plugin.weixin.winwemedia.com/xxxxx?auth_code=EM_wJHVNyj6QsPige9KvOdpBQD8imrG6ZsFfs4cd5FcjOlC8gdXhQQrKwoWGUALA&expires_in=600"
+# "http://plugin.weixin.wechatplus.com/xxxxx?auth_code=EM_wJHVNyj6QsPige9KvOdpBQD8imrG6ZsFfs4cd5FcjOlC8gdXhQQrKwoWGUALA&expires_in=600"

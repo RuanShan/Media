@@ -72,11 +72,11 @@ class Api::WeixinOpenController < ApplicationController
       end
 
       def component_appid
-        Rails.application.secrets.wx_open['component_appid']
+        Rails.application.secrets.wx_open['component_app_id']
       end
 
       def component_appsecret
-        Rails.application.secrets.wx_open['component_appsecret']
+        Rails.application.secrets.wx_open['component_app_secret']
       end
       #公众号消息校验Token
       def token

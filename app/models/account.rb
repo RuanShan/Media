@@ -29,7 +29,8 @@ class Account < ActiveRecord::Base
 
   has_one :site
   has_many :sites
-
+  has_one :wx_mp_user
+  
   after_create :init_site
 
   def self.current
