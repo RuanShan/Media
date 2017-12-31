@@ -16,7 +16,8 @@ Wp::Application.routes.draw do
     ##############################################################################
     post  'weixin_open/ticket', to: 'weixin_open#ticket'
     get 'weixin_open/auth', to: 'weixin_open#auth'
-    match 'v1/wechat' => 'weixin#service', via: [:post, :get]
+    # development only
+    match 'v1/wechat', to: 'weixin#service', code: '1514344736633865', via: [:post, :get]
 
     resources :weixin, only: [] do
       get :msg_test, :map_url, on: :collection

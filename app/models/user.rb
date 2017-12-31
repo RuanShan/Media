@@ -47,8 +47,8 @@ class User < ActiveRecord::Base
   has_many :qrcode_users
   has_many :wbbs_topics, as: :poster
   has_many :wbbs_notifications, as: :notifier
-  has_many :repairs, class_name: 'WxPlotRepairComplain', -> { where(category: WxPlotRepairComplain::REPAIR) }, order: 'wx_plot_repair_complains.created_at DESC'
-  has_many :complain_advices, class_name: 'WxPlotRepairComplain', -> { where(category: [WxPlotCategory::COMPLAIN, WxPlotCategory::ADVICE]) }, order: 'wx_plot_repair_complains.created_at DESC'
+  has_many :repairs, -> { where(category: WxPlotRepairComplain::REPAIR).order(created_at: :desc) }, class_name: 'WxPlotRepairComplain' #, order: 'wx_plot_repair_complains.created_at DESC'
+  has_many :complain_advices, -> { where(category: [WxPlotCategory::COMPLAIN, WxPlotCategory::ADVICE]).order( created_at: :desc) }, class_name: 'WxPlotRepairComplain' #, order: 'wx_plot_repair_complains.created_at DESC'
   has_many :wx_invites, foreign_key: :from_user_id
   has_many :likes, as: :likeable
   has_many :comments, as: :commenter

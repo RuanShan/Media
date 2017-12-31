@@ -25,7 +25,7 @@ class Api::WeixinController < Api::BaseController
     return @echostr = serve_get_wx_api if request.get?
     return log_and_respond_error('公众账号Token已过期', "no mp_user for: #{params}", plain_text: false) unless @checked
 
-    @xml = $encrypt_type.to_s.eql?('aes') && $app_id.present? ? decrypt_xml : params[:xml]
+    @xml = $encrypt_type.to_s.eql?('aes') && $app_id.present? ? post_xml : post_xml
     return log_and_respond_error('参数错误', "no xml data: #{params}") if @xml.blank?
 
     @from_user_name = @xml[:FromUserName]
@@ -50,7 +50,7 @@ class Api::WeixinController < Api::BaseController
     #{"ToUserName"=>"gh_3c884a361561", "FromUserName"=>"ozy4qt1eDxSxzCr0aNT0mXCWfrDE", "CreateTime"=>"1423617739", "MsgType"=>"text", "Content"=>"QUERY_AUTH_CODE:HGwmE-HCBBuWAF72DkX75DZNH4Pgqb0XqbfF5LnmnZHoeXj3wfH4nDJyM63MWg8D", "MsgId"=>"6114391631216365994"}
     #{"ToUserName"=>"gh_3c884a361561", "FromUserName"=>"ozy4qt1eDxSxzCr0aNT0mXCWfrDE", "CreateTime"=>"1423617744", "MsgType"=>"text", "Content"=>"TESTCOMPONENT_MSG_TYPE_TEXT", "MsgId"=>"6114391652691202477"}
     #{"ToUserName"=>"gh_3c884a361561", "FromUserName"=>"ozy4qt1eDxSxzCr0aNT0mXCWfrDE", "CreateTime"=>"1423617748", "MsgType"=>"event", "Event"=>"LOCATION", "Latitude"=>"111.000000", "Longitude"=>"222.000000", "Precision"=>"333.000000"}
-    @xml = $encrypt_type.to_s.eql?('aes') && $app_id.present? ? decrypt_xml : params[:xml]
+    @xml = $encrypt_type.to_s.eql?('aes') && $app_id.present? ? post_xml : post_xml
     if $app_id == 'wx570bc396a51b8ff8' && @xml[:ToUserName] == 'gh_3c884a361561'
       if @xml[:MsgType] == 'text'
         @echostr = Weixin.respond_text(@xml[:FromUserName], @xml[:ToUserName], 'TESTCOMPONENT_MSG_TYPE_TEXT_callback') if @xml[:Content] == 'TESTCOMPONENT_MSG_TYPE_TEXT'
@@ -423,6 +423,39 @@ class Api::WeixinController < Api::BaseController
   def respond_no_auto_reply(content = '商家没有设置回复')
     @is_success = 0
     Weixin.respond_text(@from_user_name, @to_user_name, content)
+  end
+
+  # === copy from wechat  Wechat::Responder
+  #
+  def request_encrypt_content
+    request_content['xml']['Encrypt']
+  end
+
+  def request_content
+    params[:xml].nil? ? Hash.from_xml(request.raw_post) : { 'xml' => params[:xml] }
+  end
+
+  # merge with decrypt_xml
+  def post_xml
+    data = request_content
+
+    attrs = {
+      encoding_aes_key: params[:app_id].present? ? Settings.wx_plugin.encoding_aes_key : @mp_user.try(:encoding_aes_key),
+      token: params[:app_id].present? ? Settings.wx_plugin.token : @mp_user.try(:token),
+      encrypted_string: request_encrypt_content
+    }
+    if attrs[:encoding_aes_key].present? && attrs[:encrypted_string].present?
+      aes = WeixinAes.new(attrs)
+      aes.decrypt_string
+      data = aes.hash_from_encrypt
+    end
+
+    data_hash = data.fetch('xml', {})
+    data_hash = data_hash.to_unsafe_hash if data_hash.instance_of?(ActionController::Parameters)
+    HashWithIndifferentAccess.new(data_hash).tap do |msg|
+      msg[:Event].downcase! if msg[:Event]
+    end
+
   end
 
 end
