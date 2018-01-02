@@ -46,11 +46,11 @@
                 <span class="input-group-addon">预约时间：</span>
 
                 <div class="input-group">
-                   <%= f.text_field :start_time_gte, value: @search.start_time_gte.try(:to_date), class: "input-small datepicker" %>
+                   <%= f.text_field :start_time_gteq, value: @search.start_time_gteq.try(:to_date), class: "input-small datepicker" %>
                     <span class="input-group-addon">
                      -
                     </span>
-                    <%= f.text_field :end_time_lte, value: @search.end_time_lte.try(:to_date), class: "input-small datepicker" %>
+                    <%= f.text_field :end_time_lteq, value: @search.end_time_lteq.try(:to_date), class: "input-small datepicker" %>
                 </div>
               </div>
             </div>

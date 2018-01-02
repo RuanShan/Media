@@ -386,8 +386,8 @@ class Biz::ShopsController < ApplicationController
   private
     def coupon_filter_search
       search = params[:search].to_h
-      search['used_at_gte'] << ' 00:00:00' if search['used_at_gte'].present?
-      search['used_at_lte'] << ' 23:59:59' if search['used_at_lte'].present?
+      search['used_at_gteq'] << ' 00:00:00' if search['used_at_gteq'].present?
+      search['used_at_lteq'] << ' 23:59:59' if search['used_at_lteq'].present?
       search
     end
 

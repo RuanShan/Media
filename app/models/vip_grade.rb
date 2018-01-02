@@ -1,14 +1,14 @@
 class VipGrade < ActiveRecord::Base
   belongs_to :vip_card
   has_many :vip_users
-  has_and_belongs_to_many :vip_privileges
+  has_and_belongs_to_many :vip_privileges, join_table: 'vip_grades_vip_privileges'
   has_and_belongs_to_many :point_gifts
 
   scope :sorted, -> { order('status ASC, sort ASC') }
   scope :reverse_sorted, -> { order('status DESC, sort DESC') }
   scope :sort_greater_than, ->(sort) { where("sort >= ?", sort) }
   scope :visible, -> { where(status: [DEFAULT, NORMAL]) }
-  
+
   validates :name, presence: true, uniqueness: { scope: [:vip_card_id, :status], message: '等级名称不能重复' }, if: :normal?
   validates :sort, :value, presence: true, numericality: { greater_than_or_equal_to: 0, only_integer: true }, if: :normal?
   validates :sort, uniqueness: { scope: [:vip_card_id, :status], message: '等级值不能重复' }, if: :normal?

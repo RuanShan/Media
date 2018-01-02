@@ -4391,7 +4391,7 @@ class InitDb < ActiveRecord::Migration
     t.integer  "amount_source"
     t.integer  "direction",            :limit => 1,                                :default => 1, :null => false
     t.string   "direction_type",                                                                  :null => false
-    t.integer  "payment_type",         :limit => 1
+    t.integer  "payment_type"
     t.decimal  "amount",                            :precision => 12, :scale => 2,                :null => false
     t.decimal  "total_amount",                      :precision => 12, :scale => 2,                :null => false
     t.decimal  "usable_amount",                     :precision => 12, :scale => 2,                :null => false

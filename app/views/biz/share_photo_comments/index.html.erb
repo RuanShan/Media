@@ -52,11 +52,11 @@
                           <div class="input-group input-group-text">
                             <span class="input-group-addon">发表时间：</span>
                             <div class="input-group">
-                              <%= f.text_field :created_at_gte, value: @search.created_at_gte.try(:to_date), class: "datepicker input-sm form-control" %>
+                              <%= f.text_field :created_at_gteq, value: @search.created_at_gteq.try(:to_date), class: "datepicker input-sm form-control" %>
                               <span class="input-group-addon">
                            -
                         </span>
-                              <%= f.text_field :created_at_lte, value: @search.created_at_lte.try(:to_date), class: "datepicker input-sm form-control" %>
+                              <%= f.text_field :created_at_lteq, value: @search.created_at_lteq.try(:to_date), class: "datepicker input-sm form-control" %>
                             </div>
                           </div>
                         </div>

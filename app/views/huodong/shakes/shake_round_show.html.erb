@@ -19,7 +19,7 @@
             <button type="submit" class="btn btn-primary btn-sm">查询</button>
           </div>
           <div class="col-xs-3">
-            <% all_count = @search.count%>
+            <% all_count = @search.result.count%>
             <% export_count = 2000 %>
             <% if all_count <= export_count %>
               <%= link_to '导出EXCEL', shake_round_show_shake_path(:id => @shake_round.id,:format => :xls,:search => params[:search]), class: 'btn btn-primary btn-sm pull-right' %>

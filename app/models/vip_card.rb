@@ -8,7 +8,7 @@ class VipCard < ActiveRecord::Base
    'bodianlan'    => { color_code: '005b71', bg_image_name: '波点蓝',    qiniu_key: 'FsSsbEgO89prbjbSrDmx07DpJJN9'},
    'buwen'        => { color_code: '005b57', bg_image_name: '布纹',      qiniu_key: 'Fuj7Td32cp1YqQlrgokPbAnsje7z'},
    'chunlan'      => { color_code: '005b71', bg_image_name: '纯蓝',      qiniu_key: 'FgQAX14V70LvAVU3zy90w4gOdqMD'},
-   'donggan'      => { color_code: 'fff8d5', bg_image_name: '动感',      qiniu_key: 'FudiRXyXaCchVosPYrv22Ws9do1F'},
+   'donggan'      => { color_code: 'fff8d5', bg_image_name: '动感',      qiniu_key: 'FudiRXyXaCchVosPYrv22Ws9do1F'}, #default
    'donggan1'     => { color_code: 'FFF',    bg_image_name: '动感-01',   qiniu_key: 'Fl51V5-pG1VNVnmWvR6ypiET8EG-'},
    'donggan2'     => { color_code: 'FFF',    bg_image_name: '动感-02',   qiniu_key: 'Fn77OSKZ2B_ypQfxuN4ELJLbPvje'},
    'fensekafei'   => { color_code: 'feeff5', bg_image_name: '粉色咖啡',  qiniu_key: 'FuMIzzRbEJATsESDkUtS5lGwqv76'},

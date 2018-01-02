@@ -28,7 +28,7 @@
                   <div class="input-group input-group-text">
                     <span class="input-group-addon">时间范围：</span>
                     <div class="input-group">
-                      <%= datetime_range_tag f, start_at: :updated_at_gte, end_at: :updated_at_lte, options: {class: 'daterange'} %>
+                      <%= datetime_range_tag f, start_at: :updated_at_gteq, end_at: :updated_at_lteq, options: {class: 'daterange'} %>
                     </div>
                   </div>
                 </div>

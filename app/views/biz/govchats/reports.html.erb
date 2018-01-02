@@ -39,7 +39,7 @@
         <div class="input-group input-group-text">
           <span class="input-group-addon">时间范围：</span>
           <div class="col-xs-12">
-            <%= datetime_range_tag f, start_at: :created_at_gte, end_at: :created_at_lte, options: {class: 'datetimerange form-control min-width-280'} %>
+            <%= datetime_range_tag f, start_at: :created_at_gteq, end_at: :created_at_lteq, options: {class: 'datetimerange form-control min-width-280'} %>
           </div>
         </div>
       </div>

@@ -27,7 +27,7 @@
                   <div class="input-group input-group-text">
                     <span class="input-group-addon">时间范围：</span>
                       <div class="input-group">
-                        <%= datetime_range_tag f, start_at: :created_at_gte, end_at: :created_at_lte, options: {class: 'daterange'} %>
+                        <%= datetime_range_tag f, start_at: :created_at_gteq, end_at: :created_at_lteq, options: {class: 'daterange'} %>
                       </div>
                   </div>
                 </div>
@@ -50,11 +50,11 @@
                   <div class="input-group input-group-text">
                     <span class="input-group-addon">金额范围：</span>
                     <div class="input-group">
-                        <%= f.text_field :amount_gte, class: 'input-sm form-control' %>
+                        <%= f.text_field :amount_gteq, class: 'input-sm form-control' %>
                           <span class="input-group-addon">
                              -
                           </span>
-                          <%= f.text_field :amount_lte, class: 'input-sm form-control' %>
+                          <%= f.text_field :amount_lteq, class: 'input-sm form-control' %>
                       </div>
                   </div>
                 </div>

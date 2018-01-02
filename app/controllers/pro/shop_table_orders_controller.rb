@@ -4,8 +4,8 @@ class Pro::ShopTableOrdersController < Pro::ShopBaseController
 
   def index
     params[:search] ||= {}
-    if params[:search][:booking_at_lte].present?
-      params[:search][:booking_at_lte] = [params[:search][:booking_at_lte], " 23:59:59"].join
+    if params[:search][:booking_at_lteq].present?
+      params[:search][:booking_at_lteq] = [params[:search][:booking_at_lteq], " 23:59:59"].join
     end
     params[:search][:shop_branch_id_eq] = current_shop_branch.id if current_shop_branch
     @search = current_site.shop_table_orders.search(params[:search])

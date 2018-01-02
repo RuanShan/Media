@@ -36,7 +36,7 @@
               <span class="input-group-addon">
                 <i class="icon-calendar bigger-110"></i>
               </span>
-                      <%= f.text_field :booking_at_gte, value: @search.booking_at_gte.try(:to_date), class: "datepicker form-control" %></div>
+                      <%= f.text_field :booking_at_gteq, value: @search.booking_at_gteq.try(:to_date), class: "datepicker form-control" %></div>
                   </div>
                 </div>
                 <% if can_see? %>

@@ -35,11 +35,11 @@
                   <div class="input-group input-group-text">
                     <span class="input-group-addon">时间范围：</span>
                     <div class="input-group">
-                      <%= f.text_field :updated_at_gte, class: 'datepicker input-sm form-control', value: (params[:search][:updated_at_gte].try(:to_date) if params[:search]) %>
+                      <%= f.text_field :updated_at_gteq, class: 'datepicker input-sm form-control', value: (params[:search][:updated_at_gteq].try(:to_date) if params[:search]) %>
                       <span class="input-group-addon">
                          -
                       </span>
-                      <%= f.text_field :updated_at_lte, class: 'datepicker input-sm form-control', value: (params[:search][:updated_at_lte].try(:to_date) if params[:search]) %>
+                      <%= f.text_field :updated_at_lteq, class: 'datepicker input-sm form-control', value: (params[:search][:updated_at_lteq].try(:to_date) if params[:search]) %>
                     </div>
                   </div>
                 </div>

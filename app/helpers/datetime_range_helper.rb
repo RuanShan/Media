@@ -1,7 +1,7 @@
 module DatetimeRangeHelper
   # Usage Example: 
   # datetime_range_tag f, options: {class: 'required datetimerange col-sm-6'}
-  # datetime_range_tag f, start_at: :created_at_gte, end_at: :created_at_lte
+  # datetime_range_tag f, start_at: :created_at_gteq, end_at: :created_at_lteq
   def datetime_range_tag(form, start_at: :start_at, end_at: :end_at, options: {class: 'datetimerange col-sm-12'})
     js_datetime_format   = options[:class].to_s =~ /datetimerange/ ? 'YYYY-MM-DD HH:mm' : 'YYYY-MM-DD'
     field_prefix         = form.object.is_a?(ActiveRecord::Base) ? form.object.class.name.underscore.gsub('/', '_') : 'search'

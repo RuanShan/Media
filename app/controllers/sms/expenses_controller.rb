@@ -7,7 +7,7 @@ class Sms::ExpensesController < ApplicationController
     @operation_options = SmsExpense::operation_id_options
     @search = current_site.sms_expenses.succeed.search(params[:search])
 
-    if params[:search] && @search.result.date_gte && @search.result.date_lte && @search.result.date_gte > @search.result.date_lte
+    if params[:search] && @search.result.date_gteq && @search.result.date_lteq && @search.result.date_gteq > @search.result.date_lteq
       return redirect_to :back, alert: '开始时间不能大于结束时间'
     end
 

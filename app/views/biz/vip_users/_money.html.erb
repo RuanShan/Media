@@ -21,8 +21,8 @@
               <%= f.submit '查询', class: 'btn btn-primary btn-sm' %>
             </div>
             <div class="filter-form pull-right">
-              <%= f.text_field :created_at_gte, class: 'input-date datepicker', placeholder: "选择日期范围" %> -
-              <%= f.text_field :created_at_lte, class: 'input-date datepicker', placeholder: "选择日期范围" %>
+              <%= f.text_field :created_at_gteq, class: 'input-date datepicker', placeholder: "选择日期范围" %> -
+              <%= f.text_field :created_at_lteq, class: 'input-date datepicker', placeholder: "选择日期范围" %>
             </div>
           </div>
         <% end %>

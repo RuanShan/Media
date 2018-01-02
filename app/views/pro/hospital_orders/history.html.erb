@@ -46,11 +46,11 @@
               <div class="input-group input-group-text">
                 <span class="input-group-addon">预约日期：</span>
                 <div class="input-group">
-                  <%= f.text_field :booking_at_gte, value: @search.booking_at_gte.try(:to_date), class: "input-small datepicker" %>
+                  <%= f.text_field :booking_at_gteq, value: @search.booking_at_gteq.try(:to_date), class: "input-small datepicker" %>
                       <span class="input-group-addon input-group-addon-text">
                          -
                       </span>
-                  <%= f.text_field :booking_at_lte, value: @search.booking_at_lte.try(:to_date), class: "input-small datepicker" %>
+                  <%= f.text_field :booking_at_lteq, value: @search.booking_at_lteq.try(:to_date), class: "input-small datepicker" %>
                 </div>
               </div>
             </div>

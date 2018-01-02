@@ -121,7 +121,7 @@ class Pro::TripsController < Pro::TripBaseController
     @trip_orders = @search.result.page(params[:page])
 
     if params[:search].present?
-      @created_at_range = %Q(#{search_params[:created_at_gte].try(:to_date)} - #{search_params[:created_at_lte].try(:to_date)}) if search_params[:created_at_gte].present? and search_params[:created_at_lte].present?
+      @created_at_range = %Q(#{search_params[:created_at_gteq].try(:to_date)} - #{search_params[:created_at_lteq].try(:to_date)}) if search_params[:created_at_gteq].present? and search_params[:created_at_lteq].present?
     end
   end
 

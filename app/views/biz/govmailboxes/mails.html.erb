@@ -40,9 +40,9 @@
           <span class="input-group-addon">时间范围：</span>
           <div class="col-xs-12">
             <div class="input-group">
-              <%= f.text_field :created_at_gte, value: @search.created_at_gte, class: "date-time input-sm form-control",  readonly: true%>
+              <%= f.text_field :created_at_gteq, value: @search.created_at_gteq, class: "date-time input-sm form-control",  readonly: true%>
               <span class="input-group-addon">-</span>
-              <%= f.text_field :created_at_lte, value: @search.created_at_lte, class: "date-time input-sm form-control",  readonly: true%>
+              <%= f.text_field :created_at_lteq, value: @search.created_at_lteq, class: "date-time input-sm form-control",  readonly: true%>
             </div>
           </div>
         </div>

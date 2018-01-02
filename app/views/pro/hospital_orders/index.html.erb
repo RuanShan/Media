@@ -52,7 +52,7 @@
             <div class="col-sm-3 ">
               <div class="input-group input-group-text">
                 <span class="input-group-addon">预约日期：</span>
-                <%= datetime_range_tag f, start_at: :created_at_gte, end_at: :created_at_lte, options: {class: 'daterange col-sm-12'} %>
+                <%= datetime_range_tag f, start_at: :created_at_gteq, end_at: :created_at_lteq, options: {class: 'daterange col-sm-12'} %>
               </div>
             </div>
             <div class="col-sm-3 row">

@@ -54,9 +54,9 @@
               <span class="input-group-addon">日期：</span>
 
               <div class="input-group">
-                <%= f.text_field :created_at_gte, value: (params[:search][:created_at_gte] rescue ""),  class: "datepicker input-sm form-control" %>
+                <%= f.text_field :created_at_gteq, value: (params[:search][:created_at_gteq] rescue ""),  class: "datepicker input-sm form-control" %>
                 <span class="input-group-addon">-</span>
-                <%= f.text_field :created_at_lte, value: (params[:search][:created_at_lte] rescue  ""), class: "datepicker input-sm form-control" %>
+                <%= f.text_field :created_at_lteq, value: (params[:search][:created_at_lteq] rescue  ""), class: "datepicker input-sm form-control" %>
               </div>
             </div>
           </div>

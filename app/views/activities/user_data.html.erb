@@ -35,7 +35,7 @@
                     <div class="col-md-3">
                       <div class="input-group input-group-text">
                         <span class="input-group-addon">日期：</span>
-                        <%= datetime_range_tag f, start_at: :created_at_gte, end_at: :created_at_lte %>
+                        <%= datetime_range_tag f, start_at: :created_at_gteq, end_at: :created_at_lteq %>
                       </div>
                     </div>
                     <div class="col-md-3">

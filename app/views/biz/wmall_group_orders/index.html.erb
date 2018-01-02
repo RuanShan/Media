@@ -49,11 +49,11 @@
                 <span class="input-group-addon">下单时间：</span>
 
                 <div class="input-group">
-                  <%= f.text_field :created_at_gte, class: 'datepicker input-sm form-control', value: (params[:search][:created_at_gte].try(:to_date) if params[:search]) %>
+                  <%= f.text_field :created_at_gteq, class: 'datepicker input-sm form-control', value: (params[:search][:created_at_gteq].try(:to_date) if params[:search]) %>
                   <span class="input-group-addon">
                        -
                     </span>
-                  <%= f.text_field :created_at_lte, class: 'datepicker input-sm form-control', value: (params[:search][:created_at_lte].try(:to_date) if params[:search]) %>
+                  <%= f.text_field :created_at_lteq, class: 'datepicker input-sm form-control', value: (params[:search][:created_at_lteq].try(:to_date) if params[:search]) %>
                 </div>
               </div>
             </div>

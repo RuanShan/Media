@@ -29,7 +29,7 @@
                   <div class="input-group input-group-text">
                     <span class="input-group-addon">日期：</span>
                     <div class="input-group col-sm-12">
-                      <%= datetime_range_tag f, start_at: :created_at_gte, end_at: :created_at_lte, options: {class: 'daterange col-sm-12'} %>
+                      <%= datetime_range_tag f, start_at: :created_at_gteq, end_at: :created_at_lteq, options: {class: 'daterange col-sm-12'} %>
                     </div>
                   </div>
                 </div>
@@ -52,8 +52,8 @@
                 <tbody>
                   <% if @total_consumes.present? || @used_consumes.present? %>
                   <% 
-                    start_date=params[:search] && params[:search][:created_at_gte].present? ? Date.parse(params[:search][:created_at_gte]) : Date.today
-                    end_date=params[:search] && params[:search][:created_at_lte].present? ? Date.parse(params[:search][:created_at_lte]) : Date.today 
+                    start_date=params[:search] && params[:search][:created_at_gteq].present? ? Date.parse(params[:search][:created_at_gteq]) : Date.today
+                    end_date=params[:search] && params[:search][:created_at_lteq].present? ? Date.parse(params[:search][:created_at_lteq]) : Date.today 
                   %>
                   <% (start_date..end_date).each do |date| %>
                     <tr>

@@ -1,5 +1,5 @@
 class App::VipsController < App::BaseController
-  skip_before_action :verify_authenticity_token
+  #skip_before_action :verify_authenticity_token
   before_action :block_non_wx_browser, :require_vip_card, :find_vip_user, except: [:map, :tenpay_notify, :tenpay_callback]
   before_action :require_wx_user, except: [:map, :passwd, :edit_passwd, :find_passwd, :tenpay_notify, :tenpay_callback, :recharge_back, :vip_package_show]
   skip_before_action :auth, :authorize, only: [:tenpay_notify, :tenpay_callback, :recharge_back]

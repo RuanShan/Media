@@ -39,7 +39,7 @@
                       <span class="input-group-addon">
                         <i class="icon-calendar bigger-110"></i>
                       </span>
-                      <%= f.text_field :created_at_gte, value: @search.created_at_gte.try(:to_date), class: "datepicker form-control" %>
+                      <%= f.text_field :created_at_gteq, value: @search.created_at_gteq.try(:to_date), class: "datepicker form-control" %>
                     </div>
                   </div>
                 </div>
@@ -74,7 +74,7 @@
                       <span class="input-group-addon">
                         <i class="icon-calendar bigger-110"></i>
                       </span>
-                      <%= f.text_field :book_at_gte, value: @search.book_at_gte.try(:to_date), class: "datepicker form-control" %>
+                      <%= f.text_field :book_at_gteq, value: @search.book_at_gteq.try(:to_date), class: "datepicker form-control" %>
                     </div>
                   </div>
                 </div>

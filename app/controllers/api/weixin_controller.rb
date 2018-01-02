@@ -50,7 +50,7 @@ class Api::WeixinController < Api::BaseController
     #{"ToUserName"=>"gh_3c884a361561", "FromUserName"=>"ozy4qt1eDxSxzCr0aNT0mXCWfrDE", "CreateTime"=>"1423617739", "MsgType"=>"text", "Content"=>"QUERY_AUTH_CODE:HGwmE-HCBBuWAF72DkX75DZNH4Pgqb0XqbfF5LnmnZHoeXj3wfH4nDJyM63MWg8D", "MsgId"=>"6114391631216365994"}
     #{"ToUserName"=>"gh_3c884a361561", "FromUserName"=>"ozy4qt1eDxSxzCr0aNT0mXCWfrDE", "CreateTime"=>"1423617744", "MsgType"=>"text", "Content"=>"TESTCOMPONENT_MSG_TYPE_TEXT", "MsgId"=>"6114391652691202477"}
     #{"ToUserName"=>"gh_3c884a361561", "FromUserName"=>"ozy4qt1eDxSxzCr0aNT0mXCWfrDE", "CreateTime"=>"1423617748", "MsgType"=>"event", "Event"=>"LOCATION", "Latitude"=>"111.000000", "Longitude"=>"222.000000", "Precision"=>"333.000000"}
-    @xml = $encrypt_type.to_s.eql?('aes') && $app_id.present? ? post_xml : post_xml
+    @xml = $encrypt_type.to_s.eql?('aes') && $app_id.present? ?  decrypt_xml : params[:xml]
     if $app_id == 'wx570bc396a51b8ff8' && @xml[:ToUserName] == 'gh_3c884a361561'
       if @xml[:MsgType] == 'text'
         @echostr = Weixin.respond_text(@xml[:FromUserName], @xml[:ToUserName], 'TESTCOMPONENT_MSG_TYPE_TEXT_callback') if @xml[:Content] == 'TESTCOMPONENT_MSG_TYPE_TEXT'
@@ -428,6 +428,7 @@ class Api::WeixinController < Api::BaseController
   # === copy from wechat  Wechat::Responder
   #
   def request_encrypt_content
+Rails.logger.debug "request_content=#{request_content.inspect}, request.raw_post=#{request.raw_post.inspect}"
     request_content['xml']['Encrypt']
   end
 

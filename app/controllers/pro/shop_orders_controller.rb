@@ -3,14 +3,14 @@ class Pro::ShopOrdersController < Pro::ShopBaseController
 
   def index
     params[:search] ||= {}
-    if params[:search][:created_at_lte].present?
-      params[:search][:created_at_lte] = [params[:search][:created_at_lte], " 23:59:59"].join
+    if params[:search][:created_at_lteq].present?
+      params[:search][:created_at_lteq] = [params[:search][:created_at_lteq], " 23:59:59"].join
     end
-    if params[:search][:expired_at_lte].present?
-      params[:search][:expired_at_lte] = [params[:search][:expired_at_lte], " 23:59:59"].join
+    if params[:search][:expired_at_lteq].present?
+      params[:search][:expired_at_lteq] = [params[:search][:expired_at_lteq], " 23:59:59"].join
     end
-    if params[:search][:book_at_gte].present?
-      params[:search][:book_at_lte]  =   [params[:search][:book_at_gte], " 23:59:59"].join
+    if params[:search][:book_at_gteq].present?
+      params[:search][:book_at_lteq]  =   [params[:search][:book_at_gteq], " 23:59:59"].join
     end
 
     params[:search][:shop_branch_id_eq] = current_shop_branch.id if current_shop_branch
@@ -149,9 +149,9 @@ class Pro::ShopOrdersController < Pro::ShopBaseController
 
   def graphic
     params[:search] ||= {}
-    if params[:search][:created_at_lte] && !params[:search][:created_at_lte].empty?
-      end_date = DateTime.parse(params[:search][:created_at_lte]) + 1.day
-      params[:search][:created_at_lte] = end_date.to_s
+    if params[:search][:created_at_lteq] && !params[:search][:created_at_lteq].empty?
+      end_date = DateTime.parse(params[:search][:created_at_lteq]) + 1.day
+      params[:search][:created_at_lteq] = end_date.to_s
     end
     params[:search][:shop_branch_id_eq] = current_shop_branch.id if current_shop_branch
     if session[:current_industry_id].to_i == 10001
@@ -167,9 +167,9 @@ class Pro::ShopOrdersController < Pro::ShopBaseController
     if session[:current_industry_id].to_i == 10002
       @shop_orders = @shop_orders.where(order_type: 2)
     end
-    if params[:search][:created_at_lte] && !params[:search][:created_at_lte].empty?
-      end_date = DateTime.parse(params[:search][:created_at_lte]) - 1.day
-      params[:search][:created_at_lte] = end_date.to_s
+    if params[:search][:created_at_lteq] && !params[:search][:created_at_lteq].empty?
+      end_date = DateTime.parse(params[:search][:created_at_lteq]) - 1.day
+      params[:search][:created_at_lteq] = end_date.to_s
       @search.result.search_attributes["created_at_less_than_or_equal_to"] = end_date
     end
     @chart_test = ShopOrder.test_line(@shop_orders)

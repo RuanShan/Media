@@ -74,8 +74,8 @@ staging:
 
 development:
   <<: *common
-  hostname: "wx.test.getstore.cn"
-  mhostname: "m.wx.test.getstore.cn"
+  hostname: "testwx.getstore.cn"
+  mhostname: "m.testwx.getstore.cn"
   wshop_host:     "http://127.0.0.1:3003"
   wmall_host:     "http://127.0.0.1:3002"
   wlife_host:     "http://127.0.0.1:3001"

@@ -19,8 +19,8 @@
       <span class="input-group-addon">下单时间：</span>
       <%= text_field_tag 'order_trip[created_at_range]', @created_at_range, class: "col-xs-12 daterange" %>
 
-      <%= f.hidden_field :created_at_gte %>
-      <%= f.hidden_field :created_at_lte %>
+      <%= f.hidden_field :created_at_gteq %>
+      <%= f.hidden_field :created_at_lteq %>
     </div>
   </div>
   <div class="col-md-3">
@@ -54,8 +54,8 @@
         if (data_range_str == "") { return true}
 
         data_range = $("#order_trip_created_at_range").val().split(" - ")
-        $("#search_created_at_gte").val(data_range[0])
-        $("#search_created_at_lte").val(data_range[0])
+        $("#search_created_at_gteq").val(data_range[0])
+        $("#search_created_at_lteq").val(data_range[0])
 
         return true
       })

@@ -16,7 +16,7 @@ class PaymentSettingsController < ApplicationController
   end
 
   def create
-    @payment_setting = current_site.payment_settings.new(params[:payment_setting])
+    @payment_setting = current_site.payment_settings.new( payment_setting_params )
     if @payment_setting.save
       flash[:notice] = '保存成功'
       render inline: "<script>window.parent.location.href = '#{payment_settings_url}';</script>"
@@ -28,7 +28,7 @@ class PaymentSettingsController < ApplicationController
 
   def update
     @payment_setting = current_site.payment_settings.find(params[:id])
-    if @payment_setting.update_attributes(params[:payment_setting])
+    if @payment_setting.update_attributes(payment_setting_params)
       flash[:notice] = '更新成功'
       render inline: "<script>window.parent.location.href = '#{payment_settings_url}';</script>"
     else
@@ -95,4 +95,7 @@ class PaymentSettingsController < ApplicationController
       ].compact
     end
 
+    def payment_setting_params
+      params.require(:payment_setting).permit(permitted_payment_setting_attributes)
+    end
 end

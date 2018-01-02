@@ -60,11 +60,11 @@
         <div class="col-md-3">
           <input type="submit" value="查询" class="btn btn-sm btn-primary">
           <% exporting_count = 1000 %>
-          <% if @search.count <= exporting_count %>
+          <% if @search.result.count <= exporting_count %>
           <%= link_to '导出EXCEL', gift_exchange_point_gift_path(@gift,:format => :xls,:search => params[:search], field: params[:field], q: params[:q]) , class: 'btn btn-sm btn-primary' %>
           <% else %>
           <%= link_to '导出EXCEL', gift_exchange_point_gift_path(@gift,:format => :xls,:search => params[:search], field: params[:field], q: params[:q]) , class: 'btn btn-sm btn-primary hide', id: "a_exl" %>
-                <a class="btn btn-primary btn-sm btn-filter" data-title="导出EXCEL" data-toggle="modals" data-target="delModal" data-text='<%= data_text(@search.count,(@search.count/exporting_count.to_f).ceil, exporting_count) %>'>导出EXCEL</a>
+                <a class="btn btn-primary btn-sm btn-filter" data-title="导出EXCEL" data-toggle="modals" data-target="delModal" data-text='<%= data_text(@search.result.count,(@search.result.count/exporting_count.to_f).ceil, exporting_count) %>'>导出EXCEL</a>
           <% end %>
         </div>
         <div class="col-md-3 row pull-right">

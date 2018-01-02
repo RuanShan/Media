@@ -23,9 +23,9 @@
                   <div class="input-group input-group-text">
                     <span class="input-group-addon">时间范围：</span>
                     <div class="input-group">
-                      <%= f.text_field :created_at_gte, value: @records_all.created_at_gte, class: "date-time input-sm form-control",  readonly: true%>
+                      <%= f.text_field :created_at_gteq, value: @records_all.created_at_gteq, class: "date-time input-sm form-control",  readonly: true%>
                       <span class="input-group-addon">-</span>
-                      <%= f.text_field :created_at_lte, value: @records_all.created_at_lte, class: "date-time input-sm form-control",  readonly: true%>
+                      <%= f.text_field :created_at_lteq, value: @records_all.created_at_lteq, class: "date-time input-sm form-control",  readonly: true%>
                     </div>
                   </div>
                 </div>

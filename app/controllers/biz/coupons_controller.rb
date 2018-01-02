@@ -161,10 +161,10 @@ class Biz::CouponsController < ApplicationController
 
     def filter_search
       search = params[:search].to_h
-      search['created_at_gte'] += ' 00:00:00' if search['created_at_gte'].present?
-      search['created_at_lte'] += ' 23:59:59' if search['created_at_lte'].present?
+      search['created_at_gteq'] += ' 00:00:00' if search['created_at_gteq'].present?
+      search['created_at_lteq'] += ' 23:59:59' if search['created_at_lteq'].present?
 
-      used_search = { used_at_gte: search['created_at_gte'], used_at_lte: search['created_at_lte'] }.merge(search).reject { |k| k =~ /created/ }
+      used_search = { used_at_gteq: search['created_at_gteq'], used_at_lteq: search['created_at_lteq'] }.merge(search).reject { |k| k =~ /created/ }
 
       if search['applicable_id_eq'].blank?
         search.delete('applicable_id_eq')

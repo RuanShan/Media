@@ -1,6 +1,6 @@
 module PermittedAttributes
     ATTRIBUTES=[:site_attributes, :account_attributes, :wx_mp_user_attributes, :website_menu_attributes, :material_attributes, :activity_attributes, :shop_attributes,
-      :reply_attributes, :wx_menu_attributes]
+      :reply_attributes, :wx_menu_attributes, :payment_setting_attributes]
     mattr_reader *ATTRIBUTES
 
     @@site_attributes = [ :section_id,:title, :content_param, :data_source, :data_filter, :data_source_order_by, :data_source_param, :css_class, :css_class_for_js, :content_css_class, :stylish, :section_context ]
@@ -34,5 +34,8 @@ module PermittedAttributes
 
    # "wx_menu"=>{"parent_id"=>"0", "key"=>"2_1", "event_type"=>"click", "sort"=>"1", "name"=>"item1", "menu_type"=>"1", "content"=>"默认文本", "material_id"=>"", "activity_id"=>"1", "url"=>""}
    @@wx_menu_attributes = [:parent_id, :key, :event_type, :sort, :name, :menu_type, :content, :material_id, :activity_id, :url ]
+
+
+   @@payment_setting_attributes = [ :payment_type_id, :partner_id, :partner_key, :partner_account, :app_id, :sort ]
 
 end
