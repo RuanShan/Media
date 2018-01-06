@@ -14,9 +14,9 @@ class RedPacket::RedPacket < ActiveRecord::Base
   validates_numericality_of :total_budget, greater_than_or_equal_to: 1
   validates :wishing, :remark, presence: true
   validates :send_at, presence: true
-  #validates_uniqueness_of :act_name, scope: :site_id, conditions: -> { where(status: RedPacket::RedPacket::NORMAL) } 
+  #validates_uniqueness_of :act_name, scope: :site_id, conditions: -> { where(status: RedPacket::RedPacket::NORMAL) }
   # validate  :act_name_uniqueness_validate
-  
+
   scope     :visible, -> { where(status: RedPacket::RedPacket::NORMAL) }
 
   enum_attr :receive_type, :in => [
@@ -24,7 +24,7 @@ class RedPacket::RedPacket < ActiveRecord::Base
     ['all_fans', 1, '所有粉丝'],
     ['all_vips', 2, '所有会员'],
     ['uid',      3, '指定用户'],
-    ['group',    4, '用户组'],
+    ['user_group',    4, '用户组'],
   ]
 
   enum_attr :status, in: [
@@ -40,9 +40,9 @@ class RedPacket::RedPacket < ActiveRecord::Base
   end
 
   def sent?(openid)
-    send_rec = self.send_records.where(openid: openid).first 
+    send_rec = self.send_records.where(openid: openid).first
 
-    send_rec.present? && !send_rec.ready? && !send_rec.failed? 
+    send_rec.present? && !send_rec.ready? && !send_rec.failed?
   end
 
   def set_budget_balance(before_total_budget)

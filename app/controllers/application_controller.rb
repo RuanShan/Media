@@ -179,4 +179,8 @@ class ApplicationController < ActionController::Base
       image_code = session.delete( :image_code )
       image_code && image_code == code
     end
+
+    def activity_params
+      params.require(:activity).permit(permitted_activity_attributes)
+    end
 end

@@ -32,9 +32,9 @@
        	<td><%= activity.keyword %></td>
         <td><%= activity.deal_status_name %></td>
         <td>
-          <%= (activity.activity_type.is_show? or activity.activity_type.fight?) ? activity.start_at.strftime('%Y-%m-%d %H:%M')  : "" %>
+          <%= (activity.allow_show? or activity.activity_type.fight?) ? activity.start_at.strftime('%Y-%m-%d %H:%M')  : "" %>
           <br/>
-          <%= (activity.activity_type.is_show? or activity.activity_type.fight?) ? activity.end_at.strftime('%Y-%m-%d %H:%M')  : "" %>
+          <%= (activity.allow_show? or activity.activity_type.fight?) ? activity.end_at.strftime('%Y-%m-%d %H:%M')  : "" %>
         </td>
        <td>
        <%= show_activity_status(activity) %>

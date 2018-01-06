@@ -1,6 +1,6 @@
 module PermittedAttributes
     ATTRIBUTES=[:site_attributes, :account_attributes, :wx_mp_user_attributes, :website_menu_attributes, :material_attributes, :activity_attributes, :shop_attributes,
-      :reply_attributes, :wx_menu_attributes, :payment_setting_attributes]
+      :reply_attributes, :wx_menu_attributes, :payment_setting_attributes, :guess_question_attributes, :fight_paper_attributes]
     mattr_reader *ATTRIBUTES
 
     @@site_attributes = [ :section_id,:title, :content_param, :data_source, :data_filter, :data_source_order_by, :data_source_param, :css_class, :css_class_for_js, :content_css_class, :stylish, :section_context ]
@@ -21,10 +21,33 @@ module PermittedAttributes
    #   "vip_card_attributes"=>{"status"=>"1", "merchant_name"=>"getstore", "id"=>"1"},
    #   "ready_activity_notice_attributes"=>{"title"=>"申请微信会员卡", "summary"=>"您尚未申请会员特权,快来点击申领吧!!", "id"=>"1"},
    #   "active_activity_notice_attributes"=>{"title"=>"尊敬的会员{name}", "summary"=>"尊敬的会员{name},您的会员卡号为{card_id},快来点击查看优惠信息吧!!", }}
+
+   # huodong/guesses_controller
+   # "activity"=>  {"activity_type_id"=>"75",   "keyword"=>"美图猜猜",   "name"=>"美图猜猜",   "pic_key"=>"",   "summary"=>"",   "description"=>"this is description",  "start_at"=>"2018-01-05",   "end_at"=>"2018-01-06 23:59:59",
+   #  "guess_setting_attributes"=>{"user_day_answer_limit"=>"1", "user_total_answer_limit"=>"5", "user_type"=>"1"}}
+
+   # biz/waves_controller
+   # "activity"=>{"keyword"=>"", "name"=>"摇一摇抽奖", "pic_key"=>"", "summary"=>"请点击进入摇一摇抽奖页面", "description"=>"摇一摇抽奖说明", "start_at"=>"2018-01-06 00:00", "end_at"=>"2018-01-07 23:59", "bg_pic_key"=>""},
+
+   #一战到底
+   # activity"=>
+   # { "active_activity_notice_attributes"=>{"title"=>"活动名称", "pic_key"=>"FknTGEgpxbPd-N0LhujFkAbVObEZ", "summary"=>"亲，请点击进入一战到底答题页面，快来参加活动吧！"},
+   #  "activity_property_attributes"=>{"activity_type_id"=>"8", "vip_only"=>"0", "special_warn"=>"", "question_score"=>"10"},
+   #  "activity_prizes_attributes"=>
+   #  {"0"=>{"title"=>"一等奖", "prize"=>"prize1", "prize_count"=>"1"}, "1"=>{"title"=>"二等奖", "prize"=>"prize2", "prize_count"=>"2"}, "2"=>{"title"=>"三等奖", "prize"=>"prize3", "prize_count"=>"3"}}}
+
    @@activity_attributes = [:status, :keyword, :pic_key,
+     :activity_type_id, :name, :summary, :description, :start_at, :end_at,
+     :bg_pic_key,
+
      vip_card_attributes: [:status, :merchant_name, :id],
      ready_activity_notice_attributes: [:title, :summary, :id],
-     active_activity_notice_attributes: [:title, :summary, :id]
+     active_activity_notice_attributes: [:title, :summary, :id, :pic_key ],
+
+     guess_setting_attributes: [:user_day_answer_limit, :user_total_answer_limit, :user_type],
+     activity_property_attributes: [ :activity_type_id, :vip_only, :special_warn, :question_score ],
+
+     activity_prizes_attributes:[:title, :prize, :prize_count]
    ]
 
    @@shop_attributes = []
@@ -37,5 +60,11 @@ module PermittedAttributes
 
 
    @@payment_setting_attributes = [ :payment_type_id, :partner_id, :partner_key, :partner_account, :app_id, :sort ]
+
+   # GuessQuestionsController
+   # "guess_question"=>{"title"=>"what is you name?", "pic_key"=>"FoX7f3MFLta6cYDeYChton_Jy4ZD", "answer_a"=>"1", "answer_b"=>"2", "answer_c"=>"3", "answer_d"=>"", "correct_answer"=>"A"},
+   @@guess_question_attributes = [ :title, :pic_key, :answer_a, :answer_b, :answer_c, :answer_d, :answer_d, :correct_answer],
+
+   @fight_paper_attributes= [:description, :read_time]
 
 end

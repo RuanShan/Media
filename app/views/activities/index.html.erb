@@ -87,7 +87,7 @@
                       <% if activity.vote? && activity.allow_show_report? %>
                         <a  onclick="popUrl(this)" data-name="name" data-w="900" data-h="0.8" data-title="统计图标：<%= activity.name %>" data-iframe="<%= votes_diagram_activities_path(id: activity.id) %>">统计</a>
                       <% end %>
-                      <% if activity.activity_type.is_show? && !activity.activity_type.surveys? %>
+                      <% if activity.allow_show? && !activity.activity_type.surveys? %>
                        <% if activity.slot? %>
                         <%= link_to '查看', slot_path(activity) if activity.stopped? or (activity.setted? and activity.activity_status != Activity::NOT_START) %>
                        <%- else %>

@@ -270,6 +270,7 @@ Wp::Application.routes.draw do
       post :down, on: :member
     end
 
+    #微餐饮
     resources :shops do
       resources :shop_branches
       resources :shop_categories

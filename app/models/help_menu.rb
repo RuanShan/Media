@@ -1,4 +1,4 @@
 class HelpMenu < ActiveRecord::Base
-  has_many :help_posts, order: 'sort ASC'
+  has_many :help_posts, ->{ order( :sort) }
 
 end

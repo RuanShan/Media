@@ -1,7 +1,7 @@
 class OldCouponsController < ActivitiesController
   before_action :set_activity, only: [ :step2, :step3, :update ]
   def create
-    @activity = current_site.activities.new(params[:activity])
+    @activity = current_site.activities.new(activity_params)
     return render_with_alert form_name, TIME_ERROR_MESSAGE if activity_time_invalid?
     return render_with_alert form_name, "保存失败，#{@activity.errors.full_messages.join('，')}" unless @activity.save
 
@@ -9,7 +9,7 @@ class OldCouponsController < ActivitiesController
   end
 
   def update
-    @activity.attributes = params[:activity]
+    @activity.attributes = activity_params
     @activity.status = Activity::SETTED if params[:step].to_i == last_step
     return render_with_alert form_name, "保存失败，#{@activity.errors.full_messages.join('，')}" unless @activity.save
     redirect_to next_step_or_activities_path(@activity), notice: '保存成功'

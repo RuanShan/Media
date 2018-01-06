@@ -365,7 +365,7 @@ Rails.logger.debug " model=#{model.inspect}"
   def show_activity_status activity
     if activity.operation? || activity.wave?
       activity.activity_status_name
-    elsif activity.activity_type.is_show?
+    elsif activity.allow_show?
       if activity.vote?
         activity.activity_status_name
       else

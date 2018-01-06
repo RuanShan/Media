@@ -91,7 +91,7 @@
                             <%= link_to '查看', vote_form_activity_path(activity) %>
                             <%= link_to '投票设置', vote_items_activity_path(activity)  %>
                             <%= link_to '统计', votes_diagram_activities_path(id: activity.id) %>
-                            <% if activity.activity_type.is_show? %>
+                            <% if activity.allow_show? %>
                                 <%#= link_to '开启', active_activity_path(activity), method: :post if activity.allow_active? %>
                                 <%= link_to '开启', active_activity_path(activity), method: :post if attrs[1] %>
                                 <%#= link_to '停止', [:stop, activity], data: {confirm: '投票活动正在进行，确认停止吗？', method: :post } if ['进行中'].include? show_activity_status(activity) %>

@@ -20,7 +20,7 @@ class FightQuestionsController < ApplicationController
   end
 
   def create
-    @fight_question = scoped_questions.new(params[model_name])
+    @fight_question = scoped_questions.new(model_params)
     respond_to do |format|
       if @fight_question.save
         format.html { redirect_to index_path, notice: '题目添加成功' }
@@ -33,7 +33,7 @@ class FightQuestionsController < ApplicationController
   def update
     @fight_question = scoped_questions.find(params[:id])
     respond_to do |format|
-      if @fight_question.update_attributes(params[model_name])
+      if @fight_question.update_attributes(model_params)
         format.html { redirect_to index_path, notice: '保存成功' }
       else
         format.html { render action: "index" }
@@ -66,4 +66,5 @@ class FightQuestionsController < ApplicationController
     def model_name
       :fight_question
     end
+
 end

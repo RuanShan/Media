@@ -282,10 +282,11 @@ Wp::Application.routes.draw do
       post :import, on: :collection
     end
 
+    # 微门店
     resources :micro_shops do
       resources :micro_shop_branches
     end
-
+    # 门店管理
     resources :micro_shop_branches do
       get :permissions, :new_permission, on: :collection
       match :permission, via: [:get, :post], on: :collection

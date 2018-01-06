@@ -56,7 +56,7 @@ class Huodong::GuessesController < ApplicationController
 
   def create
     @activity = current_site.new_activity_for_guess
-    @activity.attributes = params[:activity]
+    @activity.attributes = activity_params
     if @activity.save
       redirect_to settings_guess_path(@activity), notice: '保存成功'
     else
@@ -73,7 +73,7 @@ class Huodong::GuessesController < ApplicationController
   end
 
   def update
-    @activity.attributes = params[:activity]
+    @activity.attributes = activity_params
     if @activity.save
       if params[:activity_question_ids].present?
         params[:activity_question_ids].to_a.each do |question_id|
@@ -111,5 +111,9 @@ class Huodong::GuessesController < ApplicationController
       else
         @coupons  = []
       end
+    end
+
+    def activity_params
+      params.require(:activity).permit(permitted_activity_attributes)
     end
 end

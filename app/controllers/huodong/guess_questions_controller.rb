@@ -25,4 +25,9 @@ class Huodong::GuessQuestionsController < FightQuestionsController         #  gu
     def model_name
       :guess_question
     end
+
+    def model_params
+      params.require(model_name).permit(permitted_guess_question_attributes)
+    end
+
 end

@@ -1,3 +1,5 @@
+#weixin client routes
+
 Wp::Application.routes.draw do
 
   namespace :app do

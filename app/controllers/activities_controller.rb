@@ -449,7 +449,7 @@ class ActivitiesController < ApplicationController
     if (@activity.new_record? and activity_time_invalid?) and !@activity.fight?
       redirect_to :back, notice: TIME_ERROR_MESSAGE
     else
-      @activity.attributes = params[:activity]
+      @activity.attributes = activity_params
       if @activity.save
         redirect_to edit_start_settings_activity_path(@activity)
       else
@@ -464,7 +464,7 @@ class ActivitiesController < ApplicationController
     if (@activity.new_record? and activity_time_invalid?) and !@activity.fight?
       redirect_to :back, notice: TIME_ERROR_MESSAGE
     else
-      @activity.attributes = params[:activity]
+      @activity.attributes = activity_params
       if @activity.save
         redirect_to edit_rule_settings_activity_path(@activity)
       else
@@ -496,7 +496,7 @@ class ActivitiesController < ApplicationController
 
   def prize_settings
     @activity.status = Activity::SETTED if @activity.setting? and !@activity.fight?
-    @activity.attributes = params[:activity]
+    @activity.attributes = activity_params
     if @activity.save
       redirect_to slots_activities_path
     else
@@ -528,7 +528,8 @@ class ActivitiesController < ApplicationController
   end
 
   def create
-    @activity = current_site.activities.new(params[:activity])
+    @activity = current_site.activities.new(activity_params)
+    Rails.logger.debug "activity_params=#{activity_params.inspect} @activity.activity_property=#{@activity.activity_property.inspect}"
     #@activity.extend.closing_note = params[:extend_closing_note] if params[:extend_closing_note].present?
     #@activity.extend.allow_repeat_apply = params[:allow_repeat_apply].to_i
     extend_format

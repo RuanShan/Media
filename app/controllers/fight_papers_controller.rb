@@ -24,7 +24,7 @@ class FightPapersController < ApplicationController
   def create
     @fight_papers = current_site.fight_papers.where(activity_id: params[:activity_id])
     #logger.info params[:read_time] if params.present?
-    if FightPaper.batch_update!(@fight_papers,params)
+    if FightPaper.batch_update!(@fight_papers, params)
       redirect_to :back, notice: '保存成功'
     else
       redirect_to :back, alert: "保存失败，#{@fight_paper.errors.full_messages.join('，')}"
@@ -35,7 +35,7 @@ class FightPapersController < ApplicationController
     @activity     = current_site.activities.find params[:activity_id]
     @fight_papers = current_site.fight_papers.where(activity_id: params[:activity_id])
     @fight_paper  = @fight_papers.find params[:id]
-    if @fight_paper.update_attributes(params[:fight_paper])
+    if @fight_paper.update_attributes(fight_paper_params)
       if @activity.setting? && @fight_paper == @activity.fight_papers.last
         @activity.setted!
         redirect_to fights_activities_path
@@ -65,7 +65,7 @@ class FightPapersController < ApplicationController
       format.html {render layout: "application_pop"}
       format.xls {
                 send_data(FightReportCard.export_excel(@search),
-                :type => "text/excel;charset=utf-8; header=present", 
+                :type => "text/excel;charset=utf-8; header=present",
                 :filename => Time.now.to_s(:db).to_s.gsub(/[\s|\t|\:]/,'_') + rand(99999).to_s + ".xls")
               }
     end
@@ -73,13 +73,13 @@ class FightPapersController < ApplicationController
 
   def use_code
     @activity_consume = current_site.activity_consumes.find(params[:id])
-    
+
     if @activity_consume.vip_privilege && @activity_consume.wx_user
 
       vip_user = @activity_consume.wx_mp_user.vip_users.visible.where(wx_user_id: @activity_consume.wx_user_id).first
       return redirect_to :back, notice:'用户不存在，不可使用' unless vip_user
       return redirect_to :back, notice:'用户已被冻结，不可使用' if vip_user.freeze?
-    
+
       if !@activity_consume.vip_privilege.pending? || @activity_consume.vip_privilege.privilege_status != VipPrivilege::STARTED
         return redirect_to :back, alert: '操作失败，活动已结束，无法使用SN码'
       end
@@ -91,5 +91,10 @@ class FightPapersController < ApplicationController
   private
     def find_fight_paper
       @fight_paper = current_site.fight_papers.find params[:id]
+    end
+
+    def fight_paper_params
+      params.require(:fight_paper).permit(permitted_fight_paper_attributes)
+
     end
 end

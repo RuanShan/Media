@@ -5,7 +5,7 @@ class Biz::WavesController < ApplicationController
 
   def create
     @activity = current_site.activities.new(activity_type_id: 64)
-    @activity.attributes = params[:activity]
+    @activity.attributes = activity_params
     if activity_time_invalid?
       render_with_alert :new, '活动时间填写不正确'
     else
@@ -27,7 +27,7 @@ class Biz::WavesController < ApplicationController
     if activity_time_invalid?
       redirect_to :back, alert: '活动时间填写不正确'
     else
-      @activity.attributes = params[:activity]
+      @activity.attributes = activity_params
       if @activity.save
         if params[:redirect_to].present?
           redirect_to params[:redirect_to]
@@ -65,5 +65,9 @@ class Biz::WavesController < ApplicationController
 
     def activity_time_invalid?
       !activity_time_valid?
+    end
+
+    def activity_params
+      params.require(:activity).permit(permitted_activity_attributes)
     end
 end
