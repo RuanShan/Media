@@ -29,7 +29,7 @@ class App::VipsController < App::BaseController
   end
 
   def recharge
-    order                 = params[:vip_recharge_order].merge(site_id: @site.id)
+    order                 = vip_recharge_order_params.merge(site_id: @site.id)
     amount                = order[:amount].to_f.round(2)
 
     order['pay_amount']   = @vip_user.recharge_discounted_amount(amount)
@@ -45,6 +45,7 @@ class App::VipsController < App::BaseController
         notify_url: notify_payments_url,
         merchant_url: app_vips_url({site_id: session[:site_id]})
       }
+Rails.logger.debug " options=#{options.inspect}"
       @payment_request_params = @order.payment_request_params(options)
       render "app/vips/pay"
     elsif @order.tenpay?
@@ -420,4 +421,7 @@ class App::VipsController < App::BaseController
       redirect_to app_vips_url(app_params), notice: vip_checker.error_message if vip_checker.error?
     end
 
+    def vip_recharge_order_params
+      params.require(:vip_recharge_order).permit(permitted_vip_recharge_order_attributes)
+    end
 end

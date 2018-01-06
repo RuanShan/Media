@@ -9,11 +9,11 @@ class Huodong::FansGamesController < ApplicationController
   def show
     FansGame.normal.pluck(:id).each{|id| @activity.activities_fans_games.where(fans_game_id: id).first_or_create }
     @fans_games = FansGame.normal.latest
-    @ids = @activity.activities_fans_games.turn_up.pluck(:fans_game_id)
+    @ids = ActivitiesFansGame.where( activity: @activity).turn_up.pluck(:fans_game_id)
   end
 
   def create
-    @activity = current_site.activities.new(params[:activity])
+    @activity = current_site.activities.new(activity_params)
     @activity.site_id = current_site.id
     @activity.activity_type_id = 67
     @activity.status = 1
@@ -25,7 +25,7 @@ class Huodong::FansGamesController < ApplicationController
   end
 
   def update
-    if @activity.update_attributes(params[:activity])
+    if @activity.update_attributes(activity_params)
       redirect_to fans_games_path, notice: "保存成功"
     else
       render_with_alert :index, "保存失败，#{@activity.errors.full_messages.first}"

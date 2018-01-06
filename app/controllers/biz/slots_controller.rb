@@ -14,7 +14,7 @@ class Biz::SlotsController < ApplicationController
 
   def create
     @activity = current_site.activities.slot.new(activity_type_id: 28)
-    @activity.attributes = params[:activity]
+    @activity.attributes = activity_params
     if activity_time_invalid?
       render_with_alert :new, '活动时间填写不正确'
     else
@@ -42,7 +42,7 @@ class Biz::SlotsController < ApplicationController
     if activity_time_invalid?
       redirect_to :back, alert: '活动时间填写不正确'
     else
-      @activity.attributes = params[:activity]
+      @activity.attributes = activity_params
       if @activity.save
         if params[:redirect_to].present?
           redirect_to params[:redirect_to]

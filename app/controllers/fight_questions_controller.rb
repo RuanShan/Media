@@ -67,4 +67,8 @@ class FightQuestionsController < ApplicationController
       :fight_question
     end
 
+    def model_params
+      params.require(model_name).permit(permitted_question_attributes)
+    end
+
 end

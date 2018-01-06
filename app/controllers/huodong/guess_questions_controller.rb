@@ -27,7 +27,7 @@ class Huodong::GuessQuestionsController < FightQuestionsController         #  gu
     end
 
     def model_params
-      params.require(model_name).permit(permitted_guess_question_attributes)
+      params.require(model_name).permit(permitted_question_attributes)
     end
 
 end

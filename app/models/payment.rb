@@ -42,9 +42,9 @@ class Payment < ActiveRecord::Base
     ['delivery', 1, '已发货'],
   ]
 
-  scope :active, where(trade_status: [TRADE_SUCCESS, TRADE_FINISHED])
-  scope :proxy_pay, where(payment_type_id: [20001, 20002])
-  scope :can_settle, ->{proxy_pay.success.not_settled.where(gmt_payment: Time.now - 100.years .. Time.now - 5.days)}
+  scope :active, ->{ where(trade_status: [TRADE_SUCCESS, TRADE_FINISHED]) }
+  scope :proxy_pay, ->{ where(payment_type_id: [20001, 20002]) }
+  scope :can_settle, ->{ proxy_pay.success.not_settled.where(gmt_payment: Time.now - 100.years .. Time.now - 5.days) }
 
   def self.setup(options = {})
     transaction do

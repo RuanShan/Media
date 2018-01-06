@@ -8,7 +8,7 @@ class ActivityPrizesController < ApplicationController
     @prize = ActivityPrize.new(title: title, can_validate: true, activity_id: params[:activity_id])
 
     if without_probability?
-      render :new_without_probability, layout: 'application_pop'  
+      render :new_without_probability, layout: 'application_pop'
     else
       render layout: 'application_pop'
     end
@@ -27,7 +27,7 @@ class ActivityPrizesController < ApplicationController
       sum = @activity.activity_prizes.where("id != ?", params[:prize_id]).sum(:prize_rate)
     else
       sum = @activity.activity_prizes.sum(:prize_rate)
-    end  
+    end
     status = (sum + params[:prize_rate].to_f) > 100 ? "false" : "true"
     num = (100 - sum) < 0 ? 0 : (100 - sum)
     render json: {status: status, num: num}
@@ -36,7 +36,7 @@ class ActivityPrizesController < ApplicationController
   def create
     title = (DEFAULT_TITLES - @activity.activity_prizes.pluck(:title)).first
     if params[:activity_prize]
-      @prize = @activity.activity_prizes.build params[:activity_prize]
+      @prize = @activity.activity_prizes.build activity_prize_params
       if @prize.save
         flash[:notice] = "保存成功"
         render inline: "<script>parent.location.reload();</script>"
@@ -51,7 +51,7 @@ class ActivityPrizesController < ApplicationController
   end
 
   def update
-    if @prize.update_attributes(params[:activity_prize])
+    if @prize.update_attributes(activity_prize_params)
       flash[:notice] = "保存成功"
       render inline: "<script>parent.location.reload();</script>"
     else
@@ -77,6 +77,11 @@ class ActivityPrizesController < ApplicationController
   end
 
   def without_probability?
-    @activity.micro_aid? 
+    @activity.micro_aid?
   end
+
+  def activity_prize_params
+    params.require(:activity_prize).permit(permitted_activity_prize_attributes)
+  end
+
 end

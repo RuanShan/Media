@@ -207,7 +207,7 @@ class ActivitiesController < ApplicationController
       as.each do |a|
         @total += (a.activity_property.try(:coupon_count) || 0)
       end
-      @total_activity_consumes = current_site.activity_consumes.where("activity_id in (?)", current_site.activities.where(activity_type_id: params[:activity_type_id]) )
+      @total_activity_consumes = current_site.activity_consumes.where( activity: current_site.activities.where(activity_type_id: params[:activity_type_id]) )
 
       @activity = as.first
 
@@ -234,7 +234,7 @@ class ActivitiesController < ApplicationController
     @search_params = params.slice(:shop_branch_id_eq, :activity_id_eq, :created_at_gteq, :created_at_lteq)
     @activity_type_id = params[:activity_type_id]
     @search = @total_activity_consumes.search(@search_params)
-    @ret = @search.result.all
+    @ret = @search.result
     #@search是所有的单一结果
     @total_count = @ret.count
     @total_used_count = 0
@@ -259,7 +259,7 @@ class ActivitiesController < ApplicationController
 
     @total_activity_consumes = ActivityConsume.where(activity_id: activity_ids).includes(:activity).order("activity_consumes.id desc")
     @search                  = @total_activity_consumes.search(params[:search])
-    @search.result.activity_id_eq ||= params[:activity_id]
+    @search.activity_id_eq ||= params[:activity_id]
     @activity_consumes       = @search.result.page(params[:page])
 
     @total_count             = @total_activity_consumes.count
@@ -764,7 +764,6 @@ class ActivitiesController < ApplicationController
 
     def activity_params
       params.require(:activity).permit(permitted_activity_attributes)
-
     end
 
 end

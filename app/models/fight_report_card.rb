@@ -17,6 +17,8 @@ class FightReportCard < ActiveRecord::Base
   belongs_to :activity_consume
   belongs_to :user
 
+  after_initialize  :set_defaults, if: :new_record?
+
   def self.export_excel(search)
     xls_report = StringIO.new
     book = FightReportCard.new_excel
@@ -42,5 +44,11 @@ class FightReportCard < ActiveRecord::Base
     bold_heading = Spreadsheet::Format.new(:weight => :bold, :align => :merge)
     sheet = book.create_worksheet :name => "活动数据"
     return [book,sheet,bold_heading]
+  end
+
+
+  #activity_user_id maybe nil, when create FightReportCard, ex. fight
+  def set_defaults
+     self.activity_user_id ||= 0
   end
 end

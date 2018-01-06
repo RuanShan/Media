@@ -1,6 +1,6 @@
 module PermittedAttributes
     ATTRIBUTES=[:site_attributes, :account_attributes, :wx_mp_user_attributes, :website_menu_attributes, :material_attributes, :activity_attributes, :shop_attributes,
-      :reply_attributes, :wx_menu_attributes, :payment_setting_attributes, :guess_question_attributes, :fight_paper_attributes]
+      :reply_attributes, :wx_menu_attributes, :payment_setting_attributes, :question_attributes, :fight_paper_attributes, :activity_prize_attributes, :vip_recharge_order_attributes]
     mattr_reader *ATTRIBUTES
 
     @@site_attributes = [ :section_id,:title, :content_param, :data_source, :data_filter, :data_source_order_by, :data_source_param, :css_class, :css_class_for_js, :content_css_class, :stylish, :section_context ]
@@ -63,8 +63,13 @@ module PermittedAttributes
 
    # GuessQuestionsController
    # "guess_question"=>{"title"=>"what is you name?", "pic_key"=>"FoX7f3MFLta6cYDeYChton_Jy4ZD", "answer_a"=>"1", "answer_b"=>"2", "answer_c"=>"3", "answer_d"=>"", "correct_answer"=>"A"},
-   @@guess_question_attributes = [ :title, :pic_key, :answer_a, :answer_b, :answer_c, :answer_d, :answer_d, :correct_answer],
+   @@question_attributes = [ :id, :title, :pic_key, :answer_a, :answer_b, :answer_c, :answer_d, :answer_e, :correct_answer]
 
-   @fight_paper_attributes= [:description, :read_time]
+   @@fight_paper_attributes = [:description, :read_time, :fight_question_ids]
 
+   # activity_prize"=>{"activity_id"=>"21", "title"=>"一等奖", "prize_type"=>"normal_prize", "prize"=>"prize1", "points"=>"", "prize_value"=>"", "prize_count"=>"1"}
+   @@activity_prize_attributes = [:activity_id, :title, :prize, :prize_count, :points, :prize_value, :prize_count]
+
+   # "vip_recharge_order"=>{"amount"=>"100", "pay_amount"=>"100.0", "given_points"=>"0", "pay_type"=>"10001"}
+   @@vip_recharge_order_attributes = [:amount, :pay_amount, :given_points, :pay_type]
 end

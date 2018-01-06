@@ -1,7 +1,7 @@
 class Biz::AidsController < ApplicationController
   before_action :find_activity, except: [:index, :new, :create]
 
-  def new 
+  def new
     @activity = current_site.activities.new(
       activity_type_id: ActivityType::MICRO_AID,
       ready_at: 10.minutes.since,
@@ -15,9 +15,9 @@ class Biz::AidsController < ApplicationController
 
   def create
     @activity = current_site.activities.new activity_type_id: ActivityType::MICRO_AID
-    rule_params = params[:activity].delete(:rule)
+    rule_params = activity_params.delete(:rule)
 
-    @activity.attributes = params[:activity]
+    @activity.attributes = activity_params
 
     update_rule_attributes rule_params
 
@@ -34,13 +34,13 @@ class Biz::AidsController < ApplicationController
   end
 
   def update
-    rule_params = params[:activity].delete(:rule)
+    rule_params = activity_params.delete(:rule)
 
-    @activity.update_attributes params[:activity]
+    @activity.update_attributes activity_params
 
     update_rule_attributes rule_params
 
-    return redirect_to :back, alert: '活动时间填写不正确' unless activity_time_valid? 
+    return redirect_to :back, alert: '活动时间填写不正确' unless activity_time_valid?
 
     if @rule.present?
       return redirect_to :back, alert: "活动规则不正确: #{@rule.errors.full_messages.join(', ')}" unless @rule.try(:valid?)
@@ -71,7 +71,7 @@ class Biz::AidsController < ApplicationController
   private
 
   def find_activity
-    @activity = current_site.activities.micro_aid.find params[:id] 
+    @activity = current_site.activities.micro_aid.find params[:id]
   end
 
   def activity_time_valid?
@@ -97,7 +97,7 @@ class Biz::AidsController < ApplicationController
   end
 
   def rule
-    @rule = @activity.extend.rule.presence || Aid::Rule.new(is_sms_validation: Aid::Rule::SMS_VERIFICATION_FALSE, prize_model: Aid::Rule::PRIZE_USER_MOBILE_MASK) 
+    @rule = @activity.extend.rule.presence || Aid::Rule.new(is_sms_validation: Aid::Rule::SMS_VERIFICATION_FALSE, prize_model: Aid::Rule::PRIZE_USER_MOBILE_MASK)
     @activity.extend.rule = @rule
     @rule
   end
@@ -111,7 +111,7 @@ class Biz::AidsController < ApplicationController
 
   def pre_process_rule_attributes(attrs)
     return unless attrs.present?
-    return unless attrs[:prize_model].present? 
+    return unless attrs[:prize_model].present?
 
     attrs[:prize_model] = attrs[:prize_model].inject do |p, e|
       p = p.to_i | e.to_i

@@ -24,7 +24,7 @@ def create_xml request_options = {}, sign = ''
 end
 
 def request_unifiedorder xml = ''
-  request_url = "https://api.mch.weixin.qq.com/pay/unifiedorder"	
+  request_url = "https://api.mch.weixin.qq.com/sandboxnew/pay/unifiedorder"	
   HTTParty.post(request_url,body:xml, headers:{'ContentType' => 'application/xml'} )
 end
 
