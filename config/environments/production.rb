@@ -3,6 +3,8 @@ Wp::Application.configure do
 
   # Code is not reloaded between requests
   config.cache_classes = true
+  # Do not eager load code on boot.
+  config.eager_load = true
 
   # Full error reports are disabled and caching is turned on
   config.consider_all_requests_local       = false
@@ -51,19 +53,19 @@ Wp::Application.configure do
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
 
-  config.action_mailer.default_url_options = { :host => 'www.winwemedia.com' }
+  config.action_mailer.default_url_options = { :host => 'www.getstore.cn' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default :charset => "utf-8"
   config.action_mailer.smtp_settings = {
-    address:              'smtp.exmail.qq.com',
+    address:              'smtp.getstore.cn',
     port:                 25,
-    domain:               'exmail.qq.com',
-    user_name:            'forget_password@winwemedia.com',
-    password:             'vcl2wsx',
-    authentication:       :login,
-    enable_starttls_auto:  false,
+    user_name:            'mpp-notice@getstore.cn',
+    password:              ENV['MPP_NOTICE_AT_GETSTORE'],
+    authentication:       'login',
+    openssl_verify_mode: 'none',
+    enable_starttls_auto: false
   }
   # Enable threaded mode
   # config.threadsafe!
@@ -79,8 +81,8 @@ Wp::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
   Wp::Application.config.middleware.use ExceptionNotification::Rack, email: {
-    :email_prefix => "[winwemedia Production Error] ",
-    :sender_address => %{liang.wk@winwemedia.com},
-    :exception_recipients => %w{liang.wk@winwemedia.com}
+    :email_prefix => "[Mpp Production Error] ",
+    :sender_address => %{mpp-notice@getstore.cn},
+    :exception_recipients => %w{mpp-exception@getstore.cn}
   }
 end
