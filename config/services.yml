@@ -1,16 +1,16 @@
 common: &common
-  hostname: "m.wp.ruanshan.com"
-  mhostname: "m.wp.ruanshan.com"
-  wshop_host:     "http://ec.wp.ruanshan.com"
-  wmall_host:     "http://wmall.wp.ruanshan.com"
-  wlife_host:     "http://wlife.wp.ruanshan.com"
-  shequ_host:     "http://shequ.wp.ruanshan.com"
-  hotel_host:     "http://hotel.wp.ruanshan.com"
-  recommend_host: "http://recommend.wp.ruanshan.com"
-  oa_host:        "http://oa.wp.ruanshan.com"
+  hostname: "m.mpp.getstore.cn"
+  mhostname: "m.mpp.getstore.cn"
+  wshop_host:     "http://ec.mpp.getstore.cn"
+  wmall_host:     "http://wmall.mpp.getstore.cn"
+  wlife_host:     "http://wlife.mpp.getstore.cn"
+  shequ_host:     "http://shequ.mpp.getstore.cn"
+  hotel_host:     "http://hotel.mpp.getstore.cn"
+  recommend_host: "http://recommend.mpp.getstore.cn"
+  oa_host:        "http://oa.mpp.getstore.cn"
   faye_host:      "http://localhost:9393"
-  app_host: "http://api.wp.ruanshan.com"
-  wxapi_host: "http://api.wx.wp.ruanshan.com"
+  app_host: "http://api.mpp.getstore.cn"
+  wxapi_host: "http://api.wx.mpp.getstore.cn"
   cas_url: "http://127.0.0.1:8001"
   sms_service: 'zhilian'
   zhilian_url: 'http://61.145.229.29:9003/MWGate/wmgw.asmx'
@@ -19,8 +19,8 @@ common: &common
   uploads_dir: <%= "#{Rails.root}/public/uploads" %>
   yeepay:
     yeepay_host: "http://ok.yeepay.com/"
-    callbackurl: "http://ui.m.wp.ruanshan.com/yeepay/callback"
-    fcallbackurl: 'http://ui.m.wp.ruanshan.com/yeepay/callback'
+    callbackurl: "http://ui.m.mpp.getstore.cn/yeepay/callback"
+    fcallbackurl: 'http://ui.m.mpp.getstore.cn/yeepay/callback'
   wx_plugin:
     token: <%= Rails.application.secrets.wx_open['token'] %>
     base64_aes_key: <%= Rails.application.secrets.wx_open['base64_aes_key'] %>
@@ -30,24 +30,24 @@ common: &common
 
 production:
   <<: *common
-  hostname: "m.wp.ruanshan.com"
-  mhostname: "m.wp.ruanshan.com"
-  wshop_host:     "http://ec.wp.ruanshan.com"
-  wmall_host:     "http://mall.wp.ruanshan.com"
-  wlife_host:     "http://life.wp.ruanshan.com"
-  shequ_host:     "http://shequ.wp.ruanshan.com"
-  hotel_host:     "http://hotel.wp.ruanshan.com"
-  oa_host:        "http://oa.wp.ruanshan.com"
-  recommend_host: "http://lifeboat.wp.ruanshan.com"
-  faye_host:      "http://faye.api.wp.ruanshan.com:9393"
-  app_host:       "http://api.wp.ruanshan.com"
-  wxapi_host: "http://api.wx.wp.ruanshan.com"
-  cas_url:        "http://cas.wp.ruanshan.com"
+  hostname: "m.mpp.getstore.cn"
+  mhostname: "m.mpp.getstore.cn"
+  wshop_host:     "http://ec.mpp.getstore.cn"
+  wmall_host:     "http://mall.mpp.getstore.cn"
+  wlife_host:     "http://life.mpp.getstore.cn"
+  shequ_host:     "http://shequ.mpp.getstore.cn"
+  hotel_host:     "http://hotel.mpp.getstore.cn"
+  oa_host:        "http://oa.mpp.getstore.cn"
+  recommend_host: "http://lifeboat.mpp.getstore.cn"
+  faye_host:      "http://faye.api.mpp.getstore.cn:9393"
+  app_host:       "http://api.mpp.getstore.cn"
+  wxapi_host: "http://api.wx.mpp.getstore.cn"
+  cas_url:        "http://cas.mpp.getstore.cn"
   uploads_dir:    "/opt/apps/shared/51wei/uploads"
   yeepay:
     yeepay_host: "https://ok.yeepay.com/"
-    callbackurl: "http://m.wp.ruanshan.com/yeepay/callback"
-    fcallbackurl: 'http://m.wp.ruanshan.com/yeepay/callback'
+    callbackurl: "http://m.mpp.getstore.cn/yeepay/callback"
+    fcallbackurl: 'http://m.mpp.getstore.cn/yeepay/callback'
   wx_plugin:
     token: <%= Rails.application.secrets.wx_open['token'] %>
     base64_aes_key: <%= Rails.application.secrets.wx_open['base64_aes_key'] %>
@@ -57,20 +57,20 @@ production:
 
 staging:
   <<: *common
-  hostname: "staging.wp.ruanshan.com"
-  mhostname: "stagingm.wp.ruanshan.com"
-  wshop_host:     "http://staging.ec.wp.ruanshan.com"
-  wmall_host:     "http://staging.mall.wp.ruanshan.com"
-  wlife_host:     "http://wlife.wp.ruanshan.com"
-  shequ_host:     "http://staging.shequ.wp.ruanshan.com"
-  hotel_host:     "http://staging.wp.ruanshan.com"
-  oa_host:        "http://staging.wp.ruanshan.com"
-  recommend_host: "http://staging.wp.ruanshan.com"
-  app_host: "http://staging.wp.ruanshan.com"
+  hostname: "staging.mpp.getstore.cn"
+  mhostname: "stagingm.mpp.getstore.cn"
+  wshop_host:     "http://staging.ec.mpp.getstore.cn"
+  wmall_host:     "http://staging.mall.mpp.getstore.cn"
+  wlife_host:     "http://wlife.mpp.getstore.cn"
+  shequ_host:     "http://staging.shequ.mpp.getstore.cn"
+  hotel_host:     "http://staging.mpp.getstore.cn"
+  oa_host:        "http://staging.mpp.getstore.cn"
+  recommend_host: "http://staging.mpp.getstore.cn"
+  app_host: "http://staging.mpp.getstore.cn"
   yeepay:
     yeepay_host: "https://ok.yeepay.com/"
-    callbackurl: "http://staging.m.wp.ruanshan.com/yeepay/callback"
-    fcallbackurl: 'http://staging.m.wp.ruanshan.com/yeepay/callback'
+    callbackurl: "http://staging.m.mpp.getstore.cn/yeepay/callback"
+    fcallbackurl: 'http://staging.m.mpp.getstore.cn/yeepay/callback'
 
 development:
   <<: *common

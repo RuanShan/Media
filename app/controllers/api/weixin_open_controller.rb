@@ -63,9 +63,9 @@ class Api::WeixinOpenController < ApplicationController
         params[:xml].nil? ? Hash.from_xml(request.raw_post) : { 'xml' => params[:xml] }
       end
 
-      def aes_key
-        Base64.decode64 "#{Rails.application.secrets.wx_open['base64_aes_key']}="
-      end
+      #def aes_key
+      #  Base64.decode64 "#{Rails.application.secrets.wx_open['base64_aes_key']}="
+      #end
 
       def encoding_aes_key
         Rails.application.secrets.wx_open['encoding_aes_key']

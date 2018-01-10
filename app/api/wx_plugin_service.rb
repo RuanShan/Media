@@ -73,9 +73,9 @@ class WxPluginService
       wx_mp_user
     end
 
-    def aes_key
-      Base64.decode64 "#{Settings.wx_plugin.base64_aes_key}="
-    end
+    #def aes_key
+    #  Base64.decode64 "#{Settings.wx_plugin.base64_aes_key}="
+    #end
 
   end
 end
