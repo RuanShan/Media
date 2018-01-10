@@ -54,5 +54,7 @@ dump.rdb
 Guardfile
 site.sublime-*
 
+config/deploy*
 config/secrets.yml
 lib/tasks/dev2.rake
+config/database.yml

@@ -96,9 +96,13 @@ group :development do
 #  gem 'pry-remote'
 #  gem 'pry-nav'
   gem 'guard-rails'
-  # gem 'capistrano', '2.15.4'
+  #https://www.jianshu.com/p/10c696f178a2
+  gem "capistrano", "~> 3.10"
+  gem 'capistrano-rails'
+  gem 'capistrano-rvm'
+  gem 'capistrano-bundler', '~> 1.3'
   # gem 'capistrano-sidekiq'
-  gem 'rvm-capistrano', require: false
+
 end
 
 group :test do
@@ -150,10 +154,7 @@ gem "acts_as_tree", "~> 1.5.0"
 # gem 'newrelic_rpm'
 
 gem 'rubyntlm', '~> 0.3.2'
-# gem "mq_publisher"#, git: "ssh://git@winwemedia.com:/opt/repos/ec/mq_publisher.git", branch: 'master'
 
 gem 'test-unit'
-
 gem 'redis'
-
 gem 'puma'
