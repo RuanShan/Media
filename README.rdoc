@@ -6,7 +6,7 @@ WechatPlus
   将 config/local_env.yml.example 拷贝到 config/local_env.yml
 
 部署须知：
-  后台应用部署到： web1.winwemedia.com 和 web2.winwemedia.com 服务器的 /opt/apps/winwemedia/current 目录；
+  后台应用部署到： web1.keyunlai.com 和 web2.keyunlai.com 服务器的 /opt/apps/keyunlai/current 目录；
     部署命令： `cap production deploy`
 
   其它环境的部署请参照 config/deploy.rb 文件；
@@ -14,13 +14,13 @@ WechatPlus
   注意： 如果部署到staging环境或生产环境， 并且 assets 文件有变动， 请先执行 cap {{stage}} precompile
 
 sidekiq部署：
-  应用程序部署到 faye.service.winwemedia.com， 以root运行 `/etc/init.d/sidekiq restart`
+  应用程序部署到 faye.service.keyunlai.com， 以root运行 `/etc/init.d/sidekiq restart`
 
 faye部署：
-  应用程序部署到 faye.service.winwemedia.com， 进入 /opt/apps/faye 目录，运行 `rackup faye.ru -E production -p 9393 -D`
+  应用程序部署到 faye.service.keyunlai.com， 进入 /opt/apps/faye 目录，运行 `rackup faye.ru -E production -p 9393 -D`
 
 
-短信报警：staging.winwemedia.com这台服务器每天10点07分会执行/opt/apps/scripts/sms.rb文件并检测系统短信是否小于2万条，如果是则会发送报警短信。
+短信报警：staging.keyunlai.com这台服务器每天10点07分会执行/opt/apps/scripts/sms.rb文件并检测系统短信是否小于2万条，如果是则会发送报警短信。
 
 
 注意事项：
