@@ -30,7 +30,7 @@ threads threads_count, 16
 # The default is "development".
 #
 # environment 'production'
-environment ENV.fetch("RAILS_ENV") { "aliyun_staging" }
+environment ENV.fetch("RAILS_ENV") { "production" }
 
 # Daemonize the server into the background. Highly suggest that
 # this be combined with "pidfile" and "stdout_redirect".
@@ -75,7 +75,7 @@ daemonize true
 # The default is "tcp://0.0.0.0:9292".
 #
 # bind 'tcp://0.0.0.0:9292'
-bind 'unix:///home/deploy/www/spree_abc_current/tmp/sockets/puma.socket'
+bind 'unix:///disk2/www2/mpp/current/tmp/sockets/puma.socket'
 # bind 'unix:///var/run/puma.sock?umask=0111'
 # bind 'ssl://127.0.0.1:9292?key=path_to_key&cert=path_to_cert'
 

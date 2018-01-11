@@ -19,7 +19,7 @@ class Activity < ActiveRecord::Base
     ['stopped', -1, '已终止'],
     ['setting', 0, '未配置'],
     ['setted', 1, '已配置'],
-  ]
+  ], :prefix => true
 
   enum_attr :deal_status, :in => [
     ['deal_failed', -1, '未成团'],
@@ -839,7 +839,7 @@ class Activity < ActiveRecord::Base
     #   rescue
     #   end
     # end
-    
+
     #Magick::ImageList.new.from_blob(img.to_blob).resize(type.to_i, type.to_i).to_blob
     img.resize(type.to_i, type.to_i).to_blob
   end
