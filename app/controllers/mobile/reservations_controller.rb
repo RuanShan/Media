@@ -1,8 +1,6 @@
 class Mobile::ReservationsController < Mobile::BaseController
   layout 'mobile/reservations'
 
-  skip_before_action :verify_authenticity_token, only: [:reserve]
-
   before_action :block_non_wx_browser
   before_action :find_reservation, :find_order, except: [:send_sms]
   before_action :check_subscribe, except: [:send_sms]

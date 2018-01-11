@@ -9,12 +9,12 @@ class ShopProduct < ActiveRecord::Base
   validates :pic_key, presence: true, on: :create
 
   # validates :quantity, numericality: { greater_than_or_equal_to: 0, only_integer: true }, allow_blank: true
-  
+
   enum_attr :is_hot, :in => [ ['hot', true, '是'], ['not_hot', false, '否'] ]
   enum_attr :is_new, :in => [ ['new_proudcts', true, '是'], ['not_new', false, '否'] ]
-  enum_attr :shelve_status, :in => [ 
-    ['not_shelve', 0, '已下架'], 
-    ['shelve',     1, '已上架'] 
+  enum_attr :shelve_status, :in => [
+    ['not_shelve', 0, '已下架'],
+    ['shelve',     1, '已上架']
   ]
 
   belongs_to :site
@@ -25,7 +25,7 @@ class ShopProduct < ActiveRecord::Base
 
   before_create :add_default_attrs
 
-  default_scope where(["shop_products.status != ? ", -1 ])
+  default_scope ->{ where(["shop_products.status != ? ", -1 ]) }
 
   def self.import_from_excel(file, site)
     # Spreadsheet.client_encoding = 'UTF-8'
@@ -106,6 +106,6 @@ class ShopProduct < ActiveRecord::Base
     self.code = "#{self.category_parent_id}_#{self.shop.shop_products.count+1}"
     self.pic_url = self.pic_key if self.pic_key
   end
-  
+
 
 end

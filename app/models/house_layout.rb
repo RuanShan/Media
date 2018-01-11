@@ -38,14 +38,14 @@ class HouseLayout < ActiveRecord::Base
   acts_as_taggable_on :panorama_type
 
   enum_attr :sales_heat, :in => [
-    ['hot', 0, '热销'],
-    ['quota', 1, '限量'],
-    ['few', 2, '少量'],
-    ['group', 3, '团购'],
-    ['preferential', 4, '优惠'],
-    ['discount', 5, '折扣'],
-    ['picked', 6, '精品'],
-    ['highest', 7, '极品'],
+    ['sale_hot', 0, '热销'],
+    ['sale_quota', 1, '限量'],
+    ['sale_few', 2, '少量'],
+    ['sale_group', 3, '团购'],
+    ['sale_preferential', 4, '优惠'],
+    ['sale_discount', 5, '折扣'],
+    ['sale_picked', 6, '精品'],
+    ['sale_highest', 7, '极品'],
   ]
 
   enum_attr :status, :in => [

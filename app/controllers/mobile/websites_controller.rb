@@ -1,5 +1,6 @@
 class Mobile::WebsitesController < ActionController::Base
-  include ErrorHandler, DetectUserAgent, LikeableCommentable
+  #include ErrorHandler, DetectUserAgent, LikeableCommentable
+  include DetectUserAgent, LikeableCommentable
 
   helper_method :judge_andriod_version, :wx_browser?
 

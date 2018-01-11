@@ -2,7 +2,7 @@ class GroupCategory < ActiveRecord::Base
   belongs_to :site
 
   belongs_to :parent, class_name: 'GroupCategory', foreign_key: :parent_id
-  has_many :children, class_name: 'GroupCategory', foreign_key: :parent_id, :order => 'sort ASC'
+  has_many :children,->{ order 'sort ASC' }, class_name: 'GroupCategory', foreign_key: :parent_id
   has_many :group_items
   belongs_to :group
 

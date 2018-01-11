@@ -24,7 +24,7 @@ class Payment::Alipay < Payment::Base
     ['TRADE_FINISHED', '交易成功且结束'],
   ]
 
-  scope :active, where(trade_status: [TRADE_SUCCESS, TRADE_FINISHED])
+  scope :active, ->{ where(trade_status: [TRADE_SUCCESS, TRADE_FINISHED]) }
 
   def self.setup(options = {})
     transaction do

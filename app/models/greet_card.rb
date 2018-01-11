@@ -6,7 +6,7 @@ class GreetCard < ActiveRecord::Base
 
   before_save :clean_up
 
-  default_scope where(["greet_cards.status != ? ", -1 ])
+  default_scope { where(["greet_cards.status != ? ", -1 ]) }
 
   scope :visitable, -> { where("greet_cards.status = ?", 1) }
 

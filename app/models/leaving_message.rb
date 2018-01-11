@@ -6,7 +6,7 @@ class LeavingMessage < ActiveRecord::Base
 
   enum_attr :status, :in => [['status_init',1,'待审核'],['status_audited',2,'通过'],['status_denied',3,'拒绝']]
 
-  scope :audited, -> { where(status: 2) }
+  #scope :audited, -> { where(status: 2) }
   scope :root, -> { where(parent_id: nil) }
 
   validates :body, presence: true

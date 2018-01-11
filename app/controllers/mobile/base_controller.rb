@@ -1,5 +1,6 @@
 class Mobile::BaseController < ActionController::Base
-  include ErrorHandler, DetectUserAgent
+  #include ErrorHandler, DetectUserAgent
+  include DetectUserAgent
 
   before_action :redirect_to_non_openid_url, :load_site, :load_data, :load_user_data, except: [:notice]
 

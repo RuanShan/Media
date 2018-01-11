@@ -4,7 +4,7 @@ class Group < ActiveRecord::Base
 
   has_one :activity, as: :activityable
   has_many :group_items, :dependent => :destroy
-  has_many :group_categories, :dependent => :destroy, :order => 'sort ASC'
+  has_many :group_categories, ->{ order 'sort ASC' }, :dependent => :destroy
 
   validates :name, presence: true, length: { maximum: 64, message: '名称过长' }
 

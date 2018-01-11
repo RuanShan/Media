@@ -1,5 +1,6 @@
 class App::BaseController < ActionController::Base
-  include ErrorHandler, DetectUserAgent
+  include DetectUserAgent
+  #include ErrorHandler, DetectUserAgent
   include ControllerHelpers::StrongParameters
 
   helper_method :judge_andriod_version, :wx_browser?

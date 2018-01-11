@@ -8,7 +8,7 @@ class House < ActiveRecord::Base
   belongs_to :province
   belongs_to :district
   belongs_to :city
-  has_one :activity, as: :activityable, order: :activity_type_id, dependent: :destroy
+  has_one :activity, ->{ order :activity_type_id }, as: :activityable, dependent: :destroy
   has_one :house_property, dependent: :destroy
   has_one :intro, class_name: 'HouseIntro', dependent: :destroy
 	has_many :house_layouts, dependent: :destroy

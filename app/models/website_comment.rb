@@ -13,5 +13,5 @@
 
 class WebsiteComment < ActiveRecord::Base
   belongs_to :website_article
-  attr_accessible :content, :name, :status
+  #attr_accessible :content, :name, :status
 end

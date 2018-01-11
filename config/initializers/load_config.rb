@@ -23,8 +23,8 @@ EXPORTING_COUNT = 2000
 
 # kefu
 if Rails.env.production?
-  url = "http://kf.winwemedia.com"
+  url = "http://kf.mpp.getstore.cn"
 else
-  url = "http://kefu.winwemedia.com"
+  url = "http://kefu.mpp.getstore.cn"
 end
 KEFU_URL = url

@@ -3,9 +3,9 @@ class BookRule < ActiveRecord::Base
 
   belongs_to :shop_branch
   has_many :book_time_ranges
-  attr_accessible :is_limit_money, :type, :rule_type, :shop_branch_id, :book_phone, :booked_minute, :cancel_rule, :created_minute, :description, 
-  :is_in_branch, :is_in_normal, :is_in_queue, :is_pay_cash, :is_pay_online, :is_send_captcha, :min_money, :preview_day, :book_time_ranges_attributes, 
-  :is_limit_day, :is_limit_time, :is_open_hall, :is_open_loge, :hall_limit_money, :loge_limit_money, :is_pay_balance, :delivery_time
+  #attr_accessible :is_limit_money, :type, :rule_type, :shop_branch_id, :book_phone, :booked_minute, :cancel_rule, :created_minute, :description,
+  #:is_in_branch, :is_in_normal, :is_in_queue, :is_pay_cash, :is_pay_online, :is_send_captcha, :min_money, :preview_day, :book_time_ranges_attributes,
+  #:is_limit_day, :is_limit_time, :is_open_hall, :is_open_loge, :hall_limit_money, :loge_limit_money, :is_pay_balance, :delivery_time
 
   validates :shop_branch_id, presence: true
 
@@ -123,7 +123,7 @@ class BookRule < ActiveRecord::Base
       if (self.hall_limit_money.blank? || self.hall_limit_money <= 0) && (self.loge_limit_money.blank? || self.loge_limit_money <= 0)
         self.update_column("is_limit_money", false)
       else
-        self.update_column("hall_limit_money", 0) if self.hall_limit_money.blank? 
+        self.update_column("hall_limit_money", 0) if self.hall_limit_money.blank?
         self.update_column("loge_limit_money", 0) if self.loge_limit_money.blank?
       end
     end

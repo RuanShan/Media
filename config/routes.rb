@@ -3,6 +3,7 @@ Wp::Application.routes.draw do
 
   root to: 'home#index'
 
+  mount ExceptionTrack::Engine => "/exception-track"
   # resources :logged_exceptions
 
   # mount RuCaptcha::Engine => "/rucaptcha"

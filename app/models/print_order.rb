@@ -4,9 +4,9 @@ class PrintOrder < ActiveRecord::Base
   belongs_to :site
   belongs_to :shop_branch
   belongs_to :shop_branch_print_template
-  attr_accessible :status, :address, :shop_order_id, :site_id, :shop_branch_id, :shop_branch_print_template_id
+  #attr_accessible :status, :address, :shop_order_id, :site_id, :shop_branch_id, :shop_branch_print_template_id
   scope :basic_columns, -> { select([:id, :shop_order_id, :status, :created_at]) }
-  
+
   enum_attr :status, :in => [
   	['success', 1,'打印成功'],
   	['unprint', -1, '未打印'],

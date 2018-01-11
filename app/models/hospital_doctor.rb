@@ -30,7 +30,7 @@ class HospitalDoctor < ActiveRecord::Base
 
   scope :online, -> { where("is_online = ?", 1) }
 
-  default_scope where(["hospital_doctors.status = ? ", 1 ])
+  default_scope { where(["hospital_doctors.status = ? ", 1 ]) }
 
   before_create :add_default_properties!
 

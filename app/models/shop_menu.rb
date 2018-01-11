@@ -4,7 +4,7 @@ class ShopMenu < ActiveRecord::Base
   has_many :shop_products
   has_many :shop_categories, :dependent => :destroy
   has_many :shop_branches
-  attr_accessible :menu_no
+  
 
   before_create :add_default_attrs
 

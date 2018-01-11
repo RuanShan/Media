@@ -22,7 +22,7 @@ class ActivityForm < ActiveRecord::Base
 
   before_create :add_default_attrs
 
-  default_scope order('sort asc')
+  default_scope { order('sort asc') }
 
   class << self
 
@@ -37,7 +37,7 @@ class ActivityForm < ActiveRecord::Base
     end
 
   end
-  
+
   def add_default_attrs
     return unless self.form_field
 

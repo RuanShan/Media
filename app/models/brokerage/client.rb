@@ -2,7 +2,7 @@ class Brokerage::Client < ActiveRecord::Base
   belongs_to :broker, counter_cache: true
   belongs_to :commission_type, class_name: '::Brokerage::CommissionType'
   has_many :client_changes
-  has_many :changed_commission_types, through: :client_changes, source: :commission_type, order: "brokerage_commission_types.#{Brokerage::CommissionType::SORT_FIELD} ASC"
+  has_many :changed_commission_types, ->{ order( "brokerage_commission_types.#{Brokerage::CommissionType::SORT_FIELD} ASC")}, through: :client_changes, source: :commission_type
 
   attr_accessor :change_commission
 

@@ -1,5 +1,5 @@
 class CarBespeakOption < ActiveRecord::Base
-  attr_accessible :bespeak_type, :name, :sort
+  #attr_accessible :bespeak_type, :name, :sort
 
   has_many :car_bespeak_option_relationships
 

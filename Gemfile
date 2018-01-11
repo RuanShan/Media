@@ -15,7 +15,6 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails', '4.0.2'
 #gem 'rails-i18n'
 gem 'client_side_validations','~> 10.1.0'
-#gem 'client_side_validations', '~> 4.2.12'
 # gem 'cancan'
 gem 'kaminari'
 gem 'spreadsheet'
@@ -32,7 +31,9 @@ gem 'rucaptcha'
 # gem 'alidayu_sms'
 gem 'alidayu_api', require: "alidayu"
 
-gem 'carrierwave'
+gem 'carrierwave', '~> 1.0'
+gem 'carrierwave-video'
+
 gem 'jquery-fileupload-rails'
 
 #gem "mongoid"
@@ -41,14 +42,16 @@ gem 'jquery-fileupload-rails'
 
 #gem 'meta_search'
 gem 'ransack'
-gem "ckeditor", "4.0.4"
+gem "ckeditor", "~> 4.2.0"
 # gem 'ueditor-rails'
 
 gem 'rest-client'
 
 #gem 'squeel'
-gem "exception_logger", :require => "exception_logger", :git => "git://github.com/liangwenke/exception_logger.git"
+
+#gem "exception_logger", :require => "exception_logger", :git => "git://github.com/liangwenke/exception_logger.git"
 gem 'exception_notification'
+gem 'exception-track'
 
 #gem "audited-activerecord","~> 4.2.2"
 gem "audited", "~> 4.5"

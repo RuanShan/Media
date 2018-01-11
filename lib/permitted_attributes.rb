@@ -1,6 +1,6 @@
 module PermittedAttributes
     ATTRIBUTES=[:site_attributes, :account_attributes, :wx_mp_user_attributes, :website_menu_attributes, :material_attributes, :activity_attributes, :shop_attributes,
-      :reply_attributes, :wx_menu_attributes, :payment_setting_attributes, :question_attributes, :fight_paper_attributes, :activity_prize_attributes, :vip_recharge_order_attributes]
+      :reply_attributes, :wx_menu_attributes, :payment_setting_attributes, :question_attributes, :fight_paper_attributes, :activity_prize_attributes, :vip_recharge_order_attributes, :book_rule_attributes]
     mattr_reader *ATTRIBUTES
 
     @@site_attributes = [ :section_id,:title, :content_param, :data_source, :data_filter, :data_source_order_by, :data_source_param, :css_class, :css_class_for_js, :content_css_class, :stylish, :section_context ]
@@ -49,6 +49,11 @@ module PermittedAttributes
 
      activity_prizes_attributes:[:title, :prize, :prize_count]
    ]
+
+   @book_rule_attributes = [ :is_limit_money, :type, :rule_type, :shop_branch_id, :book_phone, :booked_minute, :cancel_rule, :created_minute, :description,
+     :is_in_branch, :is_in_normal, :is_in_queue, :is_pay_cash, :is_pay_online, :is_send_captcha, :min_money, :preview_day, :book_time_ranges_attributes,
+     :is_limit_day, :is_limit_time, :is_open_hall, :is_open_loge, :hall_limit_money, :loge_limit_money, :is_pay_balance, :delivery_time ]
+
 
    @@shop_attributes = []
 

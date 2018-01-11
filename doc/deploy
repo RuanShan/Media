@@ -1,0 +1,3 @@
+cap production deploy
+
+bundle exec rake db:create RAILS_ENV=production

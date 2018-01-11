@@ -1,6 +1,6 @@
 class CarActivityNotice < ActiveRecord::Base
 	belongs_to :car_shop
-  has_one :activity, as: :activityable, order: :activity_type_id, dependent: :destroy
+  has_one :activity, ->{ order( :activity_type_id ) }, as: :activityable,  dependent: :destroy
 
 	accepts_nested_attributes_for :activity
 

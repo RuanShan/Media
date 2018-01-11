@@ -14,10 +14,10 @@ class ShopCategory < ActiveRecord::Base
   belongs_to :parent, class_name: 'ShopCategory', foreign_key: :parent_id
   has_many :children, class_name: 'ShopCategory', foreign_key: :parent_id, :dependent => :destroy
 
-  scope :without_children, includes(:children).where(:children => { :id => nil })
-  scope :second_scope, where("parent_id <> 0")
-  scope :visitable, :include => [:shop_products], :conditions => "shop_products.id IS NOT NULL"
-  scope :root, ->{where(parent_id: 0)}
+  scope :without_children, ->{ includes(:children).where(:children => { :id => nil }) }
+  scope :second_scope, ->{ where("parent_id <> 0") }
+  scope :visitable, ->{ where("shop_products.id IS NOT NULL").includes(:shop_products) }
+  scope :root, ->{ where(parent_id: 0) }
 
   default_scope { order(:sort) }
 
@@ -87,7 +87,7 @@ class ShopCategory < ActiveRecord::Base
     else
       same_sort_categories = self.parent.children
     end
-    
+
     same_sort_categories.order("sort").each_with_index do |c, index|
       c.update_column("sort", index)
     end
