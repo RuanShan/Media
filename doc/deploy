@@ -1,3 +1,5 @@
+http://capistranorb.com/documentation/getting-started/authentication-and-authorisation/
+
 cap production deploy
 
 bundle exec rake db:create RAILS_ENV=production

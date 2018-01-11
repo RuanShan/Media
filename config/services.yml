@@ -23,7 +23,6 @@ common: &common
     fcallbackurl: 'http://ui.m.mpp.getstore.cn/yeepay/callback'
   wx_plugin:
     token: <%= Rails.application.secrets.wx_open['token'] %>
-    base64_aes_key: <%= Rails.application.secrets.wx_open['base64_aes_key'] %>
     encoding_aes_key: <%= Rails.application.secrets.wx_open['encoding_aes_key'] %>
     component_app_id: <%= Rails.application.secrets.wx_open['component_app_id'] %>
     component_app_secret: <%= Rails.application.secrets.wx_open['component_app_secret'] %>
@@ -50,7 +49,6 @@ production:
     fcallbackurl: 'http://m.mpp.getstore.cn/yeepay/callback'
   wx_plugin:
     token: <%= Rails.application.secrets.wx_open['token'] %>
-    base64_aes_key: <%= Rails.application.secrets.wx_open['base64_aes_key'] %>
     encoding_aes_key: <%= Rails.application.secrets.wx_open['encoding_aes_key'] %>
     component_app_id: <%= Rails.application.secrets.wx_open['component_app_id'] %>
     component_app_secret: <%= Rails.application.secrets.wx_open['component_app_secret'] %>
