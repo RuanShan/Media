@@ -84,6 +84,10 @@ GEM
       capistrano
     capistrano-rvm (0.0.3)
       capistrano
+    capistrano3-puma (3.1.1)
+      capistrano (~> 3.7)
+      capistrano-bundler
+      puma (~> 3.4)
     capybara (2.1.0)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -540,6 +544,7 @@ DEPENDENCIES
   capistrano-bundler (~> 1.3)
   capistrano-rails
   capistrano-rvm
+  capistrano3-puma
   capybara (~> 2.1.0)
   carrierwave (~> 1.0)
   carrierwave-video

@@ -105,6 +105,7 @@ group :development do
   gem 'capistrano-rvm'
   gem 'capistrano-bundler', '~> 1.3'
   # gem 'capistrano-sidekiq'
+  gem 'capistrano3-puma', require: false
 
 end
 
