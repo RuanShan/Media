@@ -102,7 +102,7 @@ group :development do
   #https://www.jianshu.com/p/10c696f178a2
   gem "capistrano", "~> 3.10"
   gem 'capistrano-rails'
-  gem 'capistrano-rvm'
+  gem 'capistrano-rvm', '~> 0.1.2'
   gem 'capistrano-bundler', '~> 1.3'
   # gem 'capistrano-sidekiq'
   gem 'capistrano3-puma', require: false
