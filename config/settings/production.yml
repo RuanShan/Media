@@ -1,0 +1,23 @@
+hostname: "m.mpp.getstore.cn"
+mhostname: "m.mpp.getstore.cn"
+wshop_host:     "http://ec.mpp.getstore.cn"
+wmall_host:     "http://mall.mpp.getstore.cn"
+wlife_host:     "http://life.mpp.getstore.cn"
+shequ_host:     "http://shequ.mpp.getstore.cn"
+hotel_host:     "http://hotel.mpp.getstore.cn"
+oa_host:        "http://oa.mpp.getstore.cn"
+recommend_host: "http://lifeboat.mpp.getstore.cn"
+faye_host:      "http://faye.api.mpp.getstore.cn:9393"
+app_host:       "http://api.mpp.getstore.cn"
+wxapi_host: "http://api.wx.mpp.getstore.cn"
+cas_url:        "http://cas.mpp.getstore.cn"
+uploads_dir:    "/opt/apps/shared/51wei/uploads"
+yeepay:
+  yeepay_host: "https://ok.yeepay.com/"
+  callbackurl: "http://m.mpp.getstore.cn/yeepay/callback"
+  fcallbackurl: 'http://m.mpp.getstore.cn/yeepay/callback'
+wx_plugin:
+  token: <%= Rails.application.secrets.wx_open['token'] %>
+  encoding_aes_key: <%= Rails.application.secrets.wx_open['encoding_aes_key'] %>
+  component_app_id: <%= Rails.application.secrets.wx_open['component_app_id'] %>
+  component_app_secret: <%= Rails.application.secrets.wx_open['component_app_secret'] %>

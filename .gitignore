@@ -58,3 +58,7 @@ config/deploy*
 config/secrets.yml
 lib/tasks/dev2.rake
 config/database.yml
+
+config/settings.local.yml
+config/settings/*.local.yml
+config/environments/*.local.yml

@@ -1,0 +1,8 @@
+hostname: "testwx.getstore.cn"
+mhostname: "m.testwx.getstore.cn"
+wshop_host:     "http://127.0.0.1:3003"
+wmall_host:     "http://127.0.0.1:3002"
+wlife_host:     "http://127.0.0.1:3001"
+shequ_host:     "http://127.0.0.1:3004"
+recommend_host: "http://127.0.0.1:3005"
+app_host:       "http://127.0.0.1:3006"
