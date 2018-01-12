@@ -23,4 +23,4 @@ SiteCopyright.find_or_create_by!( is_default: true) do |copyright|
   copyright.footer_link = '<a href="www.baidu.com">footer link</a>'
 end
 
-load 'db/china_regions/init.rb'
+load "#{Rails.root}/db/seed/china_regions/init.rb"

@@ -101,7 +101,7 @@ group :development do
   gem 'guard-rails'
   #https://www.jianshu.com/p/10c696f178a2
   gem "capistrano", "~> 3.10"
-  gem 'capistrano-rails'
+  gem 'capistrano-rails', '~> 1.3'
   gem 'capistrano-rvm', '~> 0.1.2'
   gem 'capistrano-bundler', '~> 1.3'
   # gem 'capistrano-sidekiq'

@@ -1,3 +1,5 @@
+# NOTICE, now using server: shared/puma.rb 
+
 #!/usr/bin/env puma
 
 # The directory to operate out of.
@@ -75,7 +77,7 @@ daemonize true
 # The default is "tcp://0.0.0.0:9292".
 #
 # bind 'tcp://0.0.0.0:9292'
-bind 'unix:///disk2/www2/mpp/current/tmp/sockets/puma.socket'
+bind 'unix:///disk2/www2/mpp/current/tmp/sockets/puma.sock'
 # bind 'unix:///var/run/puma.sock?umask=0111'
 # bind 'ssl://127.0.0.1:9292?key=path_to_key&cert=path_to_cert'
 
