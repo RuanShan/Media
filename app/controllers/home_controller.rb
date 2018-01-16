@@ -77,9 +77,9 @@ class HomeController < ApplicationController
   end
 
   def verify_code
-    image = VerifyCode.new(4)
-    session[:image_code] = image.code
-    send_data image.code_image, :type => 'image/jpeg', :disposition => 'inline'
+    #image = VerifyCode.new(4)
+    #session[:image_code] = image.code
+    #send_data image.code_image, :type => 'image/jpeg', :disposition => 'inline'
   end
 
   def validate_image_code
