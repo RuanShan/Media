@@ -3,3 +3,7 @@ http://capistranorb.com/documentation/getting-started/authentication-and-authori
 cap production deploy
 
 bundle exec rake db:create RAILS_ENV=production
+
+
+===========================================================================================
+redis database 3
