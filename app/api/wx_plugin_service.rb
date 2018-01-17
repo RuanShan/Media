@@ -36,7 +36,6 @@ class WxPluginService
       url = "https://api.weixin.qq.com/cgi-bin/component/api_create_preauthcode?component_access_token=#{WxPluginService.component_access_token}"
       post_body = {component_appid: Settings.wx_plugin.component_app_id}.to_json
       result = HTTParty.post(url, body: post_body)
-Rails.log.debug "fetch_pre_auth_code=#{result.inspect}"
       code = result['pre_auth_code']
       return if code.blank?
       $redis.hmset WxPluginService::PRE_AUTH_CODE_KEY, :value, code, :expired_at, (result['expires_in'].seconds.from_now.to_i - 5)
