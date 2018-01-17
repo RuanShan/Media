@@ -5,7 +5,7 @@ class Mobile::WavesController < Mobile::BaseController
   def index
     session[:simulate] = params[:simulate].presence || "blank"
     @error_msg = nil
-    if @activity.setted? && @activity.activity_status == Activity::UNDER_WAY
+    if @activity.status_setted? && @activity.activity_status == Activity::UNDER_WAY
       render 'index'
     elsif  @activity.activity_status == Activity::HAS_ENDED
       render 'has_end'
@@ -40,7 +40,7 @@ class Mobile::WavesController < Mobile::BaseController
 
   def get_prize
     user_id = session[:user_id]
-    if @activity.setted? and @activity.activity_status == Activity::UNDER_WAY
+    if @activity.status_setted? and @activity.activity_status == Activity::UNDER_WAY
       @prize_title = '谢谢参与'
       logger.info "========活动进行中"
       lottery_draws         = @activity.lottery_draws

@@ -45,7 +45,7 @@ module App
         end
       elsif activity.finished?
         @activity_notice = activity.activity_notices.stopped.first
-      elsif activity.setting?
+      elsif activity.status_setting?
         @error_notice = '活动还未开始'
       else
         @error_notice = '活动不存在'

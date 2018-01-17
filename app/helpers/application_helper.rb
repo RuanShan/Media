@@ -369,7 +369,7 @@ Rails.logger.debug " model=#{model.inspect}"
       if activity.vote?
         activity.activity_status_name
       else
-        if activity.setted?
+        if activity.status_setted?
           activity.activity_status_name
         else
           activity.status_name

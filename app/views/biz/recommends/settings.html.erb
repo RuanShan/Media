@@ -121,7 +121,7 @@
 <% content_for :custom_js do %>
 <script>
   $(function() {
-    <%- if @activity.setting? %>
+    <%- if @activity.status_setting? %>
         $('input[name=prize_type]:first').click();
     <%- else %>
       $('input[name=prize_type]:checked').click();

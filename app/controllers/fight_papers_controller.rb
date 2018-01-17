@@ -36,7 +36,7 @@ class FightPapersController < ApplicationController
     @fight_papers = current_site.fight_papers.where(activity_id: params[:activity_id])
     @fight_paper  = @fight_papers.find params[:id]
     if @fight_paper.update_attributes(fight_paper_params)
-      if @activity.setting? && @fight_paper == @activity.fight_papers.last
+      if @activity.status_setting? && @fight_paper == @activity.fight_papers.last
         @activity.setted!
         redirect_to fights_activities_path
       else

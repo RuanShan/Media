@@ -57,7 +57,7 @@
       <i class="icon-arrow-left"></i>
       上一步
     </a>
-    <%- unless (@activity.can_not_edit? || @activity.stopped? ) %>
+    <%- unless (@activity.can_not_edit? || @activity.status_stopped? ) %>
       <button type='submit' class="btn btn-primary btn-sm btn-next btn-submit">确定</button>
     <%- end %>
     <a href="<%= guesses_activities_path %>" class="btn btn-sm">返回</a>
@@ -81,7 +81,7 @@ $(function(){
       check_prizes_count();
     <%- end %>
 
-    <%- if @activity.can_not_edit? || @activity.stopped?  %>
+    <%- if @activity.can_not_edit? || @activity.status_stopped?  %>
       $('input,select,textarea').prop('disabled', true);
       $('.wysiwyg-editor').attr('contenteditable', false);
     <% end %>
@@ -97,7 +97,7 @@ $(function(){
   })
 
   var check_prizes_count = function(){
-    <%- if @activity.can_not_edit? || @activity.stopped?  %>
+    <%- if @activity.can_not_edit? || @activity.status_stopped?  %>
       return false;
     <%- end %>
     var question_answer_limit = $('#answer_limit').val(),

@@ -1,4 +1,4 @@
-<%- if @activity.setted? %>
+<%- if @activity.status_setted? %>
   <%- if @activity.activity_status == Activity::UNDER_WAY %>
       <%- if @invites.blank? %>
         <%= render 'init', ing: true %>

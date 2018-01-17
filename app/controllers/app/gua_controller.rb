@@ -17,7 +17,7 @@ class App::GuaController < App::BaseController
   def gua
     @activity = Activity.gua.find(params[:aid])
     @share_image = @activity.activity_notices.active.first.try(:pic_url)
-    if @activity.setted? && @activity.activity_status == Activity::UNDER_WAY
+    if @activity.status_setted? && @activity.activity_status == Activity::UNDER_WAY
       @prize_title = @activity.activity_property.no_prize_titles.sample || '谢谢参与'
       @prize_type = @prize_title
       @sn_code = ''
@@ -113,7 +113,7 @@ class App::GuaController < App::BaseController
 
   def gua_prize
     #刮奖活动尚在进行中
-    if @activity.setted? && @activity.activity_status == Activity::UNDER_WAY
+    if @activity.status_setted? && @activity.activity_status == Activity::UNDER_WAY
       #全局设置判断
       #获取奖品
       prize = @activity.get_prize

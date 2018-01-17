@@ -51,7 +51,7 @@
                   <%= link_to '服务说明', 'javascript:;', data: {toggle: 'modals', title: '服务说明', height: '600', iframe: "#{intro_reservation_path(id: activity.id)}"  } %>
                   <%= link_to '字段管理', fields_reservations_path(id: activity.id), class: 'order_form_edit'  %>
                   <%= link_to '订单管理', orders_reservations_path(id: activity.id), class: 'order_manage_list' %>
-                  <%- if activity.stopped? %>
+                  <%- if activity.status_stopped? %>
                     <%= link_to '开启', start_reservation_path(id: activity.id), method: :post, data: {confirm: '确认开启吗？'} %>
                   <%- else %>
                     <%= link_to '停用', stop_reservation_path(id: activity.id), method: :post, data: {confirm: '确认停用吗？'} %>

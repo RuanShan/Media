@@ -120,7 +120,7 @@ class Mobile::SurveysController < Mobile::BaseController
 
   def find_activity
     @activity = @site.activities.find session[:activity_id]
-    return render_404 if @activity.deleted?
+    return render_404 if @activity.status_deleted?
     @survey_questions = @activity.survey_questions.order(:position)
     @first_qid = @survey_questions.first.try(:id)
     @share_image = @activity.qiniu_pic_url || @activity.default_pic_url

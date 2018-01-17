@@ -2,15 +2,15 @@
    @activity.activity_vote_items.new
    @activity.activity_vote_items.new
    flag = false;
-   if @activity.end_at.nil? && !@activity.setted?
+   if @activity.end_at.nil? && !@activity.status_setted?
      flag = false
-   elsif @activity.end_at.nil? && @activity.setted?
+   elsif @activity.end_at.nil? && @activity.status_setted?
      flag = false
    elsif @activity.end_at && @activity.end_at < Time.now
      flag = true
-   elsif @activity.end_at && @activity.end_at > Time.now && !@activity.setted?
+   elsif @activity.end_at && @activity.end_at > Time.now && !@activity.status_setted?
      flag = false
-   elsif @activity.end_at && @activity.end_at > Time.now && @activity.setted?
+   elsif @activity.end_at && @activity.end_at > Time.now && @activity.status_setted?
      flag = false
    end
 %>

@@ -5,7 +5,7 @@ class App::FightController < App::BaseController
 
   def index
     @activity = @site.activities.fight.find(params[:aid])
-    if !@activity.deleted?
+    if !@activity.status_deleted?
       if @site.users.where(id: session[:user_id]).first
         @activity_notice = @activity.activity_notices.where(id: params[:anid]).first
         @share_title = @activity_notice.title

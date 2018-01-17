@@ -1,5 +1,5 @@
 <%= javascript_include_tag 'mobile/gua' %>
-<%- if @activity.stopped? %>
+<%- if @activity.status_stopped? %>
   <section class="sec-game">
     <div id="scene-end">
       <div class="game-text" id="text-end"></div>

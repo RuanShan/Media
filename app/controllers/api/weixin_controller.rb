@@ -313,15 +313,15 @@ class Api::WeixinController < Api::BaseController
     logger.info '----------------------------------------------------------will response_activity'
     return Weixin.respond_text(@from_user_name, @to_user_name, '活动结束或不存在') unless activity
 
-    if activity.wx_wall? && activity.setted? # 微信墙接口处理
+    if activity.wx_wall? && activity.status_setted? # 微信墙接口处理
       message = WxWallUser.reply_or_create(@wx_user, activity)
       Weixin.respond_text(@from_user_name, @to_user_name, message)
-    elsif activity.shake? && activity.setted? # 摇一摇接口处理
+    elsif activity.shake? && activity.status_setted? # 摇一摇接口处理
       message = ShakeUser.reply_or_create(@wx_user.user, activity)
       return Weixin.respond_text(@from_user_name, @to_user_name, message) if message
       respond_activity_directly(activity)
     elsif activity.vip?
-      return Weixin.respond_text(@from_user_name, @to_user_name, '会员卡暂停使用') if !activity.setted?
+      return Weixin.respond_text(@from_user_name, @to_user_name, '会员卡暂停使用') if !activity.status_setted?
 
       activity_notice = ActivityNotice.vip_notice(activity, @from_user_name)
       respond_news_with_activity_notice(@from_user_name, @to_user_name, activity_notice)
@@ -329,11 +329,11 @@ class Api::WeixinController < Api::BaseController
     #   @wx_user.wifi!
     #   return Weixin.respond_text(@from_user_name, @to_user_name, '请输入wifi验证码')
     elsif activity.gua? || activity.wheel? || activity.hit_egg? || activity.slot?
-      return Weixin.respond_text(@from_user_name, @to_user_name, '活动还未开始') unless activity.setted?
+      return Weixin.respond_text(@from_user_name, @to_user_name, '活动还未开始') unless activity.status_setted?
       activity_notice = ActivityNotice.ready_or_active_notice(activity)
       respond_news_with_activity_notice(@from_user_name, @to_user_name, activity_notice)
     elsif activity.fight?
-      if activity.setted? || activity.enroll?
+      if activity.status_setted? || activity.enroll?
         activity_notice = activity.activity_notices.active.first
         respond_news_with_activity_notice(@from_user_name, @to_user_name, activity_notice)
       else

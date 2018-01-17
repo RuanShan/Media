@@ -6,7 +6,7 @@ class App::SlotsController < App::BaseController
   end
 
   def slot
-    if @activity.setted? and @activity.activity_status == Activity::UNDER_WAY
+    if @activity.status_setted? and @activity.activity_status == Activity::UNDER_WAY
       @prize_title = '谢谢参与'
       @prize_type = '谢谢参与'
       logger.info "========活动进行中"

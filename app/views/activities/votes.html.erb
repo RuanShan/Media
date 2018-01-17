@@ -97,7 +97,7 @@
                                 <%#= link_to '停止', [:stop, activity], data: {confirm: '投票活动正在进行，确认停止吗？', method: :post } if ['进行中'].include? show_activity_status(activity) %>
                                 <%= link_to '停止', [:stop, activity], data: {confirm: '投票活动正在进行，确认停止吗？', method: :post } if attrs[2] %>
                             <% end %>
-                            <%#= link_to '删除', activity_path(activity), data: {confirm: '确认删除吗？', method: :delete} if activity.vote? && !activity.setted? %>
+                            <%#= link_to '删除', activity_path(activity), data: {confirm: '确认删除吗？', method: :delete} if activity.vote? && !activity.status_setted? %>
                             <%= link_to '删除', activity_path(activity), data: {confirm: '确认删除吗？', method: :delete} if attrs[3] %>
                             <%= link_to '投票链接', vote_qrcode_activity_url(activity), class: 'fgreen', data: {target: "qrocde-#{activity.id}", remote: true} %>
                             <div class="new-add" style="display: none;" id="qrocde-<%= activity.id %>">

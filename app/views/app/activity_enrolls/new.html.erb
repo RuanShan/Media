@@ -40,7 +40,7 @@
       </div>
       <div class="blank6"></div>
     </div>
-    <%#- if (@activity.setted? && @activity.activity_status_name == '进行中') %>
+    <%#- if (@activity.status_setted? && @activity.activity_status_name == '进行中') %>
     <%- if activity_status_name.eql?('进行中') %>
     <!--报名展示-->
     <div class="swiper-slide">
@@ -150,7 +150,7 @@
 
 <div class="pagination"><span class="swiper-pagination-switch swiper-visible-switch swiper-active-switch"></span><span class="swiper-pagination-switch"></span><span class="swiper-pagination-switch"></span></div>
     <a class="arrow-left arr_act" href="#"><i></i>报名状态</a>
-  <%#- if (@activity.setted? && @activity.activity_status_name == '进行中') %>
+  <%#- if (@activity.status_setted? && @activity.activity_status_name == '进行中') %>
   <%- if activity_status_name.eql?('进行中') %>
     <a class="arrow-right arr_act" href="#"><i></i>立刻报名</a>
   <%- else %>

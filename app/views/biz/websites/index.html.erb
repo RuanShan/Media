@@ -159,7 +159,7 @@
               <input class="btn btn-sm btn-primary" type="submit" value="保存">&nbsp;&nbsp;
               <%= link_to [:stop, @website.activity], method: :post do %>
                 <input type="button" value="停用" class="btn btn-sm btn-default"/>
-              <% end unless @website.activity.stopped? %>
+              <% end unless @website.activity.status_stopped? %>
             </div>
           <% end %>
         </div>

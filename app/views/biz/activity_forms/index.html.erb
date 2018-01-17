@@ -80,7 +80,7 @@
                               </label>
                             </td>
                             <td class="tleft">
-                              <a href="<%= activity_form_path(id: activity.id) %>"><%= activity.setted? && "查看" || "编辑" %></a>
+                              <a href="<%= activity_form_path(id: activity.id) %>"><%= activity.status_setted? && "查看" || "编辑" %></a>
                               <a href="<%= edit_fields_activity_forms_path(id: activity.id) %>" title="报名字段设置：<%= activity.name %>">报名字段</a>
                               <%= link_to '用户数据', activity_enrolls_path(id: activity.id) %>
                               <%#= link_to '开启', [:active, activity], method: :post, :data => { :confirm => t('.confirm', :default => "确认开启该活动吗？") } if activity.allow_active? %>

@@ -66,7 +66,7 @@ class Mobile::VoteController < Mobile::BaseController
 
   def find_activity
     @activity = @site.activities.find(session[:activity_id])
-    return render_404 if @activity.nil? || @activity.deleted?
+    return render_404 if @activity.nil? || @activity.status_deleted?
     @share_image = @activity.qiniu_pic_url.present? ? @activity.qiniu_pic_url : @activity.default_pic_url
   end
 

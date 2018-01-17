@@ -71,19 +71,19 @@
 
                                 <%= link_to '停止', [:stop, activity], method: :post, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }  if activity.allow_stop? %>
 
-                                <%= link_to '删除', activity, method: :delete, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) } if activity.setting? or activity.stopped? or (activity.setted? and (activity.activity_status == Activity::STATUS_NOT_START or activity.activity_status == Activity::HAS_ENDED)) %>
+                                <%= link_to '删除', activity, method: :delete, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) } if activity.status_setting? or activity.status_stopped? or (activity.status_setted? and (activity.activity_status == Activity::STATUS_NOT_START or activity.activity_status == Activity::HAS_ENDED)) %>
                                 <%= link_to '开启', [:active, activity], method: :post if activity.allow_active? %>
 
                                 <%- if aids_path? %>
-                                  <%= link_to 'SN码管理', consumes_activities_path(activity_id: activity.id) unless activity.setting? or (activity.setted? and (activity.activity_status == Activity::STATUS_NOT_START or activity.activity_status == Activity::WARM_UP)) %>
+                                  <%= link_to 'SN码管理', consumes_activities_path(activity_id: activity.id) unless activity.status_setting? or (activity.status_setted? and (activity.activity_status == Activity::STATUS_NOT_START or activity.activity_status == Activity::WARM_UP)) %>
                                 <%- else %>
-                                  <%= link_to 'SN码管理', consumes_activities_path(activity_id: activity.id) unless activity.setting? or (activity.setted? and (activity.activity_status == Activity::STATUS_NOT_START or activity.activity_status == Activity::WARM_UP)) %>
+                                  <%= link_to 'SN码管理', consumes_activities_path(activity_id: activity.id) unless activity.status_setting? or (activity.status_setted? and (activity.activity_status == Activity::STATUS_NOT_START or activity.activity_status == Activity::WARM_UP)) %>
                                 <%- end %>
                                 
                                 <%- if aids_path? %>
-                                  <%= link_to '统计', statistics_activity_path(activity) unless activity.setting? or (activity.setted? and (activity.activity_status == Activity::STATUS_NOT_START or activity.activity_status == Activity::WARM_UP)) %>
+                                  <%= link_to '统计', statistics_activity_path(activity) unless activity.status_setting? or (activity.status_setted? and (activity.activity_status == Activity::STATUS_NOT_START or activity.activity_status == Activity::WARM_UP)) %>
                                 <%- else %>
-                                  <%= link_to '统计', statistics_activity_path(activity) unless activity.setting? or (activity.setted? and (activity.activity_status == Activity::STATUS_NOT_START or activity.activity_status == Activity::WARM_UP)) %>
+                                  <%= link_to '统计', statistics_activity_path(activity) unless activity.status_setting? or (activity.status_setted? and (activity.activity_status == Activity::STATUS_NOT_START or activity.activity_status == Activity::WARM_UP)) %>
                                 <%- end %>
                             </td>
                         </tr>

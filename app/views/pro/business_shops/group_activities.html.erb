@@ -38,7 +38,7 @@
         </td>
        <td>
        <%= show_activity_status(activity) %>
-       <%= activity.activity_type.fight? ? (activity.setted? ? activity.activity_status_name : (activity.setting? ? "未设题" : activity.status_name)) : "" %>
+       <%= activity.activity_type.fight? ? (activity.status_setted? ? activity.activity_status_name : (activity.status_setting? ? "未设题" : activity.status_name)) : "" %>
        </td>
        <td class="txt-left-align">
           <%= link_to '删除', delete_group_activities_business_shop_path(@business_shop,activity_id: activity.id), data: { remote: true, method: :delete, confirm: '确定要删除该关联吗？'} %>

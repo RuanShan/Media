@@ -63,7 +63,7 @@ class Biz::AidsController < ApplicationController
   end
 
   def setted
-    @activity.status = Activity::STATUS_SETTED if @activity.setting?
+    @activity.status = Activity::STATUS_SETTED if @activity.status_setting?
     @activity.save
     render nothing: true
   end

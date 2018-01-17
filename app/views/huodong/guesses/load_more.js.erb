@@ -8,7 +8,7 @@
     }
   <%- end %>
 
-  <%- if @activity.can_not_edit? || @activity.stopped?  %>
+  <%- if @activity.can_not_edit? || @activity.status_stopped?  %>
     $('input,select').prop('disabled', true);
   <% end %>
 

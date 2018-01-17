@@ -92,7 +92,7 @@ class Coupon < ActiveRecord::Base
     hold_count = 0
     site.activities.unfold.each do |activity|
       if activity.extend.prize_type == 'coupon' && activity.extend.prize_id.to_i == self.id
-        if activity.deleted?
+        if activity.status_deleted?
             hold_count = 0
         else
             if activity.activity_status == Activity::HAS_ENDED

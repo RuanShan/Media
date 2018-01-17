@@ -3,11 +3,11 @@ class App::HitEggsController < App::BaseController
   before_action :block_non_wx_browser, :find_activity
 
   def show
-    redirect_to mobile_notice_url(msg: '商户正在配置活动中') if @activity.setting?
+    redirect_to mobile_notice_url(msg: '商户正在配置活动中') if @activity.status_setting?
   end
 
   def hit_egg
-    if @activity.setted? and @activity.activity_status == Activity::UNDER_WAY
+    if @activity.status_setted? and @activity.activity_status == Activity::UNDER_WAY
       @prize_title = '谢谢参与'
       @prize_type = '谢谢参与'
       logger.info "========活动进行中"

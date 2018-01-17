@@ -185,20 +185,20 @@ class Activity < ActiveRecord::Base
           return activity
         elsif activity.wx_print? || activity.exit_wx_print? || activity.hanming_wifi?
           return activity
-        elsif (!activity.stopped? && (activity.wx_wall? && activity.activity_status == Activity::STATUS_NOT_START  && activity.activityable && activity.activityable.pre_join?))
+        elsif (!activity.status_stopped? && (activity.wx_wall? && activity.activity_status == Activity::STATUS_NOT_START  && activity.activityable && activity.activityable.pre_join?))
           # 如果是 微信墙
           return activity
-        elsif activity.setted? && activity.wave? && [WARM_UP, UNDER_WAY, HAS_ENDED].include?(activity.activity_status)
+        elsif activity.status_setted? && activity.wave? && [WARM_UP, UNDER_WAY, HAS_ENDED].include?(activity.activity_status)
           return activity
-        elsif activity.setted? && activity.unfold? && [NOT_START, UNDER_WAY, HAS_ENDED].include?(activity.activity_status)
+        elsif activity.status_setted? && activity.unfold? && [NOT_START, UNDER_WAY, HAS_ENDED].include?(activity.activity_status)
           return activity
-        elsif (activity.setted? || activity.stopped?) && activity.recommend?
+        elsif (activity.status_setted? || activity.status_stopped?) && activity.recommend?
           return activity
-       elsif activity.setted? && (activity.unfold? || activity.gua? || activity.wheel?  || activity.slot? || activity.hit_egg? || activity.fight?) && [WARM_UP, UNDER_WAY, SHOW_LIST, HAS_ENDED].include?(activity.activity_status)
+       elsif activity.status_setted? && (activity.unfold? || activity.gua? || activity.wheel?  || activity.slot? || activity.hit_egg? || activity.fight?) && [WARM_UP, UNDER_WAY, SHOW_LIST, HAS_ENDED].include?(activity.activity_status)
           return activity
-        elsif  activity.setted? && [WARM_UP, UNDER_WAY].include?(activity.activity_status)
+        elsif  activity.status_setted? && [WARM_UP, UNDER_WAY].include?(activity.activity_status)
           return activity
-        elsif (!activity.stopped? && (activity.hotel? or activity.wshop? or activity.wmall? or activity.wmall_shop? or activity.wmall_coupon?))
+        elsif (!activity.status_stopped? && (activity.hotel? or activity.wshop? or activity.wmall? or activity.wmall_shop? or activity.wmall_coupon?))
           return activity
         elsif activity.micro_aid?
           return activity

@@ -279,7 +279,7 @@ class Mobile::AidsController < Mobile::BaseController
   def find_activity
     @activity = Activity.micro_aid.find session[:activity_id]
 
-    return render_404 unless @activity.present? && @activity.setted?
+    return render_404 unless @activity.present? && @activity.status_setted?
 
     @owner_user =  @wx_mp_user.wx_users.where(openid: params[:owner_openid]).first  if params[:owner_openid].present?
     @origin_user = @wx_mp_user.wx_users.where(openid: params[:origin_openid]).first if params[:origin_openid].present?

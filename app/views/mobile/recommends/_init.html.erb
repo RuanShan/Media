@@ -78,7 +78,7 @@
           <a onclick="showPop('#pop-recommend')" class="btn btn-bigest btn-red">我要推荐</a>
         <%- end %>
     <%- else %>
-      <a class="btn btn-bigest">活动<%= @activity.stopped? ? @activity.status_name : @activity.activity_status_name %></a>
+      <a class="btn btn-bigest">活动<%= @activity.status_stopped? ? @activity.status_name : @activity.activity_status_name %></a>
     <% end %>
   </div>
   </div>

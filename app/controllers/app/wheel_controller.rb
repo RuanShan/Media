@@ -10,7 +10,7 @@ module App
       @activity_consumes =  @user.present? ? @user.activity_consumes.includes(:activity_prize).where(activity_id: params[:aid]) : []
       if @activity 
         @share_image = @activity_notice.try(:pic_url)
-        if @activity.setted?  && @activity.activity_status == Activity::UNDER_WAY
+        if @activity.status_setted?  && @activity.activity_status == Activity::UNDER_WAY
           titles = @activity.activity_prizes.pluck(:title)
           @prizes = (titles+titles.reverse).take(6)
           @main_class = "stage"
@@ -39,7 +39,7 @@ module App
         if @activity
           logger.info "========活动存在"
           #抽奖活动尚在进行中
-          if @activity.setted? and @activity.activity_status == Activity::UNDER_WAY
+          if @activity.status_setted? and @activity.activity_status == Activity::UNDER_WAY
             logger.info "========活动进行中"
 
             #全局设置判断 上线前,已有奖品记录关联插入到lottery_draws表
@@ -122,9 +122,9 @@ module App
 
           else
             logger.info "========预热/停止/结束"
-            error_id = '-103' if @activity.setted? and @activity.activity_status == Activity::WARM_UP
-            error_id = '-104' if @activity.stopped?
-            error_id = '-401' if @activity.deleted? or (@activity.setted? and @activity.activity_status == Activity::HAS_ENDED)
+            error_id = '-103' if @activity.status_setted? and @activity.activity_status == Activity::WARM_UP
+            error_id = '-104' if @activity.status_stopped?
+            error_id = '-401' if @activity.status_deleted? or (@activity.status_setted? and @activity.activity_status == Activity::HAS_ENDED)
           end
         end
 

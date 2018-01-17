@@ -87,7 +87,7 @@
                           <td>
                             <%= attrs[0] %>
                             <%#= show_activity_status(activity) %>
-                            <%#= activity.activity_type.fight? ? (activity.setted? ? activity.activity_status_name : (activity.setting? ? "未设题" : activity.status_name)) : "" %>
+                            <%#= activity.activity_type.fight? ? (activity.status_setted? ? activity.activity_status_name : (activity.status_setting? ? "未设题" : activity.status_name)) : "" %>
                           </td>
                           <td title="题目数量">
                             <%= activity.survey_questions.count %>
