@@ -14,7 +14,7 @@ class RedPacket::Setting < ActiveRecord::Base
   end
 
   def mark_delete!
-    activity.update_column(:status, Activity::DELETED) if activity
+    activity.update_column(:status, Activity::STATUS_DELETED) if activity
   end
 
   def end_at_greater_than_start_at

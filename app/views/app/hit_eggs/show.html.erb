@@ -1,4 +1,4 @@
-<% if [Activity::NOT_START, Activity::WARM_UP].include?(@activity.activity_status) %>
+<% if [Activity::STATUS_NOT_START, Activity::WARM_UP].include?(@activity.activity_status) %>
   <% content_for(:title) { "#{@activity.name}活动预热中" } %>
     <section class="sec-game">
       <div class="game-scene" id="scene"></div>

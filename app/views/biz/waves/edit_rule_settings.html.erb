@@ -2,7 +2,7 @@
 <div class="step-pane active" id="step3">
   <%= form_for @activity, :url => wave_path(@activity), html: {method: :put},  validate: true  do |activity| %>
     <%= hidden_field_tag :redirect_to,  waves_activities_path %>
-    <%= activity.hidden_field :status, value: Activity::SETTED %>
+    <%= activity.hidden_field :status, value: Activity::STATUS_SETTED %>
     <%= activity.fields_for :activity_property, validate: true do |ap| %>
     <%= render 'activities/property_form', ap: ap, activity: activity %>
   <% end %>

@@ -1,4 +1,4 @@
-<%- if @activity.activity_status == Activity::NOT_START %>
+<%- if @activity.activity_status == Activity::STATUS_NOT_START %>
   <%= render "not_start" %>
 <%- elsif @activity.activity_status == Activity::UNDER_WAY %>
   <%- if @participate.present? || @friend %>

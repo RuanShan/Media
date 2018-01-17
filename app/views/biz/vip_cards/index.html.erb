@@ -11,7 +11,7 @@
     </div>
     <div class="col-sm-12">
       <%= form_for @activity, validate: true do |f| %>
-        <%= f.hidden_field :status, value: Activity::SETTED %>
+        <%= f.hidden_field :status, value: Activity::STATUS_SETTED %>
         <%= f.fields_for :vip_card, @activity.vip_card do |card| %>
         <%= card.hidden_field :status, value: 1 %>
         <%= render "weixin_preview", wx_title: @activity_notice.try(:title) || '标题', wx_summary: @activity_notice.try(:summary) || '描述', wx_pic: (@activity.pic_url.blank? ? @activity.default_pic_url : @activity.pic_url) %>

@@ -686,7 +686,7 @@ START
   end
 
   def new_activity_for_wbbs_community
-    create_activity_for(ActivityType::WBBS_COMMUNITY, Activity::SETTED, "微社区", "微社区")
+    create_activity_for(ActivityType::WBBS_COMMUNITY, Activity::STATUS_SETTED, "微社区", "微社区")
 
     now = Time.now
     attrs = {
@@ -747,66 +747,66 @@ START
   end
 
   def create_activity_for_wedding
-    attrs, full_attrs = initiate_activity_for(ActivityType::WEDDINGS, Activity::SETTED, "微婚礼", "微婚礼")
+    attrs, full_attrs = initiate_activity_for(ActivityType::WEDDINGS, Activity::STATUS_SETTED, "微婚礼", "微婚礼")
     Activity.new(full_attrs)
   end
 
   def create_activity_for_website
-    create_activity_for(ActivityType::WEBSITE, Activity::SETTED, "微官网", "微官网", pic_key: Concerns::ActivityQiniuPicKeys.default_site_pic_qiniu_key)
+    create_activity_for(ActivityType::WEBSITE, Activity::STATUS_SETTED, "微官网", "微官网", pic_key: Concerns::ActivityQiniuPicKeys.default_site_pic_qiniu_key)
   end
 
   def create_activity_for_vip_card
-    create_activity_for(ActivityType::VIP, Activity::SETTED, "会员卡", "会员卡")
+    create_activity_for(ActivityType::VIP, Activity::STATUS_SETTED, "会员卡", "会员卡")
   end
 
   def create_activity_for_ktv_orders
-    create_activity_for(ActivityType::KTV_ORDER, Activity::SETTED, "KTV预订", "KTV预订")
+    create_activity_for(ActivityType::KTV_ORDER, Activity::STATUS_SETTED, "KTV预订", "KTV预订")
   end
 
   def create_activity_for_govchat
-    create_activity_for(ActivityType::GOVCHAT, Activity::SETTED, "微信互动", "微政务微信互动", summary: '请点击进入微政务微信互动')
+    create_activity_for(ActivityType::GOVCHAT, Activity::STATUS_SETTED, "微信互动", "微政务微信互动", summary: '请点击进入微政务微信互动')
   end
 
   def create_activity_for_govmail
-    create_activity_for(ActivityType::GOVMAIL, Activity::SETTED, "信访大厅", "微政务信访大厅", summary: '请点击进入微政务信访大厅')
+    create_activity_for(ActivityType::GOVMAIL, Activity::STATUS_SETTED, "信访大厅", "微政务信访大厅", summary: '请点击进入微政务信访大厅')
   end
 
   def create_activity_for_coupon
-    create_activity_for(ActivityType::COUPON, Activity::SETTED, "优惠券", "优惠券", summary: '请点击进入电子优惠券')
+    create_activity_for(ActivityType::COUPON, Activity::STATUS_SETTED, "优惠券", "优惠券", summary: '请点击进入电子优惠券')
   end
 
   def create_activity_for_college
-    create_activity_for(ActivityType::EDUCATIONS, Activity::SETTED, "微教育", "微教育")
+    create_activity_for(ActivityType::EDUCATIONS, Activity::STATUS_SETTED, "微教育", "微教育")
   end
 
   def create_activity_for_house_bespeak
-    create_activity_for(ActivityType::HOUSE_BESPEAK, Activity::SETTED, '预约看房', '预约看房')
+    create_activity_for(ActivityType::HOUSE_BESPEAK, Activity::STATUS_SETTED, '预约看房', '预约看房')
   end
 
   def create_activity_for_house_seller
-    create_activity_for(ActivityType::HOUSE_SELLER, Activity::SETTED, '房产销售顾问', '房产销售顾问')
+    create_activity_for(ActivityType::HOUSE_SELLER, Activity::STATUS_SETTED, '房产销售顾问', '房产销售顾问')
   end
 
   def create_activity_for_house_impression
-    create_activity_for(ActivityType::HOUSE_IMPRESSION, Activity::SETTED, '房友印象', '房友印象')
+    create_activity_for(ActivityType::HOUSE_IMPRESSION, Activity::STATUS_SETTED, '房友印象', '房友印象')
   end
 
   def create_activity_for_house_live_photo
-    create_activity_for(ActivityType::HOUSE_LIVE_PHOTO, Activity::SETTED, '实景拍摄', '实景拍摄')
+    create_activity_for(ActivityType::HOUSE_LIVE_PHOTO, Activity::STATUS_SETTED, '实景拍摄', '实景拍摄')
   end
 
   def create_activity_for_house_intro
-    create_activity_for(ActivityType::HOUSE_INTRO, Activity::SETTED, '楼盘简介', '楼盘简介')
+    create_activity_for(ActivityType::HOUSE_INTRO, Activity::STATUS_SETTED, '楼盘简介', '楼盘简介')
   end
 
   def create_activity_for_house_review
-    create_activity_for(ActivityType::HOUSE_REVIEW, Activity::SETTED, '专家点评', '专家点评')
+    create_activity_for(ActivityType::HOUSE_REVIEW, Activity::STATUS_SETTED, '专家点评', '专家点评')
   end
 
   def create_activity_for_shop(activity_type_id, attrs = {})
     activity_types = { 6 => '微订餐', 7 => '微订座', 9 => '微外卖', 11 => '微门店' }
     activity_type_name = activity_types[activity_type_id]
-    create_activity_for(activity_type_id, Activity::SETTED, activity_type_name, activity_type_name, {pic_key: Concerns::ActivityQiniuPicKeys.default_site_pic_qiniu_key}.merge!(attrs) )
+    create_activity_for(activity_type_id, Activity::STATUS_SETTED, activity_type_name, activity_type_name, {pic_key: Concerns::ActivityQiniuPicKeys.default_site_pic_qiniu_key}.merge!(attrs) )
   end
 
   def create_activity_for_share_photo_setting
@@ -823,7 +823,7 @@ START
         full_attrs = {
           activityable_id: share_photo_setting.id,
           activityable_type: 'SharePhotoSetting',
-          status:   Activity::SETTED,
+          status:   Activity::STATUS_SETTED,
           name:     value[0],
           keyword:  value[0],
           summary:  value[2],
@@ -851,7 +851,7 @@ START
       full_attrs = {
         activityable_id: print.id,
         activityable_type: 'Print',
-        status:   Activity::SETTED,
+        status:   Activity::STATUS_SETTED,
         name:     value[0],
         keyword:  value[0],
         summary:  value[2],
@@ -918,7 +918,7 @@ START
     full_attrs = {
       activityable_id: life.id,
       activityable_type: 'Website',
-      status:   Activity::SETTED,
+      status:   Activity::STATUS_SETTED,
       name:     life.name,
       keyword:  life.name,
       description:  life.name,
@@ -944,7 +944,7 @@ START
     full_attrs = {
       activityable_id: circle.id,
       activityable_type: 'Website',
-      status:   Activity::SETTED,
+      status:   Activity::STATUS_SETTED,
       name:     circle.name,
       keyword:  circle.name,
       description:  circle.name,
@@ -971,7 +971,7 @@ START
     full_attrs = {
       activityable_id: hospital.id,
       activityable_type: 'Hospital',
-      status:   Activity::SETTED,
+      status:   Activity::STATUS_SETTED,
       name:     hospital.name,
       keyword:  hospital.name,
       description:  hospital.name,
@@ -1003,7 +1003,7 @@ START
       activityable_type: 'Booking',
     }
     full_attrs = {
-      status:   Activity::SETTED,
+      status:   Activity::STATUS_SETTED,
       name:     booking.name,
       keyword:  booking.name,
       description:  booking.name,
@@ -1030,7 +1030,7 @@ START
     full_attrs = {
         activityable_id: group.id,
         activityable_type: 'Group',
-        status:   Activity::SETTED,
+        status:   Activity::STATUS_SETTED,
         name:     group.name,
         keyword:  '支付版团购',
         description:  group.name,
@@ -1057,7 +1057,7 @@ START
     full_attrs = {
         activityable_id: broche.id,
         activityable_type: 'Broche',
-        status:   Activity::SETTED,
+        status:   Activity::STATUS_SETTED,
         name:     broche.name,
         keyword:  broche.name,
         description:  broche.name,
@@ -1083,7 +1083,7 @@ START
   end
 
   def initiate_activity_for(activity_type_id, status, name, keyword, extend_attrs = {})
-Rails.logger.debug " activity_type_id=#{activity_type_id}"    
+Rails.logger.debug " activity_type_id=#{activity_type_id}"
     now = Time.now
     default_attrs = {
       site_id: id,

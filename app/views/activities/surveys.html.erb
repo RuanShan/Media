@@ -99,7 +99,7 @@
                               <%= link_to "题目", "/survey_questions?activity_id=#{activity.id}" %> &nbsp;
                             <% end %>
 
-                            <% if !(attrs[0] == Activity::NOT_START_NAME) && activity.survey_questions.present? %>
+                            <% if !(attrs[0] == Activity::STATUS_NOT_START_NAME) && activity.survey_questions.present? %>
                               <%= link_to "统计图表", diagram_survey_questions_path(activity_id: activity.id) %> &nbsp;
                             <% end %>
 

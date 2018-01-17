@@ -6,8 +6,8 @@ class Huodong::GuessesController < ApplicationController
 
   def settings
     @guess = ::Activity::GuessActivity.find_by_id(params[:id])
-    @questions = current_site.guess_questions.where("status = ?", Activity::SETTED).limit(9).order('created_at desc')
-    @has_more =  current_site.guess_questions.where("status = ? and id < ?", Activity::SETTED, @questions.last.try(:id)).exists?
+    @questions = current_site.guess_questions.where("status = ?", Activity::STATUS_SETTED).limit(9).order('created_at desc')
+    @has_more =  current_site.guess_questions.where("status = ? and id < ?", Activity::STATUS_SETTED, @questions.last.try(:id)).exists?
   end
 
   def consumes
@@ -67,8 +67,8 @@ class Huodong::GuessesController < ApplicationController
   def load_more
     if params[:last_id].present?
       last_id = params[:last_id].to_i
-      @questions = current_site.guess_questions.where("status = ? and id < ?", Activity::SETTED, last_id).limit(9).order('created_at desc')
-      @has_more =  current_site.guess_questions.where("status = ? and id < ?", Activity::SETTED, @questions.last.try(:id)).exists?
+      @questions = current_site.guess_questions.where("status = ? and id < ?", Activity::STATUS_SETTED, last_id).limit(9).order('created_at desc')
+      @has_more =  current_site.guess_questions.where("status = ? and id < ?", Activity::STATUS_SETTED, @questions.last.try(:id)).exists?
     end
   end
 

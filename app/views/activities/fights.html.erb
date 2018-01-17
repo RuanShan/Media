@@ -82,14 +82,14 @@
                         <%= activity.setted? ? activity.activity_status_name : (activity.setting? ? "未设题" : activity.status_name) %>
                       </td>
                       <td class="tleft">
-                        <%= link_to '查看', activity if activity.stopped? || (activity.setted? && activity.activity_status != Activity::NOT_START) %>
-                        <%= link_to '修改', edit_activity_path(activity) if activity.setting? || (activity.setted? && activity.activity_status == Activity::NOT_START) %>
+                        <%= link_to '查看', activity if activity.stopped? || (activity.setted? && activity.activity_status != Activity::STATUS_NOT_START) %>
+                        <%= link_to '修改', edit_activity_path(activity) if activity.setting? || (activity.setted? && activity.activity_status == Activity::STATUS_NOT_START) %>
                         <%#= link_to '停止', [:stop, activity], method: :post, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, if activity.setted? and activity.activity_status == Activity::UNDER_WAY %>
-                        <%#= link_to '删除', [:delete, activity], method: :post, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, if activity.setting? or activity.stopped? or (activity.setted? and (activity.activity_status == Activity::NOT_START or activity.activity_status == Activity::HAS_ENDED)) %>
+                        <%#= link_to '删除', [:delete, activity], method: :post, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, if activity.setting? or activity.stopped? or (activity.setted? and (activity.activity_status == Activity::STATUS_NOT_START or activity.activity_status == Activity::HAS_ENDED)) %>
                         <%= link_to '停止', [:stop, activity], method: 'post', confirm: "确定要停止吗？", data: {height: 160, weight: 350} if activity.setted? && activity.activity_status == Activity::UNDER_WAY %>
-                        <%= link_to '删除', [:delete, activity], method: 'post', confirm: "确定要删除吗？", data: {height: 160, weight: 350} if activity.setting? || activity.stopped? || (activity.setted? && ([Activity::HAS_ENDED,Activity::NOT_START,Activity::SHOW_LIST].include?(activity.activity_status))) %>
-                        <%= link_to '题目设置', fight_papers_path( {activity_id: activity.id}) if activity.setting? || (activity.setted? && activity.activity_status == Activity::NOT_START) %>
-                        <%= link_to 'SN码管理', consumes_activities_path( {activity_id: activity.id}) unless activity.setting? || (activity.setted? && activity.activity_status == Activity::NOT_START ) unless  activity.activity_type.vote?  %>
+                        <%= link_to '删除', [:delete, activity], method: 'post', confirm: "确定要删除吗？", data: {height: 160, weight: 350} if activity.setting? || activity.stopped? || (activity.setted? && ([Activity::HAS_ENDED,Activity::STATUS_NOT_START,Activity::SHOW_LIST].include?(activity.activity_status))) %>
+                        <%= link_to '题目设置', fight_papers_path( {activity_id: activity.id}) if activity.setting? || (activity.setted? && activity.activity_status == Activity::STATUS_NOT_START) %>
+                        <%= link_to 'SN码管理', consumes_activities_path( {activity_id: activity.id}) unless activity.setting? || (activity.setted? && activity.activity_status == Activity::STATUS_NOT_START ) unless  activity.activity_type.vote?  %>
                         <a href="javascript:void(0);" data-height="800" data-width="1000" data-toggle="modals" data-title="<%= truncate_u activity.name, length: 16 %> > 用户数据" data-iframe="<%= user_data_fight_papers_path(aid: activity.id) %>">用户数据</a>
                       </td>
                     </tr>

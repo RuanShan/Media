@@ -32,7 +32,7 @@ class WbbsCommunity < ActiveRecord::Base
   end
 
   def mark_delete!
-    activity.update_column(:status, Activity::DELETED) if activity
+    activity.update_column(:status, Activity::STATUS_DELETED) if activity
     update_column(:status, DELETED)
   end
 

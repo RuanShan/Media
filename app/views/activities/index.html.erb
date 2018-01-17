@@ -89,25 +89,25 @@
                       <% end %>
                       <% if activity.allow_show? && !activity.activity_type.surveys? %>
                        <% if activity.slot? %>
-                        <%= link_to '查看', slot_path(activity) if activity.stopped? or (activity.setted? and activity.activity_status != Activity::NOT_START) %>
+                        <%= link_to '查看', slot_path(activity) if activity.stopped? or (activity.setted? and activity.activity_status != Activity::STATUS_NOT_START) %>
                        <%- else %>
-                        <%= link_to '查看', activity if activity.stopped? or (activity.setted? and activity.activity_status != Activity::NOT_START) and !activity.activity_type.vote? and !activity.activity_type.surveys? %>
+                        <%= link_to '查看', activity if activity.stopped? or (activity.setted? and activity.activity_status != Activity::STATUS_NOT_START) and !activity.activity_type.vote? and !activity.activity_type.surveys? %>
                        <%- end %>
                        <% unless activity.activity_type.vote? || activity.activity_type.surveys? %>
                         <% if activity.slot? %>
-                          <%= link_to '设置', edit_slot_path(activity) if activity.setting? or (activity.setted? and activity.activity_status == Activity::NOT_START)  %>
+                          <%= link_to '设置', edit_slot_path(activity) if activity.setting? or (activity.setted? and activity.activity_status == Activity::STATUS_NOT_START)  %>
                         <% else %>
-                          <%= link_to '设置', edit_activity_path(activity) if activity.setting? or (activity.setted? and activity.activity_status == Activity::NOT_START)  %>
+                          <%= link_to '设置', edit_activity_path(activity) if activity.setting? or (activity.setted? and activity.activity_status == Activity::STATUS_NOT_START)  %>
                         <% end %>
                        <% end %>
                        <%= link_to '停止', [:stop, activity], method: :post, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }  if activity.allow_stop? %>
-                       <%#= link_to '删除', [:delete, activity], method: :post, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }  if ((@activity_type_id != 14 and (activity.setting? or activity.stopped? or (activity.setted? and (activity.activity_status == Activity::NOT_START or activity.activity_status == Activity::HAS_ENDED)))) or (@activity_type_id == 14 and (activity.stopped? or (activity.setted? and (activity.activity_status == Activity::NOT_START or activity.activity_status == Activity::HAS_ENDED))))) %>
-                       <% if ((@activity_type_id != 14 and @activity_type_id != 12 and (activity.setting? or activity.stopped? or (activity.setted? and (activity.activity_status == Activity::NOT_START or activity.activity_status == Activity::HAS_ENDED)))) or (@activity_type_id == 14 and (activity.stopped? or (activity.setted? and (activity.activity_status == Activity::NOT_START or activity.activity_status == Activity::HAS_ENDED))))) %>
+                       <%#= link_to '删除', [:delete, activity], method: :post, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }  if ((@activity_type_id != 14 and (activity.setting? or activity.stopped? or (activity.setted? and (activity.activity_status == Activity::STATUS_NOT_START or activity.activity_status == Activity::HAS_ENDED)))) or (@activity_type_id == 14 and (activity.stopped? or (activity.setted? and (activity.activity_status == Activity::STATUS_NOT_START or activity.activity_status == Activity::HAS_ENDED))))) %>
+                       <% if ((@activity_type_id != 14 and @activity_type_id != 12 and (activity.setting? or activity.stopped? or (activity.setted? and (activity.activity_status == Activity::STATUS_NOT_START or activity.activity_status == Activity::HAS_ENDED)))) or (@activity_type_id == 14 and (activity.stopped? or (activity.setted? and (activity.activity_status == Activity::STATUS_NOT_START or activity.activity_status == Activity::HAS_ENDED))))) %>
                        <%= link_to '删除', activity, method: :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) } %>
                        <% end %>
                        <%= link_to '删除', activity, method: :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }  if @activity_type_id == 14 and activity.setting? %>
                        <%= link_to '开启', active_activity_path(activity), method: :post if activity.allow_active? %>
-                       <%= link_to 'SN码管理', consumes_activities_path( {activity_id: activity.id}) unless activity.setting? or (activity.setted? and (activity.activity_status == Activity::NOT_START or activity.activity_status == Activity::WARM_UP) or activity.activity_type.vote? or activity.activity_type.surveys?) %>
+                       <%= link_to 'SN码管理', consumes_activities_path( {activity_id: activity.id}) unless activity.setting? or (activity.setted? and (activity.activity_status == Activity::STATUS_NOT_START or activity.activity_status == Activity::WARM_UP) or activity.activity_type.vote? or activity.activity_type.surveys?) %>
                        <% if activity.vote? && !activity.setted? %>
                         <%= link_to '删除', activity, method: :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) } %>
                        <% end %>
@@ -117,12 +117,12 @@
                       <% end %>
 
                       <% if activity.activity_type.fight? %>
-                        <%= link_to '查看', activity  if activity.stopped? or (activity.setted? and activity.activity_status != Activity::NOT_START) %>
-                        <%= link_to '修改', edit_activity_path(activity) if activity.setting? or (activity.setted? and activity.activity_status == Activity::NOT_START) %>
+                        <%= link_to '查看', activity  if activity.stopped? or (activity.setted? and activity.activity_status != Activity::STATUS_NOT_START) %>
+                        <%= link_to '修改', edit_activity_path(activity) if activity.setting? or (activity.setted? and activity.activity_status == Activity::STATUS_NOT_START) %>
                         <%= link_to '停止', [:stop, activity], method: :post, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }  if activity.setted? and activity.activity_status == Activity::UNDER_WAY %>
-                        <%= link_to '删除', [:delete, activity], method: :post, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }  if activity.setting? or activity.stopped? or (activity.setted? and (activity.activity_status == Activity::NOT_START or activity.activity_status == Activity::HAS_ENDED)) %>
-                        <%= link_to '题目设置', fight_papers_path( {activity_id: activity.id})  if activity.setting? or (activity.setted? and activity.activity_status == Activity::NOT_START) %>
-                        <%= link_to 'SN码管理', consumes_activities_path( {activity_id: activity.id}) unless activity.setting? or (activity.setted? and activity.activity_status == Activity::NOT_START ) unless  activity.activity_type.vote?  %>
+                        <%= link_to '删除', [:delete, activity], method: :post, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }  if activity.setting? or activity.stopped? or (activity.setted? and (activity.activity_status == Activity::STATUS_NOT_START or activity.activity_status == Activity::HAS_ENDED)) %>
+                        <%= link_to '题目设置', fight_papers_path( {activity_id: activity.id})  if activity.setting? or (activity.setted? and activity.activity_status == Activity::STATUS_NOT_START) %>
+                        <%= link_to 'SN码管理', consumes_activities_path( {activity_id: activity.id}) unless activity.setting? or (activity.setted? and activity.activity_status == Activity::STATUS_NOT_START ) unless  activity.activity_type.vote?  %>
                       <% end -%>
 
                       <% if activity.surveys? %>

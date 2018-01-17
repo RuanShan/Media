@@ -118,7 +118,7 @@ class App::FightController < App::BaseController
                render 'result'
                #render text: '活动已过期'
              end
-          elsif @activity.activity_status == Activity::NOT_START
+          elsif @activity.activity_status == Activity::STATUS_NOT_START
             logger.info "test log: @activity.activity_status=#{@activity.activity_status}"
             redirect_to mobile_notice_url(msg: '活动未开始')
           else

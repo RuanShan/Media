@@ -173,7 +173,7 @@
               <%= f.hidden_field :activity_type_id %>
 
               <% if @activity.new_record? %>
-                <%= f.hidden_field :status, value: Activity::SETTED %>
+                <%= f.hidden_field :status, value: Activity::STATUS_SETTED %>
                 <%#= f.hidden_field :ready_at, value: Time.now %>
                 <%= f.hidden_field :audited, value: false %>
               <% end %>

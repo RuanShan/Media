@@ -26,7 +26,7 @@
           <%= render "weixin_preview", wx_title: @activity.try(:name) || @website.try(:name) || '微官网', wx_summary: @activity.try(:summary),  wx_pic: (@activity.pic_url.present? ?  @activity.pic_url : "/assets/activity_pics/site.jpg") %>
 
           <%= form_for(@activity, validate: true, html: {class: 'form col-sm-7', id: 'edit_website_activity'}) do |f| %>
-            <%= f.hidden_field :status, value: Activity::SETTED %>
+            <%= f.hidden_field :status, value: Activity::STATUS_SETTED %>
 
             <%= f.fields_for :website, @website do |w| %>
               <div class="form-group">

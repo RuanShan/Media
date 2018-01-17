@@ -5,7 +5,7 @@
 <div class="html">
 	<div class="stage stage-start" id="stage">
 		<section class="sec-game">
-      <%- if [Activity::WARM_UP, Activity::NOT_START].include?(@activity.activity_status) %>
+      <%- if [Activity::WARM_UP, Activity::STATUS_NOT_START].include?(@activity.activity_status) %>
         <%= render "prepare" %>
       <%- else %>
         <div class="sec-end" id="sec-end">

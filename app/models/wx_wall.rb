@@ -67,17 +67,17 @@ class WxWall < ActiveRecord::Base
   end
 
   def mark_delete!
-    activity.update_column(:status, Activity::DELETED) if activity
+    activity.update_column(:status, Activity::STATUS_DELETED) if activity
     update_column(:status, DELETED)
   end
 
   def mark_stop!
-    activity.update_column(:status, Activity::STOPPED) if activity
+    activity.update_column(:status, Activity::STATUS_STOPPED) if activity
     update_column(:status, STOPPED)
   end
 
   def mark_start!
-    activity.update_column(:status, Activity::SETTED) if activity
+    activity.update_column(:status, Activity::STATUS_SETTED) if activity
     update_column(:status, SETTED)
   end
 

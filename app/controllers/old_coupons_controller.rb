@@ -10,7 +10,7 @@ class OldCouponsController < ActivitiesController
 
   def update
     @activity.attributes = activity_params
-    @activity.status = Activity::SETTED if params[:step].to_i == last_step
+    @activity.status = Activity::STATUS_SETTED if params[:step].to_i == last_step
     return render_with_alert form_name, "保存失败，#{@activity.errors.full_messages.join('，')}" unless @activity.save
     redirect_to next_step_or_activities_path(@activity), notice: '保存成功'
   end

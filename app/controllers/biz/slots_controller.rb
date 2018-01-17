@@ -33,7 +33,7 @@ class Biz::SlotsController < ApplicationController
   end
 
   def setted
-    @activity.status = Activity::SETTED if @activity.setting?
+    @activity.status = Activity::STATUS_SETTED if @activity.setting?
     @activity.save
     render nothing: true
   end

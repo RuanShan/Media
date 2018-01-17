@@ -141,8 +141,8 @@ class Activity < ActiveRecord::Base
   scope :completed, -> { where('activities.end_at < ?', Time.now) }
   # scope :configurable, -> { where(status: 0) }
   scope :starting, -> { where("(activities.ready_at < :time and activities.end_at > :time) OR activities.activity_type_id = 24", time: Time.now)}
-  scope :vote_need_start, -> { where("activities.activity_type_id = ? AND activities.start_at <= ? AND activities.end_at >= ? AND activities.status != ?", 12, Time.now, Time.now, Activity::DELETED) }
-  scope :vote_need_stop, -> { where("activities.activity_type_id = ? AND activities.end_at <= ? AND activities.status != ?", 12, Time.now, Activity::DELETED) }
+  scope :vote_need_start, -> { where("activities.activity_type_id = ? AND activities.start_at <= ? AND activities.end_at >= ? AND activities.status != ?", 12, Time.now, Time.now, Activity::STATUS_DELETED) }
+  scope :vote_need_stop, -> { where("activities.activity_type_id = ? AND activities.end_at <= ? AND activities.status != ?", 12, Time.now, Activity::STATUS_DELETED) }
   # 未过期的活动
   scope :unexpired, -> { where("activities.end_at is null or activities.end_at > :time", time: Time.now)}
 
@@ -185,7 +185,7 @@ class Activity < ActiveRecord::Base
           return activity
         elsif activity.wx_print? || activity.exit_wx_print? || activity.hanming_wifi?
           return activity
-        elsif (!activity.stopped? && (activity.wx_wall? && activity.activity_status == Activity::NOT_START  && activity.activityable && activity.activityable.pre_join?))
+        elsif (!activity.stopped? && (activity.wx_wall? && activity.activity_status == Activity::STATUS_NOT_START  && activity.activityable && activity.activityable.pre_join?))
           # 如果是 微信墙
           return activity
         elsif activity.setted? && activity.wave? && [WARM_UP, UNDER_WAY, HAS_ENDED].include?(activity.activity_status)
@@ -370,7 +370,7 @@ class Activity < ActiveRecord::Base
   end
 
   def can_not_edit?
-    (persisted? && setted? && activity_status != Activity::NOT_START && activity_status != Activity::WARM_UP) || stopped?
+    (persisted? && setted? && activity_status != Activity::STATUS_NOT_START && activity_status != Activity::WARM_UP) || stopped?
   end
 
   # 是否是业务管理的活动
@@ -779,7 +779,7 @@ class Activity < ActiveRecord::Base
 
   # 是否允许停止
   def allow_stop?
-    self.setted? && ![Activity::HAS_ENDED, Activity::HAS_STOPPED, Activity::NOT_START].include?(activity_status)
+    self.setted? && ![Activity::HAS_ENDED, Activity::HAS_STOPPED, Activity::STATUS_NOT_START].include?(activity_status)
   end
 
   # 是否允许设置题目
@@ -796,12 +796,12 @@ class Activity < ActiveRecord::Base
 
   # 是否允许查看
   def allow_show?
-    activity_status != Activity::NOT_START && activity_status != Activity::WARM_UP
+    activity_status != Activity::STATUS_NOT_START && activity_status != Activity::WARM_UP
   end
 
   # 是否允许编辑
   def allow_edit?
-    (activity_status == Activity::NOT_START || activity_status == Activity::WARM_UP) && !stopped?
+    (activity_status == Activity::STATUS_NOT_START || activity_status == Activity::WARM_UP) && !stopped?
   end
 
   # 是否允许看统计报告

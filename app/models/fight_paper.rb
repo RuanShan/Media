@@ -10,7 +10,7 @@ class FightPaper < ActiveRecord::Base
   def self.batch_update!(fight_papers, params)
     return false if params.blank?
     transaction do
-      fight_papers.first.activity.update_attributes(status: Activity::SETTED) if fight_papers.first.activity.setting?
+      fight_papers.first.activity.update_attributes(status: Activity::STATUS_SETTED) if fight_papers.first.activity.setting?
       fight_papers.each do |fight_paper|
         if params[:description].present? and params[:read_time].present?
           fight_paper.update_attributes(description: params[:description]["#{fight_paper.the_day}"][0], read_time: params[:read_time]["#{fight_paper.the_day}"][0], fight_question_ids: params[:fight_question]["#{fight_paper.the_day}"])

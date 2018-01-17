@@ -495,7 +495,7 @@ class ActivitiesController < ApplicationController
   end
 
   def prize_settings
-    @activity.status = Activity::SETTED if @activity.setting? and !@activity.fight?
+    @activity.status = Activity::STATUS_SETTED if @activity.setting? and !@activity.fight?
     @activity.attributes = activity_params
     if @activity.save
       redirect_to slots_activities_path
@@ -648,7 +648,7 @@ class ActivitiesController < ApplicationController
     else
       total_prize_rate = params[:activity][:activity_prizes_attributes].to_h.sum { |k, v| v[:prize_rate].to_f }
       return render_with_alert 'edit', '保存失败, 中奖几率总和不能大于100%' if total_prize_rate > 100
-      @activity.status = Activity::SETTED if @activity.setting? && !@activity.fight? && !@activity.surveys? && !@activity.vote?
+      @activity.status = Activity::STATUS_SETTED if @activity.setting? && !@activity.fight? && !@activity.surveys? && !@activity.vote?
       @activity.attributes = activity_params
       extend_format
       #@activity.extend.closing_note = params[:extend_closing_note] if params[:extend_closing_note].present?
