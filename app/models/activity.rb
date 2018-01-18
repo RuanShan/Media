@@ -338,7 +338,7 @@ class Activity < ActiveRecord::Base
 
   def set_update_status
     if operation? && ![-2,-3].include?(status)
-      update_column(:status, (vote? && stopped?) ? -3 : 0) if start_at && start_at > Time.now
+      update_column(:status, (vote? && status_stopped?) ? -3 : 0) if start_at && start_at > Time.now
       update_column(:status, -1) if end_at && end_at < Time.now
     end
   end
@@ -370,7 +370,7 @@ class Activity < ActiveRecord::Base
   end
 
   def can_not_edit?
-    (persisted? && setted? && activity_status != Activity::STATUS_NOT_START && activity_status != Activity::WARM_UP) || stopped?
+    (persisted? && status_setted? && activity_status != Activity::STATUS_NOT_START && activity_status != Activity::WARM_UP) || status_stopped?
   end
 
   # 是否是业务管理的活动
@@ -405,7 +405,7 @@ class Activity < ActiveRecord::Base
         WARM_UP
       end
     elsif start_at && now >= start_at && end_at && now < end_at
-      if stopped?
+      if status_stopped?
         HAS_STOPPED
       else
         UNDER_WAY
@@ -455,13 +455,13 @@ class Activity < ActiveRecord::Base
         WARM_UP_NAME
       end
     elsif start_at && now >= start_at && end_at && now < end_at
-      if stopped?
+      if status_stopped?
         HAS_STOPPED_NAME
       else
         UNDER_WAY_NAME
       end
     elsif (start_at && now >= start_at || start_at.nil?) && end_at.nil?
-      if stopped?
+      if status_stopped?
         HAS_STOPPED_NAME
       else
         UNDER_WAY_NAME
@@ -476,11 +476,11 @@ class Activity < ActiveRecord::Base
   end
 
   def activity_forms_status_name
-    stopped? ? HAS_ENDED_NAME : UNDER_WAY_NAME
+    status_stopped? ? HAS_ENDED_NAME : UNDER_WAY_NAME
   end
 
   def complete_cupon
-    return unless pending? and setted?
+    return unless pending? && status_setted?
     return unless activity_property
 
     if end_at && end_at < Time.now and activity_property.min_people_num > activity_groups.count
@@ -666,7 +666,7 @@ class Activity < ActiveRecord::Base
     elsif (self.start_at.nil? || self.start_at < Time.now)
       if self.surveys? && self.survey_questions.blank?
         # 如果是没有题目的微调研，不允许开启
-      elsif self.vote? && self.setting?
+      elsif self.vote? && self.status_setting?
         # 如果是未配置的微投票，不允许开启
       elsif [0, -1, -3].include?(self.status)
         # 已停止，未配置，已配置，以上三种状态的活动，允许开启
@@ -779,7 +779,7 @@ class Activity < ActiveRecord::Base
 
   # 是否允许停止
   def allow_stop?
-    self.setted? && ![Activity::HAS_ENDED, Activity::HAS_STOPPED, Activity::STATUS_NOT_START].include?(activity_status)
+    self.status_setted? && ![Activity::HAS_ENDED, Activity::HAS_STOPPED, Activity::STATUS_NOT_START].include?(activity_status)
   end
 
   # 是否允许设置题目
@@ -788,9 +788,9 @@ class Activity < ActiveRecord::Base
   # 是否允许删除
   def allow_delete?
     if surveys?
-      end_at && Time.now >= end_at || stopped?
+      end_at && Time.now >= end_at || status_stopped?
     else
-      !self.setted?
+      !self.status_setted?
     end
   end
 
@@ -801,12 +801,12 @@ class Activity < ActiveRecord::Base
 
   # 是否允许编辑
   def allow_edit?
-    (activity_status == Activity::STATUS_NOT_START || activity_status == Activity::WARM_UP) && !stopped?
+    (activity_status == Activity::STATUS_NOT_START || activity_status == Activity::WARM_UP) && !status_stopped?
   end
 
   # 是否允许看统计报告
   def allow_show_report?
-    setted? || stopped? || status == -3
+    status_setted? || status_stopped? || status == -3
   end
 
   def has_ranking_list?
@@ -845,7 +845,7 @@ class Activity < ActiveRecord::Base
   end
 
   def description
-    if self.stopped? && self.extend.closing_note.present?
+    if self.status_stopped? && self.extend.closing_note.present?
       self.extend.closing_note
     else
       read_attribute("description")
@@ -884,9 +884,9 @@ class Activity < ActiveRecord::Base
 
   def respond_mobile_url(activity_notice = nil, options = {})
     activity_notice = activity_notice || activity_notices.active.first
-    if gua? && setted?
+    if gua? && status_setted?
       activity_notice = ActivityNotice.ready_or_active_notice(self, [WARM_UP, HAS_ENDED])
-    elsif wheel? && setted?
+    elsif wheel? && status_setted?
       activity_notice = ActivityNotice.ready_or_active_notice(self)
     end
 
@@ -911,7 +911,7 @@ class Activity < ActiveRecord::Base
       when surveys?          then return_survey_activity_url(_default_params)
       when reservation?      then mobile_reservations_url(_default_params)
       when vote?
-        stopped? ? (_default_params.merge(vote_id: id)) : mobile_vote_login_url(_default_params.merge(vote_id: id))
+        status_stopped? ? (_default_params.merge(vote_id: id)) : mobile_vote_login_url(_default_params.merge(vote_id: id))
       when house?            then app_house_layouts_url(_default_params)
       when groups?           then app_activity_group_url(_default_params.merge(id: id))
       when car?              then return_car_url(_default_params)
@@ -979,7 +979,7 @@ class Activity < ActiveRecord::Base
   def return_survey_activity_url(options = {})
     wx_user = WxUser.where(openid: options[:openid]).first
     activity_user = ActivityUser.where(user_id: wx_user.user_id, activity_id: id).first if wx_user
-    return mobile_survey_url(options.merge(id: id)) if activity_user.nil? || !setted?
+    return mobile_survey_url(options.merge(id: id)) if activity_user.nil? || !status_setted?
     return success_mobile_survey_url(options.merge(id: id)) if activity_user.survey_finish?
 
     question = survey_questions.first
