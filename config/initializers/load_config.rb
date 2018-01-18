@@ -17,7 +17,7 @@ M_HOST             = "http://#{Settings.mhostname}"
 WWW_HOST           = "http://#{Settings.hostname}"
 
 # 常用变量声明
-MOBILE_SUB_DOMAIN = Settings.mhostname.sub(/\.[com|dev].?/, '').split('.')[0..-2].join('.')
+MOBILE_SUB_DOMAIN = Settings.mhostname.split('.')[0...-2].join('.')
 
 EXPORTING_COUNT = 2000
 
