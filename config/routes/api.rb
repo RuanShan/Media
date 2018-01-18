@@ -18,6 +18,8 @@ Wp::Application.routes.draw do
     get 'weixin_open/auth', to: 'weixin_open#auth'
     # development only
     match 'v1/wechat', to: 'weixin#service', code: '1514344736633865', via: [:post, :get]
+    # 授权之后微信回调
+    match 'v1/wechat/:app_id/notify' => 'weixin#service', via: [:post, :get]
 
     resources :weixin, only: [] do
       get :msg_test, :map_url, on: :collection
