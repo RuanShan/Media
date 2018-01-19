@@ -25,9 +25,9 @@ ul, ol, li { list-style: none; }
 .select span.selectli.on{ color: #d10000;}
 .select_tab2 span.selectli{ width: 100%}
 .navd{ width: 21px; height: 16px; vertical-align: -4px;background-size: cover!important; display: inline-block;}
-.navd1{ background:url(/assets/mobile/group/navdot1.png) no-repeat center top; background-size: 21px 16px }
-.navd2{ background:url(/assets/mobile/group/navdot2.png) no-repeat center top; background-size:  21px 16px }
-.navd3{ background:url(/assets/mobile/group/navdot3.png) no-repeat center top; background-size:  21px 16px }
+.navd1{ background:asset-url("mobile/group/navdot1.png") no-repeat center top; background-size: 21px 16px }
+.navd2{ background:asset-url("mobile/group/navdot2.png") no-repeat center top; background-size:  21px 16px }
+.navd3{ background:asset-url("mobile/group/navdot3.png") no-repeat center top; background-size:  21px 16px }
 .select span.selectli.on .navd1{ background-position:0 -16px}
 .select span.selectli.on .navd2{background-position:0 -16px}
 .select span.selectli.on .navd3{background-position:0 -16px}
@@ -123,17 +123,17 @@ ul, ol, li { list-style: none; }
 .com_icon2{ width: 20px; height: 20px;display: inline-block; margin-top: 4px;}
 .com_icon3{ width: 12px; height:12px;display: inline-block; margin-top: 4px;}
 
-.arrow{ background:url(/assets/mobile/group/arrow.png) no-repeat center; background-size: auto 20px}
-.icon1{ background:url(/assets/mobile/group/icon1.jpg) no-repeat center; background-size: cover}
-.icon2{ background:url(/assets/mobile/group/icon2.jpg) no-repeat center; background-size: cover}
-.icon3{ background:url(/assets/mobile/group/icon3.jpg) no-repeat center; background-size: cover}
-.icon4{ background:url(/assets/mobile/group/icon4.jpg) no-repeat center; background-size: cover}
-.icon5{ background:url(/assets/mobile/group/icon5.jpg) no-repeat center; background-size: cover}
-.icon6{ background:url(/assets/mobile/group/icon6.jpg) no-repeat center; background-size: cover}
-.icon7,.icon8{ background:url(/assets/mobile/group/fh.png) no-repeat 0 -12px; background-size: cover}
+.arrow{ background:asset-url("mobile/group/arrow.png") no-repeat center; background-size: auto 20px}
+.icon1{ background:asset-url("mobile/group/icon1.jpg") no-repeat center; background-size: cover}
+.icon2{ background:asset-url("mobile/group/icon2.jpg") no-repeat center; background-size: cover}
+.icon3{ background:asset-url("mobile/group/icon3.jpg") no-repeat center; background-size: cover}
+.icon4{ background:asset-url("mobile/group/icon4.jpg") no-repeat center; background-size: cover}
+.icon5{ background:asset-url("mobile/group/icon5.jpg") no-repeat center; background-size: cover}
+.icon6{ background:asset-url("mobile/group/icon6.jpg") no-repeat center; background-size: cover}
+.icon7,.icon8{ background:asset-url("mobile/group/fh.png") no-repeat 0 -12px; background-size: cover}
 .icon8{ background-position: 0 0;}
 .tips{ padding:10px;}
-.tips p{background:url(/assets/mobile/group/icon7.jpg) no-repeat 5px 5px; background-size: 10px; padding: 0; padding-left: 30px; line-height: 20px;}
+.tips p{background:asset-url("mobile/group/icon7.jpg") no-repeat 5px 5px; background-size: 10px; padding: 0; padding-left: 30px; line-height: 20px;}
 
 .info_comment .fa-angle-right{ color: #d3d3d3; font-size: 20px;}
 
@@ -175,9 +175,9 @@ ul, ol, li { list-style: none; }
 .tit1{ padding: 10px 0; color: #333; font-size: 16px;}
 .zhifu_list ul li{ border-bottom: #ebebeb 1px solid; height:auto; line-height: 40px; padding: 6px 0; overflow: hidden;zoom:1; font-size: 14px;  color: #666;}
 .zhifu_list ul li:last-child{ border-bottom: none;}
-.check_icon{ width: 20px; height: 20px; background:url(/assets/mobile/group/check.jpg) no-repeat 0 0; background-size: 20px auto;margin: 10px 10px; }
+.check_icon{ width: 20px; height: 20px; background:asset-url("mobile/group/check.jpg") no-repeat 0 0; background-size: 20px auto;margin: 10px 10px; }
 .zhifu_list ul li.on .check_icon{ background-position:  0 -20px;}
-.zf_pic{ width: 40px; height: 40px; background:url(/assets/mobile/group/zhifu.jpg) no-repeat 0 0; background-size: 40px auto; margin: 0 15px;}
+.zf_pic{ width: 40px; height: 40px; background:asset-url("mobile/group/zhifu.jpg") no-repeat 0 0; background-size: 40px auto; margin: 0 15px;}
 .zhifu1{ background-position: 0 0;}
 .zhifu2{ background-position: 0 -40px;}
 .zhifu3{ background-position: 0 -80px;}
@@ -214,7 +214,3 @@ ul, ol, li { list-style: none; }
 .wid180{ width: 180px;}
 .wid70{ width: 70px;}
 .overhidden{ white-space:nowrap; overflow:hidden; text-overflow:ellipsis; word-break: break-all;}
-
-
-
-

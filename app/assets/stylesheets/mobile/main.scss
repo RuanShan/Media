@@ -22,7 +22,7 @@ img {
 }
 a {
 	text-decoration: none;
-    -webkit-tap-highlight-color:rgba(0,0,0,0); 
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
 }
 video {
 	display: inline-block;
@@ -156,7 +156,7 @@ img{ }
 	z-index:999;
 	-webkit-transition: -webkit-transform 200ms;
 	-webkit-transform:rotate(1deg);
-	background-image:url(/assets/mobile/plugmenu-white.png);
+	background-image:asset-url("mobile/plugmenu-white.png");
 	background-repeat: no-repeat;
 	-webkit-background-size: 80% auto;
 	background-size: 80% auto;
@@ -216,7 +216,7 @@ height:100%;
 float:left;
 width:0;
 margin-top:-32767px;
-} 
+}
 header,
 footer,
 section{ width:100%;}
@@ -226,21 +226,21 @@ footer a{ color:#888;}
 /*modua*/
 /*bg*/
 /*icon*/
-.ico-share{ background:url(/assets/mobile/ico-share.png) no-repeat  0 center; background-size:22px 19px; padding:0 0 0 27px;}
-.ico-pyq{ background:url(/assets/mobile/ico-pyq.png) no-repeat 0 center; background-size:20px 19px; padding:0 0 0 25px;}
-.ico-list{background:url(/assets/mobile/icon/ico-list.png) no-repeat 0 center; background-size: auto 20px;}
-.ico-arrow-left{background:url(/assets/mobile/icon/ico-arrow-left.png) no-repeat 0 center; background-size: auto 20px;}
-.ico-home{background:url(/assets/mobile/icon/ico-home.png) no-repeat 0 center; background-size: auto 20px;}
-.ico-up{ background-image:url(/assets/mobile/icon/ico-up.png); background-repeat: no-repeat; background-position: center center; background-size: auto 15px;}
-.ico-angle-right{background-image:url(/assets/mobile/icon/ico-angle-right.png); background-repeat: no-repeat; background-position: center center; background-size: auto 15px;}
+.ico-share{ background:asset-url("mobile/ico-share.png") no-repeat  0 center; background-size:22px 19px; padding:0 0 0 27px;}
+.ico-pyq{ background:asset-url("mobile/ico-pyq.png") no-repeat 0 center; background-size:20px 19px; padding:0 0 0 25px;}
+.ico-list{background:asset-url("mobile/icon/ico-list.png") no-repeat 0 center; background-size: auto 20px;}
+.ico-arrow-left{background:asset-url("mobile/icon/ico-arrow-left.png") no-repeat 0 center; background-size: auto 20px;}
+.ico-home{background:asset-url("mobile/icon/ico-home.png") no-repeat 0 center; background-size: auto 20px;}
+.ico-up{ background-image:asset-url("mobile/icon/ico-up.png"); background-repeat: no-repeat; background-position: center center; background-size: auto 15px;}
+.ico-angle-right{background-image:asset-url("mobile/icon/ico-angle-right.png"); background-repeat: no-repeat; background-position: center center; background-size: auto 15px;}
 .ico-angle-right.ico{ width:20px; height:30px;}
-.ico-angle-down{background-image:url(/assets/mobile/icon/ico-angle-down.png); background-repeat: no-repeat; background-position: center center; background-size: 15px auto;}
-.ico-member{background-image:url(/assets/mobile/icon/ico-member.png); background-repeat: no-repeat; background-position: left center; background-size: 20px auto; padding: 0 0 0 25px;}
-.ico-money{background-image:url(/assets/mobile/icon/ico-money.png); background-repeat: no-repeat; background-position: left center; background-size: 15px auto; padding: 0 0 0 20px;}
-.ico-address-gray{background-image:url(/assets/mobile/icon/ico-address-gray.png); background-repeat: no-repeat; background-position: left center; background-size: 15px auto; padding: 0 0 0 20px;}
-.ico-gps{background-image:url(/assets/mobile/icon/ico-gps.png); background-repeat: no-repeat; background-position: left center; background-size: auto 15px; padding: 0 0 0 20px;}
-.ico-call{background-image:url(/assets/mobile/icon/ico-call.png); background-repeat: no-repeat; background-position: left center; background-size: 15px auto; padding: 0 0 0 20px;}
-.ico-heart{background-image:url(/assets/mobile/icon/ico-heart-red.png); background-repeat: no-repeat; background-position: left center; background-size: 15px auto; padding: 0 0 0 20px;}
+.ico-angle-down{background-image:asset-url("mobile/icon/ico-angle-down.png"); background-repeat: no-repeat; background-position: center center; background-size: 15px auto;}
+.ico-member{background-image:asset-url("mobile/icon/ico-member.png"); background-repeat: no-repeat; background-position: left center; background-size: 20px auto; padding: 0 0 0 25px;}
+.ico-money{background-image:asset-url("mobile/icon/ico-money.png"); background-repeat: no-repeat; background-position: left center; background-size: 15px auto; padding: 0 0 0 20px;}
+.ico-address-gray{background-image:asset-url("mobile/icon/ico-address-gray.png"); background-repeat: no-repeat; background-position: left center; background-size: 15px auto; padding: 0 0 0 20px;}
+.ico-gps{background-image:asset-url("mobile/icon/ico-gps.png"); background-repeat: no-repeat; background-position: left center; background-size: auto 15px; padding: 0 0 0 20px;}
+.ico-call{background-image:asset-url("mobile/icon/ico-call.png"); background-repeat: no-repeat; background-position: left center; background-size: 15px auto; padding: 0 0 0 20px;}
+.ico-heart{background-image:asset-url("mobile/icon/ico-heart-red.png"); background-repeat: no-repeat; background-position: left center; background-size: 15px auto; padding: 0 0 0 20px;}
 /*btn*/
 .btn-up{ right:17px;position:fixed;bottom:17px;z-index:100; width: 40px; height: 40px; display: none;}
 /*arrow*/
@@ -325,7 +325,7 @@ filter:alpha(opacity=50);
 header .box-img{ height:170px; overflow:hidden;}
 header .box-img img{ width:100%; min-height: 170px;}
 .box-img .box-text{ height:30px; width:100%; left:0; bottom:0; line-height:30px; text-align:left; z-index: 10;}
-.box-img .box-bd{ padding:0 5%; width:90%;} 
+.box-img .box-bd{ padding:0 5%; width:90%;}
 .box-img .box-text .fl{ width:40%;}
 .box-img .box-text .fr{ padding:0 5%; width:40%; text-align:right;}
 /*loading*/
@@ -336,11 +336,11 @@ header .box-img img{ width:100%; min-height: 170px;}
 	line-height: 30px;
 	margin: 0 0 10px 0;
 	padding:0 0 0 25px;
-	background:url(/assets/loading.png) no-repeat 0 center;
+	background:asset-url("loading.png") no-repeat 0 center;
 	background-size:20px 20px;
 }
 .isloading{
-	background:url(/assets/loading.gif) no-repeat 0 center;
+	background:asset-url("loading.gif") no-repeat 0 center;
 }
 /*pop-nav*/
 .pop,
@@ -455,7 +455,7 @@ filter:alpha(opacity=50);
     z-index:999;
     -webkit-transition: -webkit-transform 200ms;
     -webkit-transform:rotate(1deg);
-    /*background-image:url(/assets/mobile/vweisiteV01/icon/navPop-btn.png?2013);*/
+    /*background-image:asset-url("mobile/vweisiteV01/icon/navPop-btn.png");*/
     /*background-repeat: no-repeat;*/
     /*-webkit-background-size: 80% auto;*/
     /*background-size: 80% auto;*/
