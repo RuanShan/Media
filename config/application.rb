@@ -76,12 +76,12 @@ module Wp
       mobile/albums/jquery.water.min.js
     ]
     config.assets.precompile += Dir['app/assets/javascripts/mobile/**/*.js'].map{ |x| x.sub('app/assets/javascripts/', '') }
-    config.assets.precompile += Dir['app/assets/stylesheets/mobile/**/*.css'].map{ |x| x.sub('app/assets/stylesheets/', '') }
-    config.assets.precompile += Dir['app/assets/stylesheets/shake_site/template-*.css'].map{ |x| x.sub('app/assets/stylesheets/', '') }
+    config.assets.precompile += Dir['app/assets/stylesheets/mobile/**/*css'].map{ |x| x.sub('app/assets/stylesheets/', '') }
+    config.assets.precompile += Dir['app/assets/stylesheets/shake_site/template-*css'].map{ |x| x.sub('app/assets/stylesheets/', '') }
     config.assets.precompile += Dir['app/assets/javascripts/merchant_app/*.js'].map{ |x| x.sub('app/assets/javascripts/', '') }
-    config.assets.precompile += Dir['app/assets/stylesheets/merchant_app/*.css'].map{ |x| x.sub('app/assets/stylesheets/', '') }
+    config.assets.precompile += Dir['app/assets/stylesheets/merchant_app/*css'].map{ |x| x.sub('app/assets/stylesheets/', '') }
     config.assets.precompile += Dir['app/assets/javascripts/site/**/*.js'].map{ |x| x.sub('app/assets/javascripts/', '') }
-    config.assets.precompile += Dir['app/assets/stylesheets/site/**/*.css'].map{ |x| x.sub('app/assets/stylesheets/', '') }
+    config.assets.precompile += Dir['app/assets/stylesheets/site/**/*css'].map{ |x| x.sub('app/assets/stylesheets/', '') }
     config.assets.precompile += Dir['app/assets/images/mobile/wcard/*.*'].map{ |x| x.sub('app/assets/images/', '') }
 
     config.generators do |g|
