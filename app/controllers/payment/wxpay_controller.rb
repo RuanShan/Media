@@ -1,5 +1,7 @@
 class Payment::WxpayController < ApplicationController
-  skip_before_action *ADMIN_FILTERS
+  include WeixinPay
+
+  skip_before_action *ADMIN_FILTERS, :verify_authenticity_token
   before_action :find_payment, :only => [:success, :fail]
   before_action :micro_messageer_browser, :micro_messageer_browser_version,:only => [:success, :fail, :test, :pay]
 
@@ -11,8 +13,8 @@ class Payment::WxpayController < ApplicationController
 
   #付款后的通知会触发这个 action (post)
   def notify
-    result = HashWithIndifferentAccess.new(params)[:xml]
-    write_weixinv2_log "weixin v2 pay notify info -> #{result}" 
+    result = HashWithIndifferentAccess.new(request_content)[:xml]
+    write_weixinv2_log "weixin v2 pay notify info -> #{result}"
     return_code = result[:return_code]
     if return_code == "SUCCESS"
       result_code = result[:result_code]
@@ -20,26 +22,26 @@ class Payment::WxpayController < ApplicationController
         out_trade_no = result[:out_trade_no]
         payment = Payment.where(:out_trade_no => out_trade_no).first
         if payment.success?
-          return render text: notify_result("SUCCESS") 
+          return render text: notify_result("SUCCESS")
         else
-          options = {status: 1,trade_status: "TRADE_SUCCESS", buyer_id: result[:openid] , open_id: result[:openid], total_fee: result[:total_fee].to_f/100, trade_no: result[:transaction_id], order_msg: result.to_s, gmt_payment: Time.parse(result[:time_end].to_s) }     
+          options = {status: 1,trade_status: "TRADE_SUCCESS", buyer_id: result[:openid] , open_id: result[:openid], total_fee: result[:total_fee].to_f/100, trade_no: result[:transaction_id], order_msg: result.to_s, gmt_payment: Time.parse(result[:time_end].to_s) }
           payment.update_pay_result options
 
           payment.notify_push
-          #render text: 'SUCCESS'  
-          return render text: notify_result("SUCCESS")   
-        end  
+          #render text: 'SUCCESS'
+          return render text: notify_result("SUCCESS")
+        end
       else
-        write_weixinv2_log "weixin v2 pay notify faild -> #{result}" 
-        return render text: notify_result("FAIL")   
-      end  
+        write_weixinv2_log "weixin v2 pay notify faild -> #{result}"
+        return render text: notify_result("FAIL")
+      end
     else
-      write_weixinv2_log "weixin v2 pay notify faild -> #{result}" 
-      return render text: notify_result("FAIL")   
-    end  
+      write_weixinv2_log "weixin v2 pay notify faild -> #{result}"
+      return render text: notify_result("FAIL")
+    end
   rescue => e
      write_weixinv2_log "weixin v2 pay notify exception -> #{e.backtrace}"
-     return render text: notify_result("FAIL") 
+     return render text: notify_result("FAIL")
   end
 
   # TODO 需要用网页授权获取openid
@@ -128,20 +130,23 @@ class Payment::WxpayController < ApplicationController
   def unifiedorder
     @nonce_str = generate_noce_str
     request_options = {
-      appid: @wxpay.app_id, 
-      mch_id: @wxpay.partner_id, 
-      nonce_str: @nonce_str, 
-      body: @payment.subject, 
-      out_trade_no: @payment.out_trade_no, 
-      total_fee: @payment.wx_total_fee, 
-      spbill_create_ip: request.remote_ip, 
-      notify_url: PaymentSetting::WEIXIN_NOTICE_URL, 
-      trade_type: "JSAPI", 
-      openid: @wx_user.openid
+      appid: @wxpay.app_id,
+      mch_id: @wxpay.partner_id,
+      nonce_str: @nonce_str,
+      body: @payment.subject,
+      out_trade_no: @payment.out_trade_no,
+      total_fee: @payment.wx_total_fee,
+      spbill_create_ip: request.remote_ip,
+      notify_url: PaymentSetting::WEIXIN_NOTICE_URL,
+      trade_type: "JSAPI",
+      openid: @wx_user.openid,
+      key: @wxpay.partner_key
     }
-    sign_params = set_sign_params request_options
-    xml = create_xml request_options, get_sign(sign_params, @wxpay.partner_key)
-    @result = request_unifiedorder xml
+    #sign_params = set_sign_params request_options
+    #xml = create_xml request_options, get_sign(sign_params, @wxpay.partner_key)
+    #@result = request_unifiedorder xml
+
+    @result = invoke_unifiedorder request_options
     response_unifiedorder
   end
 
@@ -156,21 +161,21 @@ class Payment::WxpayController < ApplicationController
       else
         write_weixinv2_log "weixin v2 pay error payment out_trade_no : #{@payment.out_trade_no}, error: #{result}"
         return redirect_to payment_wxpay_fail_url(payment_id: @payment.id, openid: @wx_user.openid), notice: "您的订单存在异常,无法发起支付. 错误信息：#{result[:return_msg]}"
-      end  
+      end
     elsif return_code == "FAIL"
       write_weixinv2_log "weixin v2 pay error payment out_trade_no : #{@payment.out_trade_no}, error: #{result}"
       return redirect_to payment_wxpay_fail_url(payment_id: @payment.id, openid: @wx_user.openid), notice: "数据异常,请尝试重试支付. 错误信息：#{result[:return_msg]}"
-    else 
+    else
       write_weixinv2_log "weixin v2 pay error payment out_trade_no : #{@payment.out_trade_no}, error: #{result}"
       return render text: "data exception. 错误信息：#{result[:return_msg]}"
-    end  
-  end  
+    end
+  end
 
   def set_pay_sign_params
     @pay_sign_nonce_str = generate_noce_str
     @pay_sign_time_stamp = get_time_stamp
     pay_sign_params = ["appId=#{@wxpay.app_id}", "nonceStr=#{@pay_sign_nonce_str}", "package=prepay_id=#{@payment.prepay_id}", "signType=#{get_sign_type}", "timeStamp=#{@pay_sign_time_stamp}"]
     @pay_sign = get_sign pay_sign_params, @wxpay.partner_key
-  end  
+  end
 
 end

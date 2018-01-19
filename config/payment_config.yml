@@ -17,7 +17,8 @@ common: &common
     pay_quest_url: "http://localhost:3000/app/vip_user_payments/payment"
     callback_url: "http://localhost:3000/payment/vip_userpay/callback"
     notify_url: "http://localhost:3000/payment/vip_userpay/notify"
-
+  wxpay:
+    sandbox: true
 production:
   <<: *common
   proxy_payment:
@@ -34,6 +35,8 @@ production:
     pay_quest_url: "http://m.winwemedia.com/app/vip_user_payments/payment"
     callback_url: "http://m.winwemedia.com/payment/vip_userpay/callback"
     notify_url: "http://m.winwemedia.com/payment/vip_userpay/notify"
+  wxpay:
+    sandbox: false
 
 staging:
   <<: *common
