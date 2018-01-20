@@ -31,7 +31,7 @@ Rails.logger.debug "after 验证码不正确"
   # end
 
   def secret
-    authenticate_or_request_with_http_basic("winwemedia") do |username, password|
+    authenticate_or_request_with_http_basic("ruanshan") do |username, password|
       site = Site.where(id: username).first
 
       if site and password == 'win1qa2ws'

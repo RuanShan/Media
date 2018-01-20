@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
   private
 
   def prepare_session
-    # return redirect_to 'http://www.winwemedia.com' if Rails.env.production? && request.host !~ /winwemedia\.com/
+    # return redirect_to 'http://www.ruanshan.com' if Rails.env.production? && request.host !~ /ruanshan\.com/
 
     if session[:expiry_time].present? and session[:expiry_time] < Time.now
       reset_session

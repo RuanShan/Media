@@ -10,7 +10,7 @@
 # end
 
 # 网页授权请求地址：
-# http://m.winwemedia.com/auth_agent/wx_oauth?return_to=base64_redirect_url&app_id=wx0d53f1234
+# http://m.ruanshan.com/auth_agent/wx_oauth?return_to=base64_redirect_url&app_id=wx0d53f1234
 # 获取openid后跳转到：
 # http://redirect_url?openid=123
 

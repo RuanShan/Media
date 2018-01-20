@@ -13,7 +13,7 @@ class SmsOrder < ActiveRecord::Base
     5 => {plan_name: 'V-行业解决方案（赠送）', plan_type: 2, plan_sms: 500, plan_cost: 0},
   }
 
-  ALIPAY_ACCOUNT_NAME = "payment@winwemedia.com"
+  ALIPAY_ACCOUNT_NAME = "payment@ruanshan.com"
   ALIPAY_ID = "2088121855721480"
   ALIPAY_KEY = "2xfcmsfv5cxkehizxiuycsqpuzghd0j8"
 
@@ -121,9 +121,9 @@ class SmsOrder < ActiveRecord::Base
 
   def domain_url
     if Rails.env.production? or Rails.env.staging?
-      url = 'http://www.winwemedia.com'
+      url = 'http://www.ruanshan.com'
     elsif Rails.env.testing?
-      url = 'http://testing.winwemedia.com'
+      url = 'http://testing.ruanshan.com'
     elsif Rails.env.development?
       url = 'localhost:3000'
     end
@@ -260,7 +260,7 @@ class SmsOrder < ActiveRecord::Base
   #   "buyer_id"=>"2088202867703133",
   #   "buyer_email"=>"wenke.gd@gmail.com",
   #   "seller_id"=>"2088901213277282",
-  #   "seller_email"=>"payment@winwemedia.com",
+  #   "seller_email"=>"payment@ruanshan.com",
   #   "sign_type"=>"MD5",
   #   "sign"=>"37dcc918f11879a3eaf824f51bd3ec87",
   #   "notify_type"=>"trade_status_sync",

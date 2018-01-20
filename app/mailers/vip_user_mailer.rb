@@ -1,6 +1,6 @@
 class VipUserMailer < ActionMailer::Base
 
-  default :from => "info@winwemedia.com"
+  default :from => "info@ruanshan.com"
 
   def transaction_email(user_password)
     @notice = "你的密码是：#{user_password.password_digest}，为保证账户安全请尽快修改密码！"
@@ -10,9 +10,9 @@ class VipUserMailer < ActionMailer::Base
   # 自动绑定失败通知
   def binds_failure_notification(body, subject = "#{Rails.env}: 公众账号自动绑定失败通知 #{Time.now}")
     if Rails.env.production?
-      to = ["liang.wk@winwemedia.com"]
+      to = ["liang.wk@ruanshan.com"]
     else
-      to = ["liang.wk@winwemedia.com"]
+      to = ["liang.wk@ruanshan.com"]
     end
     mail(:to => to, :subject => subject, :body => body)
   end

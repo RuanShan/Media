@@ -1,6 +1,6 @@
 module DetectUserAgent
   OPENID_REG = /(\?|&)openid=/
-  STATE = 'winwemedia'
+  STATE = 'ruanshan'
 
   def load_site
     site_id = request.subdomains.first.to_i
@@ -165,7 +165,7 @@ module DetectUserAgent
           result = RestClient.get(url)
           logger.info "*******************authorize result:#{result}"
 
-          access_token_data = JSON(result) 
+          access_token_data = JSON(result)
           access_token, expires_in, refresh_token, openid = access_token_data.values_at('access_token', 'expires_in', 'refresh_token', 'openid')
 
           @wx_user = WxUser.follow(@wx_mp_user, wx_user_openid: openid, wx_mp_user_openid: @wx_mp_user.openid)
@@ -183,7 +183,7 @@ module DetectUserAgent
           @user = @wx_user.user
 
           return redirect_to auth_back
-        end 
+        end
 
         oauth_url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=#{app_id}&redirect_uri=#{Rack::Utils.escape(request.url)}&response_type=code&scope=snsapi_userinfo&state=#{STATE}#wechat_redirect"
         redirect_to oauth_url

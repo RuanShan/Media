@@ -4,7 +4,7 @@ class Api::V1::WxController < Api::BaseController
   before_action :cors_set_access_control_headers
   before_action :find_objects, only: [:jsapi_config]
 
-  # http://www.winwemedia.com/v1/wx/token?app_id=111
+  # http://www.ruanshan.com/v1/wx/token?app_id=111
   def token
     return render json: {} if params[:app_id].blank?
 
@@ -32,7 +32,7 @@ class Api::V1::WxController < Api::BaseController
   #      app_id: app_id // 公众号的唯一标识
   #   }
   # }
-  # demo: http://m.winwemedia.com/v1/wx/jsapi_config?url=http://www.baidu.com&auth_token=9MoZzBC71HddLw-_UH5zBQfCjBcQErp8TQho6cRHxqY17BiEX64ZS_nw97SYa8Jwk4i1Wd5hr6uKG4x2
+  # demo: http://m.ruanshan.com/v1/wx/jsapi_config?url=http://www.baidu.com&auth_token=9MoZzBC71HddLw-_UH5zBQfCjBcQErp8TQho6cRHxqY17BiEX64ZS_nw97SYa8Jwk4i1Wd5hr6uKG4x2
 
   def jsapi_config
     render json: { errcode: 0, config: wx_config(@wx_mp_user, @url) }

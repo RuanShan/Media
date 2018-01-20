@@ -8,7 +8,7 @@ class WxredpacketpaySetting < PaymentSetting
     red_packet = red_packet_rec.red_packet
 
     case action.to_s
-    when 'send' 
+    when 'send'
       options = {
         'wxappid' => self.app_id,
         'mch_id'  => self.partner_id,
@@ -45,27 +45,27 @@ class WxredpacketpaySetting < PaymentSetting
 
   def get_sign(options, key = nil)
     sign_options = options.select do |k, v|
-      v.present?   
-    end 
+      v.present?
+    end
 
     key ||= self.partner_key
-   
-    Digest::MD5.hexdigest(sign_options.sort.to_h.map { |k, v| "#{k}=#{v}" }.join('&') + "&key=#{key}").upcase 
+
+    Digest::MD5.hexdigest(sign_options.sort.to_h.map { |k, v| "#{k}=#{v}" }.join('&') + "&key=#{key}").upcase
   end
 
   def pay(red_packet_rec, action = 'send')
     options = pay_options red_packet_rec, action
     sign = get_sign options
-    xml = create_xml options, sign 
-   
-    post_xml(action, xml) 
+    xml = create_xml options, sign
+
+    post_xml(action, xml)
   end
 
   def query(red_packet_rec, action = 'query')
     options = pay_options red_packet_rec, action
     sign = get_sign options
-    xml = create_xml options, sign 
-   
+    xml = create_xml options, sign
+
     post_xml(action, xml)
   end
 
@@ -94,23 +94,23 @@ class WxredpacketpaySetting < PaymentSetting
     options.merge!('sign' => sign)
 
     xml = '<xml>' + "\n"
- 
+
     options.each do |k, v|
       xml += "<#{k}>"
       xml += "#{v}"
       xml += "</#{k}>" + "\n"
     end
 
-    xml += '</xml>' 
+    xml += '</xml>'
   end
 
   private
 
   def generate_nonce_str
-    str = 'winwemediaredpacket0123456789'
-    (0 .. 31).map { str[rand(str.length)] }.join 
-  end 
-   
+    str = 'ruanshanredpacket0123456789'
+    (0 .. 31).map { str[rand(str.length)] }.join
+  end
+
   def get_local_ip
     oring, Socket.do_not_reverse_lookup = Socket.do_not_reverse_lookup, true
 
@@ -119,7 +119,7 @@ class WxredpacketpaySetting < PaymentSetting
       s.addr.last
     end
   ensure
-    Socket.do_not_reverse_lookup = oring 
+    Socket.do_not_reverse_lookup = oring
   end
 
   def cert_pem_to_x509(cert_pem)

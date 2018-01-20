@@ -1,6 +1,6 @@
 module Concerns::ActivityRankingList
 
-  RANK_NAMESPACE = "#{Rails.env}:winwemedia:micro_aid:rank:"
+  RANK_NAMESPACE = "#{Rails.env}:ruanshan:micro_aid:rank:"
   READY          = 'ready'
   FINISHED       = 'finished'
 
@@ -45,10 +45,10 @@ module Concerns::ActivityRankingList
     # no prize
     return unless rank.present? && rank <= prize_counts
 
-    # calc prize 
+    # calc prize
     total_count = 0
     prize = prizes.each do |prize|
-      total_count += prize.prize_count 
+      total_count += prize.prize_count
       if rank <= total_count
         break prize
       end
@@ -79,10 +79,10 @@ module Concerns::ActivityRankingList
   end
 
   def ranking_list_finished!
-    $redis.set rank_status_key, FINISHED 
+    $redis.set rank_status_key, FINISHED
   end
- 
-  # finished: has been processed 
+
+  # finished: has been processed
   def ranking_list_finished?
     ranking_list_status == FINISHED
   end

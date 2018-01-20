@@ -20,7 +20,7 @@
         <%- end %>
       <%= render "weixin_setting", activity: activity, data_img: @activity.try(:pic_url), pic_data_name: "activity[pic_key]", pic_data_key: @activity.try(:pic_key), is_scene: true %>
 
-      <div class="alert alert-block alert-info" style="color:black;">以下设置需要认证的公众号并且与软山微客后台关联了授权，具体请参考：<a href="http://winwemedia.com/site/dev_logs/203">http://winwemedia.com/site/dev_logs/203</a> </div>
+      <div class="alert alert-block alert-info" style="color:black;">以下设置需要认证的公众号并且与软山微客后台关联了授权，具体请参考：<a href="http://ruanshan.com/site/dev_logs/203">http://ruanshan.com/site/dev_logs/203</a> </div>
 
       <%= activity.fields_for :share_setting do |share| %>
         <div class="form-group">
@@ -85,7 +85,7 @@
     <% else %>
       var exists_keywords = <%= raw current_site.activities.show.where("id != ?", @activity.try(:id)).pluck(:keyword).to_json %> ;
     <% end %>
-    
+
     if ($.inArray(keyword, exists_keywords) >= 0) {
       showTip('warning', '关键字重复，请重新选择关键字');
       return false;

@@ -109,7 +109,7 @@ module Concerns::WxMpUserPlugin
 
 
   def wx_user_oauth_url
-    wx_user_plugin_oauth_url = URI.encode_www_form_component('http://plugin.weixin.winwemedia.com/oauth2/wx_user/callback')
+    wx_user_plugin_oauth_url = URI.encode_www_form_component('http://plugin.weixin.ruanshan.com/oauth2/wx_user/callback')
     "https://open.weixin.qq.com/connect/oauth2/authorize?appid=#{app_id}&redirect_uri=#{wx_user_plugin_oauth_url}&response_type=code&scope=snsapi_base&state=STATE&component_appid=#{Settings.wx_plugin.component_app_id}#wechat_redirect"
   end
 

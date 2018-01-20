@@ -136,8 +136,8 @@ class PaymentsController < ApplicationController
     if _real_merchant_url =~ URI::regexp
       redirect_to _real_merchant_url
     else
-      redirect_to "http://m.winwemedia.com/winwemedia"
+      redirect_to "http://m.ruanshan.com/ruanshan"
     end
   end
-  
+
 end

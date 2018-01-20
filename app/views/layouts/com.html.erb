@@ -10,7 +10,7 @@
     <% if content_for?(:head) %>
       <%= yield :head %>
     <% else %>
-      <title>winwemedia</title>
+      <title>ruanshan</title>
     <% end %>
     <%= stylesheet_link_tag "sessions", media: "all" %>
     <%= javascript_include_tag "sessions" %>
@@ -23,7 +23,7 @@
     <![endif]-->
 
     <%= render 'application/header_member_v5' %>
-    
+
     <%= content_for?(:content) ? yield(:content) : yield %>
 
     <script src="/com/js/vendor/jquery.anythingslider.min.js"></script>

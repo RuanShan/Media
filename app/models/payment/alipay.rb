@@ -60,11 +60,11 @@ class Payment::Alipay < Payment::Base
     raise '没有指定商家' unless site
 
     if Rails.env.production?
-      domain_url = 'http://www.winwemedia.com'
+      domain_url = 'http://www.ruanshan.com'
     elsif Rails.env.staging?
-      domain_url = 'http://staging.winwemedia.com'
+      domain_url = 'http://staging.ruanshan.com'
     else
-      domain_url = 'http://dev.winwemedia.com'
+      domain_url = 'http://dev.ruanshan.com'
     end
 
     {
@@ -151,7 +151,7 @@ class Payment::Alipay < Payment::Base
   #   "buyer_id"=>"2088202867703133",
   #   "buyer_email"=>"wenke.gd@gmail.com",
   #   "seller_id"=>"2088901213277282",
-  #   "seller_email"=>"payment@winwemedia.com",
+  #   "seller_email"=>"payment@ruanshan.com",
   #   "sign_type"=>"MD5",
   #   "sign"=>"37dcc918f11879a3eaf824f51bd3ec87",
   #   "notify_type"=>"trade_status_sync",

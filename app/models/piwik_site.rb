@@ -113,7 +113,7 @@ class PiwikSite < ActiveRecord::Base
     end
 
     def server
-      Rails.env.production? ? "tongji.winwemedia.com" : "tongjitest.winwemedia.com"
+      Rails.env.production? ? "tongji.ruanshan.com" : "tongjitest.ruanshan.com"
     end
 
     def token_auth

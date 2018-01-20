@@ -1005,7 +1005,7 @@ class Activity < ActiveRecord::Base
 
   def hanming_callback_url
     if self['extend'].blank?
-      "http://m.winwemedia.com"
+      "http://m.ruanshan.com"
     elsif self['extend'].to_s.start_with?("http")
       self['extend'].to_s
     else
