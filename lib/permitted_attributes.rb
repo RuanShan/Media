@@ -51,7 +51,7 @@ module PermittedAttributes
 
      vip_card_attributes: [:status, :merchant_name, :id],
      ready_activity_notice_attributes: [:title, :summary, :id, :pic_key, :description],
-     active_activity_notice_attributes: [:title, :summary, :id, :pic_key :description],
+     active_activity_notice_attributes: [:title, :summary, :id, :pic_key, :description],
 
      guess_setting_attributes: [:user_day_answer_limit, :user_total_answer_limit, :user_type],
      activity_property_attributes: [ :activity_type_id, :vip_only, :special_warn, :question_score ],

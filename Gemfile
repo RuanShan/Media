@@ -49,9 +49,9 @@ gem 'rest-client'
 
 #gem 'squeel'
 
-#gem "exception_logger", :require => "exception_logger", :git => "git://github.com/liangwenke/exception_logger.git"
-gem 'exception_notification'
-gem 'exception-track'
+
+#gem 'exception_notification'
+#gem 'exception-track'
 
 #gem "audited-activerecord","~> 4.2.2"
 gem "audited", "~> 4.5"
