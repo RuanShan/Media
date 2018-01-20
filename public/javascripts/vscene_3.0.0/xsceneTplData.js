@@ -395,7 +395,7 @@
                 }, {
                     "type": "txt",
                     "props": {
-                        "html": "<p><span style=\"font-size: 26px;\">微枚迪</span></p>",
+                        "html": "<p><span style=\"font-size: 26px;\">软山微客</span></p>",
                         "width": 45,
                         "height": 27,
                         "left": 89,
@@ -2255,7 +2255,7 @@
                 "elems": [{
                     "type": "txt",
                     "props": {
-                        "html": "<p><span style=\"font-size: 26px;\"><strong><span style=\"color: rgb(0, 0, 0);\">微枚迪</span></strong></span></p>",
+                        "html": "<p><span style=\"font-size: 26px;\"><strong><span style=\"color: rgb(0, 0, 0);\">软山微客</span></strong></span></p>",
                         "width": 60,
                         "height": 60,
                         "left": 114,
@@ -2281,7 +2281,7 @@
                 }, {
                     "type": "txt",
                     "props": {
-                        "html": "<p style=\"line-height: 2em;\"><span style=\"font-size: 16px;\">微枚迪是一款专为行业微信解决方案的产品。该产品主要基于微信公众平台，以幸运大转盘、刮刮卡等趣味游戏吸引用户获得优惠，赢得客户好感，致使每周促销优惠券都实现大量转发，实现一举多得。</span></p><p style=\"line-height: 2em;\"><span style=\"font-size: 16px;\">目前深入挖掘的行业有餐饮、电商、医疗、旅游、汽车、房产、婚庆、影楼、牙医、教育、建材等行业解决方案。</span></p><p><br/></p>",
+                        "html": "<p style=\"line-height: 2em;\"><span style=\"font-size: 16px;\">软山微客是一款专为行业微信解决方案的产品。该产品主要基于微信公众平台，以幸运大转盘、刮刮卡等趣味游戏吸引用户获得优惠，赢得客户好感，致使每周促销优惠券都实现大量转发，实现一举多得。</span></p><p style=\"line-height: 2em;\"><span style=\"font-size: 16px;\">目前深入挖掘的行业有餐饮、电商、医疗、旅游、汽车、房产、婚庆、影楼、牙医、教育、建材等行业解决方案。</span></p><p><br/></p>",
                         "width": 77,
                         "height": 60,
                         "left": 39,

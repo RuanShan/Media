@@ -135,7 +135,7 @@ class ActivityPrize < ActiveRecord::Base
             nick_name: activity.site.try(:wx_mp_user).try(:name),
             send_name: activity.site.try(:wx_mp_user).try(:name),
             wishing: '恭喜发财,大吉大利',
-            remark: '微枚迪技术支持',
+            remark: '软山微客技术支持',
             min_value: prize_value,
             max_value: prize_value,
             total_amount: prize_value,

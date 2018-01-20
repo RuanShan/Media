@@ -126,7 +126,7 @@ module MobileHelper
       when 11 then
         #return url = "http://api.map.baidu.com/geocoder?address=#{website_menu.address}&output=html"
         #return url = "http://map.baidu.com/mobile/webapp/search/search/qt=s&wd=#{website_menu.address}/vt=map"
-        return url = "http://api.map.baidu.com/marker?location=#{website_menu.location_y},#{website_menu.location_x}&title=#{website_menu.address}&name=微枚迪&content=#{website_menu.address}&output=html&src=weiba|weiweb"
+        return url = "http://api.map.baidu.com/marker?location=#{website_menu.location_y},#{website_menu.location_x}&title=#{website_menu.address}&name=软山微客&content=#{website_menu.address}&output=html&src=weiba|weiweb"
       when 17 then
         @wx_user = WxUser.where(openid: session[:openid]).first
         #return '' unless wx_user

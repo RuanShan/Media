@@ -10,7 +10,7 @@ namespace :dev do
   desc 'created accounts'
   task :create_accounts => :environment do
     puts 'Starting create accounts ******'
-    account = Account.where(nickname: 'wemedia').first_or_create(company_name: '微枚迪', password: '111111', password_confirmation: '111111', mobile: '13899998888', email: 'test@winwemedia.com')
+    account = Account.where(nickname: 'wemedia').first_or_create(company_name: '软山微客', password: '111111', password_confirmation: '111111', mobile: '13899998888', email: 'test@winwemedia.com')
     puts "created account: #{account.nickname}"
   end
 

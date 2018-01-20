@@ -1,7 +1,7 @@
 module PermittedAttributes
     ATTRIBUTES=[:site_attributes, :account_attributes, :wx_mp_user_attributes, :website_menu_attributes, :material_attributes, :activity_attributes, :shop_attributes,
       :reply_attributes, :wx_menu_attributes, :payment_setting_attributes, :question_attributes, :fight_paper_attributes, :activity_prize_attributes, :vip_recharge_order_attributes, :book_rule_attributes,
-      :website_picture_attributes   ]
+      :website_picture_attributes, :website_popup_menu_attributes  ]
 
     mattr_reader *ATTRIBUTES
 
@@ -96,4 +96,13 @@ module PermittedAttributes
      :id, :website_id, :title, :pic_key, :menu_type, :url,:tel, :address,   :location_x,   :location_y,   :single_material_id,   :multiple_material_id,   :activity_id,
      :docking_type,  :docking_function,  :goods_category_id,  :good_id
    ]
+
+  # "website_popup_menu"=>
+  # {"website_id"=>"1",   "nav_type"=>"1",   "name"=>"item1",   "font_icon"=>"fa fa-bell",   "icon_key"=>"",   "menu_type"=>"2",   "activity_id"=>"1",   "url"=>"",
+  #  "tel"=>"",   "address"=>"全国",   "location_x"=>"116.413384",   "location_y"=>"39.910925",   "single_material_id"=>"",   "multiple_material_id"=>"",   "sort"=>"1"},
+  @@website_popup_menu_attributes = [
+    :id, :website_id, :nav_type, :name,  :font_icon, :icon_key, :menu_type, :activity_id,  :url,
+    :tel, :address, :location_x, :location_y,  :single_material_id,   :multiple_material_id, :sort
+  ]
+
 end

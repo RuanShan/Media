@@ -27,7 +27,7 @@ class Biz::WebsitePopupMenusController < ApplicationController
   end
 
   def create
-    @website_popup_menu = @website.website_popup_menus.new(params[:website_popup_menu])
+    @website_popup_menu = @website.website_popup_menus.new(website_popup_menu_params)
     if @website_popup_menu.save
       flash[:notice] = "添加成功"
       url = @website_popup_menu.nav_type.to_i == 0 ? website_popup_menus_path(nav_type: 0) : website_popup_menus_path(target: "#tab-#{@website_popup_menu.nav_type}")
@@ -37,9 +37,9 @@ class Biz::WebsitePopupMenusController < ApplicationController
       render action: 'new', layout: 'application_pop'
     end
 	end
-	
+
 	def update
-    if @website_popup_menu.update_attributes(params[:website_popup_menu])
+    if @website_popup_menu.update_attributes(website_popup_menu_params)
       flash[:notice] = "保存成功"
       url = @website_popup_menu.nav_type.to_i == 0 ? website_popup_menus_path(nav_type: 0) : website_popup_menus_path(target: "#tab-#{@website_popup_menu.nav_type}")
       render inline: "<script>window.parent.location.href = '#{url}';</script>"
@@ -85,7 +85,7 @@ class Biz::WebsitePopupMenusController < ApplicationController
   end
 
   private
-  
+
   def set_website
     @website = current_site.website
     return redirect_to websites_path, alert: '请先设置微官网' unless @website
@@ -94,6 +94,10 @@ class Biz::WebsitePopupMenusController < ApplicationController
   def set_website_popup_menu
     @website_popup_menu = @website.website_popup_menus.where(id: params[:id]).first
     return redirect_to websites_path, alert: '菜单不存在或已删除' unless @website_popup_menu
+  end
+
+  def website_popup_menu_params
+    params.require(:website_popup_menu).permit(permitted_website_popup_menu_attributes)
   end
 
 end

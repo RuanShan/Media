@@ -3,10 +3,10 @@ defaults: &defaults
     app_key: 23331392
     app_secret: 05c18d9ff0b7d7f30eabb901f7c303ac
     post_url: 'http://gw.api.taobao.com/router/rest'
-    product: "微枚迪"
+    product: "软山微客"
     sms_templates:
       - name: "sign_up"
-        sms_free_sign_name: "微枚迪" # 短信签名
+        sms_free_sign_name: "软山微客" # 短信签名
         sms_template_code: "SMS_6475458" # 短信模板
 
 development:

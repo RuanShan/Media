@@ -11,18 +11,18 @@ class Biz::GroupsController < Biz::GroupBaseController
 
   def items
     @group_items_search = @group.group_items.includes(:group_category).on_sale.latest.search(params[:search])
-    @group_items = @group_items_search.page(params[:page])
+    @group_items = @group_items_search.result.page(params[:page])
   end
 
   def orders
     @group_orders_search = current_site.group_orders.latest.search(params[:search])
-    @group_orders = @group_orders_search.includes(:group_item).where("group_items.group_type is null or group_items.group_type = 1").page(params[:order_page])
+    @group_orders = @group_orders_search.result.includes(:group_item).where("group_items.group_type is null or group_items.group_type = 1").page(params[:order_page])
 
     respond_to do |format|
       format.html
       format.xls {
-        send_data(GroupOrder.export_excel(@group_orders_search.page(params[:page_exl]).per(EXPORTING_COUNT)),
-        :type => "text/excel;charset=utf-8; header=present", 
+        send_data(GroupOrder.export_excel(@group_orders_search.result.page(params[:page_exl]).per(EXPORTING_COUNT)),
+        :type => "text/excel;charset=utf-8; header=present",
         :filename => Time.now.to_s(:db).to_s.gsub(/[\s|\t|\:]/,'_') + rand(99999).to_s + ".xls")
       }
     end

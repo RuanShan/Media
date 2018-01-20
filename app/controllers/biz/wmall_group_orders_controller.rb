@@ -6,7 +6,7 @@ class Biz::WmallGroupOrdersController < Biz::WmallGroupBaseController
     #conn = "and (wmall_shops.id like '%#{params[:mall_name]}%' or wmall_shops.name like '%#{params[:mall_name]}%')"if params[:mall_name].present?
     conn = GroupOrder.get_conditions params
     @group_orders_search = current_site.group_orders.latest.search(params[:search])
-    @wmall_group_orders = @group_orders_search.includes(:payments,:group_item =>:shop).where(conn).page(params[:order_page])
+    @wmall_group_orders = @group_orders_search.result.includes(:payments,:group_item =>:shop).where(conn).page(params[:order_page])
     respond_to do |format|
       format.html
       format.json
@@ -17,7 +17,7 @@ class Biz::WmallGroupOrdersController < Biz::WmallGroupBaseController
   def list
     conn = GroupOrder.get_conditions params
     @group_orders_search = current_site.group_orders.latest.consumed.search(params[:search])
-    @wmall_group_orders = @group_orders_search.includes(:payments,:group_item => :shop).where(conn).page(params[:order_page])
+    @wmall_group_orders = @group_orders_search.result.includes(:payments,:group_item => :shop).where(conn).page(params[:order_page])
     respond_to do |format|
       format.html
       format.json

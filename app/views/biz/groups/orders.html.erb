@@ -28,7 +28,7 @@
       </div>
     </div>
 
-    <div class="col-sm-12 margin-top-10"> 　 
+    <div class="col-sm-12 margin-top-10"> 　
       <div class="col-md-3">
         <div class="input-group input-group-text">
           <span class="input-group-addon">下单时间：</span>
@@ -48,7 +48,7 @@
         <%#= link_to '查询', 'javascript:;', class: 'btn btn-primary btn-sm btn-filter', id: 'search_vip_users' %>
         <%# link_to '导出EXCEL', vip_records_path(:format => :xls,:search => params[:search], field: params[:field], q: params[:q]) , class: 'btn btn-primary btn-sm btn-filter' %>
 
-        <% all_search_count = @group_orders_search.count %>
+        <% all_search_count = @group_orders_search.result.count %>
         <% if all_search_count <= EXPORTING_COUNT%>
           <%= link_to '导出EXCEL', orders_groups_path(:format => :xls,:search => params[:search], field: params[:field], q: params[:q]) , class: 'btn btn-primary btn-sm btn-filter' %>
         <% else %>
@@ -89,7 +89,7 @@
             var url = "<%= orders_groups_path(:format => :xls,:search => params[:search], field: params[:field], q: params[:q]) %>"+"<%= (params[:search].present? || params[:field].present? || params[:q].present? ) ? '&page_exl=' : '?page_exl='%>"+page_exl.val();
             window.location.href=url;
         });
-        
+
         $(".btn-filter").on("click", function(){
             setTimeout(function(){
                 $("button[data-fn=submit]").attr("type","button");

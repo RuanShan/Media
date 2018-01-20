@@ -34,7 +34,7 @@
     </div>
 
   <div class="form-group">
-    <label class="control-label" style="position: relative;">标题图<small class="help-inline text-warning line-height-32">没有更好的图片?微枚迪给你提供</small><a href="javascript:;" class="btn btn-primary btn-sm btn-toggle" data-target=".icon-box" data-scroll="icon-tab-2">图片素材</a><%= render 'font'%><a href="javascript:;" class="btn btn-default btn-sm delete-img">删除</a><%= f.hidden_field :is_delete_pic %><%= f.hidden_field :font_icon %></label>
+    <label class="control-label" style="position: relative;">标题图<small class="help-inline text-warning line-height-32">没有更好的图片?软山微客给你提供</small><a href="javascript:;" class="btn btn-primary btn-sm btn-toggle" data-target=".icon-box" data-scroll="icon-tab-2">图片素材</a><%= render 'font'%><a href="javascript:;" class="btn btn-default btn-sm delete-img">删除</a><%= f.hidden_field :is_delete_pic %><%= f.hidden_field :font_icon %></label>
     <div class="clearfix">
       <div class="cieldon-file pull-left width-100px" data-type="0" data-width="100" data-height="100" <% if f.object.font_icon.present? %> data-fa="<%= f.object.font_icon %>"  <% else %> data-img="<%= f.object.pic_url %>" <% end %> data-name="website_menu[pic_key]" data-key="<%= f.object.pic_key %>" data-callback="pic_dispose"></div>
     </div>

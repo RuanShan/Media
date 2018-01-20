@@ -26,7 +26,7 @@ class AccountsController < ApplicationController
     if @account.save
       # @account.update_attributes(auth_mobile: 1)
       # if params[:account][:mobile].present? && params[:account][:mobile].length == 11 && Rails.env.production?
-      #   SmsService.new.singleSend(params[:account][:mobile],"#{params[:account][:contact]} 先生/女士，感谢您注册！帐号#{params[:account][:nickname]}，密码#{params[:account][:password]}，体验时间30天。请在电脑上登录 微枚迪官网 进行设置、绑定公众号，在手机上浏览效果。如遇困难，请联系4000-365-711。祝生活愉快！")  #发送短信
+      #   SmsService.new.singleSend(params[:account][:mobile],"#{params[:account][:contact]} 先生/女士，感谢您注册！帐号#{params[:account][:nickname]}，密码#{params[:account][:password]}，体验时间30天。请在电脑上登录 软山微客官网 进行设置、绑定公众号，在手机上浏览效果。如遇困难，请联系4000-365-711。祝生活愉快！")  #发送短信
       # end
 
       session[:account_id] = @account.id

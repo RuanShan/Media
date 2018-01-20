@@ -38,7 +38,7 @@ class SmsAlidayu
   #   template_code: 'SMS_6770657',
   #   params: {
   #     code: '234569',
-  #     product: '微枚迪'
+  #     product: '软山微客'
   #   }
   # }
   # # params为模板内容的变量集合，根据模板中定义变量的不同而不同，若模板中未定义变量可不传

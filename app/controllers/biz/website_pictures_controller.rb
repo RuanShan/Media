@@ -31,7 +31,7 @@ class Biz::WebsitePicturesController < ApplicationController
   end
 
   def create
-    @picture = WebsitePicture.new(website_menu_params)
+    @picture = WebsitePicture.new(website_picture_params)
     if @picture.save
       redirect_to website_pictures_path, notice: '添加成功'
     else
@@ -47,7 +47,7 @@ class Biz::WebsitePicturesController < ApplicationController
   end
 
   def update
-    if @picture.update_attributes(website_menu_params)
+    if @picture.update_attributes(website_picture_params)
       redirect_to website_pictures_path, notice: '更新成功'
     else
       flash[:alert] = "更新失败"
@@ -93,7 +93,7 @@ class Biz::WebsitePicturesController < ApplicationController
     redirect_to website_pictures_path, alert: '图片不存在或已删除' unless @picture
   end
 
-  def website_menu_params
+  def website_picture_params
     params.require(:website_picture).permit(permitted_website_picture_attributes)
   end
 end

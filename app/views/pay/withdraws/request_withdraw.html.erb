@@ -17,7 +17,7 @@
 <script type="text/javascript">
   $('.form-submit').on('click', function(){
     <%- if @pay_account.freeze? %>
-          showTip('warning', '您的微枚迪支付已冻结');
+          showTip('warning', '您的软山微客支付已冻结');
           return false;
     <%- end %>
     var resquest_amount = $('.resquest_amount').val();

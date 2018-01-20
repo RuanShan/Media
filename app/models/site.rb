@@ -1025,7 +1025,7 @@ START
     now = Time.now
     attrs = {
       site_id: id,
-      activity_type_id: ActivityType::GROUP
+      activity_type_id: ActivityType::GROUPS
     }
     full_attrs = {
         activityable_id: group.id,
