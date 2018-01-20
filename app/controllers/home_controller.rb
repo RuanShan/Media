@@ -11,6 +11,8 @@ class HomeController < ApplicationController
       redirect_to console_path
     else
       @html_class = 'index'
+
+      render :index, layout: 'home'
       # redirect_to sign_in_path
     end
   end
