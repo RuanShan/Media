@@ -43,14 +43,15 @@ module PermittedAttributes
    #    "website_setting_attributes"=>{"open_bg_music"=>"0", "open_begin_animation"=>"0", "begin_animation_type"=>"1", "first_display"=>"0", "open_bg_animation"=>"0", "bg_animation_type"=>"1", "analytic_script"=>"", "id"=>"1"}
    #  }
    #}
-
+   # 砸金蛋
+   #"activity"=>{"activity_type_id"=>"25", "site_id"=>"2", "name"=>"", "keyword"=>"砸金蛋", "ready_activity_notice_attributes"=>{"pic_key"=>"", "title"=>"活动即将开始", "summary"=>"请点击进入砸金蛋活动预热页面", "description"=>""}, "ready_at"=>"2018-01-20 17:20", "start_at"=>"2018-01-21 00:00", "end_at"=>"2018-01-22 23:59"}, "start_at_end_at"=>"2018-01-21 00:00 - 2018-01-22 23:59"}
    @@activity_attributes = [:status, :keyword, :pic_key,
      :activity_type_id, :name, :summary, :description, :start_at, :end_at,
-     :bg_pic_key,
+     :bg_pic_key, :site_id, :ready_at,
 
      vip_card_attributes: [:status, :merchant_name, :id],
-     ready_activity_notice_attributes: [:title, :summary, :id],
-     active_activity_notice_attributes: [:title, :summary, :id, :pic_key ],
+     ready_activity_notice_attributes: [:title, :summary, :id, :pic_key, :description],
+     active_activity_notice_attributes: [:title, :summary, :id, :pic_key :description],
 
      guess_setting_attributes: [:user_day_answer_limit, :user_total_answer_limit, :user_type],
      activity_property_attributes: [ :activity_type_id, :vip_only, :special_warn, :question_score ],
