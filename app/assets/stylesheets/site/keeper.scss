@@ -1,6 +1,6 @@
-.topint{ height: 589px; width: 100%; background: url(/assets/site/keeper/bg_index01.jpg) no-repeat center;}
+.topint{ height: 589px; width: 100%; background: asset-url('site/keeper/bg_index01.jpg') no-repeat center;}
 .topint img{ font-size: 0; line-height: 0;}
-.topint .box{ position: relative; width: 1000px; height: 589px; background: url(/assets/site/keeper/bg_index02.png) no-repeat center; margin: 0 auto;}
+.topint .box{ position: relative; width: 1000px; height: 589px; background: asset-url('site/keeper/bg_index02.png') no-repeat center; margin: 0 auto;}
 .topint .box p.tern{ position: absolute; left: 0; bottom: 106px; margin: 0;}
 .topint .box p a{ position: relative; margin: 0 17px 0 0; display: block; float: left;}
 .topint .box p a img.ma{display: none; position: absolute; left: 0; top: 100px; width: 200px;}

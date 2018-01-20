@@ -35,7 +35,7 @@ box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);}
 .radius-bl0{-webkit-border-bottom-left-radius: 0; -moz-border-bottom-left-radius: 0; -o-border-bottom-left-radius: 0; border-bottom-left-radius: 0;}
 .radius-br0{-webkit-border-bottom-right-radius: 0; -moz-border-bottom-right-radius: 0; -o-border-bottom-right-radius: 0; border-bottom-right-radius: 0;}
 
-.member body{background: url(/assets/site/member_bg.png) 0 0 repeat;}
+.member body{background: asset-url('site/member_bg.png') 0 0 repeat;}
 .m-main{width: 1200px; padding: 46px 0px; margin: 90px auto; position: relative; background-color: #fff; -webkit-box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.25); -moz-box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.25); -o-box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.25); box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.25);}
 .m-form{width: 400px; margin: 0px auto;}
 
