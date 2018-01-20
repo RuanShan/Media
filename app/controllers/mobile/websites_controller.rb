@@ -1,3 +1,4 @@
+#微官网
 class Mobile::WebsitesController < ActionController::Base
   #include ErrorHandler, DetectUserAgent, LikeableCommentable
   include DetectUserAgent, LikeableCommentable
@@ -6,7 +7,7 @@ class Mobile::WebsitesController < ActionController::Base
 
   # before_action :redirect_to_non_openid_url, :load_site, :find_website, :load_user_data, except: [:audio, :unknown_identity]
   before_action :redirect_to_non_openid_url, :load_site, :find_website, :load_user_data, except: [:audio]
-  skip_filter :redirect_to_non_openid_url, :find_website, :load_user_data, only: [:unknown_identity]
+  skip_before_action :redirect_to_non_openid_url, :find_website, :load_user_data, only: [:unknown_identity]
 
   before_action :auth, if: -> { @wx_mp_user.try(:manual?) }
   before_action :authorize, if: -> { @wx_mp_user.try(:plugin?) }

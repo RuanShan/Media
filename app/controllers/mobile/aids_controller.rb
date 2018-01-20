@@ -1,5 +1,5 @@
 class Mobile::AidsController < Mobile::BaseController
-  skip_filter   :auth, :authorize, :fetch_wx_user_info
+  skip_before_action   :auth, :authorize, :fetch_wx_user_info
 
   before_action :auth_with_user_info, if: -> { @wx_mp_user.manual? and !@wx_user.try(:has_info?) }
   before_action :authorize_with_user_info, if: -> { @wx_mp_user.plugin? and !@wx_user.try(:has_info?) }

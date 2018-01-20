@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class Biz::ActivityEnrollsController < ApplicationController
-  # skip_filter :login_required
+  # skip_before_action :login_required
 
   def index
     @search = current_site.activities.show.where(activity_type_id: 10).order('id desc').search(params[:search])

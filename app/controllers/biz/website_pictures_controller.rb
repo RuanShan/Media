@@ -29,9 +29,9 @@ class Biz::WebsitePicturesController < ApplicationController
     @ec_seller_cat_selects = [[1, []]] unless @ec_seller_cat_selects.present?
     #render layout: 'application_pop'
   end
-  
+
   def create
-    @picture = WebsitePicture.new(params[:website_picture])
+    @picture = WebsitePicture.new(website_menu_params)
     if @picture.save
       redirect_to website_pictures_path, notice: '添加成功'
     else
@@ -47,7 +47,7 @@ class Biz::WebsitePicturesController < ApplicationController
   end
 
   def update
-    if @picture.update_attributes(params[:website_picture])
+    if @picture.update_attributes(website_menu_params)
       redirect_to website_pictures_path, notice: '更新成功'
     else
       flash[:alert] = "更新失败"
@@ -82,7 +82,7 @@ class Biz::WebsitePicturesController < ApplicationController
   end
 
   private
-  
+
   def set_website
     @website = current_site.website
     return redirect_to websites_path, alert: '请先设置微官网' unless @website
@@ -93,4 +93,7 @@ class Biz::WebsitePicturesController < ApplicationController
     redirect_to website_pictures_path, alert: '图片不存在或已删除' unless @picture
   end
 
+  def website_menu_params
+    params.require(:website_picture).permit(permitted_website_picture_attributes)
+  end
 end

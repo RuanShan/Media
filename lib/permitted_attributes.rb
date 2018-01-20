@@ -1,6 +1,8 @@
 module PermittedAttributes
     ATTRIBUTES=[:site_attributes, :account_attributes, :wx_mp_user_attributes, :website_menu_attributes, :material_attributes, :activity_attributes, :shop_attributes,
-      :reply_attributes, :wx_menu_attributes, :payment_setting_attributes, :question_attributes, :fight_paper_attributes, :activity_prize_attributes, :vip_recharge_order_attributes, :book_rule_attributes]
+      :reply_attributes, :wx_menu_attributes, :payment_setting_attributes, :question_attributes, :fight_paper_attributes, :activity_prize_attributes, :vip_recharge_order_attributes, :book_rule_attributes,
+      :website_picture_attributes   ]
+
     mattr_reader *ATTRIBUTES
 
     @@site_attributes = [ :section_id,:title, :content_param, :data_source, :data_filter, :data_source_order_by, :data_source_param, :css_class, :css_class_for_js, :content_css_class, :stylish, :section_context ]
@@ -35,6 +37,12 @@ module PermittedAttributes
    #  "activity_property_attributes"=>{"activity_type_id"=>"8", "vip_only"=>"0", "special_warn"=>"", "question_score"=>"10"},
    #  "activity_prizes_attributes"=>
    #  {"0"=>{"title"=>"一等奖", "prize"=>"prize1", "prize_count"=>"1"}, "1"=>{"title"=>"二等奖", "prize"=>"prize2", "prize_count"=>"2"}, "2"=>{"title"=>"三等奖", "prize"=>"prize3", "prize_count"=>"3"}}}
+   #微官网
+   #"activity"=>{"status"=>"1", "keyword"=>"微官网", "name"=>"微官网", "pic_key"=>"FklFClReNPoViyL4EI1C_zqkjD4c", "summary"=>""
+   #  "website_attributes"=>{"name"=>"getstore", "logo_key"=>"", , "baidu_app_js"=>"", "analytic_scripts"=>"", "id"=>"1"
+   #    "website_setting_attributes"=>{"open_bg_music"=>"0", "open_begin_animation"=>"0", "begin_animation_type"=>"1", "first_display"=>"0", "open_bg_animation"=>"0", "bg_animation_type"=>"1", "analytic_script"=>"", "id"=>"1"}
+   #  }
+   #}
 
    @@activity_attributes = [:status, :keyword, :pic_key,
      :activity_type_id, :name, :summary, :description, :start_at, :end_at,
@@ -47,7 +55,9 @@ module PermittedAttributes
      guess_setting_attributes: [:user_day_answer_limit, :user_total_answer_limit, :user_type],
      activity_property_attributes: [ :activity_type_id, :vip_only, :special_warn, :question_score ],
 
-     activity_prizes_attributes:[:title, :prize, :prize_count]
+     activity_prizes_attributes:[:title, :prize, :prize_count],
+
+     website_attributes:[ :name, :logo_key, :baidu_app_js, :analytic_scripts, :id, website_setting_attributes:[ :open_bg_music, :open_begin_animation, :begin_animation_type, :first_display, :open_bg_animation, :bg_animation_type, :analytic_script, :id] ]
    ]
 
    @book_rule_attributes = [ :is_limit_money, :type, :rule_type, :shop_branch_id, :book_phone, :booked_minute, :cancel_rule, :created_minute, :description,
@@ -77,4 +87,13 @@ module PermittedAttributes
 
    # "vip_recharge_order"=>{"amount"=>"100", "pay_amount"=>"100.0", "given_points"=>"0", "pay_type"=>"10001"}
    @@vip_recharge_order_attributes = [:amount, :pay_amount, :given_points, :pay_type]
+
+   # website_picture"=>
+   #{"id"=>"",   "website_id"=>"1",   "title"=>"this is slide",   "pic_key"=>"FgX61VqF669oIDRFtpGNlgB8u18P",   "menu_type"=>"13",   "url"=>"",   "tel"=>"",
+   # "address"=>"全国",   "location_x"=>"116.413384",   "location_y"=>"39.910925",   "single_material_id"=>"",   "multiple_material_id"=>"",   "activity_id"=>"1",
+   # "docking_type"=>"1",   "docking_function"=>"1",   "goods_category_id"=>"",   "good_id"=>""},
+   @@website_picture_attributes = [
+     :id, :website_id, :title, :pic_key, :menu_type, :url,:tel, :address,   :location_x,   :location_y,   :single_material_id,   :multiple_material_id,   :activity_id,
+     :docking_type,  :docking_function,  :goods_category_id,  :good_id
+   ]
 end

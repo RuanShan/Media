@@ -1,5 +1,5 @@
 class MultipleMaterialsController < ApplicationController
-  # skip_filter :required_sign_in, only: [:show]
+  # skip_before_action :required_sign_in, only: [:show]
   before_action :find_material, only: [:show, :edit, :update, :destroy]
 
   def index

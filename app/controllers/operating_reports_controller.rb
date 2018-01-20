@@ -5,7 +5,7 @@ class OperatingReportsController < ApplicationController
   before_action do
     @partialLeftNav = "/layouts/partialLeftDC"
   end
-  # skip_filter :login_required
+  # skip_before_action :login_required
 
   before_action :set_dates, only: [:index, :subscribes, :keyword]
   before_action :set_data, only: [:index, :subscribes, :keyword]

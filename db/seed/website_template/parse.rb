@@ -69,7 +69,10 @@ def download_template_images( src )
 end
 
 def create_website_template(attrs)
-  WebsiteTemplate.find_or_create_by!( attrs )
+  template = WebsiteTemplate.find_or_create_by!( attrs )
+  if template.website_tag_id == 12
+    template.update_attribute :series, 1
+  end
 end
 
 parse_template_html

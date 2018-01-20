@@ -68,7 +68,7 @@ module Wp
       bootstrap-editable.js
       micro_shop/micro_shop.css micro_shop/microshop_app.js micro_shop/ace-extra.min.js
       shake_site/template-1.css shake_site/template-2.css
-      wx_wall.css wx_wall.js shake.js vscene.js
+      wx_wall.scss wx_wall.js shake.js vscene.js
       jscolor/jscolor.js msdropdown/jquery.dd.min.js msdropdown/dd.css
       ace.min.css jsinhead.js jquery-fileupload/basic.js lib/validators.js
       home.css  sessions.css home.js sessions.js sitev1.css sitev1.js
