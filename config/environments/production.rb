@@ -62,8 +62,8 @@ Wp::Application.configure do
   config.action_mailer.smtp_settings = {
     address:              'smtp.getstore.cn',
     port:                 25,
-    user_name:            'mpp-notice@getstore.cn',
-    password:              ENV['MPP_NOTICE_AT_GETSTORE'],
+    user_name:            'notice@getstore.cn',
+    password:              ENV['NOTICE_AT_GETSTORE'],
     authentication:       'login',
     openssl_verify_mode: 'none',
     enable_starttls_auto: false
@@ -82,8 +82,8 @@ Wp::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
   Wp::Application.config.middleware.use ExceptionNotification::Rack, email: {
-    :email_prefix => "[Mpp Production Error] ",
-    :sender_address => %{mpp-notice@getstore.cn},
-    :exception_recipients => %w{mpp-exception@getstore.cn}
+    :email_prefix => "[Mpp Exception] ",
+    :sender_address => %{notice@getstore.cn},
+    :exception_recipients => %w{debug@getstore.cn}
   }
 end
