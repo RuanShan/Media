@@ -4,7 +4,7 @@ class Mobile::FansGamesController < Mobile::BaseController
 
   def index
     @activity = @site.activities.where(activity_type_id: 67).first
-    @activities_fans_games = @activity.activities_fans_games.turn_up.latest
+    @activities_fans_games = @activity.activities_fans_games.where( game_status: ActivitiesFansGame::TURN_UP ).order('fans_game_id DESC')
     @share_image = "#{M_HOST}/assets/activity_pics/67.jpg"
   end
 
