@@ -1,7 +1,7 @@
 module PermittedAttributes
     ATTRIBUTES=[:site_attributes, :account_attributes, :wx_mp_user_attributes, :website_menu_attributes, :material_attributes, :activity_attributes, :shop_attributes,
       :reply_attributes, :wx_menu_attributes, :payment_setting_attributes, :question_attributes, :fight_paper_attributes, :activity_prize_attributes, :vip_recharge_order_attributes, :book_rule_attributes,
-      :website_picture_attributes, :website_popup_menu_attributes  ]
+      :website_picture_attributes, :website_popup_menu_attributes, :brokerage_setting_attributes  ]
 
     mattr_reader *ATTRIBUTES
 
@@ -104,6 +104,16 @@ module PermittedAttributes
   @@website_popup_menu_attributes = [
     :id, :website_id, :nav_type, :name,  :font_icon, :icon_key, :menu_type, :activity_id,  :url,
     :tel, :address, :location_x, :location_y,  :single_material_id,   :multiple_material_id, :sort
+  ]
+
+
+  # "brokerage_setting"=>
+  #  {"activity_attributes"=>
+  #    {"site_id"=>"2", "activity_type_id"=>"77", "status"=>"1", "keyword"=>"全民经纪人", "name"=>"微信消息标题", "pic_key"=>"FqrqdYm_6c4ih0EGQ1rcEUMLtdlB", "summary"=>"微信消息摘要\r\n", "description"=>""},
+  #   "logo_key"=>"",  "pic_keys"=>"",  "agreement"=>"注册协议",  "tel"=>"13322280797",  "month_settlement_day"=>"1",  "min_settlement_amount"=>"100"}}
+  @@brokerage_setting_attributes = [
+    :logo_key, :pic_keys, :agreement, :tel, :month_settlement_day, :min_settlement_amount,
+    activity_attributes:[ :site_id, :activity_type_id, :status, :keyword, :name, :pic_key, :summary, :description]
   ]
 
 end
