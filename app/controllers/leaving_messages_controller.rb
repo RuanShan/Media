@@ -99,7 +99,7 @@ class LeavingMessagesController < ApplicationController
       @messages = current_site.leaving_messages.order("created_at DESC") || []
     end
     def set_activity
-      @activity = current_site.activities.setted.message.first_or_initialize(pic_key: 'FvKEd9bIay1xGjCw4mEUSkrOZWmy')
+      @activity = current_site.activities.status_setted.message.first_or_initialize(pic_key: 'FvKEd9bIay1xGjCw4mEUSkrOZWmy')
     end
 
 end

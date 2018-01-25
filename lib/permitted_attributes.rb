@@ -45,6 +45,9 @@ module PermittedAttributes
    #}
    # 砸金蛋
    #"activity"=>{"activity_type_id"=>"25", "site_id"=>"2", "name"=>"", "keyword"=>"砸金蛋", "ready_activity_notice_attributes"=>{"pic_key"=>"", "title"=>"活动即将开始", "summary"=>"请点击进入砸金蛋活动预热页面", "description"=>""}, "ready_at"=>"2018-01-20 17:20", "start_at"=>"2018-01-21 00:00", "end_at"=>"2018-01-22 23:59"}, "start_at_end_at"=>"2018-01-21 00:00 - 2018-01-22 23:59"}
+   # 摇一摇
+   #"activity"=>{"status"=>"1", "activity_property_attributes"=>{"partake_limit"=>"-1", "day_partake_limit"=>"-1", "prize_limit"=>"-1", "day_prize_limit"=>"-1", "win_tip"=>"请留下您的手机号码，我们的工作人员会联系发奖。", "is_show_prize_qty"=>"1", "vip_only"=>"0", "enable_prepare_settings"=>"0", "id"=>"2"}, "ready_at"=>"2018-01-05 00:00"}
+
    @@activity_attributes = [:status, :keyword, :pic_key,
      :activity_type_id, :name, :summary, :description, :start_at, :end_at,
      :bg_pic_key, :site_id, :ready_at,
@@ -54,7 +57,7 @@ module PermittedAttributes
      active_activity_notice_attributes: [:title, :summary, :id, :pic_key, :description],
 
      guess_setting_attributes: [:user_day_answer_limit, :user_total_answer_limit, :user_type],
-     activity_property_attributes: [ :activity_type_id, :vip_only, :special_warn, :question_score ],
+     activity_property_attributes: [ :activity_type_id, :vip_only, :special_warn, :question_score, :partake_limit, :day_partake_limit, :prize_limit, :day_prize_limit, :win_tip, :is_show_prize_qty, :enable_prepare_settings, :id ],
 
      activity_prizes_attributes:[:title, :prize, :prize_count],
 
@@ -84,7 +87,7 @@ module PermittedAttributes
    @@fight_paper_attributes = [:description, :read_time, :fight_question_ids]
 
    # activity_prize"=>{"activity_id"=>"21", "title"=>"一等奖", "prize_type"=>"normal_prize", "prize"=>"prize1", "points"=>"", "prize_value"=>"", "prize_count"=>"1"}
-   @@activity_prize_attributes = [:activity_id, :title, :prize, :prize_count, :points, :prize_value, :prize_count]
+   @@activity_prize_attributes = [:activity_id, :title, :prize, :prize_count, :points, :prize_value, :prize_count, :prize_type, :prize_rate, :day_limit_count, :people_limit_count, :people_day_limit_count]
 
    # "vip_recharge_order"=>{"amount"=>"100", "pay_amount"=>"100.0", "given_points"=>"0", "pay_type"=>"10001"}
    @@vip_recharge_order_attributes = [:amount, :pay_amount, :given_points, :pay_type]

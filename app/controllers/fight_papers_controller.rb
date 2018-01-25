@@ -37,7 +37,7 @@ class FightPapersController < ApplicationController
     @fight_paper  = @fight_papers.find params[:id]
     if @fight_paper.update_attributes(fight_paper_params)
       if @activity.status_setting? && @fight_paper == @activity.fight_papers.last
-        @activity.setted!
+        @activity.status_setted!
         redirect_to fights_activities_path
       else
         redirect_to fight_papers_path(activity_id: @fight_paper.activity_id, paper_index: (params[:paper_index].to_i + 1)), notice: '保存成功'
