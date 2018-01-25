@@ -82,7 +82,7 @@ module Wp
     config.assets.precompile += Dir['app/assets/stylesheets/merchant_app/*.*css'].map{ |x| x.sub('app/assets/stylesheets/', '') }
     config.assets.precompile += Dir['app/assets/javascripts/site/**/*.js'].map{ |x| x.sub('app/assets/javascripts/', '') }
     config.assets.precompile += Dir['app/assets/stylesheets/site/**/*.*css'].map{ |x| x.sub('app/assets/stylesheets/', '') }
-    config.assets.precompile += Dir['app/assets/images/mobile/wcard/*.*'].map{ |x| x.sub('app/assets/images/', '') }
+    #config.assets.precompile += Dir['app/assets/images/mobile/wcard/*.*'].map{ |x| x.sub('app/assets/images/', '') }
 
     config.generators do |g|
       g.test_framework :rspec
