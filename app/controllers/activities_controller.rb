@@ -685,21 +685,21 @@ class ActivitiesController < ApplicationController
   def destroy
     @activity.delete_ranking_list if @activity.has_ranking_list?
 
-    redirect_to :back, notice: notice_for( @activity.deleted! )
+    redirect_to :back, notice: notice_for( @activity.status_deleted! )
   end
 
   def delete
     @activity.delete_ranking_list if @activity.has_ranking_list?
 
-    redirect_to :back, notice: notice_for( @activity.deleted! )
+    redirect_to :back, notice: notice_for( @activity.status_deleted! )
   end
 
   def stop
-    redirect_to :back, notice: notice_for( @activity.stopped! )
+    redirect_to :back, notice: notice_for( @activity.status_stopped! )
   end
 
   def active
-    redirect_to :back, notice: notice_for( @activity.setted! )
+    redirect_to :back, notice: notice_for( @activity.status_setted! )
   end
 
   def unset_delete

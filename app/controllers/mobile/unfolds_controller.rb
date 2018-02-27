@@ -120,7 +120,7 @@ class Mobile::UnfoldsController < Mobile::BaseController
     end
 
     def find_activity
-      @activity = Activity.unfold.setted.find_by_id(params[:aid]) || Activity.unfold.setted.find_by_id(session[:activity_id])
+      @activity = Activity.unfold.status_setted.find_by_id(params[:aid]) || Activity.unfold.status_setted.find_by_id(session[:activity_id])
       return render_404 unless @activity
       session[:activity_id] ||= params[:aid]
       prize = WxPrize.where(user_id: @user.id, activity_id: session[:activity_id]).first

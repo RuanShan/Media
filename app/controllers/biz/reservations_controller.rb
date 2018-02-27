@@ -38,11 +38,11 @@ class Biz::ReservationsController < ApplicationController
   end
 
   def stop
-    redirect_to :back, notice: notice_for( @activity.stopped! )
+    redirect_to :back, notice: notice_for( @activity.status_stopped! )
   end
 
   def start
-    redirect_to :back, notice: notice_for( @activity.setted! )
+    redirect_to :back, notice: notice_for( @activity.status_setted! )
   end
 
   def remove_logo

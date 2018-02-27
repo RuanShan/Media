@@ -282,7 +282,7 @@ Rails.logger.debug " model=#{model.inspect}"
 
 
   def leaving_message_admin_path
-    if current_site.activities.setted.message.exists?
+    if current_site.activities.status_setted.message.exists?
       leaving_messages_url
     else
       edit_activity_leaving_messages_url

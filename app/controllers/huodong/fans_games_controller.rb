@@ -1,3 +1,4 @@
+#吸粉游戏
 class Huodong::FansGamesController < ApplicationController
   before_action :require_wx_mp_user
   before_action :find_activity, except: [ :create ]
