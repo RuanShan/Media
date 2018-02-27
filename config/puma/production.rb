@@ -1,4 +1,4 @@
-# NOTICE, now using server: shared/puma.rb 
+# NOTICE, now using server: shared/puma.rb
 
 #!/usr/bin/env puma
 
@@ -19,7 +19,7 @@
 #   [200, { 'Content-Type' => 'text/plain', 'Content-Length' => body.length.to_s }, [body]]
 # end
 threads_count = ENV.fetch("RAILS_MAX_THREADS") { 5 }.to_i
-threads threads_count, 16
+threads threads_count, 8
 
 # Load "path" as a rackup file.
 #
@@ -114,7 +114,7 @@ bind 'unix:///disk2/www2/mpp/current/tmp/sockets/puma.sock'
 #
 # The default is "0".
 #
-workers 2
+#workers 2
 
 # Code to run immediately before the master starts workers.
 #
